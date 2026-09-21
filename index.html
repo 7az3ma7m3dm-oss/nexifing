@@ -1,1994 +1,672 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nexifing — AI Website Builder | Build Your Dream Site in Seconds</title>
-<meta name="description" content="Nexifing uses AI to build modern, responsive websites from a single prompt. No code required. Deploy anywhere.">
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<style>
-/* ============================================
-   NEXIFING — Global Styles
-   ============================================ */
-:root {
-  --bg: #05050a;
-  --bg-2: #0a0a12;
-  --purple: #a855f7;
-  --purple-dim: rgba(168, 85, 247, 0.15);
-  --cyan: #06b6d4;
-  --cyan-dim: rgba(6, 182, 212, 0.15);
-  --pink: #ec4899;
-  --pink-dim: rgba(236, 72, 153, 0.15);
-  --green: #22c55e;
-  --yellow: #eab308;
-  --text: #ffffff;
-  --text-dim: rgba(255, 255, 255, 0.6);
-  --text-dimmer: rgba(255, 255, 255, 0.35);
-  --border: rgba(255, 255, 255, 0.1);
-  --border-hover: rgba(255, 255, 255, 0.25);
-  --card: rgba(255, 255, 255, 0.03);
-  --card-hover: rgba(255, 255, 255, 0.06);
-  --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  --radius: 20px;
-  --radius-lg: 28px;
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-body {
-  font-family: 'Inter', -apple-system, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
+  <!-- Primary SEO -->
+  <title>Nexifing — AI Website Builder | Build Your Dream Site in Seconds</title>
+  <meta name="description" content="Nexifing uses AI to build modern, responsive websites from a single prompt. No code required. Deploy anywhere. Built in Egypt, shipped worldwide.">
+  <meta name="keywords" content="AI website builder, web design, Nexifing, no-code, HTML CSS JavaScript, React, Tailwind, portfolio, e-commerce, landing page">
+  <meta name="author" content="Nexifing">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#05050a">
 
-::selection { background: var(--purple); color: white; }
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://7az3ma7m3dm-oss.github.io/nexifing/">
+  <meta property="og:title" content="Nexifing — AI Website Builder">
+  <meta property="og:description" content="Build your website with a single prompt. Modern, responsive, and yours forever.">
+  <meta property="og:image" content="logo.png">
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: linear-gradient(var(--purple), var(--cyan)); border-radius: 5px; }
-::-webkit-scrollbar-thumb:hover { background: var(--purple); }
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nexifing — AI Website Builder">
+  <meta name="twitter:description" content="Build your website with a single prompt.">
+  <meta name="twitter:image" content="logo.png">
 
-/* Typography */
-h1, h2, h3, h4 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
 
-/* ============================================
-   Background Effects
-   ============================================ */
-.bg-orbs {
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  overflow: hidden;
-  pointer-events: none;
-}
-.orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.25;
-  animation: floatOrb 12s ease-in-out infinite;
-}
-.orb-1 { width: 600px; height: 600px; background: var(--purple); top: -15%; left: -10%; }
-.orb-2 { width: 600px; height: 600px; background: var(--cyan); bottom: -15%; right: -10%; animation-delay: 4s; }
-.orb-3 { width: 500px; height: 500px; background: var(--pink); top: 40%; left: 40%; animation-delay: 8s; }
-.orb-4 { width: 400px; height: 400px; background: var(--purple); top: 80%; left: -5%; animation-delay: 2s; opacity: 0.15; }
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-@keyframes floatOrb {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(40px, -40px) scale(1.1); }
-  66% { transform: translate(-30px, 30px) scale(0.95); }
-}
-
-.grid-overlay {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
-  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
-}
-
-/* ============================================
-   Navigation
-   ============================================ */
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 100;
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  background: rgba(5, 5, 10, 0.7);
-  border-bottom: 1px solid var(--border);
-  transition: var(--transition);
-}
-.navbar.scrolled {
-  background: rgba(5, 5, 10, 0.95);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-}
-.nav-container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 24px;
-  height: 76px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.logo { display: flex; align-items: center; text-decoration: none; }
-.logo-img { height: 44px; width: auto; object-fit: contain; transition: transform 0.3s; }
-.logo:hover .logo-img { transform: scale(1.05); }
-.nav-links {
-  display: flex;
-  gap: 32px;
-  align-items: center;
-}
-.nav-links a {
-  color: var(--text-dim);
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  position: relative;
-  transition: color 0.3s;
-}
-.nav-links a:hover { color: white; }
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -6px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--purple), var(--cyan));
-  transition: width 0.3s;
-}
-.nav-links a:hover::after { width: 100%; }
-.btn-primary {
-  background: linear-gradient(135deg, var(--purple), var(--cyan));
-  color: white !important;
-  padding: 12px 24px;
-  border-radius: 999px;
-  border: none;
-  font-weight: 700;
-  font-size: 0.9rem;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition: var(--transition);
-  box-shadow: 0 8px 24px rgba(168, 85, 247, 0.25);
-}
-.btn-primary:hover {
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 12px 32px rgba(168, 85, 247, 0.5);
-}
-.btn-primary::after { display: none !important; }
-.btn-outline {
-  padding: 12px 24px;
-  border-radius: 999px;
-  border: 1.5px solid var(--border);
-  background: transparent;
-  color: white;
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-decoration: none;
-  cursor: pointer;
-  transition: var(--transition);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-.btn-outline:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: var(--border-hover);
-  transform: translateY(-2px);
-}
-.menu-btn {
-  display: none;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.6rem;
-  cursor: pointer;
-  padding: 8px;
-}
-.mobile-menu {
-  display: none;
-  flex-direction: column;
-  gap: 8px;
-  padding: 16px 24px 24px;
-  background: rgba(5, 5, 10, 0.98);
-  border-top: 1px solid var(--border);
-}
-.mobile-menu a {
-  color: var(--text-dim);
-  text-decoration: none;
-  padding: 12px 0;
-  font-weight: 500;
-  border-bottom: 1px solid var(--border);
-}
-.mobile-menu.open { display: flex; }
-
-/* ============================================
-   Hero Section
-   ============================================ */
-.hero {
-  padding: 180px 24px 100px;
-  max-width: 1100px;
-  margin: 0 auto;
-  text-align: center;
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.hero-glow {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(700px circle at var(--mx, 50%) var(--my, 40%), rgba(168, 85, 247, 0.18), transparent 50%);
-  pointer-events: none;
-  z-index: 0;
-}
-.hero > * { position: relative; z-index: 1; }
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 20px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--card);
-  font-size: 0.85rem;
-  color: var(--text-dim);
-  margin-bottom: 32px;
-  backdrop-filter: blur(10px);
-  animation: fadeInDown 0.8s ease;
-}
-.sparkle { color: var(--purple); }
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--green);
-  animation: pulseGreen 2s infinite;
-  box-shadow: 0 0 12px var(--green);
-}
-@keyframes pulseGreen {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.85); }
-}
-.hero h1 {
-  font-size: clamp(2.5rem, 7.5vw, 6rem);
-  font-weight: 700;
-  line-height: 0.95;
-  letter-spacing: -0.04em;
-  margin-bottom: 28px;
-  animation: fadeInUp 0.8s ease 0.1s backwards;
-}
-.gradient-text {
-  background: linear-gradient(90deg, var(--purple), var(--pink), var(--cyan), var(--purple));
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientShift 6s linear infinite;
-}
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 300% 50%; }
-}
-.cursor {
-  animation: blink 1s infinite;
-  color: var(--purple);
-  font-weight: 300;
-}
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
-.hero-sub {
-  font-size: 1.15rem;
-  color: var(--text-dim);
-  max-width: 620px;
-  margin: 0 auto 44px;
-  animation: fadeInUp 0.8s ease 0.2s backwards;
-}
-.hero-btns {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 80px;
-  animation: fadeInUp 0.8s ease 0.3s backwards;
-}
-.large { padding: 16px 34px; font-size: 1rem; }
-
-/* Hero Stats */
-.stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  max-width: 800px;
-  margin: 0 auto;
-  animation: fadeInUp 0.8s ease 0.4s backwards;
-}
-.stat {
-  text-align: center;
-  padding: 20px 12px;
-  border-radius: 16px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  transition: var(--transition);
-}
-.stat:hover {
-  background: var(--card-hover);
-  transform: translateY(-4px);
-  border-color: var(--border-hover);
-}
-.stat-num {
-  display: block;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 2.4rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--purple), var(--cyan));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  line-height: 1;
-  margin-bottom: 6px;
-}
-.stat-label {
-  font-size: 0.7rem;
-  color: var(--text-dimmer);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-weight: 600;
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ============================================
-   Section Basics
-   ============================================ */
-.section {
-  padding: 120px 24px;
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-}
-.section-header {
-  text-align: center;
-  margin-bottom: 72px;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.tag {
-  display: inline-block;
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  font-weight: 700;
-  padding: 6px 16px;
-  border-radius: 999px;
-  margin-bottom: 8px;
-}
-.tag.purple { color: var(--purple); background: var(--purple-dim); }
-.tag.cyan { color: var(--cyan); background: var(--cyan-dim); }
-.tag.pink { color: var(--pink); background: var(--pink-dim); }
-.section-header h2 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  margin-top: 16px;
-  margin-bottom: 16px;
-}
-.sub { color: var(--text-dim); font-size: 1.05rem; }
-
-/* ============================================
-   Features Grid
-   ============================================ */
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-}
-.feature-card {
-  padding: 36px 32px;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: var(--card);
-  transition: var(--transition);
-  position: relative;
-  overflow: hidden;
-}
-.feature-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(400px circle at var(--x, 50%) var(--y, 50%), rgba(168, 85, 247, 0.1), transparent 40%);
-  opacity: 0;
-  transition: opacity 0.4s;
-  pointer-events: none;
-}
-.feature-card:hover::before { opacity: 1; }
-.feature-card:hover {
-  background: var(--card-hover);
-  transform: translateY(-6px);
-  border-color: var(--border-hover);
-  box-shadow: var(--shadow);
-}
-.icon-box {
-  width: 60px;
-  height: 60px;
-  border-radius: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.6rem;
-  margin-bottom: 24px;
-  transition: transform 0.3s;
-}
-.feature-card:hover .icon-box { transform: scale(1.1) rotate(-5deg); }
-.icon-box.purple { background: var(--purple-dim); border: 1px solid rgba(168, 85, 247, 0.25); }
-.icon-box.cyan { background: var(--cyan-dim); border: 1px solid rgba(6, 182, 212, 0.25); }
-.icon-box.pink { background: var(--pink-dim); border: 1px solid rgba(236, 72, 153, 0.25); }
-.icon-box.green { background: rgba(34, 197, 94, 0.15); border: 1px solid rgba(34, 197, 94, 0.25); }
-.icon-box.yellow { background: rgba(234, 179, 8, 0.15); border: 1px solid rgba(234, 179, 8, 0.25); }
-.feature-card h3 {
-  font-size: 1.25rem;
-  margin-bottom: 10px;
-}
-.feature-card p {
-  color: var(--text-dim);
-  font-size: 0.95rem;
-}
-
-/* ============================================
-   How It Works
-   ============================================ */
-.how-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 24px;
-  position: relative;
-}
-.how-card {
-  padding: 40px 32px;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: var(--card);
-  transition: var(--transition);
-  position: relative;
-  text-align: left;
-}
-.how-card:hover {
-  background: var(--card-hover);
-  transform: translateY(-6px);
-  border-color: var(--border-hover);
-}
-.how-num {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 3.5rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--purple), var(--cyan));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  line-height: 1;
-  margin-bottom: 20px;
-  opacity: 0.9;
-}
-.how-card h3 {
-  font-size: 1.15rem;
-  margin-bottom: 10px;
-}
-.how-card p {
-  color: var(--text-dim);
-  font-size: 0.95rem;
-}
-
-/* ============================================
-   Portfolio
-   ============================================ */
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 24px;
-}
-.portfolio-card {
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: var(--card);
-  transition: var(--transition);
-  cursor: pointer;
-}
-.portfolio-card:hover {
-  transform: translateY(-8px);
-  border-color: var(--border-hover);
-  box-shadow: var(--shadow);
-}
-.portfolio-img {
-  height: 220px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.15);
-  position: relative;
-  overflow: hidden;
-}
-.portfolio-img.p1 { background: linear-gradient(135deg, #667eea, #764ba2); }
-.portfolio-img.p2 { background: linear-gradient(135deg, #f093fb, #f5576c); }
-.portfolio-img.p3 { background: linear-gradient(135deg, #4facfe, #00f2fe); }
-.portfolio-img.p4 { background: linear-gradient(135deg, #43e97b, #38f9d7); }
-.portfolio-img.p5 { background: linear-gradient(135deg, #fa709a, #fee140); }
-.portfolio-img.p6 { background: linear-gradient(135deg, #30cfd0, #330867); }
-.portfolio-info {
-  padding: 24px;
-}
-.portfolio-info h3 {
-  font-size: 1.15rem;
-  margin-bottom: 6px;
-}
-.portfolio-info p {
-  color: var(--text-dim);
-  font-size: 0.9rem;
-}
-.portfolio-tag {
-  display: inline-block;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--purple);
-  margin-top: 12px;
-  font-weight: 700;
-}
-
-/* ============================================
-   Testimonials
-   ============================================ */
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
-}
-.testimonial-card {
-  padding: 32px;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: var(--card);
-  transition: var(--transition);
-  position: relative;
-}
-.testimonial-card:hover {
-  background: var(--card-hover);
-  transform: translateY(-4px);
-  border-color: var(--border-hover);
-}
-.testimonial-quote {
-  color: var(--text-dim);
-  font-size: 0.95rem;
-  margin-bottom: 24px;
-  position: relative;
-  padding-top: 20px;
-}
-.testimonial-quote::before {
-  content: '"';
-  position: absolute;
-  top: -30px;
-  left: -8px;
-  font-size: 5rem;
-  font-family: 'Space Grotesk', sans-serif;
-  color: var(--purple);
-  opacity: 0.3;
-  line-height: 1;
-}
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  color: white;
-  font-size: 0.9rem;
-}
-.avatar.a1 { background: linear-gradient(135deg, var(--purple), var(--pink)); }
-.avatar.a2 { background: linear-gradient(135deg, var(--cyan), var(--purple)); }
-.avatar.a3 { background: linear-gradient(135deg, var(--pink), var(--cyan)); }
-.author-info strong {
-  display: block;
-  font-size: 0.9rem;
-}
-.author-info span {
-  color: var(--text-dimmer);
-  font-size: 0.8rem;
-}
-.stars {
-  color: var(--yellow);
-  font-size: 0.9rem;
-  letter-spacing: 2px;
-  margin-bottom: 12px;
-}
-
-/* ============================================
-   Pricing
-   ============================================ */
-.pricing-toggle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 48px;
-}
-.toggle-switch {
-  width: 56px;
-  height: 30px;
-  border-radius: 999px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  position: relative;
-  cursor: pointer;
-  transition: var(--transition);
-}
-.toggle-switch::after {
-  content: '';
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--purple), var(--cyan));
-  transition: transform 0.3s;
-}
-.toggle-switch.active::after { transform: translateX(26px); }
-.toggle-label {
-  font-size: 0.9rem;
-  color: var(--text-dim);
-  font-weight: 600;
-}
-.toggle-label.active { color: white; }
-.save-badge {
-  background: var(--green);
-  color: white;
-  font-size: 0.7rem;
-  padding: 3px 10px;
-  border-radius: 999px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  align-items: stretch;
-}
-.pricing-card {
-  padding: 40px 32px;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  background: var(--card);
-  transition: var(--transition);
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-.pricing-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--border-hover);
-  background: var(--card-hover);
-}
-.pricing-card.featured {
-  border-color: var(--purple);
-  background: linear-gradient(180deg, rgba(168, 85, 247, 0.08), var(--card));
-  box-shadow: 0 20px 60px rgba(168, 85, 247, 0.2);
-}
-.featured-badge {
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(135deg, var(--purple), var(--cyan));
-  color: white;
-  font-size: 0.7rem;
-  padding: 6px 16px;
-  border-radius: 999px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-.pricing-name {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-.pricing-desc {
-  color: var(--text-dim);
-  font-size: 0.9rem;
-  margin-bottom: 24px;
-}
-.pricing-price {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 3rem;
-  font-weight: 700;
-  line-height: 1;
-  margin-bottom: 6px;
-}
-.pricing-price span {
-  font-size: 1rem;
-  color: var(--text-dim);
-  font-weight: 500;
-}
-.pricing-features {
-  list-style: none;
-  margin: 32px 0;
-  flex: 1;
-}
-.pricing-features li {
-  padding: 10px 0;
-  color: var(--text-dim);
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.pricing-features li::before {
-  content: '✓';
-  color: var(--green);
-  font-weight: 700;
-  font-size: 1rem;
-}
-.pricing-btn {
-  width: 100%;
-  padding: 14px;
-  border-radius: 999px;
-  border: 1.5px solid var(--border);
-  background: transparent;
-  color: white;
-  font-weight: 700;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: var(--transition);
-}
-.pricing-btn:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: var(--border-hover);
-}
-.pricing-card.featured .pricing-btn {
-  background: linear-gradient(135deg, var(--purple), var(--cyan));
-  border: none;
-  box-shadow: 0 8px 24px rgba(168, 85, 247, 0.3);
-}
-.pricing-card.featured .pricing-btn:hover {
-  transform: scale(1.03);
-  box-shadow: 0 12px 32px rgba(168, 85, 247, 0.5);
-}
-
-/* ============================================
-   Multi-Step Builder
-   ============================================ */
-.builder-card {
-  padding: 48px;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  background: var(--card);
-  backdrop-filter: blur(20px);
-  max-width: 760px;
-  margin: 0 auto;
-  box-shadow: var(--shadow);
-}
-.progress-track {
-  height: 4px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 999px;
-  margin-bottom: 32px;
-  overflow: hidden;
-}
-.progress-fill {
-  height: 100%;
-  width: 33%;
-  background: linear-gradient(90deg, var(--purple), var(--cyan));
-  border-radius: 999px;
-  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.step-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  color: var(--purple);
-  margin-bottom: 12px;
-  letter-spacing: 1px;
-}
-#question {
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  margin-bottom: 32px;
-}
-.options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 40px;
-}
-.option-btn {
-  padding: 12px 22px;
-  border-radius: 999px;
-  border: 2px solid var(--border);
-  background: transparent;
-  color: var(--text-dim);
-  font-weight: 600;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: var(--transition);
-  font-family: inherit;
-}
-.option-btn:hover {
-  border-color: var(--border-hover);
-  color: white;
-  transform: translateY(-2px);
-}
-.option-btn.selected {
-  border-color: var(--purple);
-  background: var(--purple-dim);
-  color: white;
-  box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
-}
-.builder-nav {
-  display: flex;
-  gap: 12px;
-}
-
-/* ============================================
-   FAQ
-   ============================================ */
-.faq-list {
-  max-width: 800px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.faq-item {
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  background: var(--card);
-  overflow: hidden;
-  transition: var(--transition);
-}
-.faq-item.open {
-  border-color: var(--purple);
-  background: var(--card-hover);
-}
-.faq-question {
-  padding: 22px 28px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: color 0.3s;
-  user-select: none;
-}
-.faq-question:hover { color: var(--purple); }
-.faq-icon {
-  font-size: 1.4rem;
-  transition: transform 0.3s;
-  color: var(--purple);
-  font-weight: 300;
-}
-.faq-item.open .faq-icon { transform: rotate(45deg); }
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.3s;
-  color: var(--text-dim);
-  font-size: 0.95rem;
-  padding: 0 28px;
-}
-.faq-item.open .faq-answer {
-  max-height: 300px;
-  padding: 0 28px 24px;
-}
-
-/* ============================================
-   Contact
-   ============================================ */
-.contact-form {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.contact-form input,
-.contact-form textarea {
-  padding: 16px 24px;
-  border-radius: 16px;
-  border: 1px solid var(--border);
-  background: var(--card);
-  color: white;
-  font-size: 1rem;
-  font-family: inherit;
-  outline: none;
-  transition: var(--transition);
-  resize: vertical;
-}
-.contact-form input:focus,
-.contact-form textarea:focus {
-  border-color: var(--purple);
-  background: var(--card-hover);
-  box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.1);
-}
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-  color: var(--text-dimmer);
-}
-.answers-preview {
-  padding: 20px 24px;
-  border-radius: 16px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  font-size: 0.9rem;
-  color: var(--text-dim);
-}
-.answers-preview strong {
-  color: white;
-  display: block;
-  margin-bottom: 10px;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-.answers-preview div {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px 0;
-  gap: 16px;
-}
-.answers-preview span:last-child {
-  color: var(--purple);
-  font-weight: 600;
-  text-align: right;
-}
-.full {
-  width: 100%;
-  justify-content: center;
-  padding: 18px;
-  font-size: 1rem;
-}
-.status-msg {
-  text-align: center;
-  color: var(--text-dim);
-  margin-top: 8px;
-  min-height: 24px;
-  font-size: 0.9rem;
-}
-
-/* ============================================
-   Newsletter
-   ============================================ */
-.newsletter {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 56px 40px;
-  border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(6, 182, 212, 0.1));
-  border: 1px solid var(--border);
-  text-align: center;
-}
-.newsletter h3 {
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  margin-bottom: 12px;
-}
-.newsletter p {
-  color: var(--text-dim);
-  margin-bottom: 28px;
-}
-.newsletter-form {
-  display: flex;
-  gap: 12px;
-  max-width: 480px;
-  margin: 0 auto;
-  flex-wrap: wrap;
-}
-.newsletter-form input {
-  flex: 1;
-  min-width: 220px;
-  padding: 16px 22px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: rgba(0, 0, 0, 0.4);
-  color: white;
-  font-size: 0.95rem;
-  font-family: inherit;
-  outline: none;
-  transition: var(--transition);
-}
-.newsletter-form input:focus {
-  border-color: var(--purple);
-}
-.newsletter-form button {
-  padding: 16px 32px;
-  border-radius: 999px;
-  border: none;
-  background: linear-gradient(135deg, var(--purple), var(--cyan));
-  color: white;
-  font-weight: 700;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: var(--transition);
-  font-family: inherit;
-}
-.newsletter-form button:hover {
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 12px 32px rgba(168, 85, 247, 0.5);
-}
-
-/* ============================================
-   Footer
-   ============================================ */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 60px 24px 32px;
-  margin-top: 80px;
-}
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 48px;
-  margin-bottom: 48px;
-}
-.footer-brand img { height: 44px; margin-bottom: 16px; }
-.footer-brand p {
-  color: var(--text-dim);
-  font-size: 0.9rem;
-  max-width: 320px;
-}
-.footer-col h4 {
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  margin-bottom: 18px;
-  color: white;
-}
-.footer-col a {
-  display: block;
-  color: var(--text-dim);
-  text-decoration: none;
-  font-size: 0.9rem;
-  padding: 6px 0;
-  transition: color 0.3s;
-}
-.footer-col a:hover { color: var(--purple); }
-.footer-bottom {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-top: 32px;
-  border-top: 1px solid var(--border);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  color: var(--text-dimmer);
-  font-size: 0.85rem;
-}
-.footer-bottom strong { color: white; }
-.socials {
-  display: flex;
-  gap: 12px;
-}
-.socials a {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-dim);
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: var(--transition);
-}
-.socials a:hover {
-  background: var(--purple);
-  border-color: var(--purple);
-  color: white;
-  transform: translateY(-3px);
-}
-
-/* ============================================
-   Scroll Reveal
-   ============================================ */
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ============================================
-   Back to Top
-   ============================================ */
-.back-top {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--purple), var(--cyan));
-  color: white;
-  border: none;
-  font-size: 1.3rem;
-  cursor: pointer;
-  box-shadow: 0 8px 24px rgba(168, 85, 247, 0.4);
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(20px);
-  transition: var(--transition);
-  z-index: 99;
-}
-.back-top.show {
-  opacity: 1;
-  pointer-events: all;
-  transform: translateY(0);
-}
-.back-top:hover { transform: translateY(-4px) scale(1.1); }
-
-/* ============================================
-   Responsive
-   ============================================ */
-@media (max-width: 900px) {
-  .footer-content { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .stats { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 768px) {
-  .nav-links { display: none; }
-  .menu-btn { display: block; }
-  .hero { padding: 140px 20px 80px; }
-  .section { padding: 80px 20px; }
-  .builder-card { padding: 32px 24px; }
-  .logo-img { height: 36px; }
-  .footer-content { grid-template-columns: 1fr; gap: 32px; }
-  .footer-bottom { flex-direction: column; text-align: center; }
-}
-@media (max-width: 500px) {
-  .stats { grid-template-columns: 1fr; }
-  .hero h1 { font-size: 2.2rem; }
-  .stat-num { font-size: 2rem; }
-  .newsletter { padding: 40px 24px; }
-}
-</style>
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- ==================== BACKGROUND ==================== -->
-<div class="bg-orbs">
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-  <div class="orb orb-4"></div>
-  <div class="grid-overlay"></div>
-</div>
+  <!-- ============================================================
+       ANIMATED BACKGROUND
+  ============================================================ -->
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+    <div class="grid-overlay"></div>
+  </div>
 
-<!-- ==================== NAVBAR ==================== -->
-<nav class="navbar" id="navbar">
-  <div class="nav-container">
-    <a href="#" class="logo">
-      <img src="logo.png" alt="Nexifing" class="logo-img">
-    </a>
-    <div class="nav-links">
+  <!-- ============================================================
+       NAVBAR
+  ============================================================ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo" aria-label="Nexifing home">
+        <img src="logo.png" alt="Nexifing" class="logo-img">
+      </a>
+
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how">How It Works</a>
+        <a href="#work">Work</a>
+        <a href="#testimonials">Clients</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+        <a href="#build" class="btn-primary">Get Started →</a>
+      </div>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
       <a href="#features">Features</a>
       <a href="#how">How It Works</a>
       <a href="#work">Work</a>
-      <a href="#pricing">Pricing</a>
+      <a href="#testimonials">Clients</a>
       <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
       <a href="#build" class="btn-primary">Get Started →</a>
     </div>
-    <button class="menu-btn" id="menuBtn">☰</button>
-  </div>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#features">Features</a>
-    <a href="#how">How It Works</a>
-    <a href="#work">Work</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
+  </nav>
 
-<!-- ==================== HERO ==================== -->
-<section class="hero" id="hero">
-  <div class="hero-glow"></div>
-  <div class="badge">
-    <span class="sparkle">✦</span>
-    AI-powered website builder
-    <span class="dot"></span>
-  </div>
-  <h1>Build your website<br><span class="gradient-text" id="typedText"></span><span class="cursor">|</span></h1>
-  <p class="hero-sub">Tell Nexifing what you need. Our AI generates a modern, responsive website in seconds. No code required. No templates. No limits.</p>
-  <div class="hero-btns">
-    <a href="#build" class="btn-primary large">Start Building →</a>
-    <a href="#work" class="btn-outline large">See Our Work</a>
-  </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-num">50+</span>
-      <span class="stat-label">Sites Built</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">24h</span>
-      <span class="stat-label">Delivery</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">98%</span>
-      <span class="stat-label">Happy Clients</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">4.9★</span>
-      <span class="stat-label">Avg Rating</span>
-    </div>
-  </div>
-</section>
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section class="hero" id="hero">
+    <div class="hero-glow"></div>
 
-<!-- ==================== FEATURES ==================== -->
-<section class="section reveal" id="features">
-  <div class="section-header">
-    <span class="tag purple">Features</span>
-    <h2>Everything you need to launch</h2>
-    <p class="sub">From AI generation to deployment — Nexifing handles the whole journey.</p>
-  </div>
-  <div class="features-grid">
-    <div class="feature-card">
-      <div class="icon-box purple">⚡</div>
-      <h3>Instant Generation</h3>
-      <p>Describe your idea in plain English and get a full website in seconds. No waiting, no back-and-forth.</p>
+    <div class="badge">
+      <span class="sparkle">✦</span>
+      AI-powered website builder
+      <span class="dot"></span>
     </div>
-    <div class="feature-card">
-      <div class="icon-box cyan">💻</div>
-      <h3>Clean Code</h3>
-      <p>Export HTML, CSS, React, and Tailwind code that you fully own. Readable, maintainable, yours forever.</p>
-    </div>
-    <div class="feature-card">
-      <div class="icon-box pink">🌍</div>
-      <h3>Deploy Anywhere</h3>
-      <p>One-click publish to Vercel, Netlify, GitHub Pages, or your own server. No configuration needed.</p>
-    </div>
-    <div class="feature-card">
-      <div class="icon-box green">🎨</div>
-      <h3>Custom Design</h3>
-      <p>No generic templates. Every site is generated with your brand colors, fonts, and personality in mind.</p>
-    </div>
-    <div class="feature-card">
-      <div class="icon-box yellow">📱</div>
-      <h3>Fully Responsive</h3>
-      <p>Pixel-perfect from 320px phones all the way to ultrawide monitors. Mobile-first, always.</p>
-    </div>
-    <div class="feature-card">
-      <div class="icon-box purple">🚀</div>
-      <h3>Blazing Fast</h3>
-      <p>Every site is optimized for Core Web Vitals and scores 95+ on Lighthouse. Speed sells.</p>
-    </div>
-  </div>
-</section>
 
-<!-- ==================== HOW IT WORKS ==================== -->
-<section class="section reveal" id="how">
-  <div class="section-header">
-    <span class="tag cyan">Process</span>
-    <h2>How it works</h2>
-    <p class="sub">Three simple steps. From idea to live website.</p>
-  </div>
-  <div class="how-grid">
-    <div class="how-card">
-      <div class="how-num">01</div>
-      <h3>Tell us your vision</h3>
-      <p>Fill out a quick 3-question form. Choose your site type, style, and must-have features.</p>
-    </div>
-    <div class="how-card">
-      <div class="how-num">02</div>
-      <h3>AI builds it</h3>
-      <p>Our AI generates a complete, custom website tailored to your answers — copy, design, and code.</p>
-    </div>
-    <div class="how-card">
-      <div class="how-num">03</div>
-      <h3>We ship it</h3>
-      <p>Review it, request tweaks, and we deploy it live to your domain in under 24 hours.</p>
-    </div>
-  </div>
-</section>
+    <h1>
+      Build your website<br>
+      <span class="gradient-text" id="typedText"></span><span class="cursor">|</span>
+    </h1>
 
-<!-- ==================== PORTFOLIO ==================== -->
-<section class="section reveal" id="work">
-  <div class="section-header">
-    <span class="tag pink">Portfolio</span>
-    <h2>Recent work</h2>
-    <p class="sub">A few of the websites Nexifing has shipped this month.</p>
-  </div>
-  <div class="portfolio-grid">
-    <div class="portfolio-card">
-      <div class="portfolio-img p1">Aurora</div>
-      <div class="portfolio-info">
-        <h3>Aurora Fitness</h3>
-        <p>Booking platform for a boutique gym chain.</p>
-        <span class="portfolio-tag">Landing · Booking</span>
-      </div>
-    </div>
-    <div class="portfolio-card">
-      <div class="portfolio-img p2">Nova</div>
-      <div class="portfolio-info">
-        <h3>Nova Coffee</h3>
-        <p>E-commerce store for specialty coffee roasters.</p>
-        <span class="portfolio-tag">E-commerce · Payments</span>
-      </div>
-    </div>
-    <div class="portfolio-card">
-      <div class="portfolio-img p3">Pulse</div>
-      <div class="portfolio-info">
-        <h3>Pulse Studio</h3>
-        <p>Portfolio site for a creative design agency.</p>
-        <span class="portfolio-tag">Portfolio · Animations</span>
-      </div>
-    </div>
-    <div class="portfolio-card">
-      <div class="portfolio-img p4">Bloom</div>
-      <div class="portfolio-info">
-        <h3>Bloom Wellness</h3>
-        <p>Membership site for a wellness coach.</p>
-        <span class="portfolio-tag">Membership · Login</span>
-      </div>
-    </div>
-    <div class="portfolio-card">
-      <div class="portfolio-img p5">Flux</div>
-      <div class="portfolio-info">
-        <h3>Flux Analytics</h3>
-        <p>Marketing site for a SaaS analytics startup.</p>
-        <span class="portfolio-tag">SaaS · Dashboard</span>
-      </div>
-    </div>
-    <div class="portfolio-card">
-      <div class="portfolio-img p6">Echo</div>
-      <div class="portfolio-info">
-        <h3>Echo Podcast</h3>
-        <p>Hub site for a podcast network with 12 shows.</p>
-        <span class="portfolio-tag">Blog · Audio</span>
-      </div>
-    </div>
-  </div>
-</section>
+    <p class="hero-sub">
+      Tell Nexifing what you need. Our AI generates a modern, responsive website
+      in seconds. No code required. No templates. No limits.
+    </p>
 
-<!-- ==================== TESTIMONIALS ==================== -->
-<section class="section reveal">
-  <div class="section-header">
-    <span class="tag purple">Testimonials</span>
-    <h2>What clients say</h2>
-    <p class="sub">Real feedback from real businesses we've helped launch.</p>
-  </div>
-  <div class="testimonials-grid">
-    <div class="testimonial-card">
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-quote">Nexifing built us a beautiful site in under 24 hours. Our bookings jumped 40% in the first month. Absolute game changer.</p>
-      <div class="testimonial-author">
-        <div class="avatar a1">SM</div>
-        <div class="author-info">
-          <strong>Sarah Mitchell</strong>
-          <span>Founder, Aurora Fitness</span>
+    <div class="hero-btns">
+      <a href="#build" class="btn-primary large">Start Building →</a>
+      <a href="#work" class="btn-outline large">See Our Work</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-num">50+</span>
+        <span class="stat-label">Sites Built</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">24h</span>
+        <span class="stat-label">Delivery</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">98%</span>
+        <span class="stat-label">Happy Clients</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">4.9★</span>
+        <span class="stat-label">Avg Rating</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TRUSTED BY / MARQUEE
+  ============================================================ -->
+  <section class="section-tight reveal">
+    <p class="marquee-label">Trusted by founders, freelancers & agencies worldwide</p>
+    <div class="marquee">
+      <div class="marquee-track">
+        <span>GameNest</span>
+        <span>•</span>
+        <span>Blaze Store</span>
+        <span>•</span>
+        <span>Aurora Fitness</span>
+        <span>•</span>
+        <span>Nova Coffee</span>
+        <span>•</span>
+        <span>Flux Analytics</span>
+        <span>•</span>
+        <span>Pulse Studio</span>
+        <span>•</span>
+        <span>Bloom Wellness</span>
+        <span>•</span>
+        <span>Echo Podcast</span>
+        <span>•</span>
+        <span>GameNest</span>
+        <span>•</span>
+        <span>Blaze Store</span>
+        <span>•</span>
+        <span>Aurora Fitness</span>
+        <span>•</span>
+        <span>Nova Coffee</span>
+        <span>•</span>
+        <span>Flux Analytics</span>
+        <span>•</span>
+        <span>Pulse Studio</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FEATURES
+  ============================================================ -->
+  <section class="section reveal" id="features">
+    <div class="section-header">
+      <span class="tag purple">Features</span>
+      <h2>Everything you need to launch</h2>
+      <p class="sub">From AI generation to deployment — Nexifing handles the whole journey.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="icon-box purple">⚡</div>
+        <h3>Instant Generation</h3>
+        <p>Describe your idea in plain English and get a full website in seconds. No waiting, no back-and-forth.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon-box cyan">💻</div>
+        <h3>Clean Code</h3>
+        <p>Export HTML, CSS, React, and Tailwind code that you fully own. Readable, maintainable, yours forever.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon-box pink">🌍</div>
+        <h3>Deploy Anywhere</h3>
+        <p>One-click publish to Vercel, Netlify, GitHub Pages, or your own server. No configuration needed.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon-box green">🎨</div>
+        <h3>Custom Design</h3>
+        <p>No generic templates. Every site is generated with your brand colors, fonts, and personality in mind.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon-box yellow">📱</div>
+        <h3>Fully Responsive</h3>
+        <p>Pixel-perfect from 320px phones all the way to ultrawide monitors. Mobile-first, always.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon-box purple">🚀</div>
+        <h3>Blazing Fast</h3>
+        <p>Every site is optimized for Core Web Vitals and scores 95+ on Lighthouse. Speed sells.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon-box cyan">🔒</div>
+        <h3>Secure by Default</h3>
+        <p>HTTPS, CSP headers, and hardened forms come baked in. Your users' data stays safe.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon-box pink">♿</div>
+        <h3>Accessible</h3>
+        <p>WCAG-compliant markup, keyboard navigation, and screen-reader-friendly structure out of the box.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon-box green">🔍</div>
+        <h3>SEO Ready</h3>
+        <p>Semantic HTML, meta tags, Open Graph, sitemaps, and fast load times — Google loves it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       HOW IT WORKS
+  ============================================================ -->
+  <section class="section reveal" id="how">
+    <div class="section-header">
+      <span class="tag cyan">Process</span>
+      <h2>How it works</h2>
+      <p class="sub">Three simple steps. From idea to live website.</p>
+    </div>
+
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-num">01</div>
+        <h3>Tell us your vision</h3>
+        <p>Fill out a quick 3-question form. Choose your site type, style, and must-have features.</p>
+      </div>
+
+      <div class="how-card">
+        <div class="how-num">02</div>
+        <h3>AI builds it</h3>
+        <p>Our AI generates a complete, custom website tailored to your answers — copy, design, and code.</p>
+      </div>
+
+      <div class="how-card">
+        <div class="how-num">03</div>
+        <h3>We ship it</h3>
+        <p>Review it, request tweaks, and we deploy it live to your domain in under 24 hours.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PORTFOLIO
+  ============================================================ -->
+  <section class="section reveal" id="work">
+    <div class="section-header">
+      <span class="tag pink">Portfolio</span>
+      <h2>Recent work</h2>
+      <p class="sub">A few of the websites Nexifing has shipped this month.</p>
+    </div>
+
+    <div class="portfolio-grid two-col">
+      <div class="portfolio-card">
+        <div class="portfolio-img p1">GameNest</div>
+        <div class="portfolio-info">
+          <h3>GameNest</h3>
+          <p>Fortnite V-Bucks, Crew subscriptions & gifts — instant delivery, Egypt-based store.</p>
+          <span class="portfolio-tag">Gaming Top-Up · Instant Delivery</span>
+          <a href="https://gamenest.shop/" target="_blank" rel="noopener" class="portfolio-link">View Live →</a>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="portfolio-img p2">Blaze</div>
+        <div class="portfolio-info">
+          <h3>Blaze Store</h3>
+          <p>PlayStation digital games store with ultra-fast delivery and full warranty.</p>
+          <span class="portfolio-tag">PlayStation · E-Commerce</span>
+          <a href="https://blaze-store.com/" target="_blank" rel="noopener" class="portfolio-link">View Live →</a>
         </div>
       </div>
     </div>
-    <div class="testimonial-card">
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-quote">I've worked with agencies for years. Nothing comes close to the speed and quality Nexifing delivered for a fraction of the cost.</p>
-      <div class="testimonial-author">
-        <div class="avatar a2">DK</div>
-        <div class="author-info">
-          <strong>David Kim</strong>
-          <span>CEO, Flux Analytics</span>
+  </section>
+
+  <!-- ============================================================
+       WHY NEXIFING
+  ============================================================ -->
+  <section class="section reveal" id="why">
+    <div class="section-header">
+      <span class="tag purple">Why Nexifing</span>
+      <h2>Built different</h2>
+      <p class="sub">Here's what makes us stand out from the template crowd.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="icon-box purple">⏱</div>
+        <h3>Ship in Hours</h3>
+        <p>What used to take weeks of agency back-and-forth happens in a single afternoon.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon-box cyan">💸</div>
+        <h3>Honest Pricing</h3>
+        <p>No retainers. No surprise invoices. You pay once and the code is yours.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon-box pink">🤝</div>
+        <h3>Human Support</h3>
+        <p>Real people answer your emails. Ask anything — we reply in under 24 hours.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon-box green">🔓</div>
+        <h3>No Lock-In</h3>
+        <p>You get clean, well-commented code. Host it anywhere, edit it however you like.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TESTIMONIALS
+  ============================================================ -->
+  <section class="section reveal" id="testimonials">
+    <div class="section-header">
+      <span class="tag purple">Testimonials</span>
+      <h2>What clients say</h2>
+      <p class="sub">Real feedback from real businesses we've helped launch.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-quote">
+          Nexifing built us a beautiful site in under 24 hours. Our bookings jumped 40% in the first month. Absolute game changer.
+        </p>
+        <div class="testimonial-author">
+          <div class="avatar a1">SM</div>
+          <div class="author-info">
+            <strong>Sarah Mitchell</strong>
+            <span>Founder, Aurora Fitness</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-quote">
+          I've worked with agencies for years. Nothing comes close to the speed and quality Nexifing delivered for a fraction of the cost.
+        </p>
+        <div class="testimonial-author">
+          <div class="avatar a2">DK</div>
+          <div class="author-info">
+            <strong>David Kim</strong>
+            <span>CEO, Flux Analytics</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-quote">
+          The AI actually understood what I wanted. The copy, the design, the layout — everything felt like me. I only had to make two tweaks.
+        </p>
+        <div class="testimonial-author">
+          <div class="avatar a3">ER</div>
+          <div class="author-info">
+            <strong>Elena Rossi</strong>
+            <span>Owner, Nova Coffee</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-quote">
+          Our conversion rate doubled after the redesign. The team really understood what our customers needed before we even said it.
+        </p>
+        <div class="testimonial-author">
+          <div class="avatar a2">MJ</div>
+          <div class="author-info">
+            <strong>Marcus Johnson</strong>
+            <span>CMO, Echo Podcast</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-quote">
+          I ran a small bakery and knew nothing about websites. Nexifing gave me a beautiful, working site in one day. Now I get online orders every week.
+        </p>
+        <div class="testimonial-author">
+          <div class="avatar a1">LP</div>
+          <div class="author-info">
+            <strong>Layla Patel</strong>
+            <span>Owner, Bloom Wellness</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-quote">
+          The export feature is killer. I got React + Tailwind code that my own devs could extend without touching a single line. Worth every penny.
+        </p>
+        <div class="testimonial-author">
+          <div class="avatar a3">RS</div>
+          <div class="author-info">
+            <strong>Ryan Soto</strong>
+            <span>CTO, Pulse Studio</span>
+          </div>
         </div>
       </div>
     </div>
-    <div class="testimonial-card">
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-quote">The AI actually understood what I wanted. The copy, the design, the layout — everything felt like me. I only had to make two tweaks.</p>
-      <div class="testimonial-author">
-        <div class="avatar a3">ER</div>
-        <div class="author-info">
-          <strong>Elena Rossi</strong>
-          <span>Owner, Nova Coffee</span>
+  </section>
+
+  <!-- ============================================================
+       MULTI-STEP BUILDER
+  ============================================================ -->
+  <section class="section reveal" id="build">
+    <div class="section-header">
+      <span class="tag purple">Build</span>
+      <h2>Tell us your vision</h2>
+      <p class="sub">3 quick questions. Then we build.</p>
+    </div>
+
+    <div class="builder-card">
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <p class="step-label" id="stepLabel">STEP 1 / 3</p>
+      <h3 id="question">What kind of website?</h3>
+
+      <div class="options" id="optionsContainer"></div>
+
+      <div class="builder-nav">
+        <button class="btn-outline" id="backBtn" style="display:none;">← Back</button>
+        <button class="btn-primary" id="nextBtn">Next →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FAQ
+  ============================================================ -->
+  <section class="section reveal" id="faq">
+    <div class="section-header">
+      <span class="tag pink">FAQ</span>
+      <h2>Frequently asked questions</h2>
+      <p class="sub">Everything you need to know about Nexifing.</p>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>How fast will I get my website?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Most sites are delivered within 24 hours of your request. Complex projects with custom integrations may take up to 3 days. You'll get a preview link as soon as it's ready.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Do I own the code?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes, 100%. Every line of HTML, CSS, JavaScript, and React code that Nexifing generates for you is yours to keep, modify, and host wherever you want. No lock-in.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Can I request changes after delivery?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Absolutely. Every plan includes unlimited revision requests for 7 days after delivery. Pro and Enterprise plans include ongoing support and priority revisions.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>What tech stack do you use?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>We generate clean, modern code using HTML5, CSS3, JavaScript, and optionally React, Tailwind CSS, or Bootstrap — depending on what your project needs. Everything is responsive and optimized.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Do you handle hosting and domains?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes. We can deploy your site to Vercel, Netlify, or GitHub Pages free of charge, or to your own hosting provider. We also help you connect a custom domain if you have one.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>What if I'm not happy with the result?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>We offer a 100% money-back guarantee within 7 days if you're not satisfied. We'll also work with you to fix any issues before issuing a refund — your success is our success.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Can I use my own domain?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes! If you already own a domain, we'll connect it for you. If not, we can register one on your behalf or recommend the best registrar for your country.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Do you offer Arabic / RTL support?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes. We build bilingual sites with full right-to-left support for Arabic, Hebrew, and other RTL languages. The site will automatically adapt based on the language.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>How do payments work?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>We accept cards, PayPal, and bank transfers. For Egyptian clients, we also accept local payment methods. You pay 50% upfront and the rest after you approve the preview.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Will my site work on mobile?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Absolutely — every Nexifing site is mobile-first and tested on iPhone, Android, tablets, laptops, and ultrawide monitors. Your visitors will get a perfect experience on any device.</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ==================== PRICING ==================== -->
-<section class="section reveal" id="pricing">
-  <div class="section-header">
-    <span class="tag cyan">Pricing</span>
-    <h2>Simple, honest pricing</h2>
-    <p class="sub">No hidden fees. No surprises. Cancel anytime.</p>
-  </div>
-  <div class="pricing-toggle">
-    <span class="toggle-label active" id="labelMonthly">Monthly</span>
-    <div class="toggle-switch" id="pricingToggle"></div>
-    <span class="toggle-label" id="labelYearly">Yearly</span>
-    <span class="save-badge">Save 20%</span>
-  </div>
-  <div class="pricing-grid">
-    <div class="pricing-card">
-      <div class="pricing-name">Starter</div>
-      <p class="pricing-desc">For personal projects and quick launches.</p>
-      <div class="pricing-price" data-monthly="$19" data-yearly="$15">$19<span>/mo</span></div>
-      <ul class="pricing-features">
-        <li>1 website</li>
-        <li>5 pages</li>
-        <li>Basic AI generation</li>
-        <li>Export HTML/CSS</li>
-        <li>Email support</li>
-      </ul>
-      <button class="pricing-btn">Get Started</button>
+  <!-- ============================================================
+       CONTACT
+  ============================================================ -->
+  <section class="section reveal" id="contact">
+    <div class="section-header">
+      <span class="tag cyan">Contact</span>
+      <h2>Send your request</h2>
+      <p class="sub">Tell us what you need. We'll reply within 24 hours.</p>
     </div>
-    <div class="pricing-card featured">
-      <div class="featured-badge">Most Popular</div>
-      <div class="pricing-name">Pro</div>
-      <p class="pricing-desc">For freelancers and small businesses.</p>
-      <div class="pricing-price" data-monthly="$49" data-yearly="$39">$49<span>/mo</span></div>
-      <ul class="pricing-features">
-        <li>5 websites</li>
-        <li>Unlimited pages</li>
-        <li>Advanced AI generation</li>
-        <li>Export React + Tailwind</li>
-        <li>Priority support</li>
-        <li>Custom domain</li>
-      </ul>
-      <button class="pricing-btn">Get Pro</button>
-    </div>
-    <div class="pricing-card">
-      <div class="pricing-name">Enterprise</div>
-      <p class="pricing-desc">For teams and agencies at scale.</p>
-      <div class="pricing-price" data-monthly="$199" data-yearly="$159">$199<span>/mo</span></div>
-      <ul class="pricing-features">
-        <li>Unlimited websites</li>
-        <li>Unlimited pages</li>
-        <li>Full API access</li>
-        <li>White-label export</li>
-        <li>Dedicated manager</li>
-        <li>24/7 support</li>
-      </ul>
-      <button class="pricing-btn">Contact Sales</button>
-    </div>
-  </div>
-</section>
 
-<!-- ==================== MULTI-STEP BUILDER ==================== -->
-<section class="section reveal" id="build">
-  <div class="section-header">
-    <span class="tag purple">Build</span>
-    <h2>Tell us your vision</h2>
-    <p class="sub">3 quick questions. Then we build.</p>
-  </div>
-  <div class="builder-card">
-    <div class="progress-track">
-      <div class="progress-fill" id="progressFill"></div>
-    </div>
-    <p class="step-label" id="stepLabel">STEP 1 / 3</p>
-    <h3 id="question">What kind of website?</h3>
-    <div class="options" id="optionsContainer"></div>
-    <div class="builder-nav">
-      <button class="btn-outline" id="backBtn" style="display:none;">← Back</button>
-      <button class="btn-primary" id="nextBtn">Next →</button>
-    </div>
-  </div>
-</section>
+    <form class="contact-form" id="contactForm">
+      <input type="text" id="name" placeholder="Your name" required>
+      <input type="email" id="email" placeholder="Email address" required>
+      <textarea id="idea" rows="4" placeholder="Describe the website you want (optional)"></textarea>
 
-<!-- ==================== FAQ ==================== -->
-<section class="section reveal" id="faq">
-  <div class="section-header">
-    <span class="tag pink">FAQ</span>
-    <h2>Frequently asked questions</h2>
-    <p class="sub">Everything you need to know about Nexifing.</p>
-  </div>
-  <div class="faq-list">
-    <div class="faq-item">
-      <div class="faq-question">
-        <span>How fast will I get my website?</span>
-        <span class="faq-icon">+</span>
+      <div class="answers-preview">
+        <strong>Your answers</strong>
+        <div id="answersList"></div>
       </div>
-      <div class="faq-answer">
-        <p>Most sites are delivered within 24 hours of your request. Complex projects with custom integrations may take up to 3 days. You'll get a preview link as soon as it's ready.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">
-        <span>Do I own the code?</span>
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p>Yes, 100%. Every line of HTML, CSS, JavaScript, and React code that Nexifing generates for you is yours to keep, modify, and host wherever you want. No lock-in.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">
-        <span>Can I request changes after delivery?</span>
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p>Absolutely. Every plan includes unlimited revision requests for 7 days after delivery. Pro and Enterprise plans include ongoing support and priority revisions.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">
-        <span>What tech stack do you use?</span>
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p>We generate clean, modern code using HTML5, CSS3, JavaScript, and optionally React, Tailwind CSS, or Bootstrap — depending on what your project needs. Everything is responsive and optimized.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">
-        <span>Do you handle hosting and domains?</span>
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p>Yes. We can deploy your site to Vercel, Netlify, or GitHub Pages free of charge, or to your own hosting provider. We also help you connect a custom domain if you have one.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">
-        <span>What if I'm not happy with the result?</span>
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p>We offer a 100% money-back guarantee within 7 days if you're not satisfied. We'll also work with you to fix any issues before issuing a refund — your success is our success.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ==================== CONTACT ==================== -->
-<section class="section reveal" id="contact">
-  <div class="section-header">
-    <span class="tag cyan">Contact</span>
-    <h2>Send your request</h2>
-    <p class="sub">Tell us what you need. We'll reply within 24 hours.</p>
-  </div>
-  <form class="contact-form" id="contactForm">
-    <input type="text" id="name" placeholder="Your name" required>
-    <input type="email" id="email" placeholder="Email address" required>
-    <textarea id="idea" rows="4" placeholder="Describe the website you want (optional)"></textarea>
-    <div class="answers-preview">
-      <strong>Your answers</strong>
-      <div id="answersList"></div>
-    </div>
-    <button type="submit" class="btn-primary full">Send Request ✈</button>
-    <p class="status-msg" id="statusMsg"></p>
-  </form>
-</section>
-
-<!-- ==================== NEWSLETTER ==================== -->
-<section class="section reveal">
-  <div class="newsletter">
-    <h3>Get updates from Nexifing</h3>
-    <p>New features, templates, and AI tricks — straight to your inbox. No spam, ever.</p>
-    <form class="newsletter-form" id="newsletterForm">
-      <input type="email" placeholder="you@example.com" required>
-      <button type="submit">Subscribe</button>
+      <button type="submit" class="btn-primary full">Send Request ✈</button>
+      <p class="status-msg" id="statusMsg"></p>
     </form>
-  </div>
-</section>
+  </section>
 
-<!-- ==================== FOOTER ==================== -->
-<footer>
-  <div class="footer-content">
-    <div class="footer-brand">
-      <img src="logo.png" alt="Nexifing">
-      <p>AI-powered website builder. Tell us your vision, we build it — fast, beautiful, and yours forever.</p>
+  <!-- ============================================================
+       NEWSLETTER
+  ============================================================ -->
+  <section class="section reveal">
+    <div class="newsletter">
+      <h3>Get updates from Nexifing</h3>
+      <p>New features, templates, and AI tricks — straight to your inbox. No spam, ever.</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" placeholder="you@example.com" required>
+        <button type="submit">Subscribe</button>
+      </form>
     </div>
-    <div class="footer-col">
-      <h4>Product</h4>
-      <a href="#features">Features</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#work">Portfolio</a>
-      <a href="#build">Builder</a>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Nexifing">
+        <p>AI-powered website builder. Tell us your vision, we build it — fast, beautiful, and yours forever.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#work">Portfolio</a>
+        <a href="#build">Builder</a>
+        <a href="#faq">FAQ</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+        <a href="#">Careers</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+        <a href="#">License</a>
+      </div>
     </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <a href="#">About</a>
-      <a href="#">Blog</a>
-      <a href="#">Careers</a>
-      <a href="#contact">Contact</a>
+
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> Nexifing — <strong>Powered by NEXifing</strong></p>
+      <div class="socials">
+        <a href="#" title="Twitter">𝕏</a>
+        <a href="#" title="GitHub">⌨</a>
+        <a href="#" title="Email">✉</a>
+        <a href="#" title="Discord">◉</a>
+      </div>
     </div>
-    <div class="footer-col">
-      <h4>Legal</h4>
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-      <a href="#">Cookies</a>
-      <a href="#">License</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© <span id="year"></span> Nexifing — <strong>Powered by NEXifing</strong></p>
-    <div class="socials">
-      <a href="#" title="Twitter">𝕏</a>
-      <a href="#" title="GitHub">⌨</a>
-      <a href="#" title="Email">✉</a>
-      <a href="#" title="Discord">◉</a>
-    </div>
-  </div>
-</footer>
+  </footer>
 
-<!-- ==================== BACK TO TOP ==================== -->
-<button class="back-top" id="backTop">↑</button>
+  <!-- ============================================================
+       BACK TO TOP
+  ============================================================ -->
+  <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
 
-<script>
-/* ============================================
-   NEXIFING — JavaScript
-   ============================================ */
-
-/* ---------- Typing Effect ---------- */
-(function () {
-  const phrases = [
-    'with a single prompt.',
-    'in under 24 hours.',
-    'no code required.',
-    'beautifully responsive.'
-  ];
-  const el = document.getElementById('typedText');
-  let phraseIndex = 0;
-  let charIndex = 0;
-  let deleting = false;
-
-  function tick() {
-    const phrase = phrases[phraseIndex];
-    if (!deleting) {
-      el.textContent = phrase.slice(0, charIndex + 1);
-      charIndex++;
-      if (charIndex === phrase.length) {
-        deleting = true;
-        setTimeout(tick, 2000);
-        return;
-      }
-    } else {
-      el.textContent = phrase.slice(0, charIndex - 1);
-      charIndex--;
-      if (charIndex === 0) {
-        deleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-      }
-    }
-    setTimeout(tick, deleting ? 30 : 70);
-  }
-  tick();
-})();
-
-/* ---------- Mouse Glow on Hero ---------- */
-(function () {
-  const hero = document.getElementById('hero');
-  if (!hero) return;
-  hero.addEventListener('mousemove', (e) => {
-    const rect = hero.getBoundingClientRect();
-    hero.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
-    hero.style.setProperty('--my', (e.clientY - rect.top) + 'px');
-  });
-})();
-
-/* ---------- Feature Card Hover Glow ---------- */
-(function () {
-  document.querySelectorAll('.feature-card').forEach((card) => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      card.style.setProperty('--x', (e.clientX - rect.left) + 'px');
-      card.style.setProperty('--y', (e.clientY - rect.top) + 'px');
-    });
-  });
-})();
-
-/* ---------- Navbar Scroll ---------- */
-(function () {
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) navbar.classList.add('scrolled');
-    else navbar.classList.remove('scrolled');
-  });
-})();
-
-/* ---------- Mobile Menu ---------- */
-(function () {
-  const btn = document.getElementById('menuBtn');
-  const menu = document.getElementById('mobileMenu');
-  if (!btn || !menu) return;
-  btn.addEventListener('click', () => menu.classList.toggle('open'));
-  menu.querySelectorAll('a').forEach((a) => {
-    a.addEventListener('click', () => menu.classList.remove('open'));
-  });
-})();
-
-/* ---------- Multi-Step Builder ---------- */
-(function () {
-  const steps = [
-    {
-      id: 'type',
-      q: 'What kind of website?',
-      opts: ['Landing Page', 'Business Site', 'Portfolio', 'E-commerce', 'Web App', 'Blog']
-    },
-    {
-      id: 'style',
-      q: 'What vibe should it have?',
-      opts: ['Minimal', 'Brutalist', 'Dark & Futuristic', 'Warm & Friendly', 'Corporate', 'Playful']
-    },
-    {
-      id: 'features',
-      q: 'Must-have features?',
-      opts: ['Contact Form', 'Blog', 'Payments', 'User Login', 'Dashboard', 'Animations', 'SEO', 'Multi-language'],
-      multi: true
-    }
-  ];
-
-  let step = 0;
-  const answers = {};
-  const questionEl = document.getElementById('question');
-  const optionsEl = document.getElementById('optionsContainer');
-  const stepLabel = document.getElementById('stepLabel');
-  const progressFill = document.getElementById('progressFill');
-  const backBtn = document.getElementById('backBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const answersList = document.getElementById('answersList');
-
-  function render() {
-    const s = steps[step];
-    stepLabel.textContent = `STEP ${step + 1} / ${steps.length}`;
-    questionEl.textContent = s.q;
-    progressFill.style.width = ((step + 1) / steps.length) * 100 + '%';
-
-    optionsEl.innerHTML = '';
-    s.opts.forEach((opt) => {
-      const btn = document.createElement('button');
-      btn.className = 'option-btn';
-      btn.textContent = opt;
-      const selected = s.multi
-        ? (answers[s.id] || []).includes(opt)
-        : answers[s.id] === opt;
-      if (selected) btn.classList.add('selected');
-      btn.onclick = () => selectOption(opt);
-      optionsEl.appendChild(btn);
-    });
-
-    backBtn.style.display = step > 0 ? 'inline-flex' : 'none';
-    nextBtn.textContent = step === steps.length - 1 ? 'Finish ✓' : 'Next →';
-  }
-
-  function selectOption(val) {
-    const s = steps[step];
-    if (s.multi) {
-      const prev = answers[s.id] || [];
-      answers[s.id] = prev.includes(val)
-        ? prev.filter((v) => v !== val)
-        : [...prev, val];
-    } else {
-      answers[s.id] = val;
-    }
-    render();
-    updatePreview();
-  }
-
-  backBtn.addEventListener('click', () => {
-    if (step > 0) {
-      step--;
-      render();
-    }
-  });
-
-  nextBtn.addEventListener('click', () => {
-    if (step < steps.length - 1) {
-      step++;
-      render();
-    } else {
-      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-    }
-  });
-
-  function updatePreview() {
-    answersList.innerHTML = '';
-    steps.forEach((s) => {
-      const val = Array.isArray(answers[s.id])
-        ? (answers[s.id].join(', ') || '—')
-        : (answers[s.id] || '—');
-      const row = document.createElement('div');
-      row.innerHTML = `<span>${s.q}</span><span>${val}</span>`;
-      answersList.appendChild(row);
-    });
-  }
-
-  render();
-  updatePreview();
-})();
-
-/* ---------- FAQ Accordion ---------- */
-(function () {
-  document.querySelectorAll('.faq-item').forEach((item) => {
-    const q = item.querySelector('.faq-question');
-    q.addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach((i) => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
-    });
-  });
-})();
-
-/* ---------- Pricing Toggle ---------- */
-(function () {
-  const toggle = document.getElementById('pricingToggle');
-  const labelM = document.getElementById('labelMonthly');
-  const labelY = document.getElementById('labelYearly');
-  const prices = document.querySelectorAll('.pricing-price');
-  let yearly = false;
-
-  if (!toggle) return;
-  toggle.addEventListener('click', () => {
-    yearly = !yearly;
-    toggle.classList.toggle('active', yearly);
-    labelM.classList.toggle('active', !yearly);
-    labelY.classList.toggle('active', yearly);
-    prices.forEach((p) => {
-      const price = yearly ? p.dataset.yearly : p.dataset.monthly;
-      p.innerHTML = `${price}<span>/mo</span>`;
-    });
-  });
-})();
-
-/* ---------- Contact Form ---------- */
-(function () {
-  const form = document.getElementById('contactForm');
-  const statusMsg = document.getElementById('statusMsg');
-  if (!form) return;
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    statusMsg.textContent = 'Sending...';
-    statusMsg.style.color = 'var(--text-dim)';
-
-    const payload = {
-      name: document.getElementById('name').value,
-      email: document.getElementById('email').value,
-      idea: document.getElementById('idea').value,
-      answers: {}
-    };
-
-    // Collect builder answers
-    document.querySelectorAll('#answersList > div').forEach((row) => {
-      const spans = row.querySelectorAll('span');
-      if (spans.length === 2) {
-        payload.answers[spans[0].textContent] = spans[1].textContent;
-      }
-    });
-
-    try {
-      // ⚠️ Replace YOUR_FORM_ID with your Formspree ID
-      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json'
-        },
-        body: JSON.stringify(payload)
-      });
-
-      if (!res.ok) throw new Error('fail');
-
-      statusMsg.textContent = '✅ Got it! We\'ll email you within 24 hours.';
-      statusMsg.style.color = 'var(--green)';
-      form.reset();
-    } catch {
-      statusMsg.textContent = '⚠️ Something went wrong. Please try again.';
-      statusMsg.style.color = 'var(--pink)';
-    }
-  });
-})();
-
-/* ---------- Newsletter Form ---------- */
-(function () {
-  const form = document.getElementById('newsletterForm');
-  if (!form) return;
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const btn = form.querySelector('button');
-    const original = btn.textContent;
-    btn.textContent = '✓ Subscribed!';
-    setTimeout(() => {
-      btn.textContent = original;
-      form.reset();
-    }, 2500);
-  });
-})();
-
-/* ---------- Scroll Reveal ---------- */
-(function () {
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          io.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.1, rootMargin: '0px 0px -80px 0px' }
-  );
-  revealEls.forEach((el) => io.observe(el));
-})();
-
-/* ---------- Back to Top ---------- */
-(function () {
-  const btn = document.getElementById('backTop');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 500) btn.classList.add('show');
-    else btn.classList.remove('show');
-  });
-  btn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-})();
-
-/* ---------- Year ---------- */
-document.getElementById('year').textContent = new Date().getFullYear();
-
-/* ---------- Smooth anchor offset (in case scroll-padding fails) ---------- */
-document.querySelectorAll('a[href^="#"]').forEach((a) => {
-  a.addEventListener('click', (e) => {
-    const href = a.getAttribute('href');
-    if (href === '#') return;
-    const target = document.querySelector(href);
-    if (target) {
-      e.preventDefault();
-      const y = target.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
-  });
-});
-
-console.log('%cNexifing ✓ Loaded', 'color:#a855f7;font-weight:bold;font-size:14px;');
-</script>
+  <!-- ============================================================
+       SCRIPT
+  ============================================================ -->
+  <script src="script.js"></script>
 </body>
 </html>
