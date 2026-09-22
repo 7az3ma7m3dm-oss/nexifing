@@ -562,27 +562,6 @@
     </div>
   </section>
 
-  <!-- Multi-Step Builder -->
-  <section class="section reveal" id="build">
-    <div class="section-header">
-      <span class="tag purple">Build</span>
-      <h2>Tell us your vision</h2>
-      <p class="sub">6 quick questions. Then we build.</p>
-    </div>
-    <div class="builder-card">
-      <div class="progress-track">
-        <div class="progress-fill" id="progressFill"></div>
-      </div>
-      <p class="step-label" id="stepLabel">STEP 1 / 6</p>
-      <h3 id="question">What kind of website?</h3>
-      <div class="options" id="optionsContainer"></div>
-      <div class="builder-nav">
-        <button class="btn-outline" id="backBtn" style="display:none;">← Back</button>
-        <button class="btn-primary" id="nextBtn">Next →</button>
-      </div>
-    </div>
-  </section>
-
   <!-- FAQ -->
   <section class="section reveal" id="faq">
     <div class="section-header">
@@ -626,25 +605,64 @@
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- Contact + Builder (combined 2-step flow) -->
   <section class="section reveal" id="contact">
     <div class="section-header">
-      <span class="tag cyan">Contact</span>
-      <h2>Send your request</h2>
-      <p class="sub">Fill the brief above for a faster reply — or just message us on WhatsApp.</p>
+      <span class="tag cyan">Start Your Project</span>
+      <h2>Let's build your website</h2>
+      <p class="sub">2 quick steps. Takes less than 2 minutes.</p>
     </div>
-    <form class="contact-form" id="contactForm">
-      <input type="text" id="name" placeholder="Your name" required>
-      <input type="email" id="email" placeholder="Email address" required>
-      <textarea id="idea" rows="4" placeholder="Describe the website you want (optional)"></textarea>
-      <div class="answers-preview">
-        <strong>Your answers</strong>
-        <div id="answersList"></div>
-      </div>
-      <button type="submit" class="btn-primary full">Send via WhatsApp ✈</button>
-      <p class="status-msg" id="statusMsg"></p>
-    </form>
 
+    <!-- STEP 1 — The Builder -->
+    <div class="contact-step">
+      <div class="step-indicator">
+        <span class="step-badge">1</span>
+        <div>
+          <h3>Tell us what you need</h3>
+          <p class="step-hint">Pick your answers below — the preview will update automatically.</p>
+        </div>
+      </div>
+
+      <div class="builder-card" id="build">
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <p class="step-label" id="stepLabel">STEP 1 / 6</p>
+        <h3 id="question">What kind of website?</h3>
+        <div class="options" id="optionsContainer"></div>
+        <div class="builder-nav">
+          <button class="btn-outline" id="backBtn" style="display:none;">← Back</button>
+          <button class="btn-primary" id="nextBtn">Next →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2 — The Form -->
+    <div class="contact-step">
+      <div class="step-indicator">
+        <span class="step-badge">2</span>
+        <div>
+          <h3>Send us your details</h3>
+          <p class="step-hint">We'll open WhatsApp with your full brief ready to send.</p>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contactForm">
+        <input type="text" id="name" placeholder="Your name" required>
+        <input type="email" id="email" placeholder="Email address" required>
+        <textarea id="idea" rows="4" placeholder="Describe the website you want (optional)"></textarea>
+
+        <div class="answers-preview">
+          <strong>Your answers</strong>
+          <div id="answersList"></div>
+        </div>
+
+        <button type="submit" class="btn-primary full">Send via WhatsApp ✈</button>
+        <p class="status-msg" id="statusMsg"></p>
+      </form>
+    </div>
+
+    <!-- Contact info cards -->
     <div class="contact-info">
       <a href="https://wa.me/201202000210" target="_blank" rel="noopener" class="contact-info-card">
         <div class="contact-info-icon">💬</div>
