@@ -1,57 +1,19 @@
 /* ============================================================================
    NEXIFING — script.js
-   Complete interactive layer for the Nexifing website.
-   ============================================================================
-   Table of Contents:
-     01. Global Config & Utilities
-     02. Toast Notifications
-     03. Typing Effect (Hero)
-     04. Mouse Glow (Hero)
-     05. Feature Card Cursor Glow
-     06. Navbar Scroll Effect
-     07. Active Nav Link on Scroll
-     08. Reading Progress Bar
-     09. Mobile Menu
-     10. Smooth Anchor Scroll
-     11. Multi-Step Builder
-     12. FAQ Accordion
-     13. Contact Form (Formspree + Phone)
-     14. Newsletter Form
-     15. Scroll Reveal
-     16. Back to Top
-     17. Floating Call Button
-     18. Footer Year
-     19. Counter Animations
-     20. Keyboard Shortcuts
-     21. Easter Eggs
-     22. Console Signature
-     23. Initialization
+   Contact form now sends directly to WhatsApp (+20 12 02000210)
    ============================================================================ */
-
 
 /* ============================================================================
    01. GLOBAL CONFIG & UTILITIES
 ============================================================================ */
 
-/**
- * Contact phone number shown everywhere.
- */
 const NEXIFING_PHONE = '+20 12 02000210';
 const NEXIFING_PHONE_TEL = '+201202000210';
+const NEXIFING_WHATSAPP = '201202000210'; // WhatsApp needs country code + number, no +
 
-/**
- * querySelector shortcut.
- */
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
-
-/**
- * querySelectorAll returning a real Array.
- */
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
-/**
- * Debounce — delays execution until `wait` ms of silence.
- */
 function debounce(fn, wait = 100) {
   let t;
   return function (...args) {
@@ -60,9 +22,6 @@ function debounce(fn, wait = 100) {
   };
 }
 
-/**
- * Throttle — fires at most once every `limit` ms.
- */
 function throttle(fn, limit = 100) {
   let inThrottle;
   return function (...args) {
@@ -74,9 +33,6 @@ function throttle(fn, limit = 100) {
   };
 }
 
-/**
- * Safe localStorage wrapper.
- */
 const storage = {
   get(key, fallback = null) {
     try {
@@ -98,9 +54,6 @@ const storage = {
   },
 };
 
-/**
- * Escape HTML to prevent XSS.
- */
 function escapeHtml(str) {
   return String(str)
     .replace(/&/g, '&amp;')
@@ -110,19 +63,8 @@ function escapeHtml(str) {
     .replace(/'/g, '&#039;');
 }
 
-/**
- * Detect reduced-motion preference.
- */
 const prefersReducedMotion = () =>
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-/**
- * Simple UID generator.
- */
-function uid(prefix = 'id') {
-  return `${prefix}_${Math.random().toString(36).slice(2, 10)}`;
-}
-
 
 /* ============================================================================
    02. TOAST NOTIFICATIONS
@@ -165,7 +107,6 @@ const Toast = (() => {
     info: (msg, dur) => show(msg, 'info', dur),
   };
 })();
-
 
 /* ============================================================================
    03. TYPING EFFECT (HERO)
@@ -226,7 +167,6 @@ const Toast = (() => {
   setTimeout(tick, 500);
 })();
 
-
 /* ============================================================================
    04. MOUSE GLOW (HERO)
 ============================================================================ */
@@ -242,12 +182,7 @@ const Toast = (() => {
   }, 16);
 
   hero.addEventListener('mousemove', update);
-  hero.addEventListener('mouseleave', () => {
-    hero.style.removeProperty('--mx');
-    hero.style.removeProperty('--my');
-  });
 })();
-
 
 /* ============================================================================
    05. FEATURE CARD CURSOR GLOW
@@ -270,7 +205,6 @@ const Toast = (() => {
   });
 })();
 
-
 /* ============================================================================
    06. NAVBAR SCROLL EFFECT
 ============================================================================ */
@@ -287,7 +221,6 @@ const Toast = (() => {
   window.addEventListener('scroll', handler);
   handler();
 })();
-
 
 /* ============================================================================
    07. ACTIVE NAV LINK ON SCROLL
@@ -324,7 +257,6 @@ const Toast = (() => {
   window.addEventListener('scroll', handler);
 })();
 
-
 /* ============================================================================
    08. READING PROGRESS BAR
 ============================================================================ */
@@ -347,8 +279,7 @@ const Toast = (() => {
 
   const update = throttle(() => {
     const scrollTop = window.scrollY;
-    const docHeight =
-      document.documentElement.scrollHeight - window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
     bar.style.width = pct + '%';
   }, 20);
@@ -357,7 +288,6 @@ const Toast = (() => {
   window.addEventListener('resize', update);
   update();
 })();
-
 
 /* ============================================================================
    09. MOBILE MENU
@@ -397,7 +327,6 @@ const Toast = (() => {
   });
 })();
 
-
 /* ============================================================================
    10. SMOOTH ANCHOR SCROLL
 ============================================================================ */
@@ -428,9 +357,8 @@ const Toast = (() => {
   });
 })();
 
-
 /* ============================================================================
-   11. MULTI-STEP BUILDER
+   11. MULTI-STEP BUILDER — MORE QUESTIONS ADDED
 ============================================================================ */
 
 (function initBuilder() {
@@ -444,6 +372,7 @@ const Toast = (() => {
 
   if (!questionEl || !optionsEl || !nextBtn) return;
 
+  // 6 STEPS now (was 3)
   const steps = [
     {
       id: 'type',
@@ -474,6 +403,11 @@ const Toast = (() => {
       ],
     },
     {
+      id: 'pages',
+      q: 'How many pages do you need?',
+      opts: ['1 (Single page)', '2–5 pages', '6–10 pages', '10+ pages'],
+    },
+    {
       id: 'features',
       q: 'Must-have features?',
       opts: [
@@ -487,13 +421,31 @@ const Toast = (() => {
         'Multi-language',
         'Dark Mode',
         'Analytics',
+        'Chat / WhatsApp',
+        'Booking System',
       ],
       multi: true,
+    },
+    {
+      id: 'audience',
+      q: 'Who is the site for?',
+      opts: [
+        'Local customers',
+        'Global audience',
+        'Businesses (B2B)',
+        'Consumers (B2C)',
+        'Mixed',
+      ],
+    },
+    {
+      id: 'budget',
+      q: 'What is your timeline?',
+      opts: ['ASAP (24h)', 'This week', 'This month', 'Just exploring'],
     },
   ];
 
   let step = 0;
-  const STORAGE_KEY = 'nexifing_answers_v2';
+  const STORAGE_KEY = 'nexifing_answers_v3';
 
   const saved = storage.get(STORAGE_KEY, {});
   const answers = Object.assign({}, saved);
@@ -613,7 +565,6 @@ const Toast = (() => {
   updatePreview();
 })();
 
-
 /* ============================================================================
    12. FAQ ACCORDION
 ============================================================================ */
@@ -628,9 +579,7 @@ const Toast = (() => {
 
     q.addEventListener('click', () => {
       const isOpen = item.classList.contains('open');
-
       items.forEach((i) => i.classList.remove('open'));
-
       if (!isOpen) item.classList.add('open');
     });
   });
@@ -638,9 +587,8 @@ const Toast = (() => {
   if (items[0]) items[0].classList.add('open');
 })();
 
-
 /* ============================================================================
-   13. CONTACT FORM (Formspree + Phone)
+   13. CONTACT FORM → SENDS TO WHATSAPP
 ============================================================================ */
 
 (function initContactForm() {
@@ -648,69 +596,64 @@ const Toast = (() => {
   const statusMsg = $('#statusMsg');
   if (!form) return;
 
-  // ⚠️ Replace with your real Formspree ID from formspree.io
-  const FORMSPREE_ID = 'YOUR_FORM_ID';
-  const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`;
-
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     if (statusMsg) {
-      statusMsg.textContent = 'Sending...';
+      statusMsg.textContent = 'Opening WhatsApp...';
       statusMsg.className = 'status-msg';
     }
 
-    const payload = {
-      name: $('#name')?.value || '',
-      email: $('#email')?.value || '',
-      idea: $('#idea')?.value || '',
-      phone: NEXIFING_PHONE,
-      answers: {},
-      submittedAt: new Date().toISOString(),
-      userAgent: navigator.userAgent,
-    };
+    const name = $('#name')?.value.trim() || '';
+    const email = $('#email')?.value.trim() || '';
+    const idea = $('#idea')?.value.trim() || '';
 
-    $$('#answersList > div').forEach((row) => {
-      const spans = row.querySelectorAll('span');
-      if (spans.length === 2) {
-        payload.answers[spans[0].textContent] = spans[1].textContent;
-      }
-    });
+    // Build the message
+    let message = `Hi Nexifing! 👋\n\n`;
+    message += `*Name:* ${name}\n`;
+    message += `*Email:* ${email}\n\n`;
 
-    try {
-      const res = await fetch(FORMSPREE_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify(payload),
+    // Add builder answers
+    const answerRows = $$('#answersList > div');
+    if (answerRows.length) {
+      message += `*My Website Brief:*\n`;
+      answerRows.forEach((row) => {
+        const spans = row.querySelectorAll('span');
+        if (spans.length === 2) {
+          const q = spans[0].textContent.trim();
+          const a = spans[1].textContent.trim();
+          if (a && a !== '—') {
+            message += `• ${q} → ${a}\n`;
+          }
+        }
       });
-
-      if (!res.ok) throw new Error('Request failed');
-
-      if (statusMsg) {
-        statusMsg.textContent = `✅ Got it! We'll email you within 24 hours. Or call us: ${NEXIFING_PHONE}`;
-        statusMsg.className = 'status-msg success';
-      }
-
-      Toast.success(`Request sent! Or call us: ${NEXIFING_PHONE}`, 7000);
-
-      form.reset();
-      storage.remove('nexifing_answers_v2');
-
-      const answersList = $('#answersList');
-      if (answersList) answersList.innerHTML = '';
-    } catch (err) {
-      if (statusMsg) {
-        statusMsg.textContent = `⚠️ Something went wrong. Please try again or call us: ${NEXIFING_PHONE}`;
-        statusMsg.className = 'status-msg error';
-      }
-      Toast.error(`Failed to send. Call us instead: ${NEXIFING_PHONE}`, 7000);
+      message += `\n`;
     }
+
+    if (idea) {
+      message += `*Extra notes:*\n${idea}\n`;
+    }
+
+    const encoded = encodeURIComponent(message);
+    const waURL = `https://wa.me/${NEXIFING_WHATSAPP}?text=${encoded}`;
+
+    // Open WhatsApp in new tab
+    window.open(waURL, '_blank');
+
+    if (statusMsg) {
+      statusMsg.textContent = `✅ Opening WhatsApp... If it didn't open, call us at ${NEXIFING_PHONE}`;
+      statusMsg.className = 'status-msg success';
+    }
+
+    Toast.success('Opening WhatsApp with your request!', 5000);
+
+    // Optionally clear the form
+    // form.reset();
+    // storage.remove('nexifing_answers_v3');
+    // const answersList = $('#answersList');
+    // if (answersList) answersList.innerHTML = '';
   });
 })();
-
 
 /* ============================================================================
    14. NEWSLETTER FORM
@@ -723,23 +666,33 @@ const Toast = (() => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
+    const input = form.querySelector('input');
+    const email = input?.value.trim();
+
+    if (!email) return;
+
+    // Send newsletter subscription to WhatsApp too
+    const message = `Hi Nexifing! 👋\n\nI want to subscribe to your newsletter.\n\n*Email:* ${email}`;
+    const encoded = encodeURIComponent(message);
+    const waURL = `https://wa.me/${NEXIFING_WHATSAPP}?text=${encoded}`;
+
+    window.open(waURL, '_blank');
+
+    Toast.success('Opening WhatsApp to subscribe!', 4000);
+
     const btn = form.querySelector('button');
-    if (!btn) return;
-
-    const original = btn.textContent;
-    btn.textContent = '✓ Subscribed!';
-    btn.disabled = true;
-
-    Toast.success('Thanks for subscribing!', 3000);
-
-    setTimeout(() => {
-      btn.textContent = original;
-      btn.disabled = false;
-      form.reset();
-    }, 2500);
+    if (btn) {
+      const original = btn.textContent;
+      btn.textContent = '✓ Opening...';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = original;
+        btn.disabled = false;
+        form.reset();
+      }, 2500);
+    }
   });
 })();
-
 
 /* ============================================================================
    15. SCROLL REVEAL
@@ -769,7 +722,6 @@ const Toast = (() => {
   els.forEach((el) => io.observe(el));
 })();
 
-
 /* ============================================================================
    16. BACK TO TOP
 ============================================================================ */
@@ -791,7 +743,6 @@ const Toast = (() => {
   });
 })();
 
-
 /* ============================================================================
    17. FLOATING CALL BUTTON
 ============================================================================ */
@@ -800,16 +751,12 @@ const Toast = (() => {
   const btn = $('.call-float');
   if (!btn) return;
 
-  // Set the tel: link dynamically so it always matches the number
-  btn.setAttribute('href', `tel:${NEXIFING_PHONE_TEL}`);
-  btn.setAttribute('aria-label', `Call us at ${NEXIFING_PHONE}`);
-  btn.setAttribute('title', `Call us: ${NEXIFING_PHONE}`);
-
-  btn.addEventListener('click', () => {
-    Toast.info(`Calling ${NEXIFING_PHONE}...`, 2500);
-  });
+  btn.setAttribute('href', `https://wa.me/${NEXIFING_WHATSAPP}`);
+  btn.setAttribute('target', '_blank');
+  btn.setAttribute('rel', 'noopener');
+  btn.setAttribute('aria-label', `Chat on WhatsApp: ${NEXIFING_PHONE}`);
+  btn.setAttribute('title', `Chat on WhatsApp: ${NEXIFING_PHONE}`);
 })();
-
 
 /* ============================================================================
    18. FOOTER YEAR
@@ -819,7 +766,6 @@ const Toast = (() => {
   const el = $('#year');
   if (el) el.textContent = new Date().getFullYear();
 })();
-
 
 /* ============================================================================
    19. COUNTER ANIMATIONS
@@ -864,7 +810,6 @@ const Toast = (() => {
   counters.forEach((el) => io.observe(el));
 })();
 
-
 /* ============================================================================
    20. KEYBOARD SHORTCUTS
 ============================================================================ */
@@ -872,12 +817,9 @@ const Toast = (() => {
 (function initKeyboardShortcuts() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      document
-        .querySelectorAll('.toast')
-        .forEach((t) => t.classList.add('hiding'));
+      document.querySelectorAll('.toast').forEach((t) => t.classList.add('hiding'));
     }
 
-    // Ctrl+K / Cmd+K → focus name input
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
       e.preventDefault();
       const nameInput = $('#name');
@@ -886,21 +828,14 @@ const Toast = (() => {
         nameInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     }
-
-    // Ctrl+P / Cmd+P → show phone toast (prevent print dialog)
-    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'p') {
-      // Let the browser handle print normally — no override
-    }
   });
 })();
-
 
 /* ============================================================================
    21. EASTER EGGS
 ============================================================================ */
 
 (function initEasterEggs() {
-  // Konami code: ↑↑↓↓←→←→BA
   const konami = [
     'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
     'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
@@ -925,7 +860,6 @@ const Toast = (() => {
     }
   });
 
-  // Triple-click on logo
   const logo = $('.logo');
   if (logo) {
     let clicks = 0;
@@ -943,7 +877,6 @@ const Toast = (() => {
   }
 })();
 
-
 /* ============================================================================
    22. CONSOLE SIGNATURE
 ============================================================================ */
@@ -959,16 +892,9 @@ const Toast = (() => {
   ].join(';');
 
   console.log('%cNexifing', styles);
-  console.log(
-    '%cBuilt with HTML, CSS & JavaScript',
-    'color: #1e3a8a; font-size: 12px;'
-  );
-  console.log(
-    `%cWant a site? Call us → ${NEXIFING_PHONE}`,
-    'color: #27272a; font-size: 12px;'
-  );
+  console.log('%cBuilt with HTML, CSS & JavaScript', 'color: #1e3a8a; font-size: 12px;');
+  console.log(`%cWhatsApp us → ${NEXIFING_PHONE}`, 'color: #27272a; font-size: 12px;');
 })();
-
 
 /* ============================================================================
    23. INITIALIZATION
@@ -983,31 +909,4 @@ const Toast = (() => {
     '%cNexifing ✓ Loaded successfully',
     'color: #064e3b; font-weight: bold; font-size: 13px;'
   );
-
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      document.body.style.animationPlayState = 'paused';
-    } else {
-      document.body.style.animationPlayState = 'running';
-    }
-  });
-
-  const form = $('#contactForm');
-  if (form) {
-    let isDirty = false;
-    form.addEventListener('input', () => (isDirty = true));
-    form.addEventListener('submit', () => (isDirty = false));
-
-    window.addEventListener('beforeunload', (e) => {
-      if (isDirty) {
-        e.preventDefault();
-        e.returnValue = '';
-      }
-    });
-  }
 })();
-
-
-/* ============================================================================
-   END OF SCRIPT
-============================================================================ */
