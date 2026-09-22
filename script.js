@@ -1,8 +1,9 @@
 /* ============================================================================
    NEXIFING — script.js
+   Complete interactive layer for the Nexifing website.
    ============================================================================
    Table of Contents:
-     01. Utilities (debounce, throttle, storage, escapeHtml)
+     01. Global Config & Utilities
      02. Toast Notifications
      03. Typing Effect (Hero)
      04. Mouse Glow (Hero)
@@ -14,22 +15,29 @@
      10. Smooth Anchor Scroll
      11. Multi-Step Builder
      12. FAQ Accordion
-     13. Contact Form (Formspree)
+     13. Contact Form (Formspree + Phone)
      14. Newsletter Form
      15. Scroll Reveal
      16. Back to Top
-     17. Footer Year
-     18. Counter Animations
-     19. Keyboard Shortcuts
-     20. Easter Eggs
-     21. Console Signature
-     22. Initialization
+     17. Floating Call Button
+     18. Footer Year
+     19. Counter Animations
+     20. Keyboard Shortcuts
+     21. Easter Eggs
+     22. Console Signature
+     23. Initialization
    ============================================================================ */
 
 
 /* ============================================================================
-   01. UTILITIES
+   01. GLOBAL CONFIG & UTILITIES
 ============================================================================ */
+
+/**
+ * Contact phone number shown everywhere.
+ */
+const NEXIFING_PHONE = '+20 12 02000210';
+const NEXIFING_PHONE_TEL = '+201202000210';
 
 /**
  * querySelector shortcut.
@@ -37,12 +45,12 @@
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 
 /**
- * querySelectorAll shortcut returning an array.
+ * querySelectorAll returning a real Array.
  */
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
 /**
- * Debounce — delays function execution until `wait` ms of silence.
+ * Debounce — delays execution until `wait` ms of silence.
  */
 function debounce(fn, wait = 100) {
   let t;
@@ -53,7 +61,7 @@ function debounce(fn, wait = 100) {
 }
 
 /**
- * Throttle — fires function at most once every `limit` ms.
+ * Throttle — fires at most once every `limit` ms.
  */
 function throttle(fn, limit = 100) {
   let inThrottle;
@@ -91,7 +99,7 @@ const storage = {
 };
 
 /**
- * Escape HTML to prevent XSS when inserting user content.
+ * Escape HTML to prevent XSS.
  */
 function escapeHtml(str) {
   return String(str)
@@ -103,13 +111,13 @@ function escapeHtml(str) {
 }
 
 /**
- * Detect if the user prefers reduced motion.
+ * Detect reduced-motion preference.
  */
 const prefersReducedMotion = () =>
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /**
- * Simple unique ID generator.
+ * Simple UID generator.
  */
 function uid(prefix = 'id') {
   return `${prefix}_${Math.random().toString(36).slice(2, 10)}`;
@@ -133,15 +141,10 @@ const Toast = (() => {
 
   function show(message, type = 'info', duration = 3000) {
     const root = ensureContainer();
-
     const toast = document.createElement('div');
     toast.className = `toast ${type}`;
 
-    const icon = {
-      success: '✓',
-      error: '✕',
-      info: 'ℹ',
-    }[type] || '';
+    const icon = { success: '✓', error: '✕', info: 'ℹ' }[type] || '';
 
     toast.innerHTML = `
       <span style="font-size:1.1rem;font-weight:700;">${icon}</span>
@@ -185,9 +188,9 @@ const Toast = (() => {
   let deleting = false;
   let paused = false;
 
-  const TYPE_SPEED   = 70;
+  const TYPE_SPEED = 70;
   const DELETE_SPEED = 35;
-  const HOLD_TIME    = 1800;
+  const HOLD_TIME = 1800;
 
   function tick() {
     if (paused) return;
@@ -305,7 +308,7 @@ const Toast = (() => {
   if (!sections.length) return;
 
   const handler = throttle(() => {
-    const scrollY = window.scrollY + 120;
+    const scrollY = window.scrollY + 220;
     let current = null;
 
     sections.forEach(({ section }) => {
@@ -313,11 +316,8 @@ const Toast = (() => {
     });
 
     sections.forEach(({ link, section }) => {
-      if (section === current) {
-        link.style.color = 'var(--purple)';
-      } else {
-        link.style.color = '';
-      }
+      if (section === current) link.style.color = 'var(--purple)';
+      else link.style.color = '';
     });
   }, 100);
 
@@ -337,7 +337,7 @@ const Toast = (() => {
     top: 0;
     left: 0;
     height: 3px;
-    background: linear-gradient(90deg, #7c3aed, #0891b2);
+    background: linear-gradient(90deg, #4c1d95, #831843, #1e3a8a);
     z-index: 9999;
     width: 0%;
     transition: width 0.1s linear;
@@ -347,7 +347,8 @@ const Toast = (() => {
 
   const update = throttle(() => {
     const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const docHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
     const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
     bar.style.width = pct + '%';
   }, 20);
@@ -381,19 +382,16 @@ const Toast = (() => {
 
   btn.addEventListener('click', toggle);
 
-  // Close on link click
   menu.querySelectorAll('a').forEach((a) => {
     a.addEventListener('click', close);
   });
 
-  // Close on outside click
   document.addEventListener('click', (e) => {
     if (!menu.classList.contains('open')) return;
     if (menu.contains(e.target) || btn.contains(e.target)) return;
     close();
   });
 
-  // Close on Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') close();
   });
@@ -418,7 +416,7 @@ const Toast = (() => {
 
       e.preventDefault();
 
-      const offset = 90;
+      const offset = 200;
       const y = target.getBoundingClientRect().top + window.scrollY - offset;
 
       window.scrollTo({ top: y, behavior: 'smooth' });
@@ -436,13 +434,13 @@ const Toast = (() => {
 ============================================================================ */
 
 (function initBuilder() {
-  const questionEl   = $('#question');
-  const optionsEl    = $('#optionsContainer');
-  const stepLabel    = $('#stepLabel');
+  const questionEl = $('#question');
+  const optionsEl = $('#optionsContainer');
+  const stepLabel = $('#stepLabel');
   const progressFill = $('#progressFill');
-  const backBtn      = $('#backBtn');
-  const nextBtn      = $('#nextBtn');
-  const answersList  = $('#answersList');
+  const backBtn = $('#backBtn');
+  const nextBtn = $('#nextBtn');
+  const answersList = $('#answersList');
 
   if (!questionEl || !optionsEl || !nextBtn) return;
 
@@ -533,8 +531,7 @@ const Toast = (() => {
       backBtn.style.display = step > 0 ? 'inline-flex' : 'none';
     }
 
-    nextBtn.textContent =
-      step === steps.length - 1 ? 'Finish ✓' : 'Next →';
+    nextBtn.textContent = step === steps.length - 1 ? 'Finish ✓' : 'Next →';
 
     const hasAnswer = s.multi
       ? (answers[s.id] || []).length > 0
@@ -585,7 +582,7 @@ const Toast = (() => {
     } else {
       const contact = $('#contact');
       if (contact) {
-        const y = contact.getBoundingClientRect().top + window.scrollY - 90;
+        const y = contact.getBoundingClientRect().top + window.scrollY - 200;
         window.scrollTo({ top: y, behavior: 'smooth' });
       }
       Toast.success('Great! Now send your request below.', 3500);
@@ -638,13 +635,12 @@ const Toast = (() => {
     });
   });
 
-  // Open the first FAQ by default
   if (items[0]) items[0].classList.add('open');
 })();
 
 
 /* ============================================================================
-   13. CONTACT FORM (Formspree)
+   13. CONTACT FORM (Formspree + Phone)
 ============================================================================ */
 
 (function initContactForm() {
@@ -652,12 +648,13 @@ const Toast = (() => {
   const statusMsg = $('#statusMsg');
   if (!form) return;
 
-  // ⚠️ Replace with your real Formspree ID
+  // ⚠️ Replace with your real Formspree ID from formspree.io
   const FORMSPREE_ID = 'YOUR_FORM_ID';
   const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`;
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
     if (statusMsg) {
       statusMsg.textContent = 'Sending...';
       statusMsg.className = 'status-msg';
@@ -667,12 +664,12 @@ const Toast = (() => {
       name: $('#name')?.value || '',
       email: $('#email')?.value || '',
       idea: $('#idea')?.value || '',
+      phone: NEXIFING_PHONE,
       answers: {},
       submittedAt: new Date().toISOString(),
       userAgent: navigator.userAgent,
     };
 
-    // Collect builder answers
     $$('#answersList > div').forEach((row) => {
       const spans = row.querySelectorAll('span');
       if (spans.length === 2) {
@@ -693,27 +690,23 @@ const Toast = (() => {
       if (!res.ok) throw new Error('Request failed');
 
       if (statusMsg) {
-        statusMsg.textContent =
-          "✅ Got it! We'll email you within 24 hours.";
+        statusMsg.textContent = `✅ Got it! We'll email you within 24 hours. Or call us: ${NEXIFING_PHONE}`;
         statusMsg.className = 'status-msg success';
       }
 
-      Toast.success('Request sent successfully!', 4000);
-      form.reset();
+      Toast.success(`Request sent! Or call us: ${NEXIFING_PHONE}`, 7000);
 
-      // Clear saved builder answers
+      form.reset();
       storage.remove('nexifing_answers_v2');
 
-      // Reset builder preview
       const answersList = $('#answersList');
       if (answersList) answersList.innerHTML = '';
     } catch (err) {
       if (statusMsg) {
-        statusMsg.textContent =
-          '⚠️ Something went wrong. Please try again.';
+        statusMsg.textContent = `⚠️ Something went wrong. Please try again or call us: ${NEXIFING_PHONE}`;
         statusMsg.className = 'status-msg error';
       }
-      Toast.error('Failed to send. Please try again.', 4000);
+      Toast.error(`Failed to send. Call us instead: ${NEXIFING_PHONE}`, 7000);
     }
   });
 })();
@@ -800,7 +793,26 @@ const Toast = (() => {
 
 
 /* ============================================================================
-   17. FOOTER YEAR
+   17. FLOATING CALL BUTTON
+============================================================================ */
+
+(function initCallButton() {
+  const btn = $('.call-float');
+  if (!btn) return;
+
+  // Set the tel: link dynamically so it always matches the number
+  btn.setAttribute('href', `tel:${NEXIFING_PHONE_TEL}`);
+  btn.setAttribute('aria-label', `Call us at ${NEXIFING_PHONE}`);
+  btn.setAttribute('title', `Call us: ${NEXIFING_PHONE}`);
+
+  btn.addEventListener('click', () => {
+    Toast.info(`Calling ${NEXIFING_PHONE}...`, 2500);
+  });
+})();
+
+
+/* ============================================================================
+   18. FOOTER YEAR
 ============================================================================ */
 
 (function initFooterYear() {
@@ -810,7 +822,7 @@ const Toast = (() => {
 
 
 /* ============================================================================
-   18. COUNTER ANIMATIONS
+   19. COUNTER ANIMATIONS
 ============================================================================ */
 
 (function initCounters() {
@@ -854,22 +866,19 @@ const Toast = (() => {
 
 
 /* ============================================================================
-   19. KEYBOARD SHORTCUTS
+   20. KEYBOARD SHORTCUTS
 ============================================================================ */
 
 (function initKeyboardShortcuts() {
   document.addEventListener('keydown', (e) => {
-    // Press "/" to focus search (if there was one)
-    // Press "g" then "h" to go home
     if (e.key === 'Escape') {
-      // Close any open toast
       document
         .querySelectorAll('.toast')
         .forEach((t) => t.classList.add('hiding'));
     }
 
-    // Ctrl/Cmd + K to focus contact form
-    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    // Ctrl+K / Cmd+K → focus name input
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
       e.preventDefault();
       const nameInput = $('#name');
       if (nameInput) {
@@ -877,12 +886,17 @@ const Toast = (() => {
         nameInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     }
+
+    // Ctrl+P / Cmd+P → show phone toast (prevent print dialog)
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'p') {
+      // Let the browser handle print normally — no override
+    }
   });
 })();
 
 
 /* ============================================================================
-   20. EASTER EGGS
+   21. EASTER EGGS
 ============================================================================ */
 
 (function initEasterEggs() {
@@ -911,7 +925,7 @@ const Toast = (() => {
     }
   });
 
-  // Triple click on logo = confetti
+  // Triple-click on logo
   const logo = $('.logo');
   if (logo) {
     let clicks = 0;
@@ -931,48 +945,45 @@ const Toast = (() => {
 
 
 /* ============================================================================
-   21. CONSOLE SIGNATURE
+   22. CONSOLE SIGNATURE
 ============================================================================ */
 
 (function consoleSignature() {
   const styles = [
-    'color: #7c3aed',
+    'color: #4c1d95',
     'font-weight: bold',
     'font-size: 20px',
     'padding: 8px 12px',
-    'background: #f8f9fc',
+    'background: #ececf2',
     'border-radius: 4px',
   ].join(';');
 
   console.log('%cNexifing', styles);
   console.log(
-    '%cBuilt with React, HTML, CSS & JavaScript',
-    'color: #0891b2; font-size: 12px;'
+    '%cBuilt with HTML, CSS & JavaScript',
+    'color: #1e3a8a; font-size: 12px;'
   );
   console.log(
-    '%cWant to build a site with us? → https://7az3ma7m3dm-oss.github.io/nexifing/',
-    'color: #4a4a55; font-size: 12px;'
+    `%cWant a site? Call us → ${NEXIFING_PHONE}`,
+    'color: #27272a; font-size: 12px;'
   );
 })();
 
 
 /* ============================================================================
-   22. INITIALIZATION
+   23. INITIALIZATION
 ============================================================================ */
 
 (function init() {
-  // Attach a smooth scroll polyfill warning
   if (!('scrollBehavior' in document.documentElement.style)) {
     console.warn('Smooth scrolling not supported in this browser.');
   }
 
-  // Log DOM ready
   console.log(
     '%cNexifing ✓ Loaded successfully',
-    'color: #16a34a; font-weight: bold; font-size: 13px;'
+    'color: #064e3b; font-weight: bold; font-size: 13px;'
   );
 
-  // Handle page visibility change (pause animations when hidden)
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
       document.body.style.animationPlayState = 'paused';
@@ -981,7 +992,6 @@ const Toast = (() => {
     }
   });
 
-  // Warn before leaving with unsent form data
   const form = $('#contactForm');
   if (form) {
     let isDirty = false;
