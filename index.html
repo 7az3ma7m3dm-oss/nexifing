@@ -3,11 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#07070d">
+<meta name="theme-color" content="#090a0c">
 <title>NEXIFING — Web Development, Backend &amp; Hosting Studio</title>
 <meta name="description" content="NEXIFING builds modern websites, APIs, backends, hosting infrastructure and cloud storage for growing businesses. Based in Egypt, serving clients worldwide.">
-<meta name="keywords" content="web development, backend, hosting, servers, cloud storage, API, Egypt, NEXIFING, react, node, firebase">
-<meta name="author" content="NEXIFING">
 <meta name="robots" content="index,follow">
 
 <meta property="og:type" content="website">
@@ -16,15 +14,11 @@
 <meta property="og:description" content="Modern websites, backends, hosting and cloud storage for growing businesses.">
 <meta property="og:image" content="https://7az3ma7m3dm-oss.github.io/nexifing/nexifing-logo.png">
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="NEXIFING — Web Development Studio">
-<meta name="twitter:description" content="Modern websites, backends, hosting and cloud storage.">
-
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="canonical" href="https://7az3ma7m3dm-oss.github.io/nexifing/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -42,11 +36,10 @@
       <a href="work.html">Work</a>
       <a href="#industries">Industries</a>
       <a href="#tech">Tech</a>
-      <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
       <a href="contact.html" class="nav-cta">Start a project</a>
     </nav>
-    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -57,44 +50,32 @@
 <!-- ==================== HERO ==================== -->
 <section class="hero">
   <div class="hero-bg" aria-hidden="true">
-    <div class="grid"></div>
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
+    <div class="aurora-beam"></div>
+    <div class="aurora-glow aurora-iris"></div>
+    <div class="aurora-glow aurora-ember"></div>
+    <div class="grid-overlay"></div>
   </div>
   <div class="wrap hero-inner">
     <div class="hero-badge">
       <span class="badge-dot"></span>
-      <span>Available for new projects — Q4 2026</span>
+      <span>Available for Q4 2026</span>
     </div>
     <h1 class="hero-title">
-      We build the websites<br>
-      and the <span class="grad">infrastructure</span><br>
-      behind them.
+      Everything your business<br>
+      needs to <span class="grad">go online</span>.
     </h1>
     <p class="hero-sub">
-      NEXIFING is a development studio focused on modern web applications, backend systems, hosting and cloud storage. We deliver fast, secure and scalable products for growing businesses.
+      NEXIFING builds websites, backends, servers and cloud infrastructure — one studio, one standard, end to end. No handoffs. No excuses.
     </p>
     <div class="hero-actions">
       <a href="contact.html" class="btn btn-primary">Start a project</a>
       <a href="work.html" class="btn btn-ghost">See our work</a>
     </div>
     <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-n">12+</div>
-        <div class="stat-l">Projects shipped</div>
-      </div>
-      <div class="stat">
-        <div class="stat-n">&lt; 24h</div>
-        <div class="stat-l">Support response</div>
-      </div>
-      <div class="stat">
-        <div class="stat-n">99.9%</div>
-        <div class="stat-l">Uptime target</div>
-      </div>
-      <div class="stat">
-        <div class="stat-n">3+ yrs</div>
-        <div class="stat-l">In production</div>
-      </div>
+      <div class="stat"><div class="stat-n">12+</div><div class="stat-l">Projects shipped</div></div>
+      <div class="stat"><div class="stat-n">99.9%</div><div class="stat-l">Uptime target</div></div>
+      <div class="stat"><div class="stat-n">&lt;24h</div><div class="stat-l">Response time</div></div>
+      <div class="stat"><div class="stat-n">3+</div><div class="stat-l">Years in production</div></div>
     </div>
   </div>
 </section>
@@ -106,28 +87,17 @@
   </div>
   <div class="clients-marquee">
     <div class="clients-track">
-      <span class="client">GAMENEST</span>
-      <span class="client-sep">/</span>
-      <span class="client">FORTNITE STORE</span>
-      <span class="client-sep">/</span>
-      <span class="client">DIGITAL SHOP</span>
-      <span class="client-sep">/</span>
-      <span class="client">CLOUD HOST</span>
-      <span class="client-sep">/</span>
-      <span class="client">API STUDIO</span>
-      <span class="client-sep">/</span>
-      <span class="client">STORAGE LAB</span>
-      <span class="client-sep">/</span>
-      <span class="client">GAMENEST</span>
-      <span class="client-sep">/</span>
-      <span class="client">FORTNITE STORE</span>
-      <span class="client-sep">/</span>
-      <span class="client">DIGITAL SHOP</span>
-      <span class="client-sep">/</span>
-      <span class="client">CLOUD HOST</span>
-      <span class="client-sep">/</span>
-      <span class="client">API STUDIO</span>
-      <span class="client-sep">/</span>
+      <span class="client">GAMENEST</span><span class="client-sep">/</span>
+      <span class="client">FORTNITE STORE</span><span class="client-sep">/</span>
+      <span class="client">DIGITAL SHOP</span><span class="client-sep">/</span>
+      <span class="client">CLOUD HOST</span><span class="client-sep">/</span>
+      <span class="client">API STUDIO</span><span class="client-sep">/</span>
+      <span class="client">STORAGE LAB</span><span class="client-sep">/</span>
+      <span class="client">GAMENEST</span><span class="client-sep">/</span>
+      <span class="client">FORTNITE STORE</span><span class="client-sep">/</span>
+      <span class="client">DIGITAL SHOP</span><span class="client-sep">/</span>
+      <span class="client">CLOUD HOST</span><span class="client-sep">/</span>
+      <span class="client">API STUDIO</span><span class="client-sep">/</span>
       <span class="client">STORAGE LAB</span>
     </div>
   </div>
@@ -145,15 +115,9 @@
         </h2>
       </div>
       <div class="intro-right">
-        <p class="intro-p">
-          We started NEXIFING because we were tired of watching good ideas fail behind bad code. Businesses would come to us with beautiful designs and broken backends — or solid infrastructure and ugly frontends.
-        </p>
-        <p class="intro-p">
-          So we decided to do all of it. Design, code, deploy, maintain. One team, one standard, end to end. No handoffs, no "that's not our department", no excuses.
-        </p>
-        <p class="intro-p">
-          Today we work with gaming platforms, small businesses and startups across the Middle East — shipping products that actually stay online.
-        </p>
+        <p class="intro-p">We started NEXIFING because we were tired of watching good ideas fail behind bad code. Businesses would come to us with beautiful designs and broken backends — or solid infrastructure and ugly frontends.</p>
+        <p class="intro-p">So we decided to do all of it. Design, code, deploy, maintain. One team, one standard, end to end. No handoffs, no "that's not our department", no excuses.</p>
+        <p class="intro-p">Today we work with gaming platforms, small businesses and startups across the Middle East — shipping products that actually stay online.</p>
         <div class="intro-signature">
           <span class="signature-line"></span>
           <span class="signature-text">NEXIFING Studio</span>
@@ -175,10 +139,7 @@
     <div class="services-grid">
       <article class="service service-wide">
         <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="16 18 22 12 16 6"/>
-            <polyline points="8 6 2 12 8 18"/>
-          </svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
         </div>
         <h3>Web Development</h3>
         <p>Fast, responsive and accessible websites built with modern tooling. Static sites, marketing pages, landing pages and full web applications — designed to convert and built to last.</p>
@@ -193,11 +154,7 @@
 
       <article class="service">
         <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <ellipse cx="12" cy="5" rx="9" ry="3"/>
-            <path d="M3 5v14a9 3 0 0 0 18 0V5"/>
-            <path d="M3 12a9 3 0 0 0 18 0"/>
-          </svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>
         </div>
         <h3>Backend &amp; APIs</h3>
         <p>Robust server-side systems — REST and GraphQL APIs, authentication, databases and business logic built to scale with your product.</p>
@@ -212,12 +169,7 @@
 
       <article class="service">
         <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="2" width="20" height="8" rx="2"/>
-            <rect x="2" y="14" width="20" height="8" rx="2"/>
-            <line x1="6" y1="6" x2="6.01" y2="6"/>
-            <line x1="6" y1="18" x2="6.01" y2="18"/>
-          </svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
         </div>
         <h3>Hosting &amp; Deployment</h3>
         <p>We deploy, configure and monitor your application on the right platform — GitHub Pages, Netlify, Vercel, or a dedicated VPS.</p>
@@ -232,11 +184,7 @@
 
       <article class="service">
         <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="3" width="20" height="14" rx="2"/>
-            <line x1="8" y1="21" x2="16" y2="21"/>
-            <line x1="12" y1="17" x2="12" y2="21"/>
-          </svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
         </div>
         <h3>Servers &amp; Infrastructure</h3>
         <p>VPS provisioning, Nginx/Traefik configuration, containerization and secure networking — the foundation your app runs on.</p>
@@ -251,11 +199,7 @@
 
       <article class="service">
         <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-            <line x1="12" y1="22.08" x2="12" y2="12"/>
-          </svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
         </div>
         <h3>Cloud Storage</h3>
         <p>Object storage, file uploads, media hosting and CDN delivery — for apps that need to store and serve content fast.</p>
@@ -270,10 +214,7 @@
 
       <article class="service">
         <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 20h9"/>
-            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
-          </svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
         </div>
         <h3>Design &amp; Branding</h3>
         <p>Logo design, visual identity and interface design that actually matches your product — not a template.</p>
@@ -287,10 +228,7 @@
 
       <article class="service service-wide">
         <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="3"/>
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-          </svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
         </div>
         <h3>Maintenance &amp; Support</h3>
         <p>Ongoing care for what we build — updates, monitoring, bug fixes and improvements. Your product keeps running, we make sure of it. Monthly retainers start at 1,500 EGP and include priority response times.</p>
@@ -359,11 +297,7 @@
           <h4>GameNest</h4>
           <p>Fortnite V-Bucks, Crew subscriptions and gifts — Egypt-based digital store with instant delivery, admin console, payment verification and real-time order tracking. Built end-to-end: front-end, Firebase backend, admin panel, rules, deployment.</p>
           <div class="work-tags">
-            <span>Web Development</span>
-            <span>Firebase</span>
-            <span>Admin Panel</span>
-            <span>Hosting</span>
-            <span>Payment Flow</span>
+            <span>Web Development</span><span>Firebase</span><span>Admin Panel</span><span>Hosting</span><span>Payment Flow</span>
           </div>
           <span class="work-link">View live →</span>
         </div>
@@ -394,30 +328,12 @@
     </div>
 
     <div class="industries-grid">
-      <div class="industry">
-        <h3>Gaming &amp; Digital Goods</h3>
-        <p>Stores, top-up platforms and marketplaces with payment flows, admin systems and instant delivery pipelines.</p>
-      </div>
-      <div class="industry">
-        <h3>Small Business</h3>
-        <p>Local businesses, service providers and shops that need a real, professional web presence that actually converts visitors.</p>
-      </div>
-      <div class="industry">
-        <h3>Startups</h3>
-        <p>MVPs, landing pages and full products — built lean so you can iterate quickly, validate fast and grow without re-writing.</p>
-      </div>
-      <div class="industry">
-        <h3>Creators &amp; Freelancers</h3>
-        <p>Portfolios, personal brands and content sites with clean design and fast load times — no page builders, no bloat.</p>
-      </div>
-      <div class="industry">
-        <h3>E-commerce</h3>
-        <p>Product catalogs, cart systems, payment integrations and admin dashboards for stores that need custom features.</p>
-      </div>
-      <div class="industry">
-        <h3>SaaS &amp; Tools</h3>
-        <p>Web apps with authentication, databases, APIs and user management — built on modern stacks that scale.</p>
-      </div>
+      <div class="industry"><h3>Gaming &amp; Digital Goods</h3><p>Stores, top-up platforms and marketplaces with payment flows, admin systems and instant delivery pipelines.</p></div>
+      <div class="industry"><h3>Small Business</h3><p>Local businesses, service providers and shops that need a real, professional web presence that actually converts visitors.</p></div>
+      <div class="industry"><h3>Startups</h3><p>MVPs, landing pages and full products — built lean so you can iterate quickly, validate fast and grow without re-writing.</p></div>
+      <div class="industry"><h3>Creators &amp; Freelancers</h3><p>Portfolios, personal brands and content sites with clean design and fast load times — no page builders, no bloat.</p></div>
+      <div class="industry"><h3>E-commerce</h3><p>Product catalogs, cart systems, payment integrations and admin dashboards for stores that need custom features.</p></div>
+      <div class="industry"><h3>SaaS &amp; Tools</h3><p>Web apps with authentication, databases, APIs and user management — built on modern stacks that scale.</p></div>
     </div>
   </div>
 </section>
@@ -434,173 +350,48 @@
     <div class="tech-grid">
       <div class="tech-group">
         <h4>Frontend</h4>
-        <ul>
-          <li>HTML5 &amp; CSS3</li>
-          <li>JavaScript (ES2023)</li>
-          <li>React &amp; Next.js</li>
-          <li>Tailwind CSS</li>
-          <li>Framer Motion</li>
-        </ul>
+        <ul><li>HTML5 &amp; CSS3</li><li>JavaScript (ES2023)</li><li>React &amp; Next.js</li><li>Tailwind CSS</li><li>Framer Motion</li></ul>
       </div>
       <div class="tech-group">
         <h4>Backend</h4>
-        <ul>
-          <li>Node.js &amp; Express</li>
-          <li>Python &amp; FastAPI</li>
-          <li>Firebase &amp; Firestore</li>
-          <li>PostgreSQL &amp; MongoDB</li>
-          <li>Redis caching</li>
-        </ul>
+        <ul><li>Node.js &amp; Express</li><li>Python &amp; FastAPI</li><li>Firebase &amp; Firestore</li><li>PostgreSQL &amp; MongoDB</li><li>Redis caching</li></ul>
       </div>
       <div class="tech-group">
         <h4>Infrastructure</h4>
-        <ul>
-          <li>Linux (Ubuntu / Debian)</li>
-          <li>Nginx &amp; Traefik</li>
-          <li>Docker &amp; Compose</li>
-          <li>Cloudflare DNS</li>
-          <li>Let's Encrypt SSL</li>
-        </ul>
+        <ul><li>Linux (Ubuntu / Debian)</li><li>Nginx &amp; Traefik</li><li>Docker &amp; Compose</li><li>Cloudflare DNS</li><li>Let's Encrypt SSL</li></ul>
       </div>
       <div class="tech-group">
         <h4>Hosting &amp; Delivery</h4>
-        <ul>
-          <li>GitHub Pages</li>
-          <li>Vercel &amp; Netlify</li>
-          <li>Hetzner &amp; DigitalOcean</li>
-          <li>AWS S3 &amp; CloudFront</li>
-          <li>Uptime monitoring</li>
-        </ul>
+        <ul><li>GitHub Pages</li><li>Vercel &amp; Netlify</li><li>Hetzner &amp; DigitalOcean</li><li>AWS S3 &amp; CloudFront</li><li>Uptime monitoring</li></ul>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ==================== PRICING ==================== -->
-<section id="pricing" class="section">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-label">06 — PRICING</span>
-      <h2 class="section-title">Simple, honest pricing</h2>
-      <p class="section-sub">Fixed quotes. No surprises. Below are starting prices — your final quote depends on scope.</p>
-    </div>
-
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <div class="pricing-tag">STARTER</div>
-        <div class="pricing-price">
-          <span class="pricing-from">from</span>
-          <span class="pricing-amount">3,000</span>
-          <span class="pricing-currency">EGP</span>
-        </div>
-        <p class="pricing-desc">A single landing page or marketing site. Perfect for small businesses, personal brands and validation.</p>
-        <ul class="pricing-list">
-          <li>Up to 5 sections</li>
-          <li>Responsive design</li>
-          <li>Contact form</li>
-          <li>Basic SEO</li>
-          <li>Deployed to your domain</li>
-          <li>Delivery: 3–7 days</li>
-        </ul>
-        <a href="contact.html" class="btn btn-ghost btn-block">Get started</a>
-      </div>
-
-      <div class="pricing-card pricing-featured">
-        <div class="pricing-badge">MOST POPULAR</div>
-        <div class="pricing-tag">BUSINESS</div>
-        <div class="pricing-price">
-          <span class="pricing-from">from</span>
-          <span class="pricing-amount">8,000</span>
-          <span class="pricing-currency">EGP</span>
-        </div>
-        <p class="pricing-desc">A full multi-page website with custom features, a small admin panel and everything you need to run.</p>
-        <ul class="pricing-list">
-          <li>Up to 10 pages</li>
-          <li>Custom design</li>
-          <li>Content management</li>
-          <li>Firebase backend</li>
-          <li>Contact &amp; order forms</li>
-          <li>Full SEO setup</li>
-          <li>Delivery: 2–4 weeks</li>
-        </ul>
-        <a href="contact.html" class="btn btn-primary btn-block">Get started</a>
-      </div>
-
-      <div class="pricing-card">
-        <div class="pricing-tag">FULL STACK</div>
-        <div class="pricing-price">
-          <span class="pricing-from">from</span>
-          <span class="pricing-amount">15,000</span>
-          <span class="pricing-currency">EGP</span>
-        </div>
-        <p class="pricing-desc">A complete web application with authentication, database, admin panel, payments and API.</p>
-        <ul class="pricing-list">
-          <li>Custom web app</li>
-          <li>User accounts &amp; auth</li>
-          <li>Database &amp; API</li>
-          <li>Admin dashboard</li>
-          <li>Payment integration</li>
-          <li>Server &amp; hosting setup</li>
-          <li>Delivery: 4–8 weeks</li>
-        </ul>
-        <a href="contact.html" class="btn btn-ghost btn-block">Get started</a>
-      </div>
-    </div>
-
-    <p class="pricing-note">
-      All prices are starting points. We'll give you a fixed quote after the first call — no hourly billing, no scope creep.
-    </p>
   </div>
 </section>
 
 <!-- ==================== WHY US ==================== -->
-<section class="section section-alt">
+<section class="section">
   <div class="wrap">
     <div class="section-head">
-      <span class="section-label">07 — WHY NEXIFING</span>
+      <span class="section-label">06 — WHY NEXIFING</span>
       <h2 class="section-title">What makes us different</h2>
     </div>
 
     <div class="why-grid">
-      <div class="why-item">
-        <span class="why-num">/ 01</span>
-        <h3>Direct communication</h3>
-        <p>No account managers. You talk to the person building your product, on Discord or email. Questions get answered in hours, not days.</p>
-      </div>
-      <div class="why-item">
-        <span class="why-num">/ 02</span>
-        <h3>Code you own</h3>
-        <p>The source code, the deployment, the domain — all in your name. No lock-in, no proprietary platforms, no ransom for access.</p>
-      </div>
-      <div class="why-item">
-        <span class="why-num">/ 03</span>
-        <h3>Real deadlines</h3>
-        <p>We give honest timelines and stick to them. If something changes, you hear it first — not when it's already late.</p>
-      </div>
-      <div class="why-item">
-        <span class="why-num">/ 04</span>
-        <h3>Built to last</h3>
-        <p>We don't ship throwaway code. Everything we build is maintainable, documented and scalable — even the small stuff.</p>
-      </div>
-      <div class="why-item">
-        <span class="why-num">/ 05</span>
-        <h3>Full-stack ownership</h3>
-        <p>Design, frontend, backend, server, deployment, monitoring — one team handles all of it. No juggling vendors.</p>
-      </div>
-      <div class="why-item">
-        <span class="why-num">/ 06</span>
-        <h3>Post-launch support</h3>
-        <p>Every project includes 30 days of free bug fixes after delivery. After that, optional retainers keep things running.</p>
-      </div>
+      <div class="why-item"><span class="why-num">/ 01</span><h3>Direct communication</h3><p>No account managers. You talk to the person building your product, on Discord or email. Questions get answered in hours, not days.</p></div>
+      <div class="why-item"><span class="why-num">/ 02</span><h3>Code you own</h3><p>The source code, the deployment, the domain — all in your name. No lock-in, no proprietary platforms, no ransom for access.</p></div>
+      <div class="why-item"><span class="why-num">/ 03</span><h3>Real deadlines</h3><p>We give honest timelines and stick to them. If something changes, you hear it first — not when it's already late.</p></div>
+      <div class="why-item"><span class="why-num">/ 04</span><h3>Built to last</h3><p>We don't ship throwaway code. Everything we build is maintainable, documented and scalable — even the small stuff.</p></div>
+      <div class="why-item"><span class="why-num">/ 05</span><h3>Full-stack ownership</h3><p>Design, frontend, backend, server, deployment, monitoring — one team handles all of it. No juggling vendors.</p></div>
+      <div class="why-item"><span class="why-num">/ 06</span><h3>Post-launch support</h3><p>Every project includes 30 days of free bug fixes after delivery. After that, optional retainers keep things running.</p></div>
     </div>
   </div>
 </section>
 
 <!-- ==================== TESTIMONIALS ==================== -->
-<section class="section">
+<section class="section section-alt">
   <div class="wrap">
     <div class="section-head">
-      <span class="section-label">08 — FEEDBACK</span>
+      <span class="section-label">07 — FEEDBACK</span>
       <h2 class="section-title">What clients say</h2>
     </div>
 
@@ -608,87 +399,40 @@
       <div class="testimonial">
         <div class="testimonial-stars">★★★★★</div>
         <p class="testimonial-text">"NEXIFING built our entire store from scratch — frontend, backend, admin panel. Everything works. We get orders coming in every day and we can manage them from one dashboard. Best decision we made."</p>
-        <div class="testimonial-meta">
-          <div class="testimonial-avatar">GN</div>
-          <div>
-            <div class="testimonial-name">GameNest Team</div>
-            <div class="testimonial-role">gamenest.shop</div>
-          </div>
-        </div>
+        <div class="testimonial-meta"><div class="testimonial-avatar">GN</div><div><div class="testimonial-name">GameNest Team</div><div class="testimonial-role">gamenest.shop</div></div></div>
       </div>
-
       <div class="testimonial">
         <div class="testimonial-stars">★★★★★</div>
         <p class="testimonial-text">"Clear communication, honest timelines, no hidden costs. They told us what was possible and what wasn't — and delivered exactly what they promised."</p>
-        <div class="testimonial-meta">
-          <div class="testimonial-avatar">SB</div>
-          <div>
-            <div class="testimonial-name">Small Business Client</div>
-            <div class="testimonial-role">Cairo, Egypt</div>
-          </div>
-        </div>
+        <div class="testimonial-meta"><div class="testimonial-avatar">SB</div><div><div class="testimonial-name">Small Business Client</div><div class="testimonial-role">Cairo, Egypt</div></div></div>
       </div>
-
       <div class="testimonial">
         <div class="testimonial-stars">★★★★★</div>
         <p class="testimonial-text">"We came with a broken backend from another agency. They rebuilt it in two weeks and it's been running without issues since. Reliable people."</p>
-        <div class="testimonial-meta">
-          <div class="testimonial-avatar">ST</div>
-          <div>
-            <div class="testimonial-name">Startup Founder</div>
-            <div class="testimonial-role">Dubai, UAE</div>
-          </div>
-        </div>
+        <div class="testimonial-meta"><div class="testimonial-avatar">ST</div><div><div class="testimonial-name">Startup Founder</div><div class="testimonial-role">Dubai, UAE</div></div></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ==================== FAQ ==================== -->
-<section id="faq" class="section section-alt">
+<section id="faq" class="section">
   <div class="wrap wrap-narrow">
     <div class="section-head">
-      <span class="section-label">09 — FAQ</span>
+      <span class="section-label">08 — FAQ</span>
       <h2 class="section-title">Frequently asked questions</h2>
     </div>
 
     <div class="faq">
-      <details>
-        <summary>How much does a project cost?</summary>
-        <p>It depends on scope. A landing page starts around 3,000 EGP. A full web application with a backend and admin panel usually starts at 15,000 EGP. We'll give you a fixed quote after the first conversation — no hourly billing, no surprises.</p>
-      </details>
-      <details>
-        <summary>How long does it take?</summary>
-        <p>Landing pages: 3–7 days. Full websites: 2–4 weeks. Complex apps: 4–8 weeks. We agree on a timeline up front and stick to it. If something changes, you hear it from us first.</p>
-      </details>
-      <details>
-        <summary>Do you handle hosting and domains too?</summary>
-        <p>Yes. We configure hosting, connect your domain, set up SSL and manage deployment. We can host on GitHub Pages, Vercel, Netlify or a VPS — whichever fits your project best. You own the account, we just help you set it up.</p>
-      </details>
-      <details>
-        <summary>Do I own the code?</summary>
-        <p>Always. Everything we build is yours — the source code, the deployment, the domain. We just help you get it live and keep it running. No lock-in, no proprietary platforms, no ransom for access.</p>
-      </details>
-      <details>
-        <summary>What happens after the project is delivered?</summary>
-        <p>Every project includes 30 days of free bug fixes. After that, we offer optional monthly retainers for updates, monitoring and support. If you'd rather handle it yourself, we make sure the code is well documented so you can.</p>
-      </details>
-      <details>
-        <summary>Do you work with clients outside Egypt?</summary>
-        <p>Yes. We work with clients across the Middle East and worldwide. Communication is in English or Arabic, whichever you prefer. Payments accepted via InstaPay, Vodafone Cash, bank transfer or crypto.</p>
-      </details>
-      <details>
-        <summary>What if I need changes during the project?</summary>
-        <p>Minor changes are included. Major scope additions are quoted separately and agreed before we start them — so there are no surprise bills at the end.</p>
-      </details>
-      <details>
-        <summary>Can you take over a project another developer started?</summary>
-        <p>Yes — we do this often. Send us the codebase or a link to the repo and we'll audit it, tell you what's salvageable and what needs rebuilding, and give you a plan.</p>
-      </details>
-      <details>
-        <summary>Do you offer refunds?</summary>
-        <p>If we fail to deliver what we agreed on, you get a full refund of what's been paid. If you cancel mid-project, you pay only for the work completed up to that point.</p>
-      </details>
+      <details><summary>How much does a project cost?</summary><p>It depends on scope. A landing page starts around 3,000 EGP. A full web application with a backend and admin panel usually starts at 15,000 EGP. We'll give you a fixed quote after the first conversation — no hourly billing, no surprises.</p></details>
+      <details><summary>How long does it take?</summary><p>Landing pages: 3–7 days. Full websites: 2–4 weeks. Complex apps: 4–8 weeks. We agree on a timeline up front and stick to it. If something changes, you hear it from us first.</p></details>
+      <details><summary>Do you handle hosting and domains too?</summary><p>Yes. We configure hosting, connect your domain, set up SSL and manage deployment. We can host on GitHub Pages, Vercel, Netlify or a VPS — whichever fits your project best. You own the account, we just help you set it up.</p></details>
+      <details><summary>Do I own the code?</summary><p>Always. Everything we build is yours — the source code, the deployment, the domain. We just help you get it live and keep it running. No lock-in, no proprietary platforms, no ransom for access.</p></details>
+      <details><summary>What happens after the project is delivered?</summary><p>Every project includes 30 days of free bug fixes. After that, we offer optional monthly retainers for updates, monitoring and support. If you'd rather handle it yourself, we make sure the code is well documented so you can.</p></details>
+      <details><summary>Do you work with clients outside Egypt?</summary><p>Yes. We work with clients across the Middle East and worldwide. Communication is in English or Arabic, whichever you prefer. Payments accepted via InstaPay, Vodafone Cash, bank transfer or crypto.</p></details>
+      <details><summary>What if I need changes during the project?</summary><p>Minor changes are included. Major scope additions are quoted separately and agreed before we start them — so there are no surprise bills at the end.</p></details>
+      <details><summary>Can you take over a project another developer started?</summary><p>Yes — we do this often. Send us the codebase or a link to the repo and we'll audit it, tell you what's salvageable and what needs rebuilding, and give you a plan.</p></details>
+      <details><summary>Do you offer refunds?</summary><p>If we fail to deliver what we agreed on, you get a full refund of what's been paid. If you cancel mid-project, you pay only for the work completed up to that point.</p></details>
     </div>
   </div>
 </section>
@@ -718,10 +462,7 @@
           <span>NEXIFING</span>
         </a>
         <p>Web development, backend systems, hosting and cloud storage — for businesses that need more than a template.</p>
-        <div class="footer-status">
-          <span class="status-dot"></span>
-          <span>Available for new projects</span>
-        </div>
+        <div class="footer-status"><span class="status-dot"></span><span>Available for new projects</span></div>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
@@ -737,7 +478,6 @@
         <a href="work.html">Work</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
-        <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
       </div>
       <div class="footer-col">
@@ -749,7 +489,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 NEXIFING — ALL RIGHTS RESERVED</span>
+      <span>© <span data-year>2026</span> NEXIFING — ALL RIGHTS RESERVED</span>
       <span>Design &amp; build by NEXIFING</span>
     </div>
   </div>
