@@ -1,753 +1,760 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07070d">
+<title>NEXIFING — Web Development, Backend &amp; Hosting Studio</title>
+<meta name="description" content="NEXIFING builds modern websites, APIs, backends, hosting infrastructure and cloud storage for growing businesses. Based in Egypt, serving clients worldwide.">
+<meta name="keywords" content="web development, backend, hosting, servers, cloud storage, API, Egypt, NEXIFING, react, node, firebase">
+<meta name="author" content="NEXIFING">
+<meta name="robots" content="index,follow">
 
-  <!-- Primary SEO -->
-  <title>Nexifing — AI Website Builder | Build Your Dream Site in Seconds</title>
-  <meta name="description" content="Nexifing uses AI to build modern, responsive websites from a single prompt. No code required. Deploy anywhere. Built in Egypt, shipped worldwide.">
-  <meta name="keywords" content="AI website builder, web design, Nexifing, no-code, HTML, CSS, JavaScript, React, Tailwind, portfolio, e-commerce, landing page, egypt web design">
-  <meta name="author" content="Nexifing">
-  <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#ececf2">
-  <meta name="format-detection" content="telephone=no">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://7az3ma7m3dm-oss.github.io/nexifing/">
+<meta property="og:title" content="NEXIFING — Web Development Studio">
+<meta property="og:description" content="Modern websites, backends, hosting and cloud storage for growing businesses.">
+<meta property="og:image" content="https://7az3ma7m3dm-oss.github.io/nexifing/nexifing-logo.png">
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://7az3ma7m3dm-oss.github.io/nexifing/">
-  <meta property="og:title" content="Nexifing — AI Website Builder">
-  <meta property="og:description" content="Build your website with a single prompt. Modern, responsive, and yours forever.">
-  <meta property="og:image" content="logo.png">
-  <meta property="og:site_name" content="Nexifing">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NEXIFING — Web Development Studio">
+<meta name="twitter:description" content="Modern websites, backends, hosting and cloud storage.">
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Nexifing — AI Website Builder">
-  <meta name="twitter:description" content="Build your website with a single prompt.">
-  <meta name="twitter:image" content="logo.png">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="apple-touch-icon" href="favicon.png">
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="canonical" href="https://7az3ma7m3dm-oss.github.io/nexifing/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Background Orbs -->
-  <div class="bg-orbs" aria-hidden="true">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-  </div>
-
-  <!-- Navbar -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="#" class="logo" aria-label="Nexifing home">
-        <img src="logo.png" alt="Nexifing" class="logo-img">
-      </a>
-      <div class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#how">Process</a>
-        <a href="#work">Work</a>
-        <a href="#industries">Industries</a>
-        <a href="#tech">Tech</a>
-        <a href="#compare">Compare</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
-        <a href="#build" class="btn-primary">Get Started →</a>
-      </div>
-      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
-    </div>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="#features">Features</a>
-      <a href="#how">Process</a>
-      <a href="#work">Work</a>
+<!-- ==================== HEADER ==================== -->
+<header class="header">
+  <div class="header-inner wrap">
+    <a href="/" class="logo">
+      <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
+      <span>NEXIFING</span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="work.html">Work</a>
       <a href="#industries">Industries</a>
       <a href="#tech">Tech</a>
-      <a href="#compare">Compare</a>
+      <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
-      <a href="#build" class="btn-primary">Get Started →</a>
-    </div>
-  </nav>
+      <a href="contact.html" class="nav-cta">Start a project</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-  <!-- Hero -->
-  <section class="hero" id="hero">
-    <div class="hero-glow"></div>
-    <div class="badge">
-      <span class="sparkle">✦</span>
-      AI-powered website builder
-      <span class="dot"></span>
+<main>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="grid"></div>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+  </div>
+  <div class="wrap hero-inner">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      <span>Available for new projects — Q4 2026</span>
     </div>
-    <h1>
-      Build your website<br>
-      <span class="gradient-text" id="typedText"></span><span class="cursor">|</span>
+    <h1 class="hero-title">
+      We build the websites<br>
+      and the <span class="grad">infrastructure</span><br>
+      behind them.
     </h1>
     <p class="hero-sub">
-      Tell Nexifing what you need. Our AI generates a modern, responsive website
-      in seconds. No code required. No templates. No limits.
+      NEXIFING is a development studio focused on modern web applications, backend systems, hosting and cloud storage. We deliver fast, secure and scalable products for growing businesses.
     </p>
-    <div class="hero-btns">
-      <a href="#build" class="btn-primary large">Start Building →</a>
-      <a href="#work" class="btn-outline large">See Our Work</a>
+    <div class="hero-actions">
+      <a href="contact.html" class="btn btn-primary">Start a project</a>
+      <a href="work.html" class="btn btn-ghost">See our work</a>
     </div>
-  </section>
-
-  <!-- Marquee / Trusted By -->
-  <section class="section-tight reveal">
-    <p class="marquee-label">Trusted by founders, freelancers & agencies worldwide</p>
-    <div class="marquee">
-      <div class="marquee-track">
-        <span>GameNest</span><span>•</span>
-        <span>Blaze Store</span><span>•</span>
-        <span>Aurora Fitness</span><span>•</span>
-        <span>Nova Coffee</span><span>•</span>
-        <span>Flux Analytics</span><span>•</span>
-        <span>Pulse Studio</span><span>•</span>
-        <span>Bloom Wellness</span><span>•</span>
-        <span>Echo Podcast</span><span>•</span>
-        <span>GameNest</span><span>•</span>
-        <span>Blaze Store</span><span>•</span>
-        <span>Aurora Fitness</span><span>•</span>
-        <span>Nova Coffee</span><span>•</span>
-        <span>Flux Analytics</span><span>•</span>
-        <span>Pulse Studio</span>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-n">12+</div>
+        <div class="stat-l">Projects shipped</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">&lt; 24h</div>
+        <div class="stat-l">Support response</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">99.9%</div>
+        <div class="stat-l">Uptime target</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">3+ yrs</div>
+        <div class="stat-l">In production</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Dashboard Mockup -->
-  <section class="dashboard-showcase reveal">
-    <div class="dashboard-card">
-      <div class="dashboard-sidebar">
-        <div class="dashboard-avatar">NX</div>
-        <div class="dashboard-dot active"></div>
-        <div class="dashboard-dot"></div>
-        <div class="dashboard-dot"></div>
-        <div class="dashboard-dot"></div>
+<!-- ==================== CLIENT MARQUEE ==================== -->
+<section class="clients">
+  <div class="wrap">
+    <p class="clients-label">Trusted by teams building real products</p>
+  </div>
+  <div class="clients-marquee">
+    <div class="clients-track">
+      <span class="client">GAMENEST</span>
+      <span class="client-sep">/</span>
+      <span class="client">FORTNITE STORE</span>
+      <span class="client-sep">/</span>
+      <span class="client">DIGITAL SHOP</span>
+      <span class="client-sep">/</span>
+      <span class="client">CLOUD HOST</span>
+      <span class="client-sep">/</span>
+      <span class="client">API STUDIO</span>
+      <span class="client-sep">/</span>
+      <span class="client">STORAGE LAB</span>
+      <span class="client-sep">/</span>
+      <span class="client">GAMENEST</span>
+      <span class="client-sep">/</span>
+      <span class="client">FORTNITE STORE</span>
+      <span class="client-sep">/</span>
+      <span class="client">DIGITAL SHOP</span>
+      <span class="client-sep">/</span>
+      <span class="client">CLOUD HOST</span>
+      <span class="client-sep">/</span>
+      <span class="client">API STUDIO</span>
+      <span class="client-sep">/</span>
+      <span class="client">STORAGE LAB</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== INTRO ==================== -->
+<section class="section intro">
+  <div class="wrap">
+    <div class="intro-grid">
+      <div class="intro-left">
+        <span class="section-label">00 — INTRODUCTION</span>
+        <h2 class="section-title">
+          A studio built for<br>
+          the <span class="grad">long haul</span>.
+        </h2>
       </div>
-      <div class="dashboard-main">
-        <div class="dashboard-header">
-          <div>
-            <div class="dashboard-title">Website Analytics</div>
-            <div class="dashboard-user">Live preview · yoursite.com</div>
-          </div>
-          <div class="dashboard-avatar">A</div>
-        </div>
-
-        <div class="dashboard-grid">
-          <div class="dash-card">
-            <div class="dash-label">Performance</div>
-            <div class="circle-wrap">
-              <svg class="circle-svg" width="120" height="120" viewBox="0 0 120 120">
-                <circle class="circle-bg" cx="60" cy="60" r="50"></circle>
-                <circle class="circle-fill" cx="60" cy="60" r="50"></circle>
-              </svg>
-              <div class="circle-label">98%</div>
-            </div>
-          </div>
-          <div class="dash-card">
-            <div class="dash-label">Weekly Visitors</div>
-            <div class="bar-chart">
-              <div class="bar"></div>
-              <div class="bar"></div>
-              <div class="bar"></div>
-              <div class="bar"></div>
-              <div class="bar"></div>
-              <div class="bar"></div>
-              <div class="bar"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="dash-row">
-          <div class="dash-card">
-            <div class="dash-label">Total Sites</div>
-            <div class="dash-stat">
-              <div class="dash-stat-num">50+</div>
-              <div class="dash-stat-label">Built this year</div>
-            </div>
-          </div>
-          <div class="dash-card">
-            <div class="dash-label">Avg. Delivery</div>
-            <div class="dash-stat">
-              <div class="dash-stat-num">18h</div>
-              <div class="dash-stat-label">Faster than agencies</div>
-            </div>
-          </div>
+      <div class="intro-right">
+        <p class="intro-p">
+          We started NEXIFING because we were tired of watching good ideas fail behind bad code. Businesses would come to us with beautiful designs and broken backends — or solid infrastructure and ugly frontends.
+        </p>
+        <p class="intro-p">
+          So we decided to do all of it. Design, code, deploy, maintain. One team, one standard, end to end. No handoffs, no "that's not our department", no excuses.
+        </p>
+        <p class="intro-p">
+          Today we work with gaming platforms, small businesses and startups across the Middle East — shipping products that actually stay online.
+        </p>
+        <div class="intro-signature">
+          <span class="signature-line"></span>
+          <span class="signature-text">NEXIFING Studio</span>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Features -->
-  <section class="section reveal" id="features">
-    <div class="section-header">
-      <span class="tag purple">Features</span>
-      <h2>Everything you need to launch</h2>
-      <p class="sub">From AI generation to deployment — Nexifing handles the whole journey.</p>
+<!-- ==================== SERVICES ==================== -->
+<section id="services" class="section section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-label">01 — SERVICES</span>
+      <h2 class="section-title">What we do</h2>
+      <p class="section-sub">A focused stack — from the first line of code to the server it runs on.</p>
     </div>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="icon-box purple">⚡</div>
-        <h3>Instant Generation</h3>
-        <p>Describe your idea in plain English and get a full website in seconds.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-box cyan">💻</div>
-        <h3>Clean Code</h3>
-        <p>Export HTML, CSS, React, and Tailwind code that you fully own.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-box pink">🌍</div>
-        <h3>Deploy Anywhere</h3>
-        <p>One-click publish to Vercel, Netlify, GitHub Pages, or your own server.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-box green">🎨</div>
-        <h3>Custom Design</h3>
-        <p>No generic templates. Every site is generated with your brand in mind.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-box yellow">📱</div>
-        <h3>Fully Responsive</h3>
-        <p>Pixel-perfect from 320px phones all the way to ultrawide monitors.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-box purple">🚀</div>
-        <h3>Blazing Fast</h3>
-        <p>Every site is optimized for Core Web Vitals and scores 95+ on Lighthouse.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-box cyan">🔒</div>
-        <h3>Secure by Default</h3>
-        <p>HTTPS, CSP headers, and hardened forms come baked in.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-box pink">♿</div>
-        <h3>Accessible</h3>
-        <p>WCAG-compliant markup, keyboard navigation, and screen-reader-friendly.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-box green">🔍</div>
-        <h3>SEO Ready</h3>
-        <p>Semantic HTML, meta tags, Open Graph, and fast load times.</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- How It Works -->
-  <section class="section reveal" id="how">
-    <div class="section-header">
-      <span class="tag cyan">Process</span>
-      <h2>How it works</h2>
-      <p class="sub">Three simple steps. From idea to live website.</p>
-    </div>
-    <div class="how-grid">
-      <div class="how-card">
-        <div class="how-num">01</div>
-        <h3>Tell us your vision</h3>
-        <p>Fill out a quick form. Choose your site type, style, and features.</p>
-      </div>
-      <div class="how-card">
-        <div class="how-num">02</div>
-        <h3>AI builds it</h3>
-        <p>Our AI generates a complete, custom website tailored to your answers.</p>
-      </div>
-      <div class="how-card">
-        <div class="how-num">03</div>
-        <h3>We ship it</h3>
-        <p>Review it, request tweaks, and we deploy it live to your domain in 24 hours.</p>
-      </div>
-    </div>
-  </section>
+    <div class="services-grid">
+      <article class="service service-wide">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
+          </svg>
+        </div>
+        <h3>Web Development</h3>
+        <p>Fast, responsive and accessible websites built with modern tooling. Static sites, marketing pages, landing pages and full web applications — designed to convert and built to last.</p>
+        <ul class="service-list">
+          <li>Custom design &amp; front-end</li>
+          <li>Performance optimization</li>
+          <li>SEO-ready structure</li>
+          <li>Mobile-first responsive</li>
+          <li>Accessibility (WCAG) compliance</li>
+        </ul>
+      </article>
 
-  <!-- Portfolio -->
-  <section class="section reveal" id="work">
-    <div class="section-header">
-      <span class="tag pink">Portfolio</span>
-      <h2>Recent work</h2>
-      <p class="sub">A few of the websites Nexifing has shipped this month.</p>
+      <article class="service">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="12" cy="5" rx="9" ry="3"/>
+            <path d="M3 5v14a9 3 0 0 0 18 0V5"/>
+            <path d="M3 12a9 3 0 0 0 18 0"/>
+          </svg>
+        </div>
+        <h3>Backend &amp; APIs</h3>
+        <p>Robust server-side systems — REST and GraphQL APIs, authentication, databases and business logic built to scale with your product.</p>
+        <ul class="service-list">
+          <li>REST &amp; GraphQL APIs</li>
+          <li>Auth &amp; user management</li>
+          <li>PostgreSQL / Firebase</li>
+          <li>Real-time data sync</li>
+          <li>Webhooks &amp; integrations</li>
+        </ul>
+      </article>
+
+      <article class="service">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="8" rx="2"/>
+            <rect x="2" y="14" width="20" height="8" rx="2"/>
+            <line x1="6" y1="6" x2="6.01" y2="6"/>
+            <line x1="6" y1="18" x2="6.01" y2="18"/>
+          </svg>
+        </div>
+        <h3>Hosting &amp; Deployment</h3>
+        <p>We deploy, configure and monitor your application on the right platform — GitHub Pages, Netlify, Vercel, or a dedicated VPS.</p>
+        <ul class="service-list">
+          <li>CI/CD pipelines</li>
+          <li>Custom domains &amp; SSL</li>
+          <li>Zero-downtime deploys</li>
+          <li>Environment management</li>
+          <li>Automated backups</li>
+        </ul>
+      </article>
+
+      <article class="service">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </div>
+        <h3>Servers &amp; Infrastructure</h3>
+        <p>VPS provisioning, Nginx/Traefik configuration, containerization and secure networking — the foundation your app runs on.</p>
+        <ul class="service-list">
+          <li>Linux server setup</li>
+          <li>Docker &amp; containers</li>
+          <li>Reverse proxy &amp; SSL</li>
+          <li>Monitoring &amp; alerts</li>
+          <li>Firewall &amp; security hardening</li>
+        </ul>
+      </article>
+
+      <article class="service">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+            <line x1="12" y1="22.08" x2="12" y2="12"/>
+          </svg>
+        </div>
+        <h3>Cloud Storage</h3>
+        <p>Object storage, file uploads, media hosting and CDN delivery — for apps that need to store and serve content fast.</p>
+        <ul class="service-list">
+          <li>S3-compatible storage</li>
+          <li>Image &amp; video pipelines</li>
+          <li>CDN delivery</li>
+          <li>Backup automation</li>
+          <li>Access control &amp; signing</li>
+        </ul>
+      </article>
+
+      <article class="service">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20h9"/>
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+          </svg>
+        </div>
+        <h3>Design &amp; Branding</h3>
+        <p>Logo design, visual identity and interface design that actually matches your product — not a template.</p>
+        <ul class="service-list">
+          <li>Logo &amp; identity</li>
+          <li>UI / UX design</li>
+          <li>Design systems</li>
+          <li>Brand guidelines</li>
+        </ul>
+      </article>
+
+      <article class="service service-wide">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </div>
+        <h3>Maintenance &amp; Support</h3>
+        <p>Ongoing care for what we build — updates, monitoring, bug fixes and improvements. Your product keeps running, we make sure of it. Monthly retainers start at 1,500 EGP and include priority response times.</p>
+        <ul class="service-list">
+          <li>Monthly retainers</li>
+          <li>Security updates</li>
+          <li>Performance audits</li>
+          <li>Priority support (under 24h response)</li>
+          <li>Emergency rollback assistance</li>
+        </ul>
+      </article>
     </div>
-    <div class="portfolio-grid two-col">
-      <div class="portfolio-card">
-        <div class="portfolio-img p1">GameNest</div>
-        <div class="portfolio-info">
-          <h3>GameNest</h3>
-          <p>Fortnite V-Bucks, Crew subscriptions & gifts — instant delivery, Egypt-based store.</p>
-          <span class="portfolio-tag">Gaming Top-Up · Instant Delivery</span>
-          <a href="https://gamenest.shop/" target="_blank" rel="noopener" class="portfolio-link">View Live →</a>
+  </div>
+</section>
+
+<!-- ==================== PROCESS ==================== -->
+<section id="process" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-label">02 — PROCESS</span>
+      <h2 class="section-title">How we work</h2>
+      <p class="section-sub">A clear, four-step process from first message to production.</p>
+    </div>
+
+    <div class="process">
+      <div class="process-step">
+        <div class="process-num">01</div>
+        <h3>Discovery</h3>
+        <p>We talk about what you need. Scope, budget, timeline, and what success looks like. No jargon, no fluff — just a straight conversation about whether we're the right fit.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">02</div>
+        <h3>Design &amp; Build</h3>
+        <p>We design the interface, write the code, and build the backend. You get previews at every milestone — nothing ships without your sign-off.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">03</div>
+        <h3>Deploy</h3>
+        <p>We set up hosting, configure the server, connect the domain and push it live — carefully, with rollback safety and monitoring in place from day one.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">04</div>
+        <h3>Support</h3>
+        <p>We stay on call. Monitoring, updates, fixes and improvements — so your product keeps running while you focus on your business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== WORK ==================== -->
+<section id="work" class="section section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-label">03 — FEATURED WORK</span>
+      <h2 class="section-title">Recent projects</h2>
+      <p class="section-sub">A selection of products we've designed, built and deployed.</p>
+    </div>
+
+    <div class="work-grid">
+      <a href="https://gamenest.shop" target="_blank" rel="noopener" class="work-card work-card-large">
+        <div class="work-visual work-visual-gamenest">
+          <span class="work-tag">E-COMMERCE</span>
+          <h3>GAMENEST</h3>
+        </div>
+        <div class="work-meta">
+          <h4>GameNest</h4>
+          <p>Fortnite V-Bucks, Crew subscriptions and gifts — Egypt-based digital store with instant delivery, admin console, payment verification and real-time order tracking. Built end-to-end: front-end, Firebase backend, admin panel, rules, deployment.</p>
+          <div class="work-tags">
+            <span>Web Development</span>
+            <span>Firebase</span>
+            <span>Admin Panel</span>
+            <span>Hosting</span>
+            <span>Payment Flow</span>
+          </div>
+          <span class="work-link">View live →</span>
+        </div>
+      </a>
+
+      <div class="work-card work-card-soon">
+        <div class="work-visual work-visual-soon">
+          <span class="work-tag">COMING SOON</span>
+          <h3>Next project</h3>
+        </div>
+        <div class="work-meta">
+          <h4>Your project</h4>
+          <p>We're currently taking on new work. If you're building something and need a technical partner who handles design, code and infrastructure — let's talk.</p>
+          <a href="contact.html" class="work-link">Get in touch →</a>
         </div>
       </div>
-      <div class="portfolio-card">
-        <div class="portfolio-img p2">Blaze</div>
-        <div class="portfolio-info">
-          <h3>Blaze Store</h3>
-          <p>PlayStation digital games store with ultra-fast delivery and full warranty.</p>
-          <span class="portfolio-tag">PlayStation · E-Commerce</span>
-          <a href="https://blaze-store.com/" target="_blank" rel="noopener" class="portfolio-link">View Live →</a>
-        </div>
-      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Why Nexifing -->
-  <section class="section reveal" id="why">
-    <div class="section-header">
-      <span class="tag purple">Why Nexifing</span>
-      <h2>Built different</h2>
-      <p class="sub">Here's what makes us stand out from the template crowd.</p>
+<!-- ==================== INDUSTRIES ==================== -->
+<section id="industries" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-label">04 — INDUSTRIES</span>
+      <h2 class="section-title">Who we work with</h2>
+      <p class="section-sub">We focus on businesses that need more than a template.</p>
     </div>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="icon-box purple">⏱</div>
-        <h3>Ship in Hours</h3>
-        <p>What used to take weeks of agency back-and-forth happens in one afternoon.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-box cyan">💸</div>
-        <h3>Honest Pricing</h3>
-        <p>No retainers. No surprise invoices. You pay once and the code is yours.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-box pink">🤝</div>
-        <h3>Human Support</h3>
-        <p>Real people answer your messages. Ask anything — we reply in under 24 hours.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-box green">🔓</div>
-        <h3>No Lock-In</h3>
-        <p>You get clean, well-commented code. Host it anywhere, edit it however you like.</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- Industries -->
-  <section class="section reveal" id="industries">
-    <div class="section-header">
-      <span class="tag green">Industries</span>
-      <h2>Who we build for</h2>
-      <p class="sub">From solo founders to established brands — we've built for them all.</p>
-    </div>
     <div class="industries-grid">
-      <div class="industry-card">
-        <div class="industry-icon">🛒</div>
-        <h3>E-Commerce</h3>
-        <p>Stores, product pages, checkout flows, and payment integrations.</p>
+      <div class="industry">
+        <h3>Gaming &amp; Digital Goods</h3>
+        <p>Stores, top-up platforms and marketplaces with payment flows, admin systems and instant delivery pipelines.</p>
       </div>
-      <div class="industry-card">
-        <div class="industry-icon">🎮</div>
-        <h3>Gaming</h3>
-        <p>Top-up sites, digital goods, and instant-delivery storefronts.</p>
+      <div class="industry">
+        <h3>Small Business</h3>
+        <p>Local businesses, service providers and shops that need a real, professional web presence that actually converts visitors.</p>
       </div>
-      <div class="industry-card">
-        <div class="industry-icon">🍽</div>
-        <h3>Restaurants</h3>
-        <p>Menus, reservations, delivery links, and location maps.</p>
+      <div class="industry">
+        <h3>Startups</h3>
+        <p>MVPs, landing pages and full products — built lean so you can iterate quickly, validate fast and grow without re-writing.</p>
       </div>
-      <div class="industry-card">
-        <div class="industry-icon">💪</div>
-        <h3>Fitness & Wellness</h3>
-        <p>Bookings, class schedules, membership signups, and coaching.</p>
+      <div class="industry">
+        <h3>Creators &amp; Freelancers</h3>
+        <p>Portfolios, personal brands and content sites with clean design and fast load times — no page builders, no bloat.</p>
       </div>
-      <div class="industry-card">
-        <div class="industry-icon">🎨</div>
-        <h3>Creative & Portfolios</h3>
-        <p>Designers, photographers, artists, and personal brand sites.</p>
+      <div class="industry">
+        <h3>E-commerce</h3>
+        <p>Product catalogs, cart systems, payment integrations and admin dashboards for stores that need custom features.</p>
       </div>
-      <div class="industry-card">
-        <div class="industry-icon">🏢</div>
-        <h3>Business & SaaS</h3>
-        <p>Marketing sites, dashboards, landing pages, and lead funnels.</p>
-      </div>
-      <div class="industry-card">
-        <div class="industry-icon">🎧</div>
-        <h3>Podcasts & Media</h3>
-        <p>Episode hubs, audio players, RSS feeds, and sponsor pages.</p>
-      </div>
-      <div class="industry-card">
-        <div class="industry-icon">📚</div>
-        <h3>Education</h3>
-        <p>Course platforms, lesson pages, and student dashboards.</p>
+      <div class="industry">
+        <h3>SaaS &amp; Tools</h3>
+        <p>Web apps with authentication, databases, APIs and user management — built on modern stacks that scale.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Tech Stack -->
-  <section class="section reveal" id="tech">
-    <div class="section-header">
-      <span class="tag cyan">Tech Stack</span>
-      <h2>Built with modern tools</h2>
-      <p class="sub">Every site we ship uses industry-standard, future-proof technology.</p>
+<!-- ==================== TECH ==================== -->
+<section id="tech" class="section section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-label">05 — STACK</span>
+      <h2 class="section-title">Technologies we use</h2>
+      <p class="section-sub">Tools we trust in production — chosen for reliability, not hype.</p>
     </div>
 
     <div class="tech-grid">
-      <div class="tech-item">
-        <img src="react.png" alt="React" class="tech-logo" loading="lazy">
-        <span class="tech-name">React</span>
+      <div class="tech-group">
+        <h4>Frontend</h4>
+        <ul>
+          <li>HTML5 &amp; CSS3</li>
+          <li>JavaScript (ES2023)</li>
+          <li>React &amp; Next.js</li>
+          <li>Tailwind CSS</li>
+          <li>Framer Motion</li>
+        </ul>
       </div>
-      <div class="tech-item">
-        <img src="tailwind.png" alt="Tailwind CSS" class="tech-logo" loading="lazy">
-        <span class="tech-name">Tailwind CSS</span>
+      <div class="tech-group">
+        <h4>Backend</h4>
+        <ul>
+          <li>Node.js &amp; Express</li>
+          <li>Python &amp; FastAPI</li>
+          <li>Firebase &amp; Firestore</li>
+          <li>PostgreSQL &amp; MongoDB</li>
+          <li>Redis caching</li>
+        </ul>
       </div>
-      <div class="tech-item">
-        <img src="html5.png" alt="HTML5" class="tech-logo" loading="lazy">
-        <span class="tech-name">HTML5</span>
+      <div class="tech-group">
+        <h4>Infrastructure</h4>
+        <ul>
+          <li>Linux (Ubuntu / Debian)</li>
+          <li>Nginx &amp; Traefik</li>
+          <li>Docker &amp; Compose</li>
+          <li>Cloudflare DNS</li>
+          <li>Let's Encrypt SSL</li>
+        </ul>
       </div>
-      <div class="tech-item">
-        <img src="css3.png" alt="CSS3" class="tech-logo" loading="lazy">
-        <span class="tech-name">CSS3</span>
-      </div>
-      <div class="tech-item">
-        <img src="javascript.png" alt="JavaScript" class="tech-logo" loading="lazy">
-        <span class="tech-name">JavaScript</span>
-      </div>
-      <div class="tech-item">
-        <img src="nodejs.png" alt="Node.js" class="tech-logo" loading="lazy">
-        <span class="tech-name">Node.js</span>
-      </div>
-      <div class="tech-item">
-        <img src="bootstrap.png" alt="Bootstrap" class="tech-logo" loading="lazy">
-        <span class="tech-name">Bootstrap</span>
-      </div>
-      <div class="tech-item">
-        <img src="vercel.png" alt="Vercel" class="tech-logo" loading="lazy">
-        <span class="tech-name">Vercel</span>
-      </div>
-      <div class="tech-item">
-        <img src="github.png" alt="GitHub" class="tech-logo" loading="lazy">
-        <span class="tech-name">GitHub</span>
-      </div>
-      <div class="tech-item">
-        <img src="netlify.png" alt="Netlify" class="tech-logo" loading="lazy">
-        <span class="tech-name">Netlify</span>
-      </div>
-      <div class="tech-item">
-        <img src="formspree.png" alt="Formspree" class="tech-logo" loading="lazy">
-        <span class="tech-name">Formspree</span>
-      </div>
-      <div class="tech-item">
-        <img src="vite.png" alt="Vite" class="tech-logo" loading="lazy">
-        <span class="tech-name">Vite</span>
+      <div class="tech-group">
+        <h4>Hosting &amp; Delivery</h4>
+        <ul>
+          <li>GitHub Pages</li>
+          <li>Vercel &amp; Netlify</li>
+          <li>Hetzner &amp; DigitalOcean</li>
+          <li>AWS S3 &amp; CloudFront</li>
+          <li>Uptime monitoring</li>
+        </ul>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Comparison Table -->
-  <section class="section reveal" id="compare">
-    <div class="section-header">
-      <span class="tag yellow">Compare</span>
-      <h2>Nexifing vs the alternatives</h2>
-      <p class="sub">See why more founders are choosing us over agencies and DIY builders.</p>
+<!-- ==================== PRICING ==================== -->
+<section id="pricing" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-label">06 — PRICING</span>
+      <h2 class="section-title">Simple, honest pricing</h2>
+      <p class="section-sub">Fixed quotes. No surprises. Below are starting prices — your final quote depends on scope.</p>
     </div>
 
-    <div class="compare-table-wrap">
-      <table class="compare-table">
-        <thead>
-          <tr>
-            <th>Feature</th>
-            <th class="col-nexifing">Nexifing</th>
-            <th>Agencies</th>
-            <th>DIY Builders</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Delivery time</td>
-            <td class="col-nexifing">Under 24 hours</td>
-            <td>4–12 weeks</td>
-            <td>1–7 days</td>
-          </tr>
-          <tr>
-            <td>You own the code</td>
-            <td class="col-nexifing">✅ Yes</td>
-            <td>❌ Rarely</td>
-            <td>❌ No</td>
-          </tr>
-          <tr>
-            <td>Custom design</td>
-            <td class="col-nexifing">✅ Fully custom</td>
-            <td>✅ Custom</td>
-            <td>⚠️ Templates only</td>
-          </tr>
-          <tr>
-            <td>AI generation</td>
-            <td class="col-nexifing">✅ Built-in</td>
-            <td>❌ None</td>
-            <td>⚠️ Limited</td>
-          </tr>
-          <tr>
-            <td>Mobile responsive</td>
-            <td class="col-nexifing">✅ Always</td>
-            <td>✅ Yes</td>
-            <td>⚠️ Sometimes</td>
-          </tr>
-          <tr>
-            <td>SEO optimized</td>
-            <td class="col-nexifing">✅ Fully</td>
-            <td>⚠️ Add-on</td>
-            <td>⚠️ Basic</td>
-          </tr>
-          <tr>
-            <td>Revisions included</td>
-            <td class="col-nexifing">✅ Unlimited 7 days</td>
-            <td>2–3 rounds</td>
-            <td>N/A</td>
-          </tr>
-          <tr>
-            <td>Money-back guarantee</td>
-            <td class="col-nexifing">✅ 7 days</td>
-            <td>❌ No</td>
-            <td>⚠️ Varies</td>
-          </tr>
-          <tr>
-            <td>Support after launch</td>
-            <td class="col-nexifing">✅ 24h WhatsApp</td>
-            <td>💰 Paid retainer</td>
-            <td>❌ Self-serve</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-tag">STARTER</div>
+        <div class="pricing-price">
+          <span class="pricing-from">from</span>
+          <span class="pricing-amount">3,000</span>
+          <span class="pricing-currency">EGP</span>
+        </div>
+        <p class="pricing-desc">A single landing page or marketing site. Perfect for small businesses, personal brands and validation.</p>
+        <ul class="pricing-list">
+          <li>Up to 5 sections</li>
+          <li>Responsive design</li>
+          <li>Contact form</li>
+          <li>Basic SEO</li>
+          <li>Deployed to your domain</li>
+          <li>Delivery: 3–7 days</li>
+        </ul>
+        <a href="contact.html" class="btn btn-ghost btn-block">Get started</a>
+      </div>
 
-  <!-- Guarantees -->
-  <section class="section reveal" id="guarantees">
-    <div class="section-header">
-      <span class="tag purple">Guarantees</span>
-      <h2>Our promises to you</h2>
-      <p class="sub">We don't just say it — we back it up.</p>
-    </div>
-    <div class="guarantees-grid">
-      <div class="guarantee-card">
-        <div class="guarantee-icon">💰</div>
-        <h3>7-Day Money Back</h3>
-        <p>Not happy with your site? Get a full refund within 7 days, no questions asked.</p>
+      <div class="pricing-card pricing-featured">
+        <div class="pricing-badge">MOST POPULAR</div>
+        <div class="pricing-tag">BUSINESS</div>
+        <div class="pricing-price">
+          <span class="pricing-from">from</span>
+          <span class="pricing-amount">8,000</span>
+          <span class="pricing-currency">EGP</span>
+        </div>
+        <p class="pricing-desc">A full multi-page website with custom features, a small admin panel and everything you need to run.</p>
+        <ul class="pricing-list">
+          <li>Up to 10 pages</li>
+          <li>Custom design</li>
+          <li>Content management</li>
+          <li>Firebase backend</li>
+          <li>Contact &amp; order forms</li>
+          <li>Full SEO setup</li>
+          <li>Delivery: 2–4 weeks</li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary btn-block">Get started</a>
       </div>
-      <div class="guarantee-card">
-        <div class="guarantee-icon">🔒</div>
-        <h3>No Lock-In Ever</h3>
-        <p>You receive full, uncompiled, editable source code that you can host anywhere.</p>
-      </div>
-      <div class="guarantee-card">
-        <div class="guarantee-icon">♾</div>
-        <h3>Unlimited Revisions</h3>
-        <p>Request as many changes as you want for 7 days after delivery. We'll make them.</p>
-      </div>
-      <div class="guarantee-card">
-        <div class="guarantee-icon">🛡</div>
-        <h3>Secure & Compliant</h3>
-        <p>Every site ships with HTTPS, secure forms, and privacy-friendly analytics baked in.</p>
-      </div>
-      <div class="guarantee-card">
-        <div class="guarantee-icon">⚡</div>
-        <h3>24-Hour Delivery</h3>
-        <p>If we miss the delivery window, your next project is 50% off. Guaranteed.</p>
-      </div>
-      <div class="guarantee-card">
-        <div class="guarantee-icon">📞</div>
-        <h3>Real Human Support</h3>
-        <p>No bots, no ticket queues. You get a real person replying via WhatsApp within 24 hours.</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- FAQ -->
-  <section class="section reveal" id="faq">
-    <div class="section-header">
-      <span class="tag pink">FAQ</span>
-      <h2>Frequently asked questions</h2>
-      <p class="sub">Everything you need to know about Nexifing.</p>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-question"><span>How fast will I get my website?</span><span class="faq-icon">+</span></div>
-        <div class="faq-answer"><p>Most sites are delivered within 24 hours of your request. Complex projects with custom integrations may take up to 3 days.</p></div>
+      <div class="pricing-card">
+        <div class="pricing-tag">FULL STACK</div>
+        <div class="pricing-price">
+          <span class="pricing-from">from</span>
+          <span class="pricing-amount">15,000</span>
+          <span class="pricing-currency">EGP</span>
+        </div>
+        <p class="pricing-desc">A complete web application with authentication, database, admin panel, payments and API.</p>
+        <ul class="pricing-list">
+          <li>Custom web app</li>
+          <li>User accounts &amp; auth</li>
+          <li>Database &amp; API</li>
+          <li>Admin dashboard</li>
+          <li>Payment integration</li>
+          <li>Server &amp; hosting setup</li>
+          <li>Delivery: 4–8 weeks</li>
+        </ul>
+        <a href="contact.html" class="btn btn-ghost btn-block">Get started</a>
       </div>
-      <div class="faq-item">
-        <div class="faq-question"><span>Do I own the code?</span><span class="faq-icon">+</span></div>
-        <div class="faq-answer"><p>Yes, 100%. Every line of HTML, CSS, JavaScript, and React code that Nexifing generates for you is yours to keep, modify, and host wherever you want.</p></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question"><span>Can I request changes after delivery?</span><span class="faq-icon">+</span></div>
-        <div class="faq-answer"><p>Absolutely. Every plan includes unlimited revision requests for 7 days after delivery.</p></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question"><span>What tech stack do you use?</span><span class="faq-icon">+</span></div>
-        <div class="faq-answer"><p>We generate clean, modern code using HTML5, CSS3, JavaScript, and optionally React, Tailwind CSS, or Bootstrap.</p></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question"><span>Do you handle hosting and domains?</span><span class="faq-icon">+</span></div>
-        <div class="faq-answer"><p>Yes. We can deploy your site to Vercel, Netlify, or GitHub Pages free of charge, or to your own hosting provider.</p></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question"><span>What if I'm not happy with the result?</span><span class="faq-icon">+</span></div>
-        <div class="faq-answer"><p>We offer a 100% money-back guarantee within 7 days if you're not satisfied.</p></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question"><span>Can I use my own domain?</span><span class="faq-icon">+</span></div>
-        <div class="faq-answer"><p>Yes! If you already own a domain, we'll connect it for you. If not, we can register one on your behalf.</p></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question"><span>Do you offer Arabic / RTL support?</span><span class="faq-icon">+</span></div>
-        <div class="faq-answer"><p>Yes. We build bilingual sites with full right-to-left support for Arabic, Hebrew, and other RTL languages.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact + Builder (combined 2-step flow) -->
-  <section class="section reveal" id="contact">
-    <div class="section-header">
-      <span class="tag cyan">Start Your Project</span>
-      <h2>Let's build your website</h2>
-      <p class="sub">2 quick steps. Takes less than 2 minutes.</p>
     </div>
 
-    <!-- STEP 1 — The Builder -->
-    <div class="contact-step">
-      <div class="step-indicator">
-        <span class="step-badge">1</span>
-        <div>
-          <h3>Tell us what you need</h3>
-          <p class="step-hint">Pick your answers below — the preview will update automatically.</p>
+    <p class="pricing-note">
+      All prices are starting points. We'll give you a fixed quote after the first call — no hourly billing, no scope creep.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== WHY US ==================== -->
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-label">07 — WHY NEXIFING</span>
+      <h2 class="section-title">What makes us different</h2>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-item">
+        <span class="why-num">/ 01</span>
+        <h3>Direct communication</h3>
+        <p>No account managers. You talk to the person building your product, on Discord or email. Questions get answered in hours, not days.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-num">/ 02</span>
+        <h3>Code you own</h3>
+        <p>The source code, the deployment, the domain — all in your name. No lock-in, no proprietary platforms, no ransom for access.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-num">/ 03</span>
+        <h3>Real deadlines</h3>
+        <p>We give honest timelines and stick to them. If something changes, you hear it first — not when it's already late.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-num">/ 04</span>
+        <h3>Built to last</h3>
+        <p>We don't ship throwaway code. Everything we build is maintainable, documented and scalable — even the small stuff.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-num">/ 05</span>
+        <h3>Full-stack ownership</h3>
+        <p>Design, frontend, backend, server, deployment, monitoring — one team handles all of it. No juggling vendors.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-num">/ 06</span>
+        <h3>Post-launch support</h3>
+        <p>Every project includes 30 days of free bug fixes after delivery. After that, optional retainers keep things running.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TESTIMONIALS ==================== -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-label">08 — FEEDBACK</span>
+      <h2 class="section-title">What clients say</h2>
+    </div>
+
+    <div class="testimonials">
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"NEXIFING built our entire store from scratch — frontend, backend, admin panel. Everything works. We get orders coming in every day and we can manage them from one dashboard. Best decision we made."</p>
+        <div class="testimonial-meta">
+          <div class="testimonial-avatar">GN</div>
+          <div>
+            <div class="testimonial-name">GameNest Team</div>
+            <div class="testimonial-role">gamenest.shop</div>
+          </div>
         </div>
       </div>
 
-      <div class="builder-card" id="build">
-        <div class="progress-track">
-          <div class="progress-fill" id="progressFill"></div>
-        </div>
-        <p class="step-label" id="stepLabel">STEP 1 / 6</p>
-        <h3 id="question">What kind of website?</h3>
-        <div class="options" id="optionsContainer"></div>
-        <div class="builder-nav">
-          <button class="btn-outline" id="backBtn" style="display:none;">← Back</button>
-          <button class="btn-primary" id="nextBtn">Next →</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- STEP 2 — The Form -->
-    <div class="contact-step">
-      <div class="step-indicator">
-        <span class="step-badge">2</span>
-        <div>
-          <h3>Send us your details</h3>
-          <p class="step-hint">We'll open WhatsApp with your full brief ready to send.</p>
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Clear communication, honest timelines, no hidden costs. They told us what was possible and what wasn't — and delivered exactly what they promised."</p>
+        <div class="testimonial-meta">
+          <div class="testimonial-avatar">SB</div>
+          <div>
+            <div class="testimonial-name">Small Business Client</div>
+            <div class="testimonial-role">Cairo, Egypt</div>
+          </div>
         </div>
       </div>
 
-      <form class="contact-form" id="contactForm">
-        <input type="text" id="name" placeholder="Your name" required>
-        <input type="email" id="email" placeholder="Email address" required>
-        <textarea id="idea" rows="4" placeholder="Describe the website you want (optional)"></textarea>
-
-        <div class="answers-preview">
-          <strong>Your answers</strong>
-          <div id="answersList"></div>
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"We came with a broken backend from another agency. They rebuilt it in two weeks and it's been running without issues since. Reliable people."</p>
+        <div class="testimonial-meta">
+          <div class="testimonial-avatar">ST</div>
+          <div>
+            <div class="testimonial-name">Startup Founder</div>
+            <div class="testimonial-role">Dubai, UAE</div>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <button type="submit" class="btn-primary full">Send via WhatsApp ✈</button>
-        <p class="status-msg" id="statusMsg"></p>
-      </form>
+<!-- ==================== FAQ ==================== -->
+<section id="faq" class="section section-alt">
+  <div class="wrap wrap-narrow">
+    <div class="section-head">
+      <span class="section-label">09 — FAQ</span>
+      <h2 class="section-title">Frequently asked questions</h2>
     </div>
 
-    <!-- Contact info cards -->
-    <div class="contact-info">
-      <a href="https://wa.me/201202000210" target="_blank" rel="noopener" class="contact-info-card">
-        <div class="contact-info-icon">💬</div>
-        <div class="contact-info-label">WhatsApp</div>
-        <div class="contact-info-value">+20 12 02000210</div>
-      </a>
-      <a href="tel:+201202000210" class="contact-info-card">
-        <div class="contact-info-icon">📞</div>
-        <div class="contact-info-label">Call Us</div>
-        <div class="contact-info-value">+20 12 02000210</div>
-      </a>
+    <div class="faq">
+      <details>
+        <summary>How much does a project cost?</summary>
+        <p>It depends on scope. A landing page starts around 3,000 EGP. A full web application with a backend and admin panel usually starts at 15,000 EGP. We'll give you a fixed quote after the first conversation — no hourly billing, no surprises.</p>
+      </details>
+      <details>
+        <summary>How long does it take?</summary>
+        <p>Landing pages: 3–7 days. Full websites: 2–4 weeks. Complex apps: 4–8 weeks. We agree on a timeline up front and stick to it. If something changes, you hear it from us first.</p>
+      </details>
+      <details>
+        <summary>Do you handle hosting and domains too?</summary>
+        <p>Yes. We configure hosting, connect your domain, set up SSL and manage deployment. We can host on GitHub Pages, Vercel, Netlify or a VPS — whichever fits your project best. You own the account, we just help you set it up.</p>
+      </details>
+      <details>
+        <summary>Do I own the code?</summary>
+        <p>Always. Everything we build is yours — the source code, the deployment, the domain. We just help you get it live and keep it running. No lock-in, no proprietary platforms, no ransom for access.</p>
+      </details>
+      <details>
+        <summary>What happens after the project is delivered?</summary>
+        <p>Every project includes 30 days of free bug fixes. After that, we offer optional monthly retainers for updates, monitoring and support. If you'd rather handle it yourself, we make sure the code is well documented so you can.</p>
+      </details>
+      <details>
+        <summary>Do you work with clients outside Egypt?</summary>
+        <p>Yes. We work with clients across the Middle East and worldwide. Communication is in English or Arabic, whichever you prefer. Payments accepted via InstaPay, Vodafone Cash, bank transfer or crypto.</p>
+      </details>
+      <details>
+        <summary>What if I need changes during the project?</summary>
+        <p>Minor changes are included. Major scope additions are quoted separately and agreed before we start them — so there are no surprise bills at the end.</p>
+      </details>
+      <details>
+        <summary>Can you take over a project another developer started?</summary>
+        <p>Yes — we do this often. Send us the codebase or a link to the repo and we'll audit it, tell you what's salvageable and what needs rebuilding, and give you a plan.</p>
+      </details>
+      <details>
+        <summary>Do you offer refunds?</summary>
+        <p>If we fail to deliver what we agreed on, you get a full refund of what's been paid. If you cancel mid-project, you pay only for the work completed up to that point.</p>
+      </details>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Newsletter -->
-  <section class="section reveal">
-    <div class="newsletter">
-      <h3>Get updates from Nexifing</h3>
-      <p>New features, templates, and AI tricks — straight to your inbox. No spam, ever.</p>
-      <form class="newsletter-form" id="newsletterForm">
-        <input type="email" placeholder="you@example.com" required>
-        <button type="submit">Subscribe</button>
-      </form>
+<!-- ==================== CTA ==================== -->
+<section class="cta">
+  <div class="wrap cta-inner">
+    <h2>Have a project in mind?</h2>
+    <p>Tell us what you're building. We'll reply within 24 hours with a plan, a timeline and a price.</p>
+    <div class="cta-actions">
+      <a href="contact.html" class="btn btn-primary">Start a project</a>
+      <a href="work.html" class="btn btn-ghost">See our work</a>
     </div>
-  </section>
+    <p class="cta-note">Free consultation. No commitment. Just a conversation.</p>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-content">
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
       <div class="footer-brand">
-        <img src="logo.png" alt="Nexifing">
-        <p>AI-powered website builder. Tell us your vision, we build it — fast, beautiful, and yours forever.</p>
+        <a href="/" class="logo">
+          <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
+          <span>NEXIFING</span>
+        </a>
+        <p>Web development, backend systems, hosting and cloud storage — for businesses that need more than a template.</p>
+        <div class="footer-status">
+          <span class="status-dot"></span>
+          <span>Available for new projects</span>
+        </div>
       </div>
       <div class="footer-col">
-        <h4>Product</h4>
-        <a href="#features">Features</a>
-        <a href="#work">Portfolio</a>
-        <a href="#build">Builder</a>
-        <a href="#compare">Compare</a>
-        <a href="#faq">FAQ</a>
+        <h4>Services</h4>
+        <a href="services.html">Web Development</a>
+        <a href="services.html">Backend &amp; APIs</a>
+        <a href="services.html">Hosting</a>
+        <a href="services.html">Servers</a>
+        <a href="services.html">Cloud Storage</a>
+        <a href="services.html">Maintenance</a>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
-        <a href="#">About</a>
-        <a href="#">Blog</a>
-        <a href="#">Careers</a>
-        <a href="#">Press</a>
-        <a href="#contact">Contact</a>
+        <a href="work.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
       </div>
       <div class="footer-col">
-        <h4>Legal</h4>
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="#">Cookies</a>
-        <a href="#">License</a>
-        <a href="#">Refund Policy</a>
-      </div>
-      <div class="footer-col">
-        <h4>Resources</h4>
-        <a href="#tech">Tech Stack</a>
-        <a href="#industries">Industries</a>
-        <a href="#guarantees">Guarantees</a>
-        <a href="#how">Process</a>
-        <a href="sitemap.xml">Sitemap</a>
+        <h4>Connect</h4>
+        <a href="https://7az3ma7m3dm-oss.github.io/GameNest_website/" target="_blank" rel="noopener">GameNest</a>
+        <a href="mailto:hello@nexifing.com">hello@nexifing.com</a>
+        <a href="#">Discord</a>
+        <a href="#">Instagram</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© <span id="year"></span> Nexifing — <strong>Powered by NEXifing</strong></p>
-      <div class="socials">
-        <a href="https://wa.me/201202000210" target="_blank" rel="noopener" title="WhatsApp">💬</a>
-        <a href="#" title="Twitter">𝕏</a>
-        <a href="#" title="GitHub">⌨</a>
-        <a href="mailto:hello@nexifing.com" title="Email">✉</a>
-      </div>
+      <span>© 2026 NEXIFING — ALL RIGHTS RESERVED</span>
+      <span>Design &amp; build by NEXIFING</span>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/201202000210" target="_blank" rel="noopener" class="call-float" title="Chat on WhatsApp: +20 12 02000210" aria-label="Chat on WhatsApp">
-    💬
-  </a>
-
-  <!-- Back to Top -->
-  <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
