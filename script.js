@@ -695,7 +695,7 @@
   /* ==========================================================================
      19. CONTACT FORM
      ========================================================================== */
-  const ContactForm = (() => {
+   const ContactForm = (() => {
     const form = $("#contactForm");
     if (!form) return;
 
@@ -712,7 +712,6 @@
     const restoreDraft = () => {
       const draft = storage.get(CONFIG.storageKeys.contactDraft);
       if (!draft || !isObject(draft)) return;
-
       if (draft.name && nameInput) nameInput.value = draft.name;
       if (draft.email && emailInput) emailInput.value = draft.email;
       if (draft.project && projectInput) projectInput.value = draft.project;
@@ -730,15 +729,18 @@
       storage.set(CONFIG.storageKeys.contactDraft, draft);
     };
 
-    /* Autosave every few seconds while typing */
+    /* Autosave */
     let draftTimer = null;
     form.addEventListener("input", () => {
       if (draftTimer) clearTimeout(draftTimer);
       draftTimer = setTimeout(saveDraft, 2500);
     });
 
-    /* Handle submit */
-    form.addEventListener("submit", async (e) => {
+    /* WhatsApp number */
+    const WA_NUMBER = "201202000210";
+
+    /* Handle submit → open WhatsApp */
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
 
       let valid = true;
@@ -772,50 +774,59 @@
         return;
       }
 
-      const originalText = submitBtn.textContent;
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Sending...";
-      if (noteEl) noteEl.textContent = "";
-
-      /* Simulated submit — replace with real endpoint */
-      const send = async () => {
-        if (CONFIG.endpoints.contact) {
-          const res = await fetch(CONFIG.endpoints.contact, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              name: nameInput.value.trim(),
-              email: emailInput.value.trim(),
-              project: projectInput?.value.trim() || "",
-              message: messageInput.value.trim()
-            })
-          });
-          if (!res.ok) throw new Error("Network error");
-          return;
-        }
-        /* Fallback: pretend to send */
-        await new Promise((resolve) => setTimeout(resolve, 1200));
+      /* Build WhatsApp message */
+      const projectLabels = {
+        "": "—",
+        "web-development": "Web Development",
+        "backend-api": "Backend & APIs",
+        "hosting": "Hosting & Deployment",
+        "servers": "Servers & Infrastructure",
+        "storage": "Cloud Storage",
+        "design": "Design & Branding",
+        "strategy": "Product Strategy",
+        "maintenance": "Maintenance & Support",
+        "other": "Something else"
       };
 
-      try {
-        await send();
+      const projectValue = projectInput?.value || "";
+      const projectLabel = projectLabels[projectValue] || projectValue || "—";
+
+      const lines = [
+        "*New project inquiry — NEXIFING*",
+        "",
+        "*Name:* " + nameInput.value.trim(),
+        "*Email:* " + emailInput.value.trim(),
+        "*Service:* " + projectLabel,
+        "",
+        "*Message:*",
+        messageInput.value.trim()
+      ];
+
+      const text = encodeURIComponent(lines.join("\n"));
+      const url = `https://wa.me/${WA_NUMBER}?text=${text}`;
+
+      /* Show sending state */
+      const originalText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Opening WhatsApp...";
+
+      /* Open WhatsApp */
+      window.open(url, "_blank", "noopener");
+
+      /* Confirm + reset */
+      setTimeout(() => {
         if (noteEl) {
-          noteEl.textContent = "✓ Message sent — we'll reply within 24 hours.";
+          noteEl.textContent = "✓ Opening WhatsApp — just hit send there.";
           noteEl.style.color = "var(--success)";
         }
-        Toast.success("Message sent — we'll reply within 24 hours");
-        form.reset();
-        storage.remove(CONFIG.storageKeys.contactDraft);
-      } catch (err) {
-        if (noteEl) {
-          noteEl.textContent = "! Something went wrong. Please try again or message us on Discord.";
-          noteEl.style.color = "var(--danger)";
-        }
-        Toast.error("Could not send message");
-      } finally {
+        Toast.success("Opening WhatsApp...");
         submitBtn.disabled = false;
         submitBtn.textContent = originalText;
-      }
+
+        /* Clear the form and the draft */
+        form.reset();
+        storage.remove(CONFIG.storageKeys.contactDraft);
+      }, 400);
     });
 
     restoreDraft();
