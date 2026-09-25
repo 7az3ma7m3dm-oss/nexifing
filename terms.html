@@ -1,54 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#080a14">
 <title>Terms of Service — NEXIFING</title>
-<meta name="description" content="Terms of Service for NEXIFING — the rules for using our services and website.">
-<meta name="robots" content="noindex,follow">
+<meta name="description" content="Terms of Service for NEXIFING digital studio.">
+<meta name="robots" content="index,follow">
 <link rel="icon" type="image/png" href="favicon.png">
-<link rel="canonical" href="https://7az3ma7m3dm-oss.github.io/nexifing/terms.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<style>
-  .legal-content{max-width:820px;margin:0 auto}
-  .legal-content h2{font-family:var(--font-display);font-size:clamp(1.1rem,2vw,1.35rem);font-weight:600;letter-spacing:-.02em;margin:48px 0 16px;padding-bottom:12px;border-bottom:1px solid var(--border);color:var(--text)}
-  .legal-content h2:first-child{margin-top:0}
-  .legal-content p,.legal-content li{font-size:15px;color:var(--text-3);line-height:1.8;margin-bottom:12px}
-  .legal-content ul{padding-left:22px;list-style:disc;margin-bottom:20px}
-  .legal-content li{margin-bottom:8px}
-  .legal-content a{color:var(--ember);border-bottom:1px solid rgba(56,189,248,.3);transition:.2s}
-  .legal-content a:hover{color:var(--ember-bright);border-color:var(--ember-bright)}
-  .legal-content strong{color:var(--text);font-weight:700}
-  .legal-warning{
-    background:rgba(251,191,36,.06);
-    border-left:3px solid var(--warning);
-    padding:20px 24px;
-    margin-bottom:48px;
-    border-radius:0 var(--radius) var(--radius) 0;
-  }
-  .legal-warning p{color:var(--text-2);font-size:14px;margin:0;line-height:1.7}
-  .legal-warning strong{color:var(--warning)}
-  .legal-meta{
-    font-family:var(--font-display);
-    font-size:12px;
-    color:var(--text-4);
-    letter-spacing:.08em;
-    margin-bottom:40px;
-    padding-bottom:24px;
-    border-bottom:1px solid var(--border);
-  }
-</style>
 </head>
 <body>
 
-<header class="header">
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <img src="nexifing-logo.png" alt="" class="loader-logo" onerror="this.style.display='none'">
+    <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+    <div class="loader-text" id="loaderText">LOADING</div>
+  </div>
+</div>
+
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="header" id="header">
   <div class="header-inner wrap">
     <a href="index.html" class="logo">
-      <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
+      <img src="nexifing-logo.png" alt="" onerror="this.style.display='none'">
       <span>NEXIFING</span>
     </a>
     <nav class="nav" id="nav">
@@ -56,144 +39,130 @@
       <a href="work.html">Work</a>
       <a href="pricing.html">Pricing</a>
       <a href="about.html">About</a>
-      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+        <svg class="theme-icon-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="theme-icon-moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
       <a href="contact.html" class="nav-cta">Start a project</a>
     </nav>
-    <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 
-<main>
+<main id="main">
 
-<section class="page-hero">
-  <div class="page-hero-bg" aria-hidden="true">
+<section class="hero" style="padding:80px 0 40px">
+  <div class="hero-bg" aria-hidden="true">
     <div class="aurora-beam"></div>
     <div class="grid-overlay"></div>
   </div>
-  <div class="wrap page-hero-inner">
-    <a href="index.html" class="back-link">← Back to home</a>
+  <div class="wrap hero-inner">
     <span class="section-label">LEGAL</span>
-    <h1 class="page-hero-title">
-      Terms of<br>
-      <span class="text-gradient">Service</span>.
-    </h1>
+    <h1 class="hero-title" style="font-size:clamp(2rem,5vw,3.6rem)">Terms of Service</h1>
+    <p class="hero-sub">Last updated: <span data-year>2025</span></p>
   </div>
 </section>
 
-<section class="section">
-  <div class="wrap">
-    <div class="legal-content">
+<section class="section" style="padding-top:40px">
+  <div class="wrap wrap-narrow">
 
-      <div class="legal-warning">
-        <p>
-          <strong>⚠ This is a template.</strong> It hasn't been reviewed by a lawyer. Before relying on it for a real contract or dispute, have a qualified lawyer in your jurisdiction (Egypt) review and adapt it.
+    <div style="display:flex;flex-direction:column;gap:40px">
+
+      <div>
+        <h2 class="section-title" style="font-size:1.4rem;margin-bottom:16px">1. Agreement</h2>
+        <p style="color:var(--text-3);font-size:15px;line-height:1.85">
+          By engaging NEXIFING ("we", "us", "the studio") for any project, you agree to these terms. If you do not agree, please do not use our services. These terms apply to all work delivered by NEXIFING, whether a landing page, website, Discord bot, backend system or any other digital product.
         </p>
       </div>
 
-      <p class="legal-meta">Last updated: 2025</p>
+      <div>
+        <h2 class="section-title" style="font-size:1.4rem;margin-bottom:16px">2. Quotes and scope</h2>
+        <p style="color:var(--text-3);font-size:15px;line-height:1.85">
+          Every project begins with a written quote that defines the scope, timeline and fixed price. Work outside the agreed scope will be quoted separately. Quotes are valid for 30 days from the date sent.
+        </p>
+      </div>
 
-      <h2>1. About NEXIFING</h2>
-      <p>
-        NEXIFING is a web development studio owned and operated by <strong>Hazem and Eyad</strong>, based in Egypt. We design, build, and host websites, backends, and infrastructure for clients worldwide.
-      </p>
-      <p>
-        By using this website or engaging NEXIFING for any project, you agree to these Terms of Service. If you don't agree, don't use our services.
-      </p>
+      <div>
+        <h2 class="section-title" style="font-size:1.4rem;margin-bottom:16px">3. Payment</h2>
+        <p style="color:var(--text-3);font-size:15px;line-height:1.85">
+          Projects require 50% payment upfront and 50% upon delivery. Accepted methods: bank transfer, InstaPay, Vodafone Cash and PayPal for international clients. Late payments may pause work until the balance is settled.
+        </p>
+      </div>
 
-      <h2>2. Scope of work</h2>
-      <p>
-        The exact deliverables, timeline, and cost of any project are agreed in a written scope document before work starts. That document takes priority over anything on this website if there's a conflict.
-      </p>
-      <p>
-        Anything not explicitly listed in the scope document is out of scope. Additional work is quoted separately and requires written approval before it begins.
-      </p>
+      <div>
+        <h2 class="section-title" style="font-size:1.4rem;margin-bottom:16px">4. Delivery and revisions</h2>
+        <p style="color:var(--text-3);font-size:15px;line-height:1.85">
+          Timelines are agreed upfront and are estimates based on the information provided. Minor revisions during the build phase are included. Major changes to the scope may affect the timeline and price. The project is considered delivered when it is deployed to your domain or handed off as agreed.
+        </p>
+      </div>
 
-      <h2>3. Payment</h2>
-      <ul>
-        <li>Standard payment split is 50% up front, 50% on delivery, unless otherwise agreed in writing.</li>
-        <li>Larger projects may be split into milestones, each tied to a specific deliverable.</li>
-        <li>Accepted methods: InstaPay, Vodafone Cash, bank transfer (Egyptian banks), and crypto for international clients.</li>
-        <li>Late payments may pause work or delay delivery.</li>
-        <li>All prices are in Egyptian Pounds (EGP) unless otherwise stated. USD amounts shown are approximate conversions and may vary.</li>
-      </ul>
+      <div>
+        <h2 class="section-title" style="font-size:1.4rem;margin-bottom:16px">5. Ownership</h2>
+        <p style="color:var(--text-3);font-size:15px;line-height:1.85">
+          On full payment, you own 100% of the delivered work — source code, assets and credentials. We reserve the right to display the finished project in our portfolio unless you request otherwise in writing.
+        </p>
+      </div>
 
-      <h2>4. Revisions and changes</h2>
-      <p>
-        Minor revisions within the agreed scope are included. Major changes — new features, redesigned sections, or scope additions — are quoted separately. We will not proceed with added work until you approve the additional quote in writing.
-      </p>
+      <div>
+        <h2 class="section-title" style="font-size:1.4rem;margin-bottom:16px">6. Bug fixes and maintenance</h2>
+        <p style="color:var(--text-3);font-size:15px;line-height:1.85">
+          Every project includes 30 days of free bug fixes after launch. Bugs are defined as defects in the delivered scope, not new features or changes in requirements. After 30 days, optional monthly maintenance plans are available.
+        </p>
+      </div>
 
-      <h2>5. Delivery and timelines</h2>
-      <p>
-        Timelines stated on this website or in messages are estimates. We take deadlines seriously, but timelines may shift if scope changes, if client feedback is delayed, or if third-party services (hosting, payment providers) have issues.
-      </p>
-      <p>
-        If we can't deliver what we agreed on, you're entitled to a full refund of amounts already paid for undelivered work.
-      </p>
+      <div>
+        <h2 class="section-title" style="font-size:1.4rem;margin-bottom:16px">7. Refunds</h2>
+        <p style="color:var(--text-3);font-size:15px;line-height:1.85">
+          The 50% deposit is non-refundable once work has begun, as it covers time already spent. If you are unhappy at any stage, we will work with you to resolve issues before final delivery.
+        </p>
+      </div>
 
-      <h2>6. Ownership of work</h2>
-      <p>
-        On final payment, you own:
-      </p>
-      <ul>
-        <li>The source code of the finished project</li>
-        <li>The design files we created for you</li>
-        <li>The deployment configuration</li>
-        <li>Any domain or hosting account we set up on your behalf</li>
-      </ul>
-      <p>
-        Until final payment is received, NEXIFING retains ownership of all work product. We also retain the right to display completed work in our portfolio unless you request otherwise in writing.
-      </p>
+      <div>
+        <h2 class="section-title" style="font-size:1.4rem;margin-bottom:16px">8. Limitation of liability</h2>
+        <p style="color:var(--text-3);font-size:15px;line-height:1.85">
+          NEXIFING is not liable for any indirect, incidental or consequential damages arising from the use of delivered work, including loss of revenue, data or business opportunity. Our total liability is limited to the amount paid for the project.
+        </p>
+      </div>
 
-      <h2>7. Client responsibilities</h2>
-      <ul>
-        <li>Provide content (text, images, logos) or approve our use of placeholder content</li>
-        <li>Respond to review requests within a reasonable time</li>
-        <li>Provide accurate information about your business and requirements</li>
-        <li>Maintain your own accounts (domain registrar, hosting, email) after delivery, unless we have a maintenance agreement</li>
-      </ul>
+      <div>
+        <h2 class="section-title" style="font-size:1.4rem;margin-bottom:16px">9. Client responsibilities</h2>
+        <p style="color:var(--text-3);font-size:15px;line-height:1.85">
+          You agree to provide accurate information, timely feedback and any content, credentials or third-party access needed for the project. Delays caused by missing inputs may extend the timeline.
+        </p>
+      </div>
 
-      <h2>8. Refunds and cancellations</h2>
-      <ul>
-        <li><strong>Before work starts:</strong> full refund of any deposit.</li>
-        <li><strong>Mid-project:</strong> you pay only for work completed up to the cancellation date. Amounts paid beyond that are refunded.</li>
-        <li><strong>After delivery:</strong> no refunds for delivered work, except in cases where we failed to meet the agreed scope.</li>
-      </ul>
+      <div>
+        <h2 class="section-title" style="font-size:1.4rem;margin-bottom:16px">10. Changes to these terms</h2>
+        <p style="color:var(--text-3);font-size:15px;line-height:1.85">
+          We may update these terms from time to time. The current version is always available at this page. Continued use of our services after changes means you accept the updated terms.
+        </p>
+      </div>
 
-      <h2>9. Limitation of liability</h2>
-      <p>
-        NEXIFING's total liability for any claim related to a project is limited to the amount you paid for that project. We are not liable for indirect, incidental, or consequential damages — including lost revenue, lost data, or business interruption.
-      </p>
-      <p>
-        We are not responsible for issues caused by third-party services (hosting providers, payment gateways, domain registrars) or by changes you make to the delivered project after handover.
-      </p>
+      <div>
+        <h2 class="section-title" style="font-size:1.4rem;margin-bottom:16px">11. Contact</h2>
+        <p style="color:var(--text-3);font-size:15px;line-height:1.85">
+          For questions about these terms, contact us at
+          <a href="contact.html" style="color:var(--ember)">nexifing contact page</a>
+          or by email at <a href="mailto:hello@nexifing.com" style="color:var(--ember)">hello@nexifing.com</a>.
+        </p>
+      </div>
 
-      <h2>10. Confidentiality</h2>
-      <p>
-        We treat all client information as confidential. We'll sign an NDA on request before any sensitive information is shared. Any confidential information you share with us stays confidential — we don't share it with third parties.
-      </p>
+    </div>
 
-      <h2>11. Third-party services</h2>
-      <p>
-        Projects often use third-party platforms: GitHub, Vercel, Firebase, Stripe, etc. Each has its own terms of service that you agree to when using them. We help you configure these services but do not control their policies, availability, or pricing.
-      </p>
+  </div>
+</section>
 
-      <h2>12. Changes to these terms</h2>
-      <p>
-        We may update these Terms at any time. The latest version is always at this URL. Continued use of our services after a change means you accept the updated terms.
-      </p>
-
-      <h2>13. Governing law</h2>
-      <p>
-        These Terms are governed by the laws of the Arab Republic of Egypt. Any disputes will be resolved in Egyptian courts.
-      </p>
-
-      <h2>14. Contact</h2>
-      <p>
-        Questions about these Terms? Message us on <a href="https://wa.me/201202000210" target="_blank" rel="noopener">WhatsApp</a>, <a href="https://discord.gg/g53hhDu2tJ" target="_blank" rel="noopener">Discord</a>, or <a href="contact.html">use the contact form</a>.
-      </p>
-
+<section class="cta">
+  <div class="wrap cta-inner">
+    <span class="section-label">QUESTIONS?</span>
+    <h2 class="cta-title">We're happy to clarify.</h2>
+    <p>If anything here isn't clear, ask before starting a project.</p>
+    <div class="cta-actions">
+      <a href="contact.html" class="btn btn-primary">Contact us</a>
+      <a href="privacy.html" class="btn btn-ghost">Privacy Policy</a>
     </div>
   </div>
 </section>
@@ -204,48 +173,42 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="logo">
-          <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
-          <span>NEXIFING</span>
-        </a>
-        <p>Web development, backend systems, hosting and cloud storage — for businesses that need more than a template.</p>
-        <div class="footer-status">
-          <span class="status-dot"></span>
-          <span>Available for new projects</span>
-        </div>
+        <a href="index.html" class="logo"><img src="nexifing-logo.png" alt="" onerror="this.style.display='none'"><span>NEXIFING</span></a>
+        <p>Digital studio building websites, Discord bots, branding and digital solutions.</p>
+        <div class="footer-status"><span class="status-dot"></span><span>Available for projects</span></div>
       </div>
-      <div class="footer-col">
-        <h4>Services</h4>
+      <div class="footer-col"><h4>Services</h4>
         <a href="services.html">Web Development</a>
+        <a href="services.html">Discord Bots</a>
+        <a href="services.html">Design &amp; Branding</a>
         <a href="services.html">Backend &amp; APIs</a>
         <a href="services.html">Hosting</a>
-        <a href="services.html">Servers</a>
-        <a href="services.html">Maintenance</a>
       </div>
-      <div class="footer-col">
-        <h4>Company</h4>
+      <div class="footer-col"><h4>Company</h4>
         <a href="work.html">Work</a>
         <a href="pricing.html">Pricing</a>
         <a href="about.html">About</a>
         <a href="faq.html">FAQ</a>
         <a href="contact.html">Contact</a>
       </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
+      <div class="footer-col"><h4>Legal</h4>
         <a href="terms.html">Terms of Service</a>
         <a href="privacy.html">Privacy Policy</a>
       </div>
-      <div class="footer-col">
-        <h4>Connect</h4>
-        <a href="https://7az3ma7m3dm-oss.github.io/GameNest_website/" target="_blank" rel="noopener">GameNest</a>
-        <a href="https://wa.me/201202000210" target="_blank" rel="noopener">WhatsApp</a>
+      <div class="footer-col"><h4>Connect</h4>
         <a href="https://discord.gg/g53hhDu2tJ" target="_blank" rel="noopener">Discord</a>
-        <a href="https://www.instagram.com/nexifing/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.instagram.com/nexifing/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://wa.me/201202000210" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span data-year>2025</span> NEXIFING — ALL RIGHTS RESERVED</span>
-      <span>Design &amp; build by NEXIFING</span>
+      <span>© <span data-year>2025</span> NEXIFING — All rights reserved</span>
+      <div class="powered-by-wrap">
+        <span class="powered-by-text">Powered by</span>
+        <a href="https://7az3ma7m3dm-oss.github.io/nexifing/" class="powered-by-logo" target="_blank" rel="noopener" aria-label="NEXIFING">
+          <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
+        </a>
+      </div>
     </div>
   </div>
 </footer>
