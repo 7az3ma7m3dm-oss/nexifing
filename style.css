@@ -3120,7 +3120,39 @@ body.scroll-locked{overflow:hidden}
   .footer-bottom{font-size:10px}
   .powered-by-wrap{padding:5px 10px}
   .powered-by-text{font-size:9px}
-  .powered-by-logo img{height:16px}
+  .powered-by-wrap{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  padding:10px 20px;
+  border:1px solid var(--border-2);
+  border-radius:var(--radius-pill);
+  transition:border-color .25s var(--ease);
+}
+.powered-by-wrap:hover{border-color:var(--ember)}
+.powered-by-text{
+  font-family:var(--font-display);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--text-4);
+}
+.powered-by-logo{
+  display:inline-flex;
+  align-items:center;
+  transition:transform .25s var(--ease);
+}
+.powered-by-logo img{
+  height:42px;
+  width:auto;
+  filter:drop-shadow(0 0 10px rgba(56,189,248,.4));
+  transition:filter .25s var(--ease),transform .25s var(--ease);
+}
+.powered-by-logo:hover img{
+  filter:drop-shadow(0 0 20px rgba(56,189,248,.9));
+  transform:scale(1.08);
+}
 
   .modal{padding:24px}
   .toast-container{left:16px;right:16px;bottom:16px}
