@@ -132,29 +132,132 @@ summary::-webkit-details-marker{display:none}
 .loader-fill{height:100%;width:0%;background:var(--aurora-h);transition:width .3s ease;box-shadow:0 0 12px rgba(56,189,248,.7)}
 .loader-text{font-family:var(--font-display);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--text-4)}
 
-/* CURSOR */
-.cursor-dot,.cursor-ring{
-  position:fixed;top:0;left:0;pointer-events:none;z-index:9998;
-  opacity:0;transition:opacity .3s ease;will-change:transform;
-}
-.cursor-dot{width:6px;height:6px;background:var(--ember);border-radius:50%;box-shadow:0 0 8px var(--ember)}
-.cursor-ring{
-  width:32px;height:32px;border:1.5px solid rgba(56,189,248,.5);border-radius:50%;
-  transition:opacity .3s ease,width .3s ease,height .3s ease,border-color .3s ease,background .3s ease;
-}
-body.cursor-active .cursor-dot,body.cursor-active .cursor-ring{opacity:1}
-body.cursor-active,body.cursor-active a,body.cursor-active button{cursor:none}
-.cursor-ring.hovering{width:52px;height:52px;border-color:var(--ember);background:rgba(56,189,248,.08)}
-@media(max-width:900px){
-  .cursor-dot,.cursor-ring{display:none !important}
-  body.cursor-active,body.cursor-active a,body.cursor-active button{cursor:auto}
+/* CURSOR — upgraded */
+.cursor-dot,
+.cursor-ring,
+.cursor-glow,
+.cursor-trail{
+  position:fixed;
+  top:0;
+  left:0;
+  pointer-events:none;
+  z-index:9998;
+  opacity:0;
+  will-change:transform;
+  transition:opacity .3s ease;
 }
 
-/* SCROLL PROGRESS */
-.scroll-progress{
-  position:fixed;top:0;left:0;right:0;height:2px;
-  background:var(--aurora-h);transform:scaleX(0);transform-origin:left;
-  z-index:200;pointer-events:none;box-shadow:0 0 12px rgba(56,189,248,.6);
+.cursor-dot{
+  width:6px;
+  height:6px;
+  background:#fff;
+  border-radius:50%;
+  box-shadow:0 0 12px var(--ember),0 0 4px #fff;
+  z-index:9999;
+  transition:opacity .3s ease,width .2s ease,height .2s ease,background .2s ease;
+}
+
+.cursor-ring{
+  width:36px;
+  height:36px;
+  border:1.5px solid rgba(56,189,248,.65);
+  border-radius:50%;
+  z-index:9998;
+  transition:opacity .3s ease,width .3s cubic-bezier(.34,1.56,.64,1),height .3s cubic-bezier(.34,1.56,.64,1),border-color .3s ease,background .3s ease,border-width .3s ease;
+}
+
+.cursor-glow{
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(56,189,248,.18) 0%,rgba(37,99,235,.08) 40%,transparent 70%);
+  filter:blur(20px);
+  z-index:9997;
+  transition:opacity .3s ease,width .4s ease,height .4s ease,background .4s ease;
+}
+
+.cursor-trail{
+  width:24px;
+  height:24px;
+  border:1px dashed rgba(56,189,248,.4);
+  border-radius:50%;
+  z-index:9997;
+  opacity:0;
+  transition:opacity .3s ease;
+}
+
+body.cursor-active .cursor-dot,
+body.cursor-active .cursor-ring,
+body.cursor-active .cursor-glow,
+body.cursor-active .cursor-trail{opacity:1}
+
+body.cursor-active,
+body.cursor-active a,
+body.cursor-active button,
+body.cursor-active summary,
+body.cursor-active input,
+body.cursor-active textarea,
+body.cursor-active select{cursor:none}
+
+/* Hover state — over links/buttons */
+body.cursor-hovering .cursor-ring{
+  width:64px;
+  height:64px;
+  border-color:var(--ember-bright);
+  background:rgba(56,189,248,.1);
+  border-width:2px;
+}
+body.cursor-hovering .cursor-dot{
+  width:8px;
+  height:8px;
+  background:var(--ember-bright);
+  box-shadow:0 0 20px var(--ember-bright),0 0 8px var(--ember-bright);
+}
+body.cursor-hovering .cursor-glow{
+  width:280px;
+  height:280px;
+  background:radial-gradient(circle,rgba(56,189,248,.28) 0%,rgba(37,99,235,.12) 40%,transparent 70%);
+}
+
+/* Press state — mouse down */
+body.cursor-pressing .cursor-ring{
+  width:26px;
+  height:26px;
+  border-color:#fff;
+  border-width:3px;
+}
+body.cursor-pressing .cursor-dot{
+  width:14px;
+  height:14px;
+  background:var(--ember-bright);
+}
+
+/* Text input state */
+body.cursor-text .cursor-ring{
+  width:3px;
+  height:32px;
+  border-radius:2px;
+  border-color:var(--ember);
+  background:var(--ember);
+  border-width:0;
+}
+body.cursor-text .cursor-dot{opacity:0}
+body.cursor-text .cursor-glow{opacity:.15}
+
+/* Hidden state — window leave */
+body.cursor-hidden .cursor-dot,
+body.cursor-hidden .cursor-ring,
+body.cursor-hidden .cursor-glow,
+body.cursor-hidden .cursor-trail{opacity:0}
+
+@media(max-width:900px){
+  .cursor-dot,
+  .cursor-ring,
+  .cursor-glow,
+  .cursor-trail{display:none !important}
+  body.cursor-active,
+  body.cursor-active a,
+  body.cursor-active button{cursor:auto}
 }
 
 /* HEADER */
