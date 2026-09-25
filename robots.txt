@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /404.html
+
+Sitemap: https://7az3ma7m3dm-oss.github.io/nexifing/sitemap.xml
