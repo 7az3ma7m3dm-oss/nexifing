@@ -1,107 +1,245 @@
 <!DOCTYPE html>
+<!--
+  ============================================================================
+  NEXIFING — index.html v8.0
+  Digital studio homepage. Semantic, accessible, SEO-ready.
+  ============================================================================
+  STRUCTURE
+  ----------------------------------------------------------------------------
+  01. HEAD — meta, fonts, schema, css
+  02. BODY OPEN
+  03. LOADER
+  04. CURSOR + SCROLL PROGRESS
+  05. SKIP LINK
+  06. HEADER + NAV
+  07. MAIN
+      07a. HERO
+      07b. SERVICES PREVIEW
+      07c. FEATURED WORK
+      07d. WHY NEXIFING
+      07e. TESTIMONIAL
+      07f. CTA
+  08. FOOTER
+  09. SCRIPTS
+  ============================================================================
+-->
 <html lang="en" dir="ltr">
 <head>
+
+<!-- ==========================================================================
+     01. HEAD
+     ========================================================================== -->
+
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#080a14">
-<title>NEXIFING — We build digital experiences that stand out</title>
-<meta name="description" content="NEXIFING is a digital studio building websites, Discord bots, branding and digital solutions. Fast, modern, custom-built.">
+<meta name="color-scheme" content="dark light">
+
+<title>NEXIFING — Digital Studio for Websites, Bots and Branding</title>
+
+<meta name="description" content="NEXIFING is a digital studio building websites, Discord bots, branding and digital solutions. Fixed quotes. Full source code. 30 days free fixes.">
 <meta name="keywords" content="web development, discord bots, design, branding, digital solutions, Egypt, NEXIFING">
 <meta name="robots" content="index,follow">
+<meta name="author" content="NEXIFING">
+<meta name="language" content="English">
+<meta name="revisit-after" content="7 days">
 
+<!-- Open Graph -->
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="NEXIFING">
 <meta property="og:url" content="https://7az3ma7m3dm-oss.github.io/nexifing/">
 <meta property="og:title" content="NEXIFING — Digital Studio">
 <meta property="og:description" content="We build digital experiences that stand out.">
 <meta property="og:image" content="https://7az3ma7m3dm-oss.github.io/nexifing/nexifing-logo.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
 
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NEXIFING — Digital Studio">
+<meta name="twitter:description" content="We build digital experiences that stand out.">
+<meta name="twitter:image" content="https://7az3ma7m3dm-oss.github.io/nexifing/nexifing-logo.png">
+
+<!-- Icons -->
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
+<link rel="mask-icon" href="favicon.png" color="#2563eb">
+
+<!-- Canonical -->
 <link rel="canonical" href="https://7az3ma7m3dm-oss.github.io/nexifing/">
 
+<!-- Preconnect -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Stylesheet -->
 <link rel="stylesheet" href="style.css">
 
+<!-- Structured Data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "NEXIFING",
+  "alternateName": "Nexifing Studio",
   "url": "https://7az3ma7m3dm-oss.github.io/nexifing/",
+  "logo": "https://7az3ma7m3dm-oss.github.io/nexifing/nexifing-logo.png",
   "description": "Digital studio building websites, Discord bots, branding and digital solutions.",
-  "areaServed": "Worldwide",
-  "founder": [
-    {"@type":"Person","name":"Eyad"},
-    {"@type":"Person","name":"Hazem"}
+  "areaServed": {
+    "@type": "Place",
+    "name": "Worldwide"
+  },
+  "serviceType": [
+    "Web Development",
+    "Discord Bot Development",
+    "Design & Branding",
+    "Backend & APIs",
+    "Hosting & Deployment",
+    "Maintenance & Support"
+  ],
+  "sameAs": [
+    "https://discord.gg/g53hhDu2tJ",
+    "https://www.instagram.com/nexifing/"
   ]
 }
 </script>
+
 </head>
+
+
+<!-- ==========================================================================
+     02. BODY OPEN
+     ========================================================================== -->
 <body>
 
-<!-- ============================================================
-     LOADING SCREEN
-     ============================================================ -->
-<div class="loader" id="loader" aria-hidden="true">
+
+<!-- ==========================================================================
+     03. LOADER
+     ========================================================================== -->
+<div class="loader" id="loader" aria-hidden="true" role="presentation">
   <div class="loader-inner">
-    <img src="nexifing-logo.png" alt="NEXIFING" class="loader-logo" onerror="this.style.display='none'">
-    <div class="loader-bar">
+    <img
+      src="nexifing-logo.png"
+      alt=""
+      class="loader-logo"
+      onerror="this.style.display='none'"
+      width="72"
+      height="72">
+    <div class="loader-bar" role="progressbar" aria-label="Loading">
       <div class="loader-fill" id="loaderFill"></div>
     </div>
-    <div class="loader-text" id="loaderText">INITIALIZING...</div>
+    <div class="loader-text" id="loaderText">LOADING</div>
   </div>
 </div>
 
-<!-- ============================================================
-     CUSTOM CURSOR
-     ============================================================ -->
+
+<!-- ==========================================================================
+     04. CURSOR + SCROLL PROGRESS
+     ========================================================================== -->
 <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
 <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
-
-<!-- ============================================================
-     SCROLL PROGRESS
-     ============================================================ -->
 <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
-<!-- ============================================================
-     HEADER
-     ============================================================ -->
-<header class="header" id="header">
+
+<!-- ==========================================================================
+     05. SKIP LINK
+     ========================================================================== -->
+<a href="#main" class="skip-link">Skip to main content</a>
+
+
+<!-- ==========================================================================
+     06. HEADER + NAV
+     ========================================================================== -->
+<header class="header" id="header" role="banner">
   <div class="header-inner wrap">
-    <a href="index.html" class="logo" aria-label="NEXIFING home">
-      <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
+
+    <!-- Logo -->
+    <a href="index.html" class="logo" aria-label="NEXIFING — home">
+      <img
+        src="nexifing-logo.png"
+        alt=""
+        onerror="this.style.display='none'"
+        width="30"
+        height="30">
       <span>NEXIFING</span>
     </a>
 
-    <nav class="nav" id="nav" aria-label="Main navigation">
-      <a href="#services">Services</a>
-      <a href="#work">Work</a>
-      <a href="#why">Why Us</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
-        <svg class="theme-icon-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-        <svg class="theme-icon-moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <!-- Primary nav -->
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="services.html">Services</a>
+      <a href="work.html">Work</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+
+      <button
+        class="theme-toggle"
+        id="themeToggle"
+        type="button"
+        aria-label="Toggle color theme">
+
+        <svg class="theme-icon-sun"
+             viewBox="0 0 24 24"
+             width="16" height="16"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+        </svg>
+
+        <svg class="theme-icon-moon"
+             viewBox="0 0 24 24"
+             width="16" height="16"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
       </button>
-      <a href="#contact" class="nav-cta">Get Started</a>
+
+      <a href="contact.html" class="nav-cta">Start a project</a>
     </nav>
 
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
+    <!-- Mobile menu button -->
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="nav">
       <span></span>
       <span></span>
       <span></span>
     </button>
+
   </div>
 </header>
 
-<main id="main">
 
-<!-- ============================================================
-     HERO
-     ============================================================ -->
-<section class="hero">
+<!-- ==========================================================================
+     07. MAIN
+     ========================================================================== -->
+<main id="main" role="main">
+
+
+<!-- ==========================================================================
+     07a. HERO
+     ========================================================================== -->
+<section class="hero" aria-labelledby="hero-title">
   <div class="hero-bg" aria-hidden="true">
     <div class="aurora-beam"></div>
     <div class="aurora-glow aurora-iris"></div>
@@ -110,107 +248,130 @@
   </div>
 
   <div class="wrap hero-inner">
+
     <div class="hero-mark-wrap">
-      <img src="nexifing-logo.png" alt="" class="hero-mark" onerror="this.style.display='none'">
+      <img
+        src="nexifing-logo.png"
+        alt=""
+        class="hero-mark"
+        onerror="this.style.display='none'"
+        width="96"
+        height="96">
     </div>
 
     <div class="hero-badge">
-      <span class="badge-dot"></span>
+      <span class="badge-dot" aria-hidden="true"></span>
       <span>Available for new projects</span>
     </div>
 
-    <h1 class="hero-title">
+    <h1 class="hero-title" id="hero-title">
       We build <span class="grad">digital experiences</span><br>
       that stand out.
     </h1>
 
     <p class="hero-sub">
-      NEXIFING is a small studio building websites, Discord bots, branding and digital solutions. Fast, modern, custom-built — designed to actually work.
+      NEXIFING is a studio building websites, Discord bots, branding
+      and digital solutions — built from scratch, delivered on time.
     </p>
 
     <div class="hero-actions">
-      <a href="#work" class="btn btn-primary">Explore our work</a>
-      <a href="#contact" class="btn btn-ghost">Contact us</a>
+      <a href="work.html" class="btn btn-primary">View our work</a>
+      <a href="contact.html" class="btn btn-ghost">Start a project</a>
     </div>
 
-    <div class="hero-trust">
-      <div class="hero-trust-item">
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    <div class="hero-trust" role="list">
+      <div class="hero-trust-item" role="listitem">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
         <span>Fixed quotes</span>
       </div>
-      <div class="hero-trust-item">
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      <div class="hero-trust-item" role="listitem">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
         <span>Full source code</span>
       </div>
-      <div class="hero-trust-item">
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      <div class="hero-trust-item" role="listitem">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
         <span>30 days free fixes</span>
       </div>
-      <div class="hero-trust-item">
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        <span>English &amp; Arabic</span>
-      </div>
     </div>
+
   </div>
 
-  <a href="#services" class="scroll-down" aria-label="Scroll down">
+  <a href="#services" class="scroll-down" aria-label="Scroll to services">
     <span>Scroll</span>
-    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
   </a>
 </section>
 
-<!-- ============================================================
-     SERVICES
-     ============================================================ -->
-<section id="services" class="section">
+
+<!-- ==========================================================================
+     07b. SERVICES PREVIEW
+     ========================================================================== -->
+<section id="services" class="section" aria-labelledby="services-title">
   <div class="wrap">
+
     <div class="section-head">
       <span class="section-label">01 — WHAT WE DO</span>
-      <h2 class="section-title">Services</h2>
-      <p class="section-sub">Websites, Discord bots, branding and digital solutions — one studio, one standard.</p>
+      <h2 class="section-title" id="services-title">Services</h2>
+      <p class="section-sub">
+        Three core areas. Full list on the services page.
+      </p>
     </div>
 
     <div class="services-grid">
 
       <article class="service" data-reveal>
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
+          </svg>
         </div>
         <h3>Web Development</h3>
         <p>
-          Fast, responsive, accessible websites. Landing pages, marketing sites and full web applications — built from scratch for your specific case.
+          Fast, responsive websites built from scratch. Landing pages,
+          marketing sites and full web applications.
         </p>
         <ul class="service-list">
-          <li>Custom design &amp; front-end build</li>
+          <li>Custom design &amp; build</li>
           <li>Mobile-first responsive</li>
-          <li>Performance optimization</li>
+          <li>Performance optimized</li>
           <li>SEO-ready structure</li>
         </ul>
       </article>
 
       <article class="service" data-reveal>
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="4"/><circle cx="8" cy="12" r="1.5"/><circle cx="16" cy="12" r="1.5"/><path d="M5 6l2-3h10l2 3"/></svg>
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="6" width="18" height="12" rx="4"/>
+            <circle cx="8" cy="12" r="1.5"/>
+            <circle cx="16" cy="12" r="1.5"/>
+            <path d="M5 6l2-3h10l2 3"/>
+          </svg>
         </div>
         <h3>Discord Bots</h3>
         <p>
-          Custom Discord bots for communities, stores and servers. Ticket systems, moderation, order tracking, notifications — whatever your server needs.
+          Custom bots for communities and stores — tickets, moderation,
+          orders, notifications.
         </p>
         <ul class="service-list">
           <li>Custom bot development</li>
           <li>Ticket &amp; support systems</li>
           <li>Moderation &amp; automation</li>
-          <li>Order &amp; store integrations</li>
+          <li>Store integrations</li>
         </ul>
       </article>
 
       <article class="service" data-reveal>
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20h9"/>
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+          </svg>
         </div>
         <h3>Design &amp; Branding</h3>
         <p>
-          Logo design, visual identity and interface design that actually matches your product — not a template.
+          Logo, visual identity and interface design that actually
+          matches your product.
         </p>
         <ul class="service-list">
           <li>Logo &amp; identity</li>
@@ -220,173 +381,51 @@
         </ul>
       </article>
 
-      <article class="service" data-reveal>
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>
-        </div>
-        <h3>Backend &amp; APIs</h3>
-        <p>
-          REST APIs, authentication, databases and business logic built to scale with your product.
-        </p>
-        <ul class="service-list">
-          <li>REST API design</li>
-          <li>Authentication &amp; roles</li>
-          <li>Database architecture</li>
-          <li>Webhooks &amp; integrations</li>
-        </ul>
-      </article>
-
-      <article class="service" data-reveal>
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-        </div>
-        <h3>Hosting &amp; Deployment</h3>
-        <p>
-          Custom domains, SSL, CI/CD and deployment on the right platform — set up, configured and monitored from day one.
-        </p>
-        <ul class="service-list">
-          <li>Custom domain + SSL</li>
-          <li>CI/CD pipelines</li>
-          <li>Zero-downtime deploys</li>
-          <li>Uptime monitoring</li>
-        </ul>
-      </article>
-
-      <article class="service" data-reveal>
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-        </div>
-        <h3>Maintenance &amp; Support</h3>
-        <p>
-          Ongoing care after launch — updates, monitoring and bug fixes. Your product keeps running, we make sure of it.
-        </p>
-        <ul class="service-list">
-          <li>30 days free bug fixes</li>
-          <li>Optional monthly retainers</li>
-          <li>Security updates</li>
-          <li>Priority response (under 24h)</li>
-        </ul>
-      </article>
-
     </div>
+
+    <div class="section-link">
+      <a href="services.html" class="btn btn-ghost">All services</a>
+    </div>
+
   </div>
 </section>
 
-<!-- ============================================================
-     PORTFOLIO / FEATURED WORK
-     ============================================================ -->
-<section id="work" class="section section-alt">
+
+<!-- ==========================================================================
+     07c. FEATURED WORK
+     ========================================================================== -->
+<section id="work" class="section section-alt" aria-labelledby="work-title">
   <div class="wrap">
+
     <div class="section-head">
       <span class="section-label">02 — FEATURED WORK</span>
-      <h2 class="section-title">Recent projects</h2>
-      <p class="section-sub">Real projects, real screenshots. Every one of them is live — we don't publish mockups.</p>
+      <h2 class="section-title" id="work-title">Recent projects</h2>
+      <p class="section-sub">Real projects, live in production.</p>
     </div>
 
-    <div class="work-grid">
+    <div class="work-grid work-grid-2">
 
-      <!-- GameNest — Featured -->
-      <a href="https://gamenest.shop" target="_blank" rel="noopener" class="work-card work-card-large" data-reveal>
+      <a href="https://gamenest.shop" target="_blank" rel="noopener noreferrer" class="work-card" data-reveal>
         <div class="work-visual work-visual-gamenest">
-          <span class="work-tag">E-COMMERCE · GAMING</span>
+          <span class="work-tag">E-COMMERCE</span>
           <h3>GAMENEST</h3>
         </div>
         <div class="work-meta">
           <h4>GameNest</h4>
           <p>
-            Fortnite V-Bucks store for Egypt — instant delivery, admin console, payment verification and real-time order tracking. Built end-to-end on Firebase.
+            Fortnite V-Bucks store for Egypt — instant delivery, admin
+            console, payment verification and order tracking. Built
+            end-to-end.
           </p>
           <div class="work-tags">
             <span>Web Development</span>
             <span>Firebase</span>
             <span>Admin Panel</span>
-            <span>Payments</span>
           </div>
           <span class="work-link">View live →</span>
         </div>
       </a>
 
-      <!-- Project 2 — Discord bot -->
-      <div class="work-card" data-reveal>
-        <div class="work-visual work-visual-discord">
-          <span class="work-tag">DISCORD · AUTOMATION</span>
-          <h3>Store Bot</h3>
-        </div>
-        <div class="work-meta">
-          <h4>Custom Discord Bot</h4>
-          <p>
-            Ticket system, order notifications and moderation for a community server. Handles hundreds of interactions per day without breaking.
-          </p>
-          <div class="work-tags">
-            <span>Discord.js</span>
-            <span>Node.js</span>
-            <span>Automation</span>
-          </div>
-          <span class="work-link work-link-muted">Case study coming soon</span>
-        </div>
-      </div>
-
-      <!-- Project 3 — Design -->
-      <div class="work-card" data-reveal>
-        <div class="work-visual work-visual-brand">
-          <span class="work-tag">BRANDING · DESIGN</span>
-          <h3>Brand Kit</h3>
-        </div>
-        <div class="work-meta">
-          <h4>Full Brand Identity</h4>
-          <p>
-            Logo, color system, typography and design guidelines for a small business — every asset shipped in a single kit.
-          </p>
-          <div class="work-tags">
-            <span>Figma</span>
-            <span>Illustrator</span>
-            <span>Design System</span>
-          </div>
-          <span class="work-link work-link-muted">Case study coming soon</span>
-        </div>
-      </div>
-
-      <!-- Project 4 — Internal tool -->
-      <div class="work-card" data-reveal>
-        <div class="work-visual work-visual-tool">
-          <span class="work-tag">INTERNAL · TOOLING</span>
-          <h3>Deploy Kit</h3>
-        </div>
-        <div class="work-meta">
-          <h4>Static Deploy Pipeline</h4>
-          <p>
-            Internal tool that pushes static sites to GitHub Pages and Vercel with a single command. Handles DNS, SSL and cache purge.
-          </p>
-          <div class="work-tags">
-            <span>Node.js</span>
-            <span>DevOps</span>
-            <span>CI/CD</span>
-          </div>
-          <span class="work-link work-link-muted">Internal tool</span>
-        </div>
-      </div>
-
-      <!-- Project 5 — Dashboard -->
-      <div class="work-card" data-reveal>
-        <div class="work-visual work-visual-dash">
-          <span class="work-tag">SAAS · DASHBOARD</span>
-          <h3>Admin Kit</h3>
-        </div>
-        <div class="work-meta">
-          <h4>Reusable Admin Dashboard</h4>
-          <p>
-            Charts, tables, filters and role-based permissions. The foundation used to build the GameNest owner console.
-          </p>
-          <div class="work-tags">
-            <span>Vanilla JS</span>
-            <span>Charts</span>
-            <span>Auth</span>
-          </div>
-          <span class="work-link work-link-muted">Internal tool</span>
-        </div>
-      </div>
-
-      <!-- Project 6 — Coming soon -->
       <div class="work-card work-card-cta" data-reveal>
         <div class="work-visual work-visual-cta">
           <span class="work-tag">YOUR PROJECT</span>
@@ -395,203 +434,152 @@
         <div class="work-meta">
           <h4>Start something</h4>
           <p>
-            We take a limited number of projects per quarter. If you're building something and need a technical partner, let's talk.
+            We take a limited number of projects per quarter. If you're
+            building something and need a technical partner, let's talk.
           </p>
-          <a href="#contact" class="work-link">Get in touch →</a>
+          <a href="contact.html" class="work-link">Get in touch →</a>
         </div>
       </div>
 
     </div>
+
+    <div class="section-link">
+      <a href="work.html" class="btn btn-ghost">All projects</a>
+    </div>
+
   </div>
 </section>
 
-<!-- ============================================================
-     WHY NEXIFING
-     ============================================================ -->
-<section id="why" class="section">
+
+<!-- ==========================================================================
+     07d. WHY NEXIFING
+     ========================================================================== -->
+<section id="why" class="section" aria-labelledby="why-title">
   <div class="wrap">
+
     <div class="section-head">
       <span class="section-label">03 — WHY NEXIFING</span>
-      <h2 class="section-title">Modern. Fast. Custom. Reliable.</h2>
-      <p class="section-sub">Four things every project gets. No exceptions.</p>
+      <h2 class="section-title" id="why-title">Modern. Fast. Custom. Reliable.</h2>
+      <p class="section-sub">Four standards every project gets.</p>
     </div>
 
     <div class="why-grid">
       <div class="why-card" data-reveal>
-        <div class="why-num">/ 01</div>
+        <span class="why-num">/ 01</span>
         <h3>Modern</h3>
-        <p>
-          Built on current tools and best practices — not decade-old stacks. Every project ships with clean, documented, maintainable code.
-        </p>
+        <p>Built on current tools and best practices. Clean, documented, maintainable code every time.</p>
       </div>
       <div class="why-card" data-reveal>
-        <div class="why-num">/ 02</div>
+        <span class="why-num">/ 02</span>
         <h3>Fast</h3>
-        <p>
-          Landing pages ship in 3–7 days. Full sites in 2–4 weeks. We don't stretch timelines to bill more hours — the quote is fixed from day one.
-        </p>
+        <p>Landing pages in 3–7 days. Full sites in 2–4 weeks. Fixed timelines, fixed quotes.</p>
       </div>
       <div class="why-card" data-reveal>
-        <div class="why-num">/ 03</div>
+        <span class="why-num">/ 03</span>
         <h3>Custom</h3>
-        <p>
-          No templates. No page builders. Everything is designed and coded for your specific case — from the first pixel to the last API call.
-        </p>
+        <p>No templates, no page builders. Everything is designed and coded for your specific case.</p>
       </div>
       <div class="why-card" data-reveal>
-        <div class="why-num">/ 04</div>
+        <span class="why-num">/ 04</span>
         <h3>Reliable</h3>
-        <p>
-          30 days free bug fixes after launch. Monitoring in place from day one. If something breaks, we fix it — you don't chase us.
-        </p>
+        <p>30 days free bug fixes after launch. Monitoring in place. If something breaks, we fix it.</p>
       </div>
     </div>
+
   </div>
 </section>
 
-<!-- ============================================================
-     ABOUT
-     ============================================================ -->
-<section id="about" class="section section-alt">
-  <div class="wrap">
-    <div class="about-grid">
-      <div class="about-left" data-reveal>
-        <span class="section-label">04 — ABOUT</span>
-        <h2 class="section-title">
-          A small studio<br>
-          with <span class="grad">big standards</span>.
-        </h2>
-      </div>
-      <div class="about-right" data-reveal>
-        <p class="about-p">
-          NEXIFING is a digital studio founded by <strong>Eyad</strong> and <strong>Hazem</strong> — two people who got tired of watching good ideas fail behind bad execution.
-        </p>
-        <p class="about-p">
-          Most agencies hand your project between designers, developers and hosting providers. When something breaks, nobody owns it.
-        </p>
-        <p class="about-p">
-          We don't do that. Design, code, deploy, maintain — one team handles the entire stack. If something goes wrong, you talk to the people who built it. No middlemen, no "that's not our department."
-        </p>
-        <p class="about-p">
-          We take a limited number of projects per quarter. Fewer clients means more time on each — and a finished product instead of a half-built mess.
-        </p>
-        <a href="about.html" class="about-link">Read more about us →</a>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ============================================================
-     TESTIMONIALS
-     ============================================================ -->
-<section class="section">
+<!-- ==========================================================================
+     07e. TESTIMONIAL
+     ========================================================================== -->
+<section class="section section-alt" aria-labelledby="testimonial-title">
   <div class="wrap">
+
     <div class="section-head">
-      <span class="section-label">05 — WHAT CLIENTS SAY</span>
-      <h2 class="section-title">Testimonials</h2>
-      <p class="section-sub">Real feedback from real projects. No fake reviews, ever.</p>
+      <span class="section-label">04 — CLIENT FEEDBACK</span>
+      <h2 class="section-title" id="testimonial-title">What clients say</h2>
     </div>
 
-    <div class="testimonials">
-
+    <div class="testimonials testimonials-single">
       <div class="testimonial" data-reveal>
-        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-stars" aria-label="Five out of five stars">★★★★★</div>
         <p class="testimonial-text">
-          "NEXIFING built our entire store from scratch — frontend, backend, admin panel. Everything works. We get orders coming in every day and we can manage them from one dashboard."
+          "NEXIFING built our entire store from scratch — frontend, backend,
+          admin panel. Everything works. We get orders coming in every day
+          and manage them from one dashboard."
         </p>
         <div class="testimonial-meta">
-          <div class="testimonial-avatar">GN</div>
+          <div class="testimonial-avatar" aria-hidden="true">GN</div>
           <div>
             <div class="testimonial-name">GameNest Team</div>
             <div class="testimonial-role">gamenest.shop</div>
           </div>
         </div>
       </div>
-
-      <div class="testimonial" data-reveal>
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">
-          "Clear communication, honest timelines, no hidden costs. They told us what was possible and what wasn't — and delivered exactly what they promised."
-        </p>
-        <div class="testimonial-meta">
-          <div class="testimonial-avatar">SB</div>
-          <div>
-            <div class="testimonial-name">Small Business Client</div>
-            <div class="testimonial-role">Cairo, Egypt</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonial" data-reveal>
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">
-          "Fast, clean, professional. The site loads in under a second on mobile and looks the same on every device. Exactly what we needed."
-        </p>
-        <div class="testimonial-meta">
-          <div class="testimonial-avatar">EC</div>
-          <div>
-            <div class="testimonial-name">E-commerce Client</div>
-            <div class="testimonial-role">Alexandria, Egypt</div>
-          </div>
-        </div>
-      </div>
-
     </div>
+
   </div>
 </section>
 
-<!-- ============================================================
-     CTA
-     ============================================================ -->
-<section id="contact" class="cta">
+
+<!-- ==========================================================================
+     07f. CTA
+     ========================================================================== -->
+<section class="cta" aria-labelledby="cta-title">
   <div class="wrap cta-inner" data-reveal>
-    <span class="section-label">06 — READY TO BUILD SOMETHING?</span>
-    <h2 class="cta-title">Let's get started.</h2>
-    <p>Tell us what you're building. We'll reply within 24 hours with a plan and a price.</p>
+    <span class="section-label">READY TO BUILD?</span>
+    <h2 class="cta-title" id="cta-title">Let's start your project.</h2>
+    <p>Tell us what you're building. We reply within 24 hours with a plan and a price.</p>
     <div class="cta-actions">
       <a href="contact.html" class="btn btn-primary">Start a project</a>
-      <a href="https://discord.gg/g53hhDu2tJ" target="_blank" rel="noopener" class="btn btn-ghost">Message on Discord</a>
+      <a href="pricing.html" class="btn btn-ghost">See pricing</a>
     </div>
-    <p class="cta-note">Free consultation · No commitment · Just a conversation</p>
+    <p class="cta-note">Free consultation · No commitment</p>
   </div>
 </section>
+
 
 </main>
 
-<!-- ============================================================
-     FOOTER
-     ============================================================ -->
-<footer class="footer">
+
+<!-- ==========================================================================
+     08. FOOTER
+     ========================================================================== -->
+<footer class="footer" role="contentinfo">
   <div class="wrap">
+
     <div class="footer-grid">
 
       <div class="footer-brand">
-        <a href="index.html" class="logo">
-          <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
+        <a href="index.html" class="logo" aria-label="NEXIFING — home">
+          <img
+            src="nexifing-logo.png"
+            alt=""
+            onerror="this.style.display='none'"
+            width="30"
+            height="30">
           <span>NEXIFING</span>
         </a>
-        <p>
-          Digital studio building websites, Discord bots, branding and digital solutions — for businesses that need more than a template.
-        </p>
+        <p>Digital studio building websites, Discord bots, branding and digital solutions.</p>
         <div class="footer-status">
-          <span class="status-dot"></span>
-          <span>Available for new projects</span>
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>Available for projects</span>
         </div>
       </div>
 
       <div class="footer-col">
         <h4>Services</h4>
-        <a href="#services">Web Development</a>
-        <a href="#services">Discord Bots</a>
-        <a href="#services">Design &amp; Branding</a>
-        <a href="#services">Backend &amp; APIs</a>
-        <a href="#services">Hosting</a>
-        <a href="#services">Maintenance</a>
+        <a href="services.html">Web Development</a>
+        <a href="services.html">Discord Bots</a>
+        <a href="services.html">Design &amp; Branding</a>
+        <a href="services.html">Backend &amp; APIs</a>
+        <a href="services.html">Hosting</a>
       </div>
 
       <div class="footer-col">
         <h4>Company</h4>
-        <a href="#work">Work</a>
+        <a href="work.html">Work</a>
         <a href="pricing.html">Pricing</a>
         <a href="about.html">About</a>
         <a href="faq.html">FAQ</a>
@@ -606,25 +594,41 @@
 
       <div class="footer-col">
         <h4>Connect</h4>
-        <a href="https://discord.gg/g53hhDu2tJ" target="_blank" rel="noopener">Discord</a>
-        <a href="https://www.instagram.com/nexifing/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://wa.me/201202000210" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://discord.gg/g53hhDu2tJ" target="_blank" rel="noopener noreferrer">Discord</a>
+        <a href="https://www.instagram.com/nexifing/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://wa.me/201202000210" target="_blank" rel="noopener noreferrer">WhatsApp</a>
       </div>
 
     </div>
 
     <div class="footer-bottom">
-      <span>© <span data-year>2025</span> NEXIFING — ALL RIGHTS RESERVED</span>
+      <span>© <span data-year>2025</span> NEXIFING — All rights reserved</span>
 
-      <a href="https://7az3ma7m3dm-oss.github.io/nexifing/" class="powered-by" target="_self" aria-label="Powered by NEXIFING">
-        <span>Powered by</span>
-        <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
-        <span class="powered-by-name">NEXIFING</span>
-      </a>
+      <div class="powered-by-wrap">
+        <span class="powered-by-text">Powered by</span>
+        <a href="https://7az3ma7m3dm-oss.github.io/nexifing/"
+           class="powered-by-logo"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="NEXIFING">
+          <img
+            src="nexifing-logo.png"
+            alt="NEXIFING"
+            onerror="this.style.display='none'"
+            width="20"
+            height="20">
+        </a>
+      </div>
     </div>
+
   </div>
 </footer>
 
-<script src="script.js"></script>
+
+<!-- ==========================================================================
+     09. SCRIPTS
+     ========================================================================== -->
+<script src="script.js" defer></script>
+
 </body>
 </html>
