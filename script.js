@@ -31,26 +31,117 @@
     setTimeout(finish, 4500);
   })();
 
-  /* CURSOR */
+    /* CURSOR — upgraded with glow, trail, states */
   (function () {
     if (isTouch || reducedMotion) return;
-    var dot = $('#cursorDot'), ring = $('#cursorRing');
-    if (!dot || !ring) return;
-    var mouse = { x: innerWidth / 2, y: innerHeight / 2 };
-    var dp = { x: mouse.x, y: mouse.y }, rp = { x: mouse.x, y: mouse.y };
+
+    var dot   = $('#cursorDot');
+    var ring  = $('#cursorRing');
+    var glow  = $('#cursorGlow');
+    var trail = $('#cursorTrail');
+
+    if (!dot || !ring || !glow || !trail) return;
+
+    var mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    var dotPos   = { x: mouse.x, y: mouse.y };
+    var ringPos  = { x: mouse.x, y: mouse.y };
+    var glowPos  = { x: mouse.x, y: mouse.y };
+    var trailPos = { x: mouse.x, y: mouse.y };
+    var lastTrail = 0;
+
     document.body.classList.add('cursor-active');
-    addEventListener('mousemove', function (e) { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+
+    window.addEventListener('mousemove', function (e) {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+
+      // Spawn trail dots as the cursor moves
+      var now = Date.now();
+      if (now - lastTrail > 55) {
+        lastTrail = now;
+        spawnTrail(mouse.x, mouse.y);
+      }
+    }, { passive: true });
+
+    // Track hover targets — links, buttons, inputs
     document.addEventListener('mouseover', function (e) {
-      if (e.target.closest('a,button,.btn,summary,input,textarea,select')) ring.classList.add('hovering');
+      var t = e.target;
+      if (!t.closest) return;
+
+      if (t.closest('a, button, .btn, summary, [role="button"], .work-card, .service')) {
+        document.body.classList.add('cursor-hovering');
+      } else if (t.closest('input, textarea, [contenteditable]')) {
+        document.body.classList.add('cursor-text');
+      }
     });
+
     document.addEventListener('mouseout', function (e) {
-      if (e.target.closest('a,button,.btn,summary,input,textarea,select')) ring.classList.remove('hovering');
+      var t = e.target;
+      if (!t.closest) return;
+
+      if (t.closest('a, button, .btn, summary, [role="button"], .work-card, .service')) {
+        document.body.classList.remove('cursor-hovering');
+      } else if (t.closest('input, textarea, [contenteditable]')) {
+        document.body.classList.remove('cursor-text');
+      }
     });
+
+    // Press state
+    window.addEventListener('mousedown', function () {
+      document.body.classList.add('cursor-pressing');
+    });
+    window.addEventListener('mouseup', function () {
+      document.body.classList.remove('cursor-pressing');
+    });
+
+    // Window enter / leave
+    document.addEventListener('mouseleave', function () {
+      document.body.classList.add('cursor-hidden');
+    });
+    document.addEventListener('mouseenter', function () {
+      document.body.classList.remove('cursor-hidden');
+    });
+
+    // Trail spawning
+    function spawnTrail(x, y) {
+      var t = document.createElement('div');
+      t.className = 'cursor-trail-particle';
+      t.style.cssText =
+        'position:fixed;top:0;left:0;width:8px;height:8px;' +
+        'border-radius:50%;pointer-events:none;z-index:9996;' +
+        'background:radial-gradient(circle,rgba(56,189,248,.7) 0%,rgba(56,189,248,0) 70%);' +
+        'transform:translate(' + (x - 4) + 'px,' + (y - 4) + 'px);' +
+        'transition:opacity .6s ease,transform .6s ease;' +
+        'opacity:1;';
+      document.body.appendChild(t);
+
+      // Fade + drift
+      requestAnimationFrame(function () {
+        t.style.opacity = '0';
+        t.style.transform = 'translate(' + (x - 4) + 'px,' + (y + 8) + 'px) scale(.4)';
+      });
+
+      setTimeout(function () {
+        if (t.parentNode) t.parentNode.removeChild(t);
+      }, 700);
+    }
+
+    // Smooth animation loop
     function loop() {
-      dp.x += (mouse.x - dp.x) * 0.55; dp.y += (mouse.y - dp.y) * 0.55;
-      rp.x += (mouse.x - rp.x) * 0.18; rp.y += (mouse.y - rp.y) * 0.18;
-      dot.style.transform = 'translate(' + dp.x + 'px,' + dp.y + 'px) translate(-50%,-50%)';
-      ring.style.transform = 'translate(' + rp.x + 'px,' + rp.y + 'px) translate(-50%,-50%)';
+      dotPos.x   += (mouse.x - dotPos.x)   * 0.5;
+      dotPos.y   += (mouse.y - dotPos.y)   * 0.5;
+      ringPos.x  += (mouse.x - ringPos.x)  * 0.16;
+      ringPos.y  += (mouse.y - ringPos.y)  * 0.16;
+      glowPos.x  += (mouse.x - glowPos.x)  * 0.08;
+      glowPos.y  += (mouse.y - glowPos.y)  * 0.08;
+      trailPos.x += (mouse.x - trailPos.x) * 0.3;
+      trailPos.y += (mouse.y - trailPos.y) * 0.3;
+
+      dot.style.transform   = 'translate(' + dotPos.x   + 'px,' + dotPos.y   + 'px) translate(-50%,-50%)';
+      ring.style.transform  = 'translate(' + ringPos.x  + 'px,' + ringPos.y  + 'px) translate(-50%,-50%)';
+      glow.style.transform  = 'translate(' + glowPos.x  + 'px,' + glowPos.y  + 'px) translate(-50%,-50%)';
+      trail.style.transform = 'translate(' + trailPos.x + 'px,' + trailPos.y + 'px) translate(-50%,-50%)';
+
       requestAnimationFrame(loop);
     }
     loop();
