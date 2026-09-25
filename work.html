@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#080a14">
 <title>Work — NEXIFING</title>
-<meta name="description" content="Case studies and shipped products from NEXIFING.">
-<meta name="robots" content="index,follow">
+<meta name="description" content="Real projects built by NEXIFING.">
 <link rel="icon" type="image/png" href="favicon.png">
-<link rel="canonical" href="https://7az3ma7m3dm-oss.github.io/nexifing/work.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,171 +14,139 @@
 </head>
 <body>
 
-<header class="header">
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <img src="nexifing-logo.png" alt="" class="loader-logo" onerror="this.style.display='none'">
+    <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+    <div class="loader-text" id="loaderText">LOADING</div>
+  </div>
+</div>
+
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="header" id="header">
   <div class="header-inner wrap">
-    <a href="index.html" class="logo">
-      <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
+    <a href="index.html" class="logo" aria-label="NEXIFING home">
+      <img src="nexifing-logo.png" alt="" onerror="this.style.display='none'">
       <span>NEXIFING</span>
     </a>
-    <nav class="nav" id="nav">
+    <nav class="nav" id="nav" aria-label="Primary">
       <a href="services.html">Services</a>
       <a href="work.html">Work</a>
       <a href="pricing.html">Pricing</a>
       <a href="about.html">About</a>
       <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+        <svg class="theme-icon-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="theme-icon-moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
       <a href="contact.html" class="nav-cta">Start a project</a>
     </nav>
-    <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 
-<main>
+<main id="main">
 
-<section class="page-hero">
-  <div class="page-hero-bg" aria-hidden="true">
+<section class="hero" style="padding:100px 0 60px">
+  <div class="hero-bg" aria-hidden="true">
     <div class="aurora-beam"></div>
     <div class="grid-overlay"></div>
   </div>
-  <div class="wrap page-hero-inner">
-    <a href="index.html" class="back-link">← Back to home</a>
+  <div class="wrap hero-inner">
+    <div class="breadcrumbs"><a href="index.html">Home</a><span class="breadcrumb-sep">/</span><span>Work</span></div>
     <span class="section-label">PORTFOLIO</span>
-    <h1 class="page-hero-title">
-      Things we've<br>
-      <span class="text-gradient">shipped &amp; maintain</span>.
-    </h1>
-    <p class="page-hero-sub">
-      Products we designed, built, and deployed. We only publish what's actually live — no mockups, no "coming soon".
-    </p>
+    <h1 class="hero-title" style="font-size:clamp(2rem,5vw,3.6rem)">Things we've shipped</h1>
+    <p class="hero-sub">A few projects we're proud of.</p>
   </div>
 </section>
 
-<section class="section">
+<section class="section" style="padding-top:40px">
   <div class="wrap">
-    <div class="section-head">
-      <span class="section-label">FEATURED</span>
-      <h2 class="section-title">GameNest</h2>
-      <p class="section-sub">Fortnite digital store for Egypt — instant delivery, admin console, payment verification and real-time order tracking.</p>
-    </div>
+    <div class="work-grid">
 
-    <div class="case-study">
-      <div class="case-visual case-visual-gamenest">
-        <span class="case-tag">E-COMMERCE · GAMING</span>
-        <div class="case-visual-inner">
+      <a href="https://gamenest.shop" target="_blank" rel="noopener" class="work-card work-card-large" data-reveal>
+        <div class="work-visual work-visual-gamenest">
+          <span class="work-tag">E-COMMERCE</span>
           <h3>GAMENEST</h3>
-          <div class="case-live-badge">
-            <span class="case-live-dot"></span>
-            <span>LIVE</span>
-          </div>
+        </div>
+        <div class="work-meta">
+          <h4>GameNest</h4>
+          <p>Fortnite V-Bucks store for Egypt — instant delivery, admin console, payment verification and order tracking.</p>
+          <div class="work-tags"><span>Web Dev</span><span>Firebase</span><span>Admin Panel</span><span>Payments</span></div>
+          <span class="work-link">View live →</span>
+        </div>
+      </a>
+
+      <div class="work-card" data-reveal>
+        <div class="work-visual work-visual-discord">
+          <span class="work-tag">DISCORD</span>
+          <h3>Store Bot</h3>
+        </div>
+        <div class="work-meta">
+          <h4>Custom Discord Bot</h4>
+          <p>Ticket system, order notifications and moderation for a community server.</p>
+          <div class="work-tags"><span>Discord.js</span><span>Node.js</span></div>
+          <span class="work-link work-link-muted">Case study soon</span>
         </div>
       </div>
 
-      <div class="case-body">
-
-        <div class="case-block">
-          <h4>The brief</h4>
-          <p>
-            Build an Egypt-based Fortnite top-up store that could handle real orders end-to-end — V-Bucks, Crew subscriptions, and gifts — with a payment verification flow, an admin console for the owner, and real-time order tracking for customers. No third-party storefront platforms, no shortcuts.
-          </p>
+      <div class="work-card" data-reveal>
+        <div class="work-visual work-visual-brand">
+          <span class="work-tag">BRANDING</span>
+          <h3>Brand Kit</h3>
         </div>
-
-        <div class="case-block">
-          <h4>What we built</h4>
-          <ul class="case-list">
-            <li>Full customer-facing storefront with product catalog, cart, favorites and search</li>
-            <li>Checkout with 3 payment gateways (Vodafone Cash, InstaPay, Telda)</li>
-            <li>Payment proof upload with image storage</li>
-            <li>Order tracking system — customers enter their code, see live status</li>
-            <li>Promo code engine with usage limits and expiry</li>
-            <li>Customer reviews with verified-purchase badges</li>
-            <li>Owner admin console with role-based access (owner / admin / staff)</li>
-            <li>Payment approval workflow: pending → paid → processing → delivered</li>
-            <li>Real-time activity log with every action tracked</li>
-            <li>Deals, bundles and best-sellers automation</li>
-            <li>Support ticket system with staff notifications</li>
-            <li>Firebase backend with strict security rules</li>
-          </ul>
+        <div class="work-meta">
+          <h4>Full Brand Identity</h4>
+          <p>Logo, color system, typography and design guidelines for a small business.</p>
+          <div class="work-tags"><span>Figma</span><span>Design System</span></div>
+          <span class="work-link work-link-muted">Case study soon</span>
         </div>
-
-        <div class="case-block">
-          <h4>Stack</h4>
-          <div class="case-stack">
-            <span>HTML5</span>
-            <span>CSS3</span>
-            <span>Vanilla JS</span>
-            <span>Firebase Auth</span>
-            <span>Firestore</span>
-            <span>Firebase Rules</span>
-            <span>GitHub Pages</span>
-            <span>Custom Domain</span>
-          </div>
-        </div>
-
-        <div class="case-block">
-          <h4>Results</h4>
-          <div class="case-results">
-            <div class="case-result">
-              <div class="case-result-num">5 min</div>
-              <div class="case-result-label">Avg delivery time</div>
-            </div>
-            <div class="case-result">
-              <div class="case-result-num">100%</div>
-              <div class="case-result-label">Manual approval</div>
-            </div>
-            <div class="case-result">
-              <div class="case-result-num">0</div>
-              <div class="case-result-label">Downtime since launch</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="case-actions">
-          <a href="https://gamenest.shop" target="_blank" rel="noopener" class="btn btn-primary">View live →</a>
-        </div>
-
       </div>
-    </div>
-  </div>
-</section>
 
-<section class="section section-alt">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-label">OTHER WORK</span>
-      <h2 class="section-title">Selected projects</h2>
-      <p class="section-sub">A mix of internal tools and reusable building blocks we've shipped with.</p>
-    </div>
+      <div class="work-card" data-reveal>
+        <div class="work-visual work-visual-tool">
+          <span class="work-tag">TOOLING</span>
+          <h3>Deploy Kit</h3>
+        </div>
+        <div class="work-meta">
+          <h4>Static Deploy Pipeline</h4>
+          <p>Internal tool that pushes static sites to GitHub Pages and Vercel with a single command.</p>
+          <div class="work-tags"><span>Node.js</span><span>DevOps</span></div>
+          <span class="work-link work-link-muted">Internal tool</span>
+        </div>
+      </div>
 
-    <div class="project-grid">
+      <div class="work-card" data-reveal>
+        <div class="work-visual work-visual-dash">
+          <span class="work-tag">SAAS</span>
+          <h3>Admin Kit</h3>
+        </div>
+        <div class="work-meta">
+          <h4>Reusable Admin Dashboard</h4>
+          <p>Charts, tables, filters and role-based permissions. Foundation for the GameNest console.</p>
+          <div class="work-tags"><span>Vanilla JS</span><span>Auth</span></div>
+          <span class="work-link work-link-muted">Internal tool</span>
+        </div>
+      </div>
 
-      <article class="project-card">
-        <div class="project-visual" style="background:linear-gradient(135deg,#080a14,#0f1d4a)">
-          <span class="project-tag">INTERNAL</span>
-          <h3>Deploy pipeline</h3>
+      <div class="work-card work-card-cta" data-reveal>
+        <div class="work-visual work-visual-cta">
+          <span class="work-tag">YOUR PROJECT</span>
+          <h3>What's next?</h3>
         </div>
-        <div class="project-meta">
-          <h4>Static deploy pipeline</h4>
-          <p>Internal workflow that pushes static sites to GitHub Pages and Vercel with one command. Handles DNS, SSL, and cache purge.</p>
-          <div class="project-tags">
-            <span>Node.js</span><span>DevOps</span><span>CI/CD</span>
-          </div>
+        <div class="work-meta">
+          <h4>Start something</h4>
+          <p>We take a limited number of projects per quarter. If you're building something and need a partner, let's talk.</p>
+          <a href="contact.html" class="work-link">Get in touch →</a>
         </div>
-      </article>
-
-      <article class="project-card">
-        <div class="project-visual" style="background:linear-gradient(135deg,#060f14,#0a1a2a)">
-          <span class="project-tag">INTERNAL</span>
-          <h3>Admin dashboard kit</h3>
-        </div>
-        <div class="project-meta">
-          <h4>Reusable dashboard starter</h4>
-          <p>Charts, tables, filters, and role-based permissions. Used as the foundation for GameNest's owner console.</p>
-          <div class="project-tags">
-            <span>Vanilla JS</span><span>Charts</span><span>Auth</span>
-          </div>
-        </div>
-      </article>
+      </div>
 
     </div>
   </div>
@@ -188,11 +154,12 @@
 
 <section class="cta">
   <div class="wrap cta-inner">
-    <h2>Want to be next?</h2>
-    <p>Tell us what you're building. We'll reply within 24 hours with a plan and a price.</p>
+    <span class="section-label">NEXT</span>
+    <h2 class="cta-title">Your project could be here.</h2>
+    <p>Tell us what you're building. We reply within 24 hours.</p>
     <div class="cta-actions">
       <a href="contact.html" class="btn btn-primary">Start a project</a>
-      <a href="services.html" class="btn btn-ghost">See services</a>
+      <a href="pricing.html" class="btn btn-ghost">See pricing</a>
     </div>
   </div>
 </section>
@@ -203,48 +170,42 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="logo">
-          <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
-          <span>NEXIFING</span>
-        </a>
-        <p>Web development, backend systems, hosting and cloud storage — for businesses that need more than a template.</p>
-        <div class="footer-status">
-          <span class="status-dot"></span>
-          <span>Available for new projects</span>
-        </div>
+        <a href="index.html" class="logo"><img src="nexifing-logo.png" alt="" onerror="this.style.display='none'"><span>NEXIFING</span></a>
+        <p>Digital studio building websites, Discord bots, branding and digital solutions.</p>
+        <div class="footer-status"><span class="status-dot"></span><span>Available for projects</span></div>
       </div>
-      <div class="footer-col">
-        <h4>Services</h4>
+      <div class="footer-col"><h4>Services</h4>
         <a href="services.html">Web Development</a>
+        <a href="services.html">Discord Bots</a>
+        <a href="services.html">Design &amp; Branding</a>
         <a href="services.html">Backend &amp; APIs</a>
         <a href="services.html">Hosting</a>
-        <a href="services.html">Servers</a>
-        <a href="services.html">Maintenance</a>
       </div>
-      <div class="footer-col">
-        <h4>Company</h4>
+      <div class="footer-col"><h4>Company</h4>
         <a href="work.html">Work</a>
         <a href="pricing.html">Pricing</a>
         <a href="about.html">About</a>
         <a href="faq.html">FAQ</a>
         <a href="contact.html">Contact</a>
       </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
+      <div class="footer-col"><h4>Legal</h4>
         <a href="terms.html">Terms of Service</a>
         <a href="privacy.html">Privacy Policy</a>
       </div>
-      <div class="footer-col">
-        <h4>Connect</h4>
-        <a href="https://7az3ma7m3dm-oss.github.io/GameNest_website/" target="_blank" rel="noopener">GameNest</a>
-        <a href="https://wa.me/201202000210" target="_blank" rel="noopener">WhatsApp</a>
+      <div class="footer-col"><h4>Connect</h4>
         <a href="https://discord.gg/g53hhDu2tJ" target="_blank" rel="noopener">Discord</a>
-        <a href="https://www.instagram.com/nexifing/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.instagram.com/nexifing/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://wa.me/201202000210" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span data-year>2025</span> NEXIFING — ALL RIGHTS RESERVED</span>
-      <span>Design &amp; build by NEXIFING</span>
+      <span>© <span data-year>2025</span> NEXIFING — All rights reserved</span>
+      <div class="powered-by-wrap">
+        <span class="powered-by-text">Powered by</span>
+        <a href="https://7az3ma7m3dm-oss.github.io/nexifing/" class="powered-by-logo" target="_blank" rel="noopener" aria-label="NEXIFING">
+          <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
+        </a>
+      </div>
     </div>
   </div>
 </footer>
