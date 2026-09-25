@@ -3239,3 +3239,214 @@ body.scroll-locked{overflow:hidden}
 /* ==========================================================================
    57. END
    ========================================================================== */
+/* ==========================================================================
+   PROCESS
+   ========================================================================== */
+.process-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+.process-step{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:32px 28px;
+  transition:all .3s var(--ease);
+  position:relative;
+}
+.process-step:hover{
+  border-color:var(--border-3);
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-lg);
+}
+.process-num{
+  font-family:var(--font-display);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.16em;
+  color:var(--ember);
+  display:inline-block;
+  padding:4px 12px;
+  background:var(--aurora-soft);
+  border:1px solid rgba(56,189,248,.22);
+  border-radius:var(--radius-pill);
+  margin-bottom:20px;
+}
+.process-step h3{
+  font-size:1.1rem;
+  font-weight:700;
+  margin-bottom:10px;
+  letter-spacing:-.01em;
+}
+.process-step p{
+  color:var(--text-3);
+  font-size:14px;
+  line-height:1.7;
+}
+
+/* ==========================================================================
+   NUMBERS
+   ========================================================================== */
+.numbers-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+.number-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:32px 28px;
+  transition:all .3s var(--ease);
+  position:relative;
+  overflow:hidden;
+}
+.number-card::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;
+  height:1px;
+  background:var(--aurora-h);
+  opacity:0;
+  transition:opacity .3s var(--ease);
+}
+.number-card:hover{
+  border-color:var(--border-3);
+  transform:translateY(-4px);
+}
+.number-card:hover::before{opacity:1}
+.number-big{
+  font-family:var(--font-display);
+  font-size:clamp(2rem,3.5vw,2.6rem);
+  font-weight:600;
+  letter-spacing:-.04em;
+  line-height:1;
+  background:var(--aurora);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+  margin-bottom:14px;
+}
+.number-label{
+  font-size:12px;
+  font-weight:600;
+  color:var(--text-2);
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  margin-bottom:12px;
+  line-height:1.4;
+}
+.number-desc{
+  font-size:13.5px;
+  color:var(--text-4);
+  line-height:1.7;
+}
+
+/* ==========================================================================
+   INDUSTRIES
+   ========================================================================== */
+.industries-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.industry{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:32px 28px;
+  transition:all .3s var(--ease);
+  position:relative;
+  overflow:hidden;
+}
+.industry::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:32px;
+  right:32px;
+  height:1px;
+  background:var(--aurora-h);
+  opacity:0;
+  transition:opacity .3s var(--ease);
+}
+.industry:hover{
+  border-color:var(--border-3);
+  transform:translateY(-4px);
+}
+.industry:hover::after{opacity:.6}
+.industry h3{
+  font-size:1.05rem;
+  font-weight:700;
+  margin-bottom:10px;
+  letter-spacing:-.01em;
+}
+.industry p{
+  color:var(--text-3);
+  font-size:14px;
+  line-height:1.7;
+}
+
+/* ==========================================================================
+   TECH STACK
+   ========================================================================== */
+.tech-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:32px;
+}
+.tech-group h4{
+  font-family:var(--font-display);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ember);
+  margin-bottom:20px;
+  padding-bottom:14px;
+  border-bottom:1px solid var(--border);
+}
+.tech-group ul{
+  display:grid;
+  gap:12px;
+}
+.tech-group li{
+  font-size:14.5px;
+  color:var(--text-3);
+  padding-left:18px;
+  position:relative;
+  transition:color .2s var(--ease);
+}
+.tech-group li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:10px;
+  width:8px;
+  height:1px;
+  background:var(--text-5);
+  transition:background .2s var(--ease),width .2s var(--ease);
+}
+.tech-group li:hover{color:var(--text)}
+.tech-group li:hover::before{background:var(--ember);width:12px}
+
+/* ==========================================================================
+   RESPONSIVE — new sections
+   ========================================================================== */
+@media(max-width:1024px){
+  .process-grid,
+  .numbers-grid{grid-template-columns:repeat(2,1fr)}
+  .industries-grid{grid-template-columns:repeat(2,1fr)}
+  .tech-grid{grid-template-columns:repeat(2,1fr);gap:24px}
+}
+@media(max-width:640px){
+  .process-grid,
+  .numbers-grid,
+  .industries-grid,
+  .tech-grid{grid-template-columns:1fr}
+  .process-step,
+  .number-card,
+  .industry{padding:26px 22px}
+}
