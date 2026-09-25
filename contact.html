@@ -29,16 +29,15 @@
 
 <header class="header" id="header">
   <div class="header-inner wrap">
-    <a href="index.html" class="logo" aria-label="NEXIFING home">
+    <a href="index.html" class="logo">
       <img src="nexifing-logo.png" alt="" onerror="this.style.display='none'">
       <span>NEXIFING</span>
     </a>
-    <nav class="nav" id="nav" aria-label="Primary">
+    <nav class="nav" id="nav">
       <a href="services.html">Services</a>
       <a href="work.html">Work</a>
       <a href="pricing.html">Pricing</a>
       <a href="about.html">About</a>
-      <a href="faq.html">FAQ</a>
       <a href="contact.html">Contact</a>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
         <svg class="theme-icon-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
@@ -54,13 +53,12 @@
 
 <main id="main">
 
-<section class="hero" style="padding:100px 0 60px">
+<section class="hero" style="padding:80px 0 40px">
   <div class="hero-bg" aria-hidden="true">
     <div class="aurora-beam"></div>
     <div class="grid-overlay"></div>
   </div>
   <div class="wrap hero-inner">
-    <div class="breadcrumbs"><a href="index.html">Home</a><span class="breadcrumb-sep">/</span><span>Contact</span></div>
     <span class="section-label">GET IN TOUCH</span>
     <h1 class="hero-title" style="font-size:clamp(2rem,5vw,3.6rem)">Tell us what you're building.</h1>
     <p class="hero-sub">Fill in the form and we'll reply within 24 hours with next steps and a price.</p>
@@ -70,36 +68,23 @@
 <section class="section" style="padding-top:40px">
   <div class="wrap wrap-narrow">
     <form class="contact-form" novalidate>
-      <div class="form-field">
-        <label for="cf-name">Your name</label>
-        <input id="cf-name" name="name" type="text" placeholder="Adam Mohamed" required>
-      </div>
-      <div class="form-field">
-        <label for="cf-email">Email address</label>
-        <input id="cf-email" name="email" type="email" placeholder="you@example.com" required>
-      </div>
-      <div class="form-field">
-        <label for="cf-service">What do you need?</label>
-        <div class="select-wrap">
-          <select id="cf-service" name="service">
-            <option value="">Select a service</option>
-            <option>Web Development</option>
-            <option>Discord Bots</option>
-            <option>Design &amp; Branding</option>
-            <option>Backend &amp; APIs</option>
-            <option>Hosting &amp; Deployment</option>
-            <option>Maintenance &amp; Support</option>
-            <option>Other</option>
-          </select>
+      <div class="service" style="padding:36px 32px">
+        <div style="margin-bottom:20px">
+          <label for="cf-name" style="display:block;font-family:var(--font-display);font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-4);margin-bottom:10px">Your name</label>
+          <input id="cf-name" name="name" type="text" placeholder="Adam Mohamed" required style="width:100%;padding:14px 20px;background:var(--canvas-2);border:1px solid var(--border-2);border-radius:var(--radius);color:var(--text);font-size:14.5px">
         </div>
-      </div>
-      <div class="form-field">
-        <label for="cf-message">Project details</label>
-        <textarea id="cf-message" name="message" placeholder="Tell us about the project — timeline, budget range, anything that helps us understand what you're trying to build." required></textarea>
-      </div>
-      <div class="form-actions">
-        <button type="submit" class="btn btn-primary">Send message</button>
-        <p class="form-note">We'll only use your details to reply. No newsletters, no third parties, no spam.</p>
+        <div style="margin-bottom:20px">
+          <label for="cf-email" style="display:block;font-family:var(--font-display);font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-4);margin-bottom:10px">Email address</label>
+          <input id="cf-email" name="email" type="email" placeholder="you@example.com" required style="width:100%;padding:14px 20px;background:var(--canvas-2);border:1px solid var(--border-2);border-radius:var(--radius);color:var(--text);font-size:14.5px">
+        </div>
+        <div style="margin-bottom:20px">
+          <label for="cf-message" style="display:block;font-family:var(--font-display);font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-4);margin-bottom:10px">Project details</label>
+          <textarea id="cf-message" name="message" placeholder="Tell us about the project — timeline, budget range, anything that helps us understand what you're trying to build." required style="width:100%;padding:14px 20px;background:var(--canvas-2);border:1px solid var(--border-2);border-radius:var(--radius);color:var(--text);font-size:14.5px;min-height:160px;resize:vertical;font-family:var(--font-body);line-height:1.7"></textarea>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:8px">
+          <button type="submit" class="btn btn-primary">Send message</button>
+          <p class="form-note" style="font-family:var(--font-display);font-size:12px;letter-spacing:.04em;color:var(--text-4);flex:1">We'll only use your details to reply. No newsletters, no third parties, no spam.</p>
+        </div>
       </div>
     </form>
   </div>
@@ -108,9 +93,10 @@
 <section class="section section-alt">
   <div class="wrap">
     <div class="section-head section-head-center">
-      <span class="section-label">OTHER WAYS TO REACH US</span>
-      <h2 class="section-title">Direct channels</h2>
+      <span class="section-label">DIRECT CHANNELS</span>
+      <h2 class="section-title">Other ways to reach us</h2>
     </div>
+
     <div class="services-grid">
       <a href="https://wa.me/201202000210" target="_blank" rel="noopener" class="service" data-reveal>
         <h3>WhatsApp</h3>
@@ -132,8 +118,8 @@
 </section>
 
 <section class="section">
-  <div class="wrap wrap-narrow">
-    <div class="section-head">
+  <div class="wrap">
+    <div class="section-head section-head-center">
       <span class="section-label">WHAT HAPPENS NEXT</span>
       <h2 class="section-title">The process</h2>
     </div>
