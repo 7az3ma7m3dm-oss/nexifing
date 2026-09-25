@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#080a14">
 <title>FAQ — NEXIFING</title>
-<meta name="description" content="Frequently asked questions about working with NEXIFING — pricing, timeline, payments, ownership, and support.">
-<meta name="robots" content="index,follow">
+<meta name="description" content="Frequently asked questions about working with NEXIFING.">
 <link rel="icon" type="image/png" href="favicon.png">
-<link rel="canonical" href="https://7az3ma7m3dm-oss.github.io/nexifing/faq.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,10 +14,23 @@
 </head>
 <body>
 
-<header class="header">
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <img src="nexifing-logo.png" alt="" class="loader-logo" onerror="this.style.display='none'">
+    <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+    <div class="loader-text" id="loaderText">LOADING</div>
+  </div>
+</div>
+
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="header" id="header">
   <div class="header-inner wrap">
     <a href="index.html" class="logo">
-      <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
+      <img src="nexifing-logo.png" alt="" onerror="this.style.display='none'">
       <span>NEXIFING</span>
     </a>
     <nav class="nav" id="nav">
@@ -27,222 +38,99 @@
       <a href="work.html">Work</a>
       <a href="pricing.html">Pricing</a>
       <a href="about.html">About</a>
-      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+        <svg class="theme-icon-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="theme-icon-moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
       <a href="contact.html" class="nav-cta">Start a project</a>
     </nav>
-    <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 
-<main>
+<main id="main">
 
-<section class="page-hero">
-  <div class="page-hero-bg" aria-hidden="true">
+<section class="hero" style="padding:80px 0 40px">
+  <div class="hero-bg" aria-hidden="true">
     <div class="aurora-beam"></div>
     <div class="grid-overlay"></div>
   </div>
-  <div class="wrap page-hero-inner">
-    <a href="index.html" class="back-link">← Back to home</a>
+  <div class="wrap hero-inner">
     <span class="section-label">FAQ</span>
-    <h1 class="page-hero-title">
-      Questions,<br>
-      <span class="text-gradient">answered honestly</span>.
-    </h1>
-    <p class="page-hero-sub">
-      Everything you'd want to know before starting a project with us. If something isn't here, message us on WhatsApp or Discord.
-    </p>
+    <h1 class="hero-title" style="font-size:clamp(2rem,5vw,3.6rem)">Common questions</h1>
+    <p class="hero-sub">Everything you might want to know before starting a project.</p>
   </div>
 </section>
 
-<section class="section">
+<section class="section" style="padding-top:40px">
   <div class="wrap wrap-narrow">
-    <div class="section-head">
-      <span class="section-label">PRICING &amp; PAYMENT</span>
-      <h2 class="section-title">Money questions</h2>
-    </div>
-
     <div class="faq">
-      <details open>
-        <summary>How much does a project cost?</summary>
-        <p>It depends on scope. A landing page starts around 3,000 EGP. A full web application with a backend and admin panel usually starts at 15,000 EGP. We'll give you a fixed quote after the first conversation — no hourly billing, no surprises.</p>
-      </details>
-      <details>
-        <summary>How do payments work?</summary>
-        <p>Typically 50% up front, 50% on delivery. For larger projects we split into 3–4 milestones, each tied to a specific deliverable you can see and approve.</p>
-      </details>
-      <details>
-        <summary>What payment methods do you accept?</summary>
-        <p>InstaPay, Vodafone Cash, bank transfer (Egyptian banks), and crypto (USDT / BTC) for international clients.</p>
-      </details>
-      <details>
-        <summary>Is the first consultation free?</summary>
-        <p>Yes. The first call or message thread is free. We discuss your project, tell you roughly what it costs, and you decide whether to proceed.</p>
-      </details>
-      <details>
-        <summary>Are prices negotiable?</summary>
-        <p>Prices are already set to be fair for the scope. If your budget is lower, we can discuss a smaller scope — but we don't discount the same work.</p>
-      </details>
-      <details>
-        <summary>What if the project goes over budget?</summary>
-        <p>It can't. The quote is fixed. If scope changes, we discuss the addition, quote it, and get written approval before we touch it. No surprise bills.</p>
-      </details>
-    </div>
-  </div>
-</section>
 
-<section class="section section-alt">
-  <div class="wrap wrap-narrow">
-    <div class="section-head">
-      <span class="section-label">TIMELINE &amp; PROCESS</span>
-      <h2 class="section-title">How long it takes</h2>
-    </div>
+      <details>
+        <summary>How much does a website cost?</summary>
+        <p>Starter landing pages start at 3,000 EGP (~$60 USD). Full multi-page sites with admin panels start at 8,000 EGP. Full-stack builds start at 15,000 EGP. Every project gets a fixed quote before we start.</p>
+      </details>
 
-    <div class="faq">
       <details>
-        <summary>How long does a project take?</summary>
-        <p>Landing pages: 3–7 days. Full websites: 2–4 weeks. Complex apps: 4–8 weeks. We agree on a timeline up front and stick to it. If something changes, you hear it from us first.</p>
+        <summary>How long does it take?</summary>
+        <p>Landing pages: 3–7 days. Multi-page sites: 1–2 weeks. Full applications: 2–4 weeks. Timelines are agreed upfront and rarely slip.</p>
       </details>
-      <details>
-        <summary>What if I need changes during the project?</summary>
-        <p>Minor changes are included. Major scope additions are quoted separately and agreed before we start them — so there are no surprise bills at the end.</p>
-      </details>
-      <details>
-        <summary>Can you work on a tight deadline?</summary>
-        <p>Sometimes. Tell us the deadline up front and we'll be honest about whether it's realistic. We'd rather tell you it can't be done than ship broken software.</p>
-      </details>
-      <details>
-        <summary>How will we communicate during the project?</summary>
-        <p>Whatever works best for you — WhatsApp, Discord, or email. You get updates at every milestone, and you can ask questions any time. No account managers, no middlemen.</p>
-      </details>
-    </div>
-  </div>
-</section>
 
-<section class="section">
-  <div class="wrap wrap-narrow">
-    <div class="section-head">
-      <span class="section-label">OWNERSHIP &amp; SECURITY</span>
-      <h2 class="section-title">Who owns what</h2>
-    </div>
-
-    <div class="faq">
       <details>
         <summary>Do I own the code?</summary>
-        <p>Always. Everything we build is yours — the source code, the deployment, the domain. We just help you get it live and keep it running. No lock-in, no proprietary platforms, no ransom for access.</p>
+        <p>Yes. 100%. You get the full source code, database access and hosting credentials on final delivery. No lock-in, no subscriptions to us.</p>
       </details>
-      <details>
-        <summary>Do you sign NDAs?</summary>
-        <p>Yes, on request. If your project involves sensitive information, we'll sign an NDA before any details are shared.</p>
-      </details>
-      <details>
-        <summary>How do you handle security?</summary>
-        <p>Every server is hardened, every API is authenticated, every secret is rotated. We follow standard security practices — encrypted connections, rate limiting, and strict access control. We treat your data like it's ours.</p>
-      </details>
-      <details>
-        <summary>Where is my data stored?</summary>
-        <p>Depends on the project. Most of our backends run on Firebase / Firestore (Google Cloud), with additional servers on Hetzner or DigitalOcean. You own all the accounts — we just configure them.</p>
-      </details>
-    </div>
-  </div>
-</section>
 
-<section class="section section-alt">
-  <div class="wrap wrap-narrow">
-    <div class="section-head">
-      <span class="section-label">SUPPORT &amp; DELIVERY</span>
-      <h2 class="section-title">After launch</h2>
-    </div>
+      <details>
+        <summary>What if something breaks after launch?</summary>
+        <p>You get 30 days of free bug fixes after launch. After that, we offer optional monthly maintenance plans starting at 1,500 EGP.</p>
+      </details>
 
-    <div class="faq">
       <details>
-        <summary>What happens after the project is delivered?</summary>
-        <p>Every project includes 30 days of free bug fixes. After that, we offer optional monthly retainers for updates, monitoring, and support. If you'd rather handle it yourself, we make sure the code is well documented so you can.</p>
+        <summary>Do you work outside Egypt?</summary>
+        <p>Yes. We work with clients worldwide. Pricing is in EGP or USD depending on your location. Communication is English or Arabic.</p>
       </details>
+
       <details>
-        <summary>Do you handle hosting and domains too?</summary>
-        <p>Yes. We configure hosting, connect your domain, set up SSL, and manage deployment. We can host on GitHub Pages, Vercel, Netlify, or a VPS — whichever fits your project best. You own the account, we just help you set it up.</p>
+        <summary>What payment methods do you accept?</summary>
+        <p>Bank transfer, InstaPay, Vodafone Cash and PayPal for international clients. 50% upfront, 50% on delivery.</p>
       </details>
-      <details>
-        <summary>Can you take over a project another developer started?</summary>
-        <p>Yes — we do this often. Send us the codebase or a link to the repo and we'll audit it, tell you what's salvageable and what needs rebuilding, and give you a plan.</p>
-      </details>
+
       <details>
         <summary>Do you offer refunds?</summary>
-        <p>If we fail to deliver what we agreed on, you get a full refund of what's been paid. If you cancel mid-project, you pay only for the work completed up to that point.</p>
+        <p>The 50% deposit covers the work done up to that point and is non-refundable. If you're unhappy at any stage, we'll work with you to fix it before final delivery.</p>
       </details>
-    </div>
-  </div>
-</section>
 
-<section class="section">
-  <div class="wrap wrap-narrow">
-    <div class="section-head">
-      <span class="section-label">TECHNICAL</span>
-      <h2 class="section-title">The technical bit</h2>
-    </div>
+      <details>
+        <summary>Can I see progress while you work?</summary>
+        <p>Yes. You get access to a live preview URL from day one and progress updates every few days. No month-long silence.</p>
+      </details>
 
-    <div class="faq">
       <details>
-        <summary>What stack do you build with?</summary>
-        <p>Mostly React/Next.js on the frontend, Node.js or Firebase on the backend, PostgreSQL or Firestore for data, and deploy to Vercel/Netlify or a Hetzner/DigitalOcean VPS. We'll recommend the right tools for your project, not the trendy ones.</p>
+        <summary>What if I need changes after delivery?</summary>
+        <p>Minor tweaks during the 30-day window are free. Larger changes or new features are quoted separately — usually smaller than the original project.</p>
       </details>
-      <details>
-        <summary>Do you design too, or just build?</summary>
-        <p>Both. We handle logo design, UI/UX, design systems, and brand guidelines — everything from the first sketch to the final pixel. If you already have a designer, we work with their files instead.</p>
-      </details>
-      <details>
-        <summary>Will the site work on mobile?</summary>
-        <p>Yes — every project is mobile-first. We test on real devices, not just the browser's responsive mode. If it looks broken on a phone, it isn't finished.</p>
-      </details>
-      <details>
-        <summary>Will it be SEO-friendly?</summary>
-        <p>Yes. Every site we build includes proper semantic HTML, meta tags, sitemap, robots.txt, and fast load times. For deeper SEO work (content strategy, keyword research), we can quote separately.</p>
-      </details>
-      <details>
-        <summary>What about performance?</summary>
-        <p>We target Lighthouse scores of 90+ on every metric. Fast load times are non-negotiable — slow sites lose customers.</p>
-      </details>
-    </div>
-  </div>
-</section>
 
-<section class="section section-alt">
-  <div class="wrap wrap-narrow">
-    <div class="section-head">
-      <span class="section-label">WORKING WITH US</span>
-      <h2 class="section-title">Getting started</h2>
-    </div>
+      <details>
+        <summary>Do you sign NDAs?</summary>
+        <p>Yes, on request. Just mention it in your initial message and we'll sort it before any details are shared.</p>
+      </details>
 
-    <div class="faq">
-      <details>
-        <summary>Do you work with clients outside Egypt?</summary>
-        <p>Yes. We work with clients across the Middle East and worldwide. Communication is in English or Arabic, whichever you prefer.</p>
-      </details>
-      <details>
-        <summary>What if my project is unusual or complex?</summary>
-        <p>We like unusual. Tell us what you're thinking — even if it's not a standard website or app. If we can build it, we'll say so. If we can't, we'll point you at someone who can.</p>
-      </details>
-      <details>
-        <summary>What's the minimum project size?</summary>
-        <p>The smallest thing we take on is a single landing page (starting around 3,000 EGP). Below that, we're not the right fit — you'd be better off with a template builder.</p>
-      </details>
-      <details>
-        <summary>How do I get started?</summary>
-        <p>Send us a message using the <a href="contact.html">contact form</a>, or reach out on WhatsApp or Discord. Tell us what you're building, your timeline, and your budget range. We'll reply within 24 hours with next steps.</p>
-      </details>
     </div>
   </div>
 </section>
 
 <section class="cta">
   <div class="wrap cta-inner">
-    <h2>Still have questions?</h2>
-    <p>Message us directly. We'll answer within a few hours.</p>
+    <span class="section-label">STILL HAVE QUESTIONS?</span>
+    <h2 class="cta-title">Ask us directly.</h2>
+    <p>We reply within 24 hours. No sales pitch, just answers.</p>
     <div class="cta-actions">
-      <a href="https://wa.me/201202000210" target="_blank" rel="noopener" class="btn btn-primary">WhatsApp us</a>
-      <a href="contact.html" class="btn btn-ghost">Send a brief</a>
+      <a href="contact.html" class="btn btn-primary">Contact us</a>
+      <a href="pricing.html" class="btn btn-ghost">See pricing</a>
     </div>
   </div>
 </section>
@@ -253,48 +141,42 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="logo">
-          <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
-          <span>NEXIFING</span>
-        </a>
-        <p>Web development, backend systems, hosting and cloud storage — for businesses that need more than a template.</p>
-        <div class="footer-status">
-          <span class="status-dot"></span>
-          <span>Available for new projects</span>
-        </div>
+        <a href="index.html" class="logo"><img src="nexifing-logo.png" alt="" onerror="this.style.display='none'"><span>NEXIFING</span></a>
+        <p>Digital studio building websites, Discord bots, branding and digital solutions.</p>
+        <div class="footer-status"><span class="status-dot"></span><span>Available for projects</span></div>
       </div>
-      <div class="footer-col">
-        <h4>Services</h4>
+      <div class="footer-col"><h4>Services</h4>
         <a href="services.html">Web Development</a>
+        <a href="services.html">Discord Bots</a>
+        <a href="services.html">Design &amp; Branding</a>
         <a href="services.html">Backend &amp; APIs</a>
         <a href="services.html">Hosting</a>
-        <a href="services.html">Servers</a>
-        <a href="services.html">Maintenance</a>
       </div>
-      <div class="footer-col">
-        <h4>Company</h4>
+      <div class="footer-col"><h4>Company</h4>
         <a href="work.html">Work</a>
         <a href="pricing.html">Pricing</a>
         <a href="about.html">About</a>
         <a href="faq.html">FAQ</a>
         <a href="contact.html">Contact</a>
       </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
+      <div class="footer-col"><h4>Legal</h4>
         <a href="terms.html">Terms of Service</a>
         <a href="privacy.html">Privacy Policy</a>
       </div>
-      <div class="footer-col">
-        <h4>Connect</h4>
-        <a href="https://7az3ma7m3dm-oss.github.io/GameNest_website/" target="_blank" rel="noopener">GameNest</a>
-        <a href="https://wa.me/201202000210" target="_blank" rel="noopener">WhatsApp</a>
+      <div class="footer-col"><h4>Connect</h4>
         <a href="https://discord.gg/g53hhDu2tJ" target="_blank" rel="noopener">Discord</a>
-        <a href="https://www.instagram.com/nexifing/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.instagram.com/nexifing/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://wa.me/201202000210" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span data-year>2025</span> NEXIFING — ALL RIGHTS RESERVED</span>
-      <span>Design &amp; build by NEXIFING</span>
+      <span>© <span data-year>2025</span> NEXIFING — All rights reserved</span>
+      <div class="powered-by-wrap">
+        <span class="powered-by-text">Powered by</span>
+        <a href="https://7az3ma7m3dm-oss.github.io/nexifing/" class="powered-by-logo" target="_blank" rel="noopener" aria-label="NEXIFING">
+          <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
+        </a>
+      </div>
     </div>
   </div>
 </footer>
