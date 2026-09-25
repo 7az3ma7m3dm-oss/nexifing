@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#080a14">
 <title>About — NEXIFING</title>
-<meta name="description" content="NEXIFING is a small Egypt-based development studio founded by Hazem and Eyad. We build websites, backends, hosting, and infrastructure.">
-<meta name="robots" content="index,follow">
+<meta name="description" content="NEXIFING is a development studio based in Egypt, founded by Hazem and Eyad. We build websites, backends and infrastructure end-to-end.">
 <link rel="icon" type="image/png" href="favicon.png">
-<link rel="canonical" href="https://7az3ma7m3dm-oss.github.io/nexifing/about.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,83 +14,106 @@
 </head>
 <body>
 
-<header class="header">
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <img src="nexifing-logo.png" alt="" class="loader-logo" onerror="this.style.display='none'">
+    <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+    <div class="loader-text" id="loaderText">LOADING</div>
+  </div>
+</div>
+
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="header" id="header">
   <div class="header-inner wrap">
-    <a href="index.html" class="logo">
-      <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
+    <a href="index.html" class="logo" aria-label="NEXIFING home">
+      <img src="nexifing-logo.png" alt="" onerror="this.style.display='none'">
       <span>NEXIFING</span>
     </a>
-    <nav class="nav" id="nav">
+    <nav class="nav" id="nav" aria-label="Primary">
       <a href="services.html">Services</a>
       <a href="work.html">Work</a>
       <a href="pricing.html">Pricing</a>
       <a href="about.html">About</a>
       <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+        <svg class="theme-icon-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="theme-icon-moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
       <a href="contact.html" class="nav-cta">Start a project</a>
     </nav>
-    <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 
-<main>
+<main id="main">
 
-<section class="page-hero">
-  <div class="page-hero-bg" aria-hidden="true">
+<!-- HERO -->
+<section class="hero" style="padding:100px 0 60px">
+  <div class="hero-bg" aria-hidden="true">
     <div class="aurora-beam"></div>
     <div class="grid-overlay"></div>
   </div>
-  <div class="wrap page-hero-inner">
-    <a href="index.html" class="back-link">← Back to home</a>
-    <span class="section-label">ABOUT</span>
-    <h1 class="page-hero-title">
-      A small studio<br>
-      with <span class="text-gradient">big standards</span>.
-    </h1>
-    <p class="page-hero-sub">
-      NEXIFING is a development studio based in Egypt, founded by Hazem and Eyad. We build websites, backends, and infrastructure — end to end.
+  <div class="wrap hero-inner">
+    <div class="breadcrumbs">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">/</span>
+      <span>About</span>
+    </div>
+    <span class="section-label">ABOUT US</span>
+    <h1 class="hero-title" style="font-size:clamp(2rem,5vw,3.6rem)">A small studio<br>with <span class="grad">big standards</span>.</h1>
+    <p class="hero-sub">
+      NEXIFING is a development studio based in Egypt, founded by
+      Hazem and Eyad. We build websites, backends and infrastructure — end to end.
     </p>
   </div>
 </section>
 
-<!-- ============================================================
-     STORY
-     ============================================================ -->
-<section class="section">
-  <div class="wrap">
-    <div class="about-story">
-      <div class="about-story-label">
-        <span class="section-label">01 — STORY</span>
-      </div>
-      <div class="about-story-content">
-        <p class="about-lead">
-          NEXIFING started because I was tired of watching good ideas fail behind bad code.
-        </p>
-        <p>
-          Businesses would come to me with beautiful designs and broken backends — or solid infrastructure and ugly frontends. They'd hired one agency for the design, another for the code, a third for the hosting, and then spent months chasing everyone when something broke.
-        </p>
-        <p>
-          So I decided to do all of it. Design, code, deploy, maintain. One team, one standard, end to end. No handoffs. No "that's not our department." No excuses when things go wrong — because there is no other department to blame.
-        </p>
-        <p>
-          Today I work with gaming platforms, small businesses, and startups across Egypt and the wider Middle East. I take a limited number of projects per quarter, because fewer clients means more time on each — and a finished product instead of a half-built mess.
-        </p>
-        <p>
-          If you're here, it's probably because you want something built properly — not fast and disposable. That's exactly what I do.
-        </p>
-        <div class="about-signature">
-          <span class="about-signature-line"></span>
-          <span class="about-signature-text">— Eyad &amp; Hazem, Co-Founders</span>
-        </div>
-      </div>
+<!-- STORY -->
+<section class="section" style="padding-top:60px">
+  <div class="wrap wrap-narrow">
+    <div class="section-head">
+      <span class="section-label">01 — STORY</span>
+      <h2 class="section-title">Why we started</h2>
+    </div>
+
+    <div class="about-right" style="max-width:720px">
+      <p class="about-p">
+        NEXIFING started because <strong>Eyad</strong> got tired of watching
+        good ideas fail behind bad code. Businesses would come with a beautiful
+        design and broken backends — or solid infrastructure and ugly frontends.
+        They'd tried one agency for the design, another for the code, a third for
+        the hosting, then spent months chasing everyone when something broke.
+      </p>
+      <p class="about-p">
+        So we decided to do all of it. <strong>Design, code, deploy, maintain.</strong>
+        One team, one standard, end to end. No handoffs. No "that's not our
+        department." No excuses when things go wrong — because there is no other
+        department to blame.
+      </p>
+      <p class="about-p">
+        Today we work with gaming platforms, small businesses and startups across
+        Egypt and the wider Middle East. We take a limited number of projects per
+        quarter, because fewer clients means more time on each — and a finished
+        product instead of a half-built mess.
+      </p>
+      <p class="about-p">
+        If you're here, it's probably because you want something built properly —
+        not fast and disposable. That's exactly what we do.
+      </p>
+
+      <div class="about-link" style="pointer-events:none">— Eyad &amp; Hazem, Co-Founders</div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     TEAM
-     ============================================================ -->
+<!-- TEAM -->
 <section class="section section-alt">
   <div class="wrap">
     <div class="section-head">
@@ -101,224 +122,166 @@
       <p class="section-sub">A small team. Direct communication. Real answers.</p>
     </div>
 
-    <div class="team-grid">
+    <div class="services-grid">
 
-            <div class="team-card">
-        <div class="team-avatar">E</div>
-        <div class="team-info">
-          <h3>Eyad</h3>
-          <div class="team-role">Co-Founder &amp; Lead Developer</div>
-          <p>
-            Full-stack development, infrastructure, and product. Handles the code and the servers — the person you'll talk to first on every project. Based in Egypt, works with clients worldwide.
-          </p>
-          <div class="team-tags">
-            <span>Full-stack</span>
-            <span>DevOps</span>
-            <span>Architecture</span>
-          </div>
-        </div>
-      </div>
+      <article class="service" data-reveal>
+        <div class="testimonial-avatar" style="margin-bottom:20px">E</div>
+        <h3>Eyad</h3>
+        <p style="color:var(--ember);font-family:var(--font-display);font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px">CO-FOUNDER &amp; LEAD DEVELOPER</p>
+        <p>
+          Full-stack development, infrastructure and product. Handles the code
+          and the servers — the person you'll talk to first on every project.
+          Based in Egypt, works with clients worldwide.
+        </p>
+        <ul class="service-list">
+          <li>Full-stack Development</li>
+          <li>Architecture</li>
+          <li>DevOps &amp; Deployment</li>
+          <li>Technical Direction</li>
+        </ul>
+      </article>
 
-      <div class="team-card">
-        <div class="team-avatar">H</div>
-        <div class="team-info">
-          <h3>Hazem</h3>
-          <div class="team-role">Co-Founder</div>
-          <p>
-            Client communication, project coordination, and operations. Your day-to-day contact for updates, timelines, and anything that needs a fast answer.
-          </p>
-          <div class="team-tags">
-            <span>Operations</span>
-            <span>Client Success</span>
-            <span>Coordination</span>
-          </div>
-        </div>
-      </div>
+      <article class="service" data-reveal>
+        <div class="testimonial-avatar" style="margin-bottom:20px">H</div>
+        <h3>Hazem</h3>
+        <p style="color:var(--ember);font-family:var(--font-display);font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px">CO-FOUNDER &amp; DESIGN LEAD</p>
+        <p>
+          Brand, interface and design systems. Makes sure everything you ship
+          looks like it was made by people who cared — because it was.
+        </p>
+        <ul class="service-list">
+          <li>UI / UX Design</li>
+          <li>Brand Identity</li>
+          <li>Design Systems</li>
+          <li>Visual Direction</li>
+        </ul>
+      </article>
 
-      <div class="team-card">
-        <div class="team-avatar">+</div>
-        <div class="team-info">
-          <h3>Extended Collaborators</h3>
-          <div class="team-role">Design &amp; QA (project-based)</div>
-          <p>
-            For projects that need dedicated UI design or additional testing, we bring in trusted collaborators we've worked with before. Same standard, same communication, same ownership.
-          </p>
-          <div class="team-tags">
-            <span>UI Design</span>
-            <span>QA Testing</span>
-            <span>By project</span>
-          </div>
-        </div>
-      </div>
+      <article class="service" data-reveal>
+        <div class="testimonial-avatar" style="margin-bottom:20px">N</div>
+        <h3>NEXIFING</h3>
+        <p style="color:var(--ember);font-family:var(--font-display);font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px">THE STUDIO</p>
+        <p>
+          When a project needs more than two people, we bring in vetted
+          contractors we've worked with before. Same standard, same ownership.
+        </p>
+        <ul class="service-list">
+          <li>Trusted contractors</li>
+          <li>Same quality bar</li>
+          <li>Direct accountability</li>
+          <li>No account managers</li>
+        </ul>
+      </article>
 
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     PRINCIPLES
-     ============================================================ -->
+<!-- PRINCIPLES -->
 <section class="section">
   <div class="wrap">
     <div class="section-head">
       <span class="section-label">03 — PRINCIPLES</span>
-      <h2 class="section-title">How we think</h2>
-      <p class="section-sub">Six principles that shape every project we take on. These aren't marketing — they're filters for what we say yes to.</p>
+      <h2 class="section-title">Four things we don't compromise on</h2>
     </div>
 
-    <div class="values-grid">
-
-      <div class="value-card">
-        <div class="value-num">01</div>
-        <h3>Ship working software</h3>
-        <p>
-          Nothing leaves our hands until it actually works. No "we'll fix that later", no placeholder buttons, no fake features.
-        </p>
-      </div>
-
-      <div class="value-card">
-        <div class="value-num">02</div>
+    <div class="why-grid">
+      <div class="why-card" data-reveal>
+        <span class="why-num">/ 01</span>
         <h3>Own the whole stack</h3>
-        <p>
-          Design, code, deploy, maintain. We don't hand off responsibility to other vendors — everything is on us.
-        </p>
+        <p>Design, code, hosting, maintenance. One team, one point of contact, one standard.</p>
       </div>
-
-      <div class="value-card">
-        <div class="value-num">03</div>
-        <h3>Write for the next dev</h3>
-        <p>
-          Every line is documented, every decision is written down. If you leave us tomorrow, someone else can take over without a two-week handoff.
-        </p>
+      <div class="why-card" data-reveal>
+        <span class="why-num">/ 02</span>
+        <h3>Fixed quotes</h3>
+        <p>No hourly billing. You know the price before we start. If we misjudge, that's our problem.</p>
       </div>
-
-      <div class="value-card">
-        <div class="value-num">04</div>
-        <h3>Say no when it matters</h3>
-        <p>
-          If something is a bad idea, we'll tell you. If a deadline is unrealistic, we'll say so. Better an honest no than a broken promise.
-        </p>
+      <div class="why-card" data-reveal>
+        <span class="why-num">/ 03</span>
+        <h3>You own everything</h3>
+        <p>Full source code, database access, hosting credentials. No lock-in, no subscriptions to us.</p>
       </div>
-
-      <div class="value-card">
-        <div class="value-num">05</div>
-        <h3>Security is not optional</h3>
-        <p>
-          Every server hardened, every API authenticated, every secret rotated. We treat your data like it's ours.
-        </p>
+      <div class="why-card" data-reveal>
+        <span class="why-num">/ 04</span>
+        <h3>Answer directly</h3>
+        <p>You talk to the people building it. No account managers, no "let me check with the team."</p>
       </div>
-
-      <div class="value-card">
-        <div class="value-num">06</div>
-        <h3>Stay small on purpose</h3>
-        <p>
-          We take a limited number of projects per quarter. Fewer clients means more time on each one — and a finished product instead of a half-built mess.
-        </p>
-      </div>
-
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     TIMELINE
-     ============================================================ -->
+<!-- PROCESS -->
 <section class="section section-alt">
-  <div class="wrap wrap-narrow">
+  <div class="wrap">
     <div class="section-head">
-      <span class="section-label">04 — TIMELINE</span>
-      <h2 class="section-title">How we got here</h2>
+      <span class="section-label">04 — HOW WE WORK</span>
+      <h2 class="section-title">From first call to launch</h2>
     </div>
 
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-year">2023</div>
-        <div class="timeline-body">
-          <h3>Started building</h3>
-          <p>
-            First websites for local Egyptian businesses. Learned quickly that most agencies ship half-finished work — decided to do the opposite.
-          </p>
-        </div>
+    <div class="process-grid">
+      <div class="process-step" data-reveal>
+        <span class="process-num">STEP 01</span>
+        <h3>Discovery</h3>
+        <p>We talk. You explain the goal, the audience and the constraints.</p>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-year">2024</div>
-        <div class="timeline-body">
-          <h3>Full-stack focus</h3>
-          <p>
-            Expanded into backend development and infrastructure. First client with a full web app and admin panel — full ownership of the stack from then on.
-          </p>
-        </div>
+      <div class="process-step" data-reveal>
+        <span class="process-num">STEP 02</span>
+        <h3>Design</h3>
+        <p>Wireframes first, then visuals. You approve before code starts.</p>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-year">2025</div>
-        <div class="timeline-body">
-          <h3>GameNest</h3>
-          <p>
-            Built and launched GameNest — a full Fortnite digital store with payment verification, admin console, and real-time order tracking. Still online, still maintained.
-          </p>
-        </div>
+      <div class="process-step" data-reveal>
+        <span class="process-num">STEP 03</span>
+        <h3>Build</h3>
+        <p>Development, testing, updates every few days. No month-long silence.</p>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-year">Now</div>
-        <div class="timeline-body">
-          <h3>Taking on new work</h3>
-          <p>
-            Open to new projects across the Middle East and Europe. Communication in English or Arabic. Same standard on every project.
-          </p>
-        </div>
+      <div class="process-step" data-reveal>
+        <span class="process-num">STEP 04</span>
+        <h3>Launch</h3>
+        <p>We ship it, monitor it, and fix anything that breaks for 30 days.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     WHAT WE DON'T DO
-     ============================================================ -->
+<!-- NUMBERS -->
 <section class="section">
   <div class="wrap">
     <div class="section-head">
-      <span class="section-label">05 — WHAT WE DON'T DO</span>
-      <h2 class="section-title">Things we won't do</h2>
-      <p class="section-sub">Some things matter more than money. These are ours.</p>
+      <span class="section-label">05 — BY THE NUMBERS</span>
+      <h2 class="section-title">Small studio, real output</h2>
     </div>
 
-    <div class="dont-grid">
-      <div class="dont-card">
-        <div class="dont-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-        </div>
-        <h3>No hidden fees</h3>
-        <p>Fixed quotes. If scope doesn't change, price doesn't change. Ever.</p>
+    <div class="numbers-grid">
+      <div class="number-card" data-reveal>
+        <div class="number-big">2</div>
+        <div class="number-label">Founders</div>
+        <p class="number-desc">Both hands-on. Both talking to clients directly.</p>
       </div>
-      <div class="dont-card">
-        <div class="dont-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-        </div>
-        <h3>No lock-in</h3>
-        <p>You own the code, the domain, the deployment. No proprietary platforms holding your business hostage.</p>
+      <div class="number-card" data-reveal>
+        <div class="number-big">100%</div>
+        <div class="number-label">Source code delivered</div>
+        <p class="number-desc">You own everything from day one.</p>
       </div>
-      <div class="dont-card">
-        <div class="dont-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-        </div>
-        <h3>No templates</h3>
-        <p>Every project is designed for your specific case. No WordPress themes, no $20 site builders.</p>
+      <div class="number-card" data-reveal>
+        <div class="number-big">24h</div>
+        <div class="number-label">Reply time</div>
+        <p class="number-desc">Every message gets a real answer.</p>
       </div>
-      <div class="dont-card">
-        <div class="dont-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-        </div>
-        <h3>No rush jobs</h3>
-        <p>If a deadline is unrealistic, we'll say so. We'd rather lose a project than ship broken software.</p>
+      <div class="number-card" data-reveal>
+        <div class="number-big">30</div>
+        <div class="number-label">Days free fixes</div>
+        <p class="number-desc">After every launch. No invoicing.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- CTA -->
 <section class="cta">
   <div class="wrap cta-inner">
-    <h2>Sound like a good fit?</h2>
-    <p>Tell us what you're building. We'll reply within 24 hours with a plan and a price.</p>
+    <span class="section-label">READY?</span>
+    <h2 class="cta-title">Let's build something together.</h2>
+    <p>Tell us what you're working on. We reply within 24 hours.</p>
     <div class="cta-actions">
       <a href="contact.html" class="btn btn-primary">Start a project</a>
       <a href="work.html" class="btn btn-ghost">See our work</a>
@@ -333,22 +296,22 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="logo">
-          <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
+          <img src="nexifing-logo.png" alt="" onerror="this.style.display='none'">
           <span>NEXIFING</span>
         </a>
-        <p>Web development, backend systems, hosting and cloud storage — for businesses that need more than a template.</p>
+        <p>Digital studio building websites, Discord bots, branding and digital solutions.</p>
         <div class="footer-status">
           <span class="status-dot"></span>
-          <span>Available for new projects</span>
+          <span>Available for projects</span>
         </div>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
         <a href="services.html">Web Development</a>
+        <a href="services.html">Discord Bots</a>
+        <a href="services.html">Design &amp; Branding</a>
         <a href="services.html">Backend &amp; APIs</a>
         <a href="services.html">Hosting</a>
-        <a href="services.html">Servers</a>
-        <a href="services.html">Maintenance</a>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
@@ -365,15 +328,19 @@
       </div>
       <div class="footer-col">
         <h4>Connect</h4>
-        <a href="https://7az3ma7m3dm-oss.github.io/GameNest_website/" target="_blank" rel="noopener">GameNest</a>
-        <a href="https://wa.me/201202000210" target="_blank" rel="noopener">WhatsApp</a>
         <a href="https://discord.gg/g53hhDu2tJ" target="_blank" rel="noopener">Discord</a>
-        <a href="https://www.instagram.com/nexifing/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.instagram.com/nexifing/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://wa.me/201202000210" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span data-year>2025</span> NEXIFING — ALL RIGHTS RESERVED</span>
-      <span>Design &amp; build by NEXIFING</span>
+      <span>© <span data-year>2025</span> NEXIFING — All rights reserved</span>
+      <div class="powered-by-wrap">
+        <span class="powered-by-text">Powered by</span>
+        <a href="https://7az3ma7m3dm-oss.github.io/nexifing/" class="powered-by-logo" target="_blank" rel="noopener" aria-label="NEXIFING">
+          <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
+        </a>
+      </div>
     </div>
   </div>
 </footer>
