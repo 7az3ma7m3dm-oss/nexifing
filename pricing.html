@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#080a14">
 <title>Pricing — NEXIFING</title>
-<meta name="description" content="Transparent starting prices for web development, backends, hosting, and maintenance — NEXIFING.">
-<meta name="robots" content="index,follow">
+<meta name="description" content="Clear pricing. No hourly billing. Every project gets a fixed quote.">
 <link rel="icon" type="image/png" href="favicon.png">
-<link rel="canonical" href="https://7az3ma7m3dm-oss.github.io/nexifing/pricing.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,10 +14,23 @@
 </head>
 <body>
 
-<header class="header">
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <img src="nexifing-logo.png" alt="" class="loader-logo" onerror="this.style.display='none'">
+    <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+    <div class="loader-text" id="loaderText">LOADING</div>
+  </div>
+</div>
+
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="header" id="header">
   <div class="header-inner wrap">
     <a href="index.html" class="logo">
-      <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
+      <img src="nexifing-logo.png" alt="" onerror="this.style.display='none'">
       <span>NEXIFING</span>
     </a>
     <nav class="nav" id="nav">
@@ -27,48 +38,47 @@
       <a href="work.html">Work</a>
       <a href="pricing.html">Pricing</a>
       <a href="about.html">About</a>
-      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+        <svg class="theme-icon-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="theme-icon-moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
       <a href="contact.html" class="nav-cta">Start a project</a>
     </nav>
-    <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 
-<main>
+<main id="main">
 
-<section class="page-hero">
-  <div class="page-hero-bg" aria-hidden="true">
+<section class="hero" style="padding:80px 0 40px">
+  <div class="hero-bg" aria-hidden="true">
     <div class="aurora-beam"></div>
     <div class="grid-overlay"></div>
   </div>
-  <div class="wrap page-hero-inner">
-    <a href="index.html" class="back-link">← Back to home</a>
+  <div class="wrap hero-inner">
     <span class="section-label">PRICING</span>
-    <h1 class="page-hero-title">
-      Clear pricing.<br>
-      <span class="text-gradient">No hourly billing.</span>
-    </h1>
-    <p class="page-hero-sub">
-      Every project gets a fixed quote after the first call. Below are starting prices so you know roughly where you land before we talk.
-    </p>
+    <h1 class="hero-title" style="font-size:clamp(2rem,5vw,3.6rem)">Clear pricing.<br><span class="grad">No hourly billing.</span></h1>
+    <p class="hero-sub">Every project gets a fixed quote after the first call. Below are starting prices so you know roughly where you land before we talk.</p>
   </div>
 </section>
 
-<section class="section">
+<section class="section" style="padding-top:40px">
   <div class="wrap">
-    <div class="pricing-grid">
 
-      <div class="pricing-card">
+    <div class="services-grid">
+
+      <article class="service pricing-card" data-reveal>
         <div class="pricing-tag">STARTER</div>
         <div class="pricing-price">
           <span class="pricing-amount">3,000</span>
           <span class="pricing-currency">EGP</span>
         </div>
         <div class="pricing-usd">~ $60 USD</div>
-        <p class="pricing-desc">A single landing page or marketing site. Perfect for small businesses and personal brands validating an idea before investing more.</p>
-        <ul class="pricing-list">
+        <p class="pricing-desc">A single landing page or marketing site. Perfect for small businesses and personal brands validating an idea.</p>
+        <ul class="service-list">
           <li>Up to 5 sections</li>
           <li>Responsive design</li>
           <li>Contact form</li>
@@ -76,173 +86,108 @@
           <li>Deployed to your domain</li>
           <li>Delivery: 3–7 days</li>
         </ul>
-        <a href="contact.html" class="btn btn-ghost btn-block">Get started</a>
-      </div>
+        <a href="contact.html" class="btn btn-ghost" style="margin-top:24px;width:100%">Get started</a>
+      </article>
 
-      <div class="pricing-card pricing-featured">
-        <div class="pricing-badge">MOST POPULAR</div>
+      <article class="service pricing-card" data-reveal style="border-color:rgba(56,189,248,.4);background:linear-gradient(180deg,rgba(37,99,235,.05) 0%,var(--surface) 40%);box-shadow:0 20px 60px rgba(37,99,235,.15);position:relative">
+        <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);padding:5px 14px;border-radius:var(--radius-pill);background:var(--iris-bright);color:#fff;font-family:var(--font-display);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 4px 20px rgba(37,99,235,.5);white-space:nowrap">MOST POPULAR</div>
         <div class="pricing-tag">BUSINESS</div>
         <div class="pricing-price">
           <span class="pricing-amount">8,000</span>
           <span class="pricing-currency">EGP</span>
         </div>
         <div class="pricing-usd">~ $160 USD</div>
-        <p class="pricing-desc">Multi-page website with a small admin panel, forms, and content management. The right choice for most growing businesses.</p>
-        <ul class="pricing-list">
+        <p class="pricing-desc">Multi-page website with an admin panel, forms and content management. The right choice for most growing businesses.</p>
+        <ul class="service-list">
           <li>Up to 10 pages</li>
           <li>Custom design</li>
+          <li>Admin dashboard</li>
           <li>Content management</li>
-          <li>Firebase backend</li>
-          <li>Contact &amp; order forms</li>
-          <li>Full SEO setup</li>
-          <li>Delivery: 2–4 weeks</li>
+          <li>Advanced SEO</li>
+          <li>Delivery: 1–2 weeks</li>
         </ul>
-        <a href="contact.html" class="btn btn-primary btn-block">Get started</a>
-      </div>
+        <a href="contact.html" class="btn btn-primary" style="margin-top:24px;width:100%">Get started</a>
+      </article>
 
-      <div class="pricing-card">
-        <div class="pricing-tag">FULL STACK</div>
+      <article class="service pricing-card" data-reveal>
+        <div class="pricing-tag">FULL-STACK</div>
         <div class="pricing-price">
           <span class="pricing-amount">15,000</span>
           <span class="pricing-currency">EGP</span>
         </div>
         <div class="pricing-usd">~ $300 USD</div>
-        <p class="pricing-desc">Custom web application with authentication, database, admin dashboard, and payment integration.</p>
-        <ul class="pricing-list">
-          <li>Custom web app</li>
-          <li>User accounts &amp; auth</li>
-          <li>Database &amp; API</li>
-          <li>Admin dashboard</li>
-          <li>Payment integration</li>
-          <li>Server &amp; hosting setup</li>
-          <li>Delivery: 4–8 weeks</li>
+        <p class="pricing-desc">Custom web application with backend, database, authentication and admin tools. For products, not pages.</p>
+        <ul class="service-list">
+          <li>Custom application</li>
+          <li>Backend + database</li>
+          <li>Authentication &amp; roles</li>
+          <li>Admin panel</li>
+          <li>API integrations</li>
+          <li>Delivery: 2–4 weeks</li>
         </ul>
-        <a href="contact.html" class="btn btn-ghost btn-block">Get started</a>
-      </div>
+        <a href="contact.html" class="btn btn-ghost" style="margin-top:24px;width:100%">Get started</a>
+      </article>
 
     </div>
 
-    <p class="pricing-note">
-      All prices are starting points. Final quote depends on scope and is agreed in writing before any work starts. Payments via InstaPay, Vodafone Cash, bank transfer, or crypto.
+    <p style="text-align:center;font-size:14px;color:var(--text-3);max-width:600px;margin:48px auto 0;line-height:1.7">
+      Prices are starting points. Final quote depends on scope, complexity and timeline — sent in writing before we start.
     </p>
+
   </div>
 </section>
 
 <section class="section section-alt">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head section-head-center">
       <span class="section-label">MAINTENANCE</span>
-      <h2 class="section-title">Monthly retainers</h2>
-      <p class="section-sub">Optional — every project already includes 30 days of free bug fixes after launch. Retainers are for ongoing updates, monitoring, and improvements.</p>
+      <h2 class="section-title">After launch</h2>
+      <p class="section-sub">Optional monthly plans. Cancel anytime.</p>
     </div>
 
-    <div class="pricing-grid">
-
-      <div class="pricing-card">
-        <div class="pricing-tag">ESSENTIAL</div>
-        <div class="pricing-price">
-          <span class="pricing-amount">1,500</span>
-          <span class="pricing-currency">EGP</span>
-        </div>
-        <div class="pricing-usd">per month · ~ $30 USD</div>
-        <p class="pricing-desc">Light-touch support for small sites that need updates occasionally.</p>
-        <ul class="pricing-list">
-          <li>Up to 4 hours of work per month</li>
-          <li>Security patches</li>
+    <div class="services-grid">
+      <div class="service" data-reveal>
+        <h3>Essential</h3>
+        <p style="font-family:var(--font-display);font-size:24px;font-weight:600;color:var(--text);margin:14px 0">1,500 EGP<span style="font-size:12px;color:var(--text-4);font-weight:400">/mo</span></p>
+        <ul class="service-list">
+          <li>Security updates</li>
           <li>Uptime monitoring</li>
-          <li>Email support</li>
           <li>Bug fixes</li>
+          <li>Email support</li>
         </ul>
-        <a href="contact.html" class="btn btn-ghost btn-block">Inquire</a>
       </div>
-
-      <div class="pricing-card">
-        <div class="pricing-tag">STANDARD</div>
-        <div class="pricing-price">
-          <span class="pricing-amount">3,500</span>
-          <span class="pricing-currency">EGP</span>
-        </div>
-        <div class="pricing-usd">per month · ~ $70 USD</div>
-        <p class="pricing-desc">For active products that ship improvements regularly.</p>
-        <ul class="pricing-list">
-          <li>Up to 10 hours of work per month</li>
+      <div class="service" data-reveal>
+        <h3>Standard</h3>
+        <p style="font-family:var(--font-display);font-size:24px;font-weight:600;color:var(--text);margin:14px 0">3,500 EGP<span style="font-size:12px;color:var(--text-4);font-weight:400">/mo</span></p>
+        <ul class="service-list">
           <li>Everything in Essential</li>
-          <li>Feature updates</li>
-          <li>Priority email &amp; Discord support</li>
-          <li>Performance audits</li>
+          <li>Content updates</li>
+          <li>Minor feature changes</li>
+          <li>Priority support</li>
         </ul>
-        <a href="contact.html" class="btn btn-ghost btn-block">Inquire</a>
       </div>
-
-      <div class="pricing-card">
-        <div class="pricing-tag">PRIORITY</div>
-        <div class="pricing-price">
-          <span class="pricing-amount">7,500</span>
-          <span class="pricing-currency">EGP</span>
-        </div>
-        <div class="pricing-usd">per month · ~ $150 USD</div>
-        <p class="pricing-desc">For products where downtime means lost money. Under-24h response on everything.</p>
-        <ul class="pricing-list">
-          <li>Up to 25 hours of work per month</li>
+      <div class="service" data-reveal>
+        <h3>Priority</h3>
+        <p style="font-family:var(--font-display);font-size:24px;font-weight:600;color:var(--text);margin:14px 0">7,500 EGP<span style="font-size:12px;color:var(--text-4);font-weight:400">/mo</span></p>
+        <ul class="service-list">
           <li>Everything in Standard</li>
-          <li>Emergency rollback assistance</li>
-          <li>Direct access to lead developer</li>
-          <li>Quarterly health reports</li>
+          <li>New features monthly</li>
+          <li>Same-day response</li>
+          <li>Direct WhatsApp line</li>
         </ul>
-        <a href="contact.html" class="btn btn-ghost btn-block">Inquire</a>
       </div>
-
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap wrap-narrow">
-    <div class="section-head">
-      <span class="section-label">PAYMENT &amp; BILLING</span>
-      <h2 class="section-title">How it works</h2>
-    </div>
-
-    <div class="faq">
-      <details open>
-        <summary>How do payments work?</summary>
-        <p>Typically 50% up front, 50% on delivery. For larger projects we split into 3–4 milestones, each tied to a specific deliverable.</p>
-      </details>
-      <details>
-        <summary>What payment methods do you accept?</summary>
-        <p>InstaPay, Vodafone Cash, bank transfer (Egyptian banks), and crypto (USDT / BTC) for international clients.</p>
-      </details>
-      <details>
-        <summary>Do you charge for the first call?</summary>
-        <p>No. The first consultation is free. We discuss your project, tell you roughly what it costs, and you decide whether to proceed.</p>
-      </details>
-      <details>
-        <summary>Are prices negotiable?</summary>
-        <p>Prices are already set to be fair for the scope. If your budget is lower, we can discuss a smaller scope — but we don't discount the same work.</p>
-      </details>
-      <details>
-        <summary>What if the project goes over budget?</summary>
-        <p>It can't — the quote is fixed. If scope changes, we discuss the addition, quote it, and get written approval before we touch it. No surprise bills.</p>
-      </details>
-      <details>
-        <summary>Do you offer refunds?</summary>
-        <p>If we fail to deliver what was agreed, you get a full refund of what's been paid. If you cancel mid-project, you pay only for the work completed so far.</p>
-      </details>
-      <details>
-        <summary>Do I own the code after I pay?</summary>
-        <p>Yes. Full ownership on final payment — source code, deployment, domain, everything. No lock-in.</p>
-      </details>
     </div>
   </div>
 </section>
 
 <section class="cta">
   <div class="wrap cta-inner">
-    <h2>Ready for a quote?</h2>
-    <p>Tell us about your project. We'll reply within 24 hours with a fixed quote and timeline.</p>
+    <span class="section-label">READY?</span>
+    <h2 class="cta-title">Get a fixed quote.</h2>
+    <p>Tell us about your project. We reply with a price and a plan within 24 hours.</p>
     <div class="cta-actions">
-      <a href="contact.html" class="btn btn-primary">Request a quote</a>
-      <a href="work.html" class="btn btn-ghost">See our work</a>
+      <a href="contact.html" class="btn btn-primary">Start a project</a>
+      <a href="faq.html" class="btn btn-ghost">Read FAQ</a>
     </div>
   </div>
 </section>
@@ -253,48 +198,42 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="logo">
-          <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
-          <span>NEXIFING</span>
-        </a>
-        <p>Web development, backend systems, hosting and cloud storage — for businesses that need more than a template.</p>
-        <div class="footer-status">
-          <span class="status-dot"></span>
-          <span>Available for new projects</span>
-        </div>
+        <a href="index.html" class="logo"><img src="nexifing-logo.png" alt="" onerror="this.style.display='none'"><span>NEXIFING</span></a>
+        <p>Digital studio building websites, Discord bots, branding and digital solutions.</p>
+        <div class="footer-status"><span class="status-dot"></span><span>Available for projects</span></div>
       </div>
-      <div class="footer-col">
-        <h4>Services</h4>
+      <div class="footer-col"><h4>Services</h4>
         <a href="services.html">Web Development</a>
+        <a href="services.html">Discord Bots</a>
+        <a href="services.html">Design &amp; Branding</a>
         <a href="services.html">Backend &amp; APIs</a>
         <a href="services.html">Hosting</a>
-        <a href="services.html">Servers</a>
-        <a href="services.html">Maintenance</a>
       </div>
-      <div class="footer-col">
-        <h4>Company</h4>
+      <div class="footer-col"><h4>Company</h4>
         <a href="work.html">Work</a>
         <a href="pricing.html">Pricing</a>
         <a href="about.html">About</a>
         <a href="faq.html">FAQ</a>
         <a href="contact.html">Contact</a>
       </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
+      <div class="footer-col"><h4>Legal</h4>
         <a href="terms.html">Terms of Service</a>
         <a href="privacy.html">Privacy Policy</a>
       </div>
-      <div class="footer-col">
-        <h4>Connect</h4>
-        <a href="https://7az3ma7m3dm-oss.github.io/GameNest_website/" target="_blank" rel="noopener">GameNest</a>
-        <a href="https://wa.me/201202000210" target="_blank" rel="noopener">WhatsApp</a>
+      <div class="footer-col"><h4>Connect</h4>
         <a href="https://discord.gg/g53hhDu2tJ" target="_blank" rel="noopener">Discord</a>
-        <a href="https://www.instagram.com/nexifing/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.instagram.com/nexifing/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://wa.me/201202000210" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span data-year>2025</span> NEXIFING — ALL RIGHTS RESERVED</span>
-      <span>Design &amp; build by NEXIFING</span>
+      <span>© <span data-year>2025</span> NEXIFING — All rights reserved</span>
+      <div class="powered-by-wrap">
+        <span class="powered-by-text">Powered by</span>
+        <a href="https://7az3ma7m3dm-oss.github.io/nexifing/" class="powered-by-logo" target="_blank" rel="noopener" aria-label="NEXIFING">
+          <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
+        </a>
+      </div>
     </div>
   </div>
 </footer>
