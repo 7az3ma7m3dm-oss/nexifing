@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#080a14">
 <title>Contact — NEXIFING</title>
 <meta name="description" content="Start a project with NEXIFING. We reply within 24 hours.">
-<meta name="robots" content="index,follow">
 <link rel="icon" type="image/png" href="favicon.png">
-<link rel="canonical" href="https://7az3ma7m3dm-oss.github.io/nexifing/contact.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,185 +14,150 @@
 </head>
 <body>
 
-<header class="header">
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <img src="nexifing-logo.png" alt="" class="loader-logo" onerror="this.style.display='none'">
+    <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+    <div class="loader-text" id="loaderText">LOADING</div>
+  </div>
+</div>
+
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="header" id="header">
   <div class="header-inner wrap">
-    <a href="index.html" class="logo">
-      <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
+    <a href="index.html" class="logo" aria-label="NEXIFING home">
+      <img src="nexifing-logo.png" alt="" onerror="this.style.display='none'">
       <span>NEXIFING</span>
     </a>
-    <nav class="nav" id="nav">
+    <nav class="nav" id="nav" aria-label="Primary">
       <a href="services.html">Services</a>
       <a href="work.html">Work</a>
+      <a href="pricing.html">Pricing</a>
       <a href="about.html">About</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+        <svg class="theme-icon-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="theme-icon-moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
       <a href="contact.html" class="nav-cta">Start a project</a>
     </nav>
-    <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 
-<main>
+<main id="main">
 
-<!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="page-hero-bg" aria-hidden="true">
+<section class="hero" style="padding:100px 0 60px">
+  <div class="hero-bg" aria-hidden="true">
     <div class="aurora-beam"></div>
     <div class="grid-overlay"></div>
   </div>
-  <div class="wrap page-hero-inner">
-    <a href="index.html" class="back-link">← Back to home</a>
-    <span class="section-label">CONTACT</span>
-    <h1 class="page-hero-title">
-      Tell us what<br>
-      <span class="text-gradient">you're building</span>.
-    </h1>
-    <p class="page-hero-sub">
-      Fill in the form and we'll reply within 24 hours with next steps, a timeline, and a price. No sales calls, no spam.
-    </p>
+  <div class="wrap hero-inner">
+    <div class="breadcrumbs"><a href="index.html">Home</a><span class="breadcrumb-sep">/</span><span>Contact</span></div>
+    <span class="section-label">GET IN TOUCH</span>
+    <h1 class="hero-title" style="font-size:clamp(2rem,5vw,3.6rem)">Tell us what you're building.</h1>
+    <p class="hero-sub">Fill in the form and we'll reply within 24 hours with next steps and a price.</p>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="section">
-  <div class="wrap">
-    <div class="contact-layout">
-
-      <!-- FORM -->
-      <div class="contact-form-wrap">
-        <div class="contact-form-head">
-          <span class="section-label">PROJECT BRIEF</span>
-          <h2>Start a project</h2>
-          <p>Tell us as much as you can. The more detail you give, the faster we can quote.</p>
-        </div>
-
-        <form class="contact-form" id="contactForm" novalidate>
-          <div class="form-row">
-            <div class="form-field">
-              <label for="cfName">Your name</label>
-              <input type="text" id="cfName" name="name" placeholder="e.g. Adam Mohamed" autocomplete="name" required>
-            </div>
-            <div class="form-field">
-              <label for="cfEmail">Email address</label>
-              <input type="email" id="cfEmail" name="email" placeholder="you@example.com" autocomplete="email" required>
-            </div>
-          </div>
-
-          <div class="form-field">
-            <label for="cfProject">What do you need? <span class="form-hint">(optional)</span></label>
-            <select id="cfProject" name="project">
-              <option value="">Select a service…</option>
-              <option value="web-development">Web Development</option>
-              <option value="backend-api">Backend &amp; APIs</option>
-              <option value="hosting">Hosting &amp; Deployment</option>
-              <option value="servers">Servers &amp; Infrastructure</option>
-              <option value="storage">Cloud Storage</option>
-              <option value="design">Design &amp; Branding</option>
-              <option value="strategy">Product Strategy</option>
-              <option value="maintenance">Maintenance &amp; Support</option>
-              <option value="other">Something else</option>
-            </select>
-          </div>
-
-          <div class="form-field">
-            <label for="cfMessage">Project details</label>
-            <textarea id="cfMessage" name="message" rows="7" placeholder="Tell us about the project, timeline, budget range, or anything else that would help us understand what you're trying to build." required></textarea>
-          </div>
-
-          <div class="form-actions">
-            <button type="submit" class="btn btn-primary" id="cfSubmit">Send message</button>
-            <p class="form-note" id="cfNote"></p>
-          </div>
-
-          <p class="form-privacy">
-            We'll only use your details to reply. No newsletters, no third parties, no spam.
-          </p>
-        </form>
+<section class="section" style="padding-top:40px">
+  <div class="wrap wrap-narrow">
+    <form class="contact-form" novalidate>
+      <div class="form-field">
+        <label for="cf-name">Your name</label>
+        <input id="cf-name" name="name" type="text" placeholder="Adam Mohamed" required>
       </div>
-
-      <!-- SIDEBAR -->
-      <aside class="contact-sidebar">
-
-        <div class="contact-card">
-          <div class="contact-card-head">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            <h3>WhatsApp</h3>
-          </div>
-          <a href="https://wa.me/201202000210" class="contact-card-value" target="_blank" rel="noopener">+20 12 02000210</a>
-          <p class="contact-card-note">Fastest reply — usually under 1 hour</p>
+      <div class="form-field">
+        <label for="cf-email">Email address</label>
+        <input id="cf-email" name="email" type="email" placeholder="you@example.com" required>
+      </div>
+      <div class="form-field">
+        <label for="cf-service">What do you need?</label>
+        <div class="select-wrap">
+          <select id="cf-service" name="service">
+            <option value="">Select a service</option>
+            <option>Web Development</option>
+            <option>Discord Bots</option>
+            <option>Design &amp; Branding</option>
+            <option>Backend &amp; APIs</option>
+            <option>Hosting &amp; Deployment</option>
+            <option>Maintenance &amp; Support</option>
+            <option>Other</option>
+          </select>
         </div>
+      </div>
+      <div class="form-field">
+        <label for="cf-message">Project details</label>
+        <textarea id="cf-message" name="message" placeholder="Tell us about the project — timeline, budget range, anything that helps us understand what you're trying to build." required></textarea>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Send message</button>
+        <p class="form-note">We'll only use your details to reply. No newsletters, no third parties, no spam.</p>
+      </div>
+    </form>
+  </div>
+</section>
 
-        <div class="contact-card">
-          <div class="contact-card-head">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
-            <h3>Discord</h3>
-          </div>
-          <a href="https://discord.gg/g53hhDu2tJ" class="contact-card-value" target="_blank" rel="noopener">NEXIFING Server</a>
-          <p class="contact-card-note">Best for ongoing projects</p>
-        </div>
-
-        <div class="contact-card">
-          <div class="contact-card-head">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            <h3>Instagram</h3>
-          </div>
-          <a href="https://www.instagram.com/nexifing/?utm_source=ig_web_button_share_sheet" class="contact-card-value" target="_blank" rel="noopener">@nexifing</a>
-          <p class="contact-card-note">Updates and behind the scenes</p>
-        </div>
-
-        <div class="contact-sidebar-block">
-          <h4>What happens next</h4>
-          <ol class="contact-steps">
-            <li><span>1</span>We read your message and reply within 24 hours.</li>
-            <li><span>2</span>We schedule a 15-minute call if needed.</li>
-            <li><span>3</span>You get a written quote and timeline.</li>
-            <li><span>4</span>If you approve, we start within a week.</li>
-          </ol>
-        </div>
-
-        <div class="contact-sidebar-block">
-          <h4>Response time</h4>
-          <div class="contact-response">
-            <span class="status-dot"></span>
-            <span>Usually under 4 hours</span>
-          </div>
-        </div>
-
-      </aside>
-
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="section-head section-head-center">
+      <span class="section-label">OTHER WAYS TO REACH US</span>
+      <h2 class="section-title">Direct channels</h2>
+    </div>
+    <div class="services-grid">
+      <a href="https://wa.me/201202000210" target="_blank" rel="noopener" class="service" data-reveal>
+        <h3>WhatsApp</h3>
+        <p>+20 12 0200 0210</p>
+        <ul class="service-list"><li>Fastest reply — usually under 1 hour</li></ul>
+      </a>
+      <a href="https://discord.gg/g53hhDu2tJ" target="_blank" rel="noopener" class="service" data-reveal>
+        <h3>Discord</h3>
+        <p>NEXIFING Server</p>
+        <ul class="service-list"><li>Best for ongoing projects</li></ul>
+      </a>
+      <a href="https://www.instagram.com/nexifing/" target="_blank" rel="noopener" class="service" data-reveal>
+        <h3>Instagram</h3>
+        <p>@nexifing</p>
+        <ul class="service-list"><li>Updates and behind the scenes</li></ul>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- FAQ MINI -->
-<section class="section section-alt">
+<section class="section">
   <div class="wrap wrap-narrow">
     <div class="section-head">
-      <span class="section-label">BEFORE YOU SEND</span>
-      <h2 class="section-title">Quick answers</h2>
+      <span class="section-label">WHAT HAPPENS NEXT</span>
+      <h2 class="section-title">The process</h2>
     </div>
-
-    <div class="faq">
-      <details>
-        <summary>What should I include in the message?</summary>
-        <p>Ideally: what you're building, who it's for, when you need it, and a rough budget range. If you have a design or a reference site, mention it. If you don't have any of that yet — that's fine too, we'll help you figure it out.</p>
-      </details>
-      <details>
-        <summary>Do you work with clients outside Egypt?</summary>
-        <p>Yes. We work with clients across the Middle East and Europe. Communication is in English or Arabic, whichever you prefer.</p>
-      </details>
-      <details>
-        <summary>How much does a project cost?</summary>
-        <p>Landing pages start at 3,000 EGP. Full websites with admin panels start at 15,000 EGP. Every project gets a fixed quote after the first conversation.</p>
-      </details>
-      <details>
-        <summary>Do you sign NDAs?</summary>
-        <p>Yes, on request. If your project involves sensitive information, we'll sign an NDA before any details are shared.</p>
-      </details>
-      <details>
-        <summary>Can I see more work?</summary>
-        <p>Absolutely. Check the <a href="work.html">work page</a> for case studies, or ask in your message and we'll send specific examples.</p>
-      </details>
+    <div class="process-grid">
+      <div class="process-step" data-reveal>
+        <span class="process-num">STEP 01</span>
+        <h3>We reply</h3>
+        <p>Within 24 hours, usually much sooner.</p>
+      </div>
+      <div class="process-step" data-reveal>
+        <span class="process-num">STEP 02</span>
+        <h3>15-min call</h3>
+        <p>If needed, to scope the project.</p>
+      </div>
+      <div class="process-step" data-reveal>
+        <span class="process-num">STEP 03</span>
+        <h3>Written quote</h3>
+        <p>With a timeline and a fixed price.</p>
+      </div>
+      <div class="process-step" data-reveal>
+        <span class="process-num">STEP 04</span>
+        <h3>We start</h3>
+        <p>Within a week of approval.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -205,42 +168,42 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="logo">
-          <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
-          <span>NEXIFING</span>
-        </a>
-        <p>Web development, backend systems, hosting and cloud storage — for businesses that need more than a template.</p>
-        <div class="footer-status">
-          <span class="status-dot"></span>
-          <span>Available for new projects</span>
-        </div>
+        <a href="index.html" class="logo"><img src="nexifing-logo.png" alt="" onerror="this.style.display='none'"><span>NEXIFING</span></a>
+        <p>Digital studio building websites, Discord bots, branding and digital solutions.</p>
+        <div class="footer-status"><span class="status-dot"></span><span>Available for projects</span></div>
       </div>
-      <div class="footer-col">
-        <h4>Services</h4>
+      <div class="footer-col"><h4>Services</h4>
         <a href="services.html">Web Development</a>
+        <a href="services.html">Discord Bots</a>
+        <a href="services.html">Design &amp; Branding</a>
         <a href="services.html">Backend &amp; APIs</a>
         <a href="services.html">Hosting</a>
-        <a href="services.html">Servers</a>
-        <a href="services.html">Cloud Storage</a>
-        <a href="services.html">Maintenance</a>
       </div>
-      <div class="footer-col">
-        <h4>Company</h4>
+      <div class="footer-col"><h4>Company</h4>
         <a href="work.html">Work</a>
+        <a href="pricing.html">Pricing</a>
         <a href="about.html">About</a>
+        <a href="faq.html">FAQ</a>
         <a href="contact.html">Contact</a>
       </div>
-      <div class="footer-col">
-        <h4>Connect</h4>
-        <a href="https://7az3ma7m3dm-oss.github.io/GameNest_website/" target="_blank" rel="noopener">GameNest</a>
-        <a href="https://wa.me/201202000210" target="_blank" rel="noopener">WhatsApp</a>
+      <div class="footer-col"><h4>Legal</h4>
+        <a href="terms.html">Terms of Service</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+      <div class="footer-col"><h4>Connect</h4>
         <a href="https://discord.gg/g53hhDu2tJ" target="_blank" rel="noopener">Discord</a>
-        <a href="https://www.instagram.com/nexifing/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.instagram.com/nexifing/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://wa.me/201202000210" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span data-year>2026</span> NEXIFING — ALL RIGHTS RESERVED</span>
-      <span>Design &amp; build by NEXIFING</span>
+      <span>© <span data-year>2025</span> NEXIFING — All rights reserved</span>
+      <div class="powered-by-wrap">
+        <span class="powered-by-text">Powered by</span>
+        <a href="https://7az3ma7m3dm-oss.github.io/nexifing/" class="powered-by-logo" target="_blank" rel="noopener" aria-label="NEXIFING">
+          <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
+        </a>
+      </div>
     </div>
   </div>
 </footer>
