@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#080a14">
 <title>Services — NEXIFING</title>
-<meta name="description" content="Web development, backend engineering, hosting, servers and maintenance — full-stack services from NEXIFING.">
-<meta name="robots" content="index,follow">
+<meta name="description" content="Web development, Discord bots, design, backend, hosting and maintenance.">
 <link rel="icon" type="image/png" href="favicon.png">
-<link rel="canonical" href="https://7az3ma7m3dm-oss.github.io/nexifing/services.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,309 +14,156 @@
 </head>
 <body>
 
-<header class="header">
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <img src="nexifing-logo.png" alt="" class="loader-logo" onerror="this.style.display='none'">
+    <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+    <div class="loader-text" id="loaderText">LOADING</div>
+  </div>
+</div>
+
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="header" id="header">
   <div class="header-inner wrap">
-    <a href="index.html" class="logo">
-      <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
+    <a href="index.html" class="logo" aria-label="NEXIFING home">
+      <img src="nexifing-logo.png" alt="" onerror="this.style.display='none'">
       <span>NEXIFING</span>
     </a>
-    <nav class="nav" id="nav">
+    <nav class="nav" id="nav" aria-label="Primary">
       <a href="services.html">Services</a>
       <a href="work.html">Work</a>
       <a href="pricing.html">Pricing</a>
       <a href="about.html">About</a>
       <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+        <svg class="theme-icon-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="theme-icon-moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
       <a href="contact.html" class="nav-cta">Start a project</a>
     </nav>
-    <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 
-<main>
+<main id="main">
 
-<section class="page-hero">
-  <div class="page-hero-bg" aria-hidden="true">
+<section class="hero" style="padding:100px 0 60px">
+  <div class="hero-bg" aria-hidden="true">
     <div class="aurora-beam"></div>
     <div class="grid-overlay"></div>
   </div>
-  <div class="wrap page-hero-inner">
-    <a href="index.html" class="back-link">← Back to home</a>
-    <span class="section-label">SERVICES</span>
-    <h1 class="page-hero-title">
-      Everything you need<br>
-      <span class="text-gradient">to ship software</span>.
-    </h1>
-    <p class="page-hero-sub">
-      Five services, one team, one standard. From the first line of code to the server it runs on — we handle the entire lifecycle so you don't have to juggle vendors.
-    </p>
+  <div class="wrap hero-inner">
+    <div class="breadcrumbs"><a href="index.html">Home</a><span class="breadcrumb-sep">/</span><span>Services</span></div>
+    <span class="section-label">WHAT WE DO</span>
+    <h1 class="hero-title" style="font-size:clamp(2rem,5vw,3.6rem)">Services</h1>
+    <p class="hero-sub">Six things we do well. No filler.</p>
   </div>
 </section>
 
-<section class="section">
+<section class="section" style="padding-top:40px">
   <div class="wrap">
-    <div class="services-detail">
+    <div class="services-grid">
 
-      <article class="service-detail" id="web-dev">
-        <div class="service-detail-head">
-          <div class="service-detail-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          </div>
-          <div>
-            <div class="service-detail-num">/ 01</div>
-            <h2>Web Development</h2>
-          </div>
+      <article class="service" data-reveal>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
         </div>
-        <div class="service-detail-body">
-          <p class="service-detail-lead">
-            Fast, responsive and accessible websites built with modern tooling. Static sites, marketing pages, landing pages and full web applications — designed to convert and built to last.
-          </p>
-          <div class="service-detail-cols">
-            <div>
-              <h4>What's included</h4>
-              <ul>
-                <li>Custom design &amp; front-end build</li>
-                <li>Mobile-first responsive layout</li>
-                <li>Performance optimization (Core Web Vitals)</li>
-                <li>SEO-ready structure &amp; meta tags</li>
-                <li>Accessibility (WCAG 2.1 AA) compliance</li>
-                <li>Cross-browser testing</li>
-                <li>Form handling &amp; validation</li>
-                <li>Analytics integration</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Stack we use</h4>
-              <ul>
-                <li>HTML5, CSS3, ES2023</li>
-                <li>React, Next.js</li>
-                <li>Tailwind CSS, vanilla CSS</li>
-                <li>Vite for fast builds</li>
-                <li>Framer Motion for animation</li>
-                <li>Lighthouse-optimized delivery</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <h3>Web Development</h3>
+        <p>Fast, responsive websites built from scratch. Landing pages, marketing sites and full web applications.</p>
+        <ul class="service-list">
+          <li>Custom design &amp; build</li>
+          <li>Mobile-first responsive</li>
+          <li>Performance optimized</li>
+          <li>SEO-ready structure</li>
+        </ul>
       </article>
 
-      <article class="service-detail" id="backend">
-        <div class="service-detail-head">
-          <div class="service-detail-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>
-          </div>
-          <div>
-            <div class="service-detail-num">/ 02</div>
-            <h2>Backend &amp; APIs</h2>
-          </div>
+      <article class="service" data-reveal>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="4"/><circle cx="8" cy="12" r="1.5"/><circle cx="16" cy="12" r="1.5"/><path d="M5 6l2-3h10l2 3"/></svg>
         </div>
-        <div class="service-detail-body">
-          <p class="service-detail-lead">
-            Robust server-side systems — REST APIs, authentication, databases and business logic built to scale with your product.
-          </p>
-          <div class="service-detail-cols">
-            <div>
-              <h4>What's included</h4>
-              <ul>
-                <li>REST API design &amp; implementation</li>
-                <li>User authentication &amp; authorization</li>
-                <li>Role-based access control</li>
-                <li>Database design &amp; migrations</li>
-                <li>Real-time data sync (WebSockets)</li>
-                <li>Webhooks &amp; third-party integrations</li>
-                <li>Rate limiting &amp; caching</li>
-                <li>API documentation</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Stack we use</h4>
-              <ul>
-                <li>Node.js &amp; Express</li>
-                <li>Firebase &amp; Firestore</li>
-                <li>Firebase Auth</li>
-                <li>PostgreSQL</li>
-                <li>REST conventions</li>
-                <li>Serverless functions</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <h3>Discord Bots</h3>
+        <p>Custom bots for communities and stores — tickets, moderation, orders, notifications.</p>
+        <ul class="service-list">
+          <li>Custom bot development</li>
+          <li>Ticket &amp; support systems</li>
+          <li>Moderation &amp; automation</li>
+          <li>Store integrations</li>
+        </ul>
       </article>
 
-      <article class="service-detail" id="hosting">
-        <div class="service-detail-head">
-          <div class="service-detail-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-          </div>
-          <div>
-            <div class="service-detail-num">/ 03</div>
-            <h2>Hosting &amp; Deployment</h2>
-          </div>
+      <article class="service" data-reveal>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
         </div>
-        <div class="service-detail-body">
-          <p class="service-detail-lead">
-            We deploy, configure and monitor your application on the right platform — GitHub Pages, Netlify, Vercel, or a dedicated VPS.
-          </p>
-          <div class="service-detail-cols">
-            <div>
-              <h4>What's included</h4>
-              <ul>
-                <li>CI/CD pipeline setup</li>
-                <li>Custom domain configuration</li>
-                <li>SSL certificates (Let's Encrypt)</li>
-                <li>Zero-downtime deployments</li>
-                <li>Environment management</li>
-                <li>Automated backups</li>
-                <li>Preview deployments for PRs</li>
-                <li>Rollback safety</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Platforms we use</h4>
-              <ul>
-                <li>GitHub Pages</li>
-                <li>Vercel</li>
-                <li>Netlify</li>
-                <li>Cloudflare Pages</li>
-                <li>Hetzner &amp; DigitalOcean</li>
-                <li>Docker &amp; Compose</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <h3>Design &amp; Branding</h3>
+        <p>Logo, visual identity and interface design that matches your product.</p>
+        <ul class="service-list">
+          <li>Logo &amp; identity</li>
+          <li>UI / UX design</li>
+          <li>Design systems</li>
+          <li>Brand guidelines</li>
+        </ul>
       </article>
 
-      <article class="service-detail" id="servers">
-        <div class="service-detail-head">
-          <div class="service-detail-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          </div>
-          <div>
-            <div class="service-detail-num">/ 04</div>
-            <h2>Servers &amp; Infrastructure</h2>
-          </div>
+      <article class="service" data-reveal>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>
         </div>
-        <div class="service-detail-body">
-          <p class="service-detail-lead">
-            VPS provisioning, Nginx configuration, containerization and secure networking — the foundation your app runs on.
-          </p>
-          <div class="service-detail-cols">
-            <div>
-              <h4>What's included</h4>
-              <ul>
-                <li>Linux server setup (Ubuntu / Debian)</li>
-                <li>Docker &amp; container orchestration</li>
-                <li>Reverse proxy (Nginx)</li>
-                <li>SSL termination &amp; auto-renewal</li>
-                <li>Firewall &amp; security hardening</li>
-                <li>Monitoring &amp; alerting</li>
-                <li>Log aggregation</li>
-                <li>Automated failover</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Tools we use</h4>
-              <ul>
-                <li>Linux (Ubuntu / Debian)</li>
-                <li>Nginx</li>
-                <li>Docker, Docker Compose</li>
-                <li>UFW firewall</li>
-                <li>Uptime monitoring</li>
-                <li>Cloudflare DNS</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <h3>Backend &amp; APIs</h3>
+        <p>REST APIs, authentication, databases and business logic built to scale.</p>
+        <ul class="service-list">
+          <li>REST API design</li>
+          <li>Authentication &amp; roles</li>
+          <li>Database architecture</li>
+          <li>Webhooks &amp; integrations</li>
+        </ul>
       </article>
 
-      <article class="service-detail" id="maintenance">
-        <div class="service-detail-head">
-          <div class="service-detail-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-          </div>
-          <div>
-            <div class="service-detail-num">/ 05</div>
-            <h2>Maintenance &amp; Support</h2>
-          </div>
+      <article class="service" data-reveal>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
         </div>
-        <div class="service-detail-body">
-          <p class="service-detail-lead">
-            Ongoing care for what we build — updates, monitoring, bug fixes and improvements. Your product keeps running, we make sure of it.
-          </p>
-          <div class="service-detail-cols">
-            <div>
-              <h4>What's included</h4>
-              <ul>
-                <li>30 days free bug fixes after launch</li>
-                <li>Optional monthly retainers</li>
-                <li>Security patches &amp; updates</li>
-                <li>Performance audits</li>
-                <li>Priority support (under 24h response)</li>
-                <li>Emergency rollback assistance</li>
-                <li>Uptime monitoring &amp; alerts</li>
-                <li>Dependency updates</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Retainer tiers</h4>
-              <ul>
-                <li><b>Essential</b> — 1,500 EGP/mo · up to 4 hours</li>
-                <li><b>Standard</b> — 3,500 EGP/mo · up to 10 hours</li>
-                <li><b>Priority</b> — 7,500 EGP/mo · up to 25 hours</li>
-                <li><b>Custom</b> — quoted per project</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <h3>Hosting &amp; Deployment</h3>
+        <p>Custom domains, SSL, CI/CD and deployment configured and monitored.</p>
+        <ul class="service-list">
+          <li>Custom domain + SSL</li>
+          <li>CI/CD pipelines</li>
+          <li>Zero-downtime deploys</li>
+          <li>Uptime monitoring</li>
+        </ul>
       </article>
 
-    </div>
-  </div>
-</section>
+      <article class="service" data-reveal>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </div>
+        <h3>Maintenance &amp; Support</h3>
+        <p>Ongoing care after launch — updates, monitoring and bug fixes.</p>
+        <ul class="service-list">
+          <li>30 days free bug fixes</li>
+          <li>Optional monthly retainers</li>
+          <li>Security updates</li>
+          <li>Priority response</li>
+        </ul>
+      </article>
 
-<section class="section section-alt">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-label">HOW WE WORK</span>
-      <h2 class="section-title">The same process, every project</h2>
-      <p class="section-sub">Whether it's a landing page or a full web application, we follow the same five-step process.</p>
-    </div>
-
-    <div class="process">
-      <div class="process-step">
-        <div class="process-num">01</div>
-        <h3>Discovery</h3>
-        <p>Understand the problem, the users, and what success looks like.</p>
-      </div>
-      <div class="process-step">
-        <div class="process-num">02</div>
-        <h3>Planning</h3>
-        <p>Scope document, fixed quote, agreed milestones, timeline.</p>
-      </div>
-      <div class="process-step">
-        <div class="process-num">03</div>
-        <h3>Build</h3>
-        <p>Design, code, and test — with previews at every milestone.</p>
-      </div>
-      <div class="process-step">
-        <div class="process-num">04</div>
-        <h3>Deploy</h3>
-        <p>Server setup, DNS, SSL, CI/CD and monitoring from day one.</p>
-      </div>
-      <div class="process-step">
-        <div class="process-num">05</div>
-        <h3>Support</h3>
-        <p>Free bug fixes for 30 days, then optional retainers.</p>
-      </div>
     </div>
   </div>
 </section>
 
 <section class="cta">
   <div class="wrap cta-inner">
-    <h2>Ready to start?</h2>
-    <p>Tell us what you need. We'll reply within 24 hours with a plan and a price.</p>
+    <span class="section-label">READY?</span>
+    <h2 class="cta-title">Let's start your project.</h2>
+    <p>Tell us what you're building. We reply within 24 hours.</p>
     <div class="cta-actions">
       <a href="contact.html" class="btn btn-primary">Start a project</a>
       <a href="pricing.html" class="btn btn-ghost">See pricing</a>
@@ -332,48 +177,42 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="logo">
-          <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
-          <span>NEXIFING</span>
-        </a>
-        <p>Web development, backend systems, hosting and cloud storage — for businesses that need more than a template.</p>
-        <div class="footer-status">
-          <span class="status-dot"></span>
-          <span>Available for new projects</span>
-        </div>
+        <a href="index.html" class="logo"><img src="nexifing-logo.png" alt="" onerror="this.style.display='none'"><span>NEXIFING</span></a>
+        <p>Digital studio building websites, Discord bots, branding and digital solutions.</p>
+        <div class="footer-status"><span class="status-dot"></span><span>Available for projects</span></div>
       </div>
-      <div class="footer-col">
-        <h4>Services</h4>
+      <div class="footer-col"><h4>Services</h4>
         <a href="services.html">Web Development</a>
+        <a href="services.html">Discord Bots</a>
+        <a href="services.html">Design &amp; Branding</a>
         <a href="services.html">Backend &amp; APIs</a>
         <a href="services.html">Hosting</a>
-        <a href="services.html">Servers</a>
-        <a href="services.html">Maintenance</a>
       </div>
-      <div class="footer-col">
-        <h4>Company</h4>
+      <div class="footer-col"><h4>Company</h4>
         <a href="work.html">Work</a>
         <a href="pricing.html">Pricing</a>
         <a href="about.html">About</a>
         <a href="faq.html">FAQ</a>
         <a href="contact.html">Contact</a>
       </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
+      <div class="footer-col"><h4>Legal</h4>
         <a href="terms.html">Terms of Service</a>
         <a href="privacy.html">Privacy Policy</a>
       </div>
-      <div class="footer-col">
-        <h4>Connect</h4>
-        <a href="https://7az3ma7m3dm-oss.github.io/GameNest_website/" target="_blank" rel="noopener">GameNest</a>
-        <a href="https://wa.me/201202000210" target="_blank" rel="noopener">WhatsApp</a>
+      <div class="footer-col"><h4>Connect</h4>
         <a href="https://discord.gg/g53hhDu2tJ" target="_blank" rel="noopener">Discord</a>
-        <a href="https://www.instagram.com/nexifing/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.instagram.com/nexifing/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://wa.me/201202000210" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span data-year>2025</span> NEXIFING — ALL RIGHTS RESERVED</span>
-      <span>Design &amp; build by NEXIFING</span>
+      <span>© <span data-year>2025</span> NEXIFING — All rights reserved</span>
+      <div class="powered-by-wrap">
+        <span class="powered-by-text">Powered by</span>
+        <a href="https://7az3ma7m3dm-oss.github.io/nexifing/" class="powered-by-logo" target="_blank" rel="noopener" aria-label="NEXIFING">
+          <img src="nexifing-logo.png" alt="NEXIFING" onerror="this.style.display='none'">
+        </a>
+      </div>
     </div>
   </div>
 </footer>
