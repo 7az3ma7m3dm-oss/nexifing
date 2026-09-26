@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080a14">
+<title>Sign in — NEXIFING</title>
+<meta name="robots" content="noindex,follow">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-trail" id="cursorTrail" aria-hidden="true"></div>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<header class="header" id="header">
+  <div class="header-inner wrap">
+    <a href="index.html" class="logo">
+      <img src="nexifing-logo.png" alt="" onerror="this.style.display='none'">
+      <span>NEXIFING</span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="services.html">Services</a>
+      <a href="work.html">Work</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Start a project</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="section auth-section">
+  <div class="wrap auth-wrap">
+    <div class="auth-card">
+      <div class="auth-head">
+        <span class="section-label">WELCOME BACK</span>
+        <h1 class="auth-title">Sign in</h1>
+        <p class="auth-sub">Sign in to your NEXIFING account. Repeat customers get 30–50% off.</p>
+      </div>
+
+      <form id="loginForm" class="auth-form" novalidate>
+        <div class="auth-field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required>
+        </div>
+        <div class="auth-field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="At least 6 characters" required>
+        </div>
+        <div class="auth-note" id="authNote"></div>
+        <button type="submit" class="btn btn-primary" id="submitBtn" style="width:100%">Sign in</button>
+      </form>
+
+      <div class="auth-footer">
+        <span>Don't have an account?</span>
+        <a href="signup.html">Create one</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-bottom" style="border-top:none;padding-top:0;justify-content:center;text-align:center">
+      <span>© <span data-year>2025</span> NEXIFING — All rights reserved</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="auth.js"></script>
+<script src="script.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var form = document.getElementById('loginForm');
+  var note = document.getElementById('authNote');
+  var btn  = document.getElementById('submitBtn');
+
+  Nexifing.auth.onAuth(function (user) {
+    if (user) window.location.href = 'dashboard.html';
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = document.getElementById('email').value.trim();
+    var pw    = document.getElementById('password').value;
+
+    if (!email || !pw) {
+      note.textContent = 'Please enter email and password.';
+      note.style.color = 'var(--danger)';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Signing in…';
+    note.textContent = '';
+
+    Nexifing.auth.login(email, pw)
+      .then(function () {
+        note.textContent = 'Signed in. Redirecting…';
+        note.style.color = 'var(--success)';
+        setTimeout(function () { window.location.href = 'dashboard.html'; }, 500);
+      })
+      .catch(function (err) {
+        btn.disabled = false;
+        btn.textContent = 'Sign in';
+        note.style.color = 'var(--danger)';
+        if (err.code === 'auth/wrong-password' || err.code === 'auth/invalid-credential') {
+          note.textContent = 'Wrong email or password.';
+        } else if (err.code === 'auth/user-not-found') {
+          note.textContent = 'No account with that email. Create one?';
+        } else if (err.code === 'auth/too-many-requests') {
+          note.textContent = 'Too many attempts. Try again in a few minutes.';
+        } else {
+          note.textContent = err.message || 'Something went wrong.';
+        }
+      });
+  });
+});
+</script>
+
+</body>
+</html>
