@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080a14">
+<title>Dashboard — NEXIFING</title>
+<meta name="robots" content="noindex,follow">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-trail" id="cursorTrail" aria-hidden="true"></div>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<header class="header" id="header">
+  <div class="header-inner wrap">
+    <a href="index.html" class="logo">
+      <img src="nexifing-logo.png" alt="" onerror="this.style.display='none'">
+      <span>NEXIFING</span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="services.html">Services</a>
+      <a href="work.html">Work</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Start a project</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="section auth-section">
+  <div class="wrap wrap-narrow">
+
+    <div id="loadingState" style="text-align:center;padding:80px 0">
+      <div class="spinner spinner-lg" style="margin:0 auto 20px"></div>
+      <p style="color:var(--text-3)">Loading your account…</p>
+    </div>
+
+    <div id="dashboardContent" style="display:none">
+
+      <div class="auth-head" style="text-align:left;margin-bottom:48px">
+        <span class="section-label">YOUR ACCOUNT</span>
+        <h1 class="auth-title" style="text-align:left">Welcome back<span id="userName"></span>.</h1>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h3>Account</h3>
+          <ul class="service-list">
+            <li><span style="color:var(--text-4)">Email:</span> <span id="userEmail"></span></li>
+            <li><span style="color:var(--text-4)">User ID:</span> <span id="userId" style="font-family:var(--font-display);font-size:12px"></span></li>
+          </ul>
+        </div>
+
+        <div class="service" id="discountCard" style="border-color:rgba(56,189,248,.4);background:linear-gradient(180deg,rgba(37,99,235,.05) 0%,var(--surface) 40%)">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <h3 id="discountTitle">Discount status</h3>
+          <p id="discountText" style="color:var(--text-3);font-size:14.5px;line-height:1.7"></p>
+          <ul class="service-list">
+            <li><span style="color:var(--text-4)">Completed orders:</span> <span id="orderCount">0</span></li>
+          </ul>
+        </div>
+
+        <div class="service">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3>Pricing</h3>
+          <p>See your discounted prices on the pricing page.</p>
+          <a href="pricing.html" class="btn btn-primary" style="margin-top:8px;width:100%">View pricing</a>
+        </div>
+
+      </div>
+
+      <div style="margin-top:56px;text-align:center">
+        <button class="btn btn-ghost" id="logoutBtn">Sign out</button>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-bottom" style="border-top:none;padding-top:0;justify-content:center;text-align:center">
+      <span>© <span data-year>2025</span> NEXIFING — All rights reserved</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="auth.js"></script>
+<script src="script.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  Nexifing.auth.onAuth(function (user) {
+    if (!user) {
+      window.location.href = 'login.html';
+      return;
+    }
+
+    document.getElementById('loadingState').style.display = 'none';
+    document.getElementById('dashboardContent').style.display = 'block';
+
+    document.getElementById('userEmail').textContent = user.user.email || '—';
+    document.getElementById('userId').textContent = user.user.uid;
+    document.getElementById('userName').textContent = user.user.email
+      ? ' ' + user.user.email.split('@')[0]
+      : '';
+
+    var orderCount = user.profile.orderCount || 0;
+    document.getElementById('orderCount').textContent = orderCount;
+
+    var discount = Nexifing.auth.getDiscount(orderCount);
+    var textEl = document.getElementById('discountText');
+    var titleEl = document.getElementById('discountTitle');
+
+    if (discount.pct === 0) {
+      titleEl.textContent = 'No discount yet';
+      textEl.textContent = 'Complete your first project and get 30% off the next one.';
+    } else if (discount.pct === 0.30) {
+      titleEl.textContent = '30% off active';
+      textEl.textContent = 'You get 30% off your next project. Complete two more to unlock 50%.';
+    } else {
+      titleEl.textContent = '50% off active';
+      textEl.textContent = 'You get the maximum 50% discount on every new project.';
+    }
+  });
+
+  var lo = document.getElementById('logoutBtn');
+  if (lo) {
+    lo.addEventListener('click', function () {
+      Nexifing.auth.logout().then(function () {
+        window.location.href = 'index.html';
+      });
+    });
+  }
+});
+</script>
+
+</body>
+</html>
