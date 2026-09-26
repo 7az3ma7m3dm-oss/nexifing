@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#080a14">
+<meta name="theme-color" content="#07080d">
 <title>Admin — NEXIFING</title>
 <meta name="robots" content="noindex,nofollow">
 <link rel="icon" type="image/png" href="favicon.png">
@@ -13,7 +13,7 @@
 
 <style>
 /* ============================================================
-   NEXIFING ADMIN — self-contained styles
+   TOKENS
    ============================================================ */
 :root{
   --bg:#07080d;
@@ -24,31 +24,41 @@
   --border:#1c2138;
   --border-2:#262d4a;
   --border-3:#323a5f;
+
   --text:#ffffff;
   --text-2:#dbe0f0;
   --text-3:#9aa3c0;
   --text-4:#6b7396;
   --text-5:#3d4462;
+
   --iris:#3b82f6;
   --iris-bright:#559aff;
+  --iris-dim:#1e3a8a;
   --ember:#38bdf8;
   --ember-bright:#22d3ee;
   --mint:#47d18c;
   --amber:#fbbf24;
   --rose:#ff5c8a;
   --danger:#ff4d4d;
+
   --aurora:linear-gradient(135deg,#2563eb,#38bdf8);
+  --aurora-h:linear-gradient(90deg,#2563eb,#38bdf8);
+
   --font:'Inter',system-ui,-apple-system,sans-serif;
   --mono:'JetBrains Mono',ui-monospace,monospace;
+
+  --r-xs:4px;
   --r-sm:6px;
   --r:10px;
   --r-lg:14px;
   --r-xl:20px;
   --pill:999px;
+
   --ease:cubic-bezier(.22,1,.36,1);
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
 html,body{
   background:var(--bg);
   color:var(--text);
@@ -57,18 +67,25 @@ html,body{
   line-height:1.55;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
+  min-height:100vh;
 }
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;font-size:inherit;background:none;border:none;color:inherit;cursor:pointer}
 input,textarea,select{font-family:inherit;font-size:inherit;background:none;border:none;color:inherit;outline:none}
 ul{list-style:none}
+img{max-width:100%;display:block;height:auto}
+
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border-2);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:var(--border-3)}
 
 /* ============================================================
    LAYOUT
    ============================================================ */
 .ad{
   display:grid;
-  grid-template-columns:248px 1fr;
+  grid-template-columns:250px 1fr;
   min-height:100vh;
 }
 
@@ -81,7 +98,7 @@ ul{list-style:none}
   position:sticky;
   top:0;
   height:100vh;
-  overflow-y:auto;
+  overflow:hidden;
 }
 .ad-brand{
   display:flex;
@@ -109,7 +126,7 @@ ul{list-style:none}
 
 .ad-nav{
   flex:1;
-  padding:14px 10px;
+  padding:12px 10px;
   display:flex;
   flex-direction:column;
   gap:2px;
@@ -117,12 +134,12 @@ ul{list-style:none}
 }
 .ad-nav-group{
   font-family:var(--mono);
-  font-size:10px;
+  font-size:9.5px;
   font-weight:700;
-  letter-spacing:.18em;
+  letter-spacing:.2em;
   text-transform:uppercase;
   color:var(--text-5);
-  padding:14px 12px 8px;
+  padding:14px 12px 6px;
 }
 .ad-nav-btn{
   display:flex;
@@ -141,8 +158,7 @@ ul{list-style:none}
 .ad-nav-btn svg{
   flex-shrink:0;
   opacity:.7;
-  width:16px;
-  height:16px;
+  width:16px;height:16px;
 }
 .ad-nav-btn:hover{
   background:var(--panel);
@@ -153,10 +169,7 @@ ul{list-style:none}
   color:var(--text);
   box-shadow:inset 3px 0 0 var(--ember);
 }
-.ad-nav-btn.active svg{
-  color:var(--ember);
-  opacity:1;
-}
+.ad-nav-btn.active svg{color:var(--ember);opacity:1}
 .ad-nav-badge{
   margin-left:auto;
   font-family:var(--mono);
@@ -170,7 +183,7 @@ ul{list-style:none}
 }
 .ad-nav-badge.danger{background:rgba(255,77,77,.12);color:var(--danger)}
 
-/* SIDEBAR USER */
+/* USER */
 .ad-user{
   border-top:1px solid var(--border);
   padding:14px;
@@ -222,8 +235,8 @@ ul{list-style:none}
   display:flex;
   flex-direction:column;
   min-width:0;
-  background:var(--bg);
 }
+
 .ad-top{
   display:flex;
   align-items:center;
@@ -231,13 +244,14 @@ ul{list-style:none}
   gap:20px;
   padding:18px 32px;
   border-bottom:1px solid var(--border);
-  background:rgba(7,8,13,.7);
+  background:rgba(7,8,13,.75);
   backdrop-filter:blur(12px);
   position:sticky;
   top:0;
   z-index:20;
   flex-wrap:wrap;
 }
+.ad-top-left{display:flex;align-items:center;gap:14px;min-width:0}
 .ad-top-title{
   font-family:var(--mono);
   font-size:1.2rem;
@@ -250,11 +264,7 @@ ul{list-style:none}
   color:var(--text-4);
   margin-top:2px;
 }
-.ad-top-actions{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
+.ad-top-right{display:flex;align-items:center;gap:10px}
 .ad-live{
   display:inline-flex;
   align-items:center;
@@ -296,12 +306,32 @@ ul{list-style:none}
   flex:1;
 }
 
-/* TABS */
+/* ============================================================
+   TABS
+   ============================================================ */
 .ad-tab{display:none}
 .ad-tab.active{display:block;animation:adFade .25s var(--ease)}
 @keyframes adFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
-/* STATS */
+/* GREETING */
+.ad-greet{
+  margin-bottom:24px;
+}
+.ad-greet-hi{
+  font-family:var(--mono);
+  font-size:1.35rem;
+  font-weight:600;
+  letter-spacing:-.02em;
+  margin-bottom:6px;
+}
+.ad-greet-sub{
+  color:var(--text-4);
+  font-size:13.5px;
+}
+
+/* ============================================================
+   STATS
+   ============================================================ */
 .ad-stats{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -350,7 +380,9 @@ ul{list-style:none}
   color:var(--text-4);
 }
 
-/* PANEL */
+/* ============================================================
+   PANELS
+   ============================================================ */
 .ad-panel{
   background:var(--panel);
   border:1px solid var(--border);
@@ -390,14 +422,12 @@ ul{list-style:none}
 }
 .ad-search:focus-within{border-color:var(--iris)}
 .ad-search svg{color:var(--text-4);flex-shrink:0}
-.ad-search input{
-  flex:1;
-  font-size:13px;
-  color:var(--text);
-}
+.ad-search input{flex:1;font-size:13px}
 .ad-search input::placeholder{color:var(--text-5)}
 
-/* BUTTONS */
+/* ============================================================
+   BUTTONS
+   ============================================================ */
 .ad-btn{
   display:inline-flex;
   align-items:center;
@@ -412,16 +442,9 @@ ul{list-style:none}
   transition:all .2s var(--ease);
   white-space:nowrap;
 }
-.ad-btn-primary{
-  background:var(--iris-bright);
-  color:#fff;
-}
+.ad-btn-primary{background:var(--iris-bright);color:#fff}
 .ad-btn-primary:hover{background:#6aa8ff}
-.ad-btn-ghost{
-  background:transparent;
-  border-color:var(--border-2);
-  color:var(--text-2);
-}
+.ad-btn-ghost{background:transparent;border-color:var(--border-2);color:var(--text-2)}
 .ad-btn-ghost:hover{border-color:var(--border-3);background:var(--panel-2)}
 .ad-btn-danger{
   background:rgba(255,77,77,.1);
@@ -431,12 +454,10 @@ ul{list-style:none}
 .ad-btn-danger:hover{background:rgba(255,77,77,.16)}
 .ad-btn-sm{padding:6px 12px;font-size:12px}
 
-/* TABLE */
-.ad-table{
-  width:100%;
-  border-collapse:collapse;
-  font-size:13.5px;
-}
+/* ============================================================
+   TABLE
+   ============================================================ */
+.ad-table{width:100%;border-collapse:collapse;font-size:13.5px}
 .ad-table thead{background:var(--bg-2)}
 .ad-table th{
   padding:11px 22px;
@@ -454,6 +475,7 @@ ul{list-style:none}
   border-top:1px solid var(--border);
   vertical-align:middle;
 }
+.ad-table tbody tr{transition:background .15s var(--ease)}
 .ad-table tbody tr:hover{background:var(--panel-2)}
 .ad-table-empty{
   padding:48px 22px !important;
@@ -471,13 +493,14 @@ ul{list-style:none}
   font-weight:800;font-size:12.5px;
   flex-shrink:0;
 }
-.ad-user-cell-info{min-width:0}
-.ad-user-cell-email{
+.ad-av-square{border-radius:var(--r-sm)}
+.ad-cell-info{min-width:0}
+.ad-cell-title{
   font-weight:600;color:var(--text);font-size:13px;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
   max-width:220px;
 }
-.ad-user-cell-id{
+.ad-cell-sub{
   font-family:var(--mono);
   font-size:10px;color:var(--text-5);
   margin-top:2px;
@@ -485,14 +508,10 @@ ul{list-style:none}
   max-width:220px;
 }
 
-.ad-count{
-  font-family:var(--mono);
-  font-size:15px;font-weight:700;
-}
+.ad-count{font-family:var(--mono);font-size:15px;font-weight:700}
 
 .ad-badge{
-  display:inline-flex;
-  align-items:center;
+  display:inline-flex;align-items:center;gap:5px;
   padding:3px 9px;
   border-radius:var(--pill);
   font-family:var(--mono);
@@ -501,6 +520,7 @@ ul{list-style:none}
   text-transform:uppercase;
   border:1px solid;
 }
+.ad-badge-dot{width:5px;height:5px;border-radius:50%;background:currentColor}
 .ad-badge-info{color:var(--ember);background:rgba(56,189,248,.1);border-color:rgba(56,189,248,.35)}
 .ad-badge-mint{color:var(--mint);background:rgba(71,209,140,.1);border-color:rgba(71,209,140,.35)}
 .ad-badge-amber{color:var(--amber);background:rgba(251,191,36,.1);border-color:rgba(251,191,36,.35)}
@@ -518,28 +538,55 @@ ul{list-style:none}
   cursor:pointer;
   transition:all .18s var(--ease);
 }
+.ad-act-btn svg{width:13px;height:13px}
 .ad-act-btn:hover{border-color:var(--ember);color:var(--ember);background:rgba(56,189,248,.08)}
 .ad-act-add:hover{border-color:var(--mint);color:var(--mint);background:rgba(71,209,140,.08)}
 .ad-act-danger:hover{border-color:var(--danger);color:var(--danger);background:rgba(255,77,77,.08)}
 
-/* ACTIVITY */
+/* ============================================================
+   CHART
+   ============================================================ */
+.ad-chart{
+  padding:24px 22px 20px;
+}
+.ad-chart svg{width:100%;height:220px;display:block;overflow:visible}
+.ad-chart-line{fill:none;stroke:url(#chartGrad);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.ad-chart-area{fill:url(#areaGrad)}
+.ad-chart-dot{fill:var(--ember);stroke:var(--panel);stroke-width:3}
+.ad-chart-grid{stroke:var(--border);stroke-width:1;stroke-dasharray:3 4}
+.ad-chart-label{
+  font-family:var(--mono);
+  font-size:9.5px;
+  fill:var(--text-5);
+  letter-spacing:.04em;
+}
+.ad-chart-legend{
+  display:flex;gap:20px;flex-wrap:wrap;justify-content:center;
+  padding-top:16px;border-top:1px solid var(--border);margin-top:12px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--text-4);
+}
+.ad-chart-legend span{display:inline-flex;align-items:center;gap:8px}
+.ad-chart-legend i{
+  width:10px;height:10px;border-radius:3px;display:inline-block;
+}
+
+/* ============================================================
+   ACTIVITY
+   ============================================================ */
 .ad-activity-item{
-  display:flex;
-  align-items:flex-start;
-  gap:14px;
+  display:flex;align-items:flex-start;gap:14px;
   padding:14px 22px;
   border-bottom:1px solid var(--border);
 }
 .ad-activity-item:last-child{border-bottom:none}
 .ad-activity-dot{
   width:8px;height:8px;border-radius:50%;
-  background:var(--ember);
-  margin-top:6px;
-  flex-shrink:0;
-  box-shadow:0 0 8px var(--ember);
+  margin-top:6px;flex-shrink:0;
+  box-shadow:0 0 8px currentColor;
 }
 .ad-activity-body{flex:1;min-width:0}
 .ad-activity-title{font-size:13.5px;color:var(--text-2);font-weight:500}
+.ad-activity-title strong{color:var(--text);font-weight:700}
 .ad-activity-time{
   font-family:var(--mono);
   font-size:10.5px;
@@ -548,54 +595,158 @@ ul{list-style:none}
   margin-top:3px;
 }
 
-/* COMING SOON */
-.ad-soon{
-  text-align:center;
-  padding:80px 24px;
-  border:1px dashed var(--border-3);
-  border-radius:var(--r-lg);
+/* ============================================================
+   MODAL
+   ============================================================ */
+.ad-modal-back{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.7);
+  backdrop-filter:blur(6px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  z-index:200;
 }
-.ad-soon-icon{
-  width:60px;height:60px;
-  border-radius:50%;
-  background:var(--panel-2);
+.ad-modal-back.open{display:flex}
+.ad-modal{
+  background:var(--panel);
   border:1px solid var(--border-2);
+  border-radius:var(--r-lg);
+  max-width:520px;
+  width:100%;
+  max-height:90vh;
+  overflow-y:auto;
+  box-shadow:0 30px 80px rgba(0,0,0,.6);
+  animation:adModal .25s var(--ease);
+}
+@keyframes adModal{
+  from{opacity:0;transform:translateY(12px) scale(.98)}
+  to{opacity:1;transform:none}
+}
+.ad-modal-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:20px 24px;
+  border-bottom:1px solid var(--border);
+}
+.ad-modal-title{
+  font-family:var(--mono);
+  font-size:14px;font-weight:600;letter-spacing:-.01em;
+}
+.ad-modal-close{
+  width:32px;height:32px;
+  border-radius:var(--r-sm);
   color:var(--text-4);
   display:flex;align-items:center;justify-content:center;
-  margin:0 auto 20px;
+  cursor:pointer;
+  transition:all .2s var(--ease);
 }
-.ad-soon h3{
-  font-family:var(--mono);
-  font-size:1.05rem;
-  font-weight:600;
-  margin-bottom:8px;
-}
-.ad-soon p{
-  color:var(--text-4);
-  font-size:13.5px;
-  max-width:420px;
-  margin:0 auto;
-  line-height:1.7;
+.ad-modal-close:hover{background:var(--panel-2);color:var(--text)}
+.ad-modal-body{padding:24px}
+.ad-modal-foot{
+  padding:16px 24px;
+  border-top:1px solid var(--border);
+  display:flex;justify-content:flex-end;gap:10px;
+  background:var(--bg-2);
 }
 
-/* DANGER */
+.ad-field{margin-bottom:16px}
+.ad-field:last-child{margin-bottom:0}
+.ad-field label{
+  display:block;
+  font-family:var(--mono);
+  font-size:10.5px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--text-4);
+  margin-bottom:7px;
+}
+.ad-field input,
+.ad-field textarea,
+.ad-field select{
+  width:100%;
+  padding:11px 14px;
+  background:var(--bg-2);
+  border:1px solid var(--border-2);
+  border-radius:var(--r-sm);
+  color:var(--text);
+  font-size:13.5px;
+  transition:border-color .2s var(--ease);
+  font-family:var(--font);
+}
+.ad-field input:focus,
+.ad-field textarea:focus,
+.ad-field select:focus{border-color:var(--iris)}
+.ad-field input::placeholder,
+.ad-field textarea::placeholder{color:var(--text-5)}
+.ad-field textarea{resize:vertical;min-height:80px}
+.ad-field select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7396' stroke-width='2' stroke-linecap='round'><polyline points='6 9 12 15 18 9'/></svg>");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+
+/* ============================================================
+   BADGE MANAGER
+   ============================================================ */
+.ad-badge-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+.ad-badge-preview{
+  background:var(--bg-2);
+  border:1px solid var(--border-2);
+  border-radius:var(--r);
+  padding:32px;
+  display:flex;align-items:center;justify-content:center;
+  min-height:180px;
+  flex-direction:column;
+  gap:16px;
+}
+.ad-badge-code{
+  background:var(--bg-2);
+  border:1px solid var(--border-2);
+  border-radius:var(--r);
+  padding:20px;
+  font-family:var(--mono);
+  font-size:11.5px;
+  color:var(--ember);
+  overflow-x:auto;
+  white-space:pre;
+  line-height:1.6;
+  position:relative;
+}
+.ad-badge-code-copy{
+  position:absolute;
+  top:12px;right:12px;
+  padding:6px 12px;
+  background:var(--panel-2);
+  border:1px solid var(--border-3);
+  border-radius:var(--r-sm);
+  font-size:11px;
+  color:var(--text-2);
+  cursor:pointer;
+  transition:all .2s var(--ease);
+}
+.ad-badge-code-copy:hover{border-color:var(--ember);color:var(--ember)}
+
+/* ============================================================
+   DANGER
+   ============================================================ */
 .ad-danger{
   background:rgba(255,77,77,.03);
   border:1px solid rgba(255,77,77,.25);
   border-radius:var(--r);
   padding:22px 24px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px;
-  flex-wrap:wrap;
-  margin-bottom:12px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;margin-bottom:12px;
 }
 .ad-danger-info{flex:1;min-width:200px}
-.ad-danger-info h4{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px}
+.ad-danger-info h4{font-size:14px;font-weight:700;margin-bottom:4px}
 .ad-danger-info p{font-size:12.5px;color:var(--text-4);line-height:1.6}
+.ad-danger-info code{font-family:var(--mono);color:var(--ember);font-size:12px}
 
-/* CENTERED STATE */
+/* ============================================================
+   CENTER STATES
+   ============================================================ */
 .ad-center{
   display:flex;
   flex-direction:column;
@@ -616,14 +767,18 @@ ul{list-style:none}
 @keyframes adSpin{to{transform:rotate(360deg)}}
 
 /* RESPONSIVE */
+@media(max-width:1024px){
+  .ad-badge-grid{grid-template-columns:1fr}
+}
 @media(max-width:900px){
   .ad{grid-template-columns:1fr}
   .ad-side{
     position:fixed;top:0;left:0;
-    width:248px;
+    width:250px;
     transform:translateX(-100%);
     transition:transform .3s var(--ease);
     z-index:50;
+    box-shadow:20px 0 60px rgba(0,0,0,.5);
   }
   .ad-side.open{transform:translateX(0)}
   .ad-mobile-toggle{display:flex}
@@ -634,7 +789,8 @@ ul{list-style:none}
 @media(max-width:600px){
   .ad-stats{grid-template-columns:1fr}
   .ad-table th,.ad-table td{padding:11px 14px}
-  .ad-user-cell-email,.ad-user-cell-id{max-width:130px}
+  .ad-cell-title,.ad-cell-sub{max-width:130px}
+  .ad-greet-hi{font-size:1.1rem}
 }
 </style>
 </head>
@@ -650,11 +806,11 @@ ul{list-style:none}
 <div id="deniedState" class="ad-center" style="display:none">
   <span style="font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--danger)">Access denied</span>
   <h1 style="font-family:var(--mono);font-size:1.6rem;font-weight:600;letter-spacing:-.03em;margin:16px 0 12px">You're not an admin.</h1>
-  <p style="color:var(--text-3);max-width:420px;margin:0 auto 24px;font-size:14px">This page is restricted. If you think this is a mistake, contact the studio owner.</p>
+  <p style="color:var(--text-3);max-width:420px;margin:0 auto 24px;font-size:14px">This page is restricted.</p>
   <a href="index.html" class="ad-btn ad-btn-ghost">Back to home</a>
 </div>
 
-<!-- ADMIN SHELL -->
+<!-- SHELL -->
 <div class="ad" id="adminRoot" style="display:none">
 
   <!-- SIDEBAR -->
@@ -666,17 +822,15 @@ ul{list-style:none}
 
     <nav class="ad-nav">
 
-      <div class="ad-nav-group">Main</div>
-
-      <button class="ad-nav-btn active" data-tab="overview">
+      <button class="ad-nav-btn active" data-tab="dashboard">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
-        <span>Overview</span>
+        <span>Dashboard</span>
       </button>
 
-      <button class="ad-nav-btn" data-tab="projects">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-        <span>Projects</span>
-        <span class="ad-nav-badge" id="projectsBadge">0</span>
+      <button class="ad-nav-btn" data-tab="websites">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span>Websites</span>
+        <span class="ad-nav-badge" id="websitesBadge">0</span>
       </button>
 
       <button class="ad-nav-btn" data-tab="clients">
@@ -685,34 +839,35 @@ ul{list-style:none}
         <span class="ad-nav-badge" id="clientsBadge">0</span>
       </button>
 
+      <button class="ad-nav-btn" data-tab="requests">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <span>Requests</span>
+        <span class="ad-nav-badge" id="requestsBadge">0</span>
+      </button>
+
+      <div class="ad-nav-group">Insights</div>
+
+      <button class="ad-nav-btn" data-tab="analytics">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <span>Analytics</span>
+      </button>
+
+      <button class="ad-nav-btn" data-tab="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6 .9-4.5 4.4 1 6.2L12 16.6l-5.5 3 1-6.2L3 8.9 9 8z"/></svg>
+        <span>Badge Manager</span>
+      </button>
+
+      <div class="ad-nav-group">Studio</div>
+
       <button class="ad-nav-btn" data-tab="services">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
         <span>Services</span>
       </button>
 
-      <button class="ad-nav-btn" data-tab="discounts">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-        <span>Discounts</span>
+      <button class="ad-nav-btn" data-tab="activity">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Activity</span>
       </button>
-
-      <div class="ad-nav-group">Management</div>
-
-      <button class="ad-nav-btn" data-tab="team">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        <span>Team</span>
-      </button>
-
-      <button class="ad-nav-btn" data-tab="support">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        <span>Support</span>
-      </button>
-
-      <button class="ad-nav-btn" data-tab="content">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg>
-        <span>Content</span>
-      </button>
-
-      <div class="ad-nav-group">System</div>
 
       <button class="ad-nav-btn" data-tab="settings">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
@@ -721,7 +876,7 @@ ul{list-style:none}
 
       <button class="ad-nav-btn" data-tab="danger">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
-        <span>Danger zone</span>
+        <span>Danger Zone</span>
       </button>
 
     </nav>
@@ -742,118 +897,171 @@ ul{list-style:none}
   <main class="ad-main">
 
     <header class="ad-top">
-      <div style="display:flex;align-items:center;gap:14px;min-width:0">
+      <div class="ad-top-left">
         <button class="ad-mobile-toggle" id="sidebarToggle" aria-label="Toggle menu">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
         <div style="min-width:0">
-          <h1 class="ad-top-title" id="pageTitle">Overview</h1>
-          <p class="ad-top-sub" id="pageSub">Live studio overview</p>
+          <h1 class="ad-top-title" id="pageTitle">Dashboard</h1>
+          <p class="ad-top-sub" id="pageSub">Studio overview</p>
         </div>
       </div>
-      <div class="ad-top-actions">
+      <div class="ad-top-right">
         <div class="ad-live"><span class="ad-live-dot"></span>Live</div>
       </div>
     </header>
 
     <div class="ad-body">
 
-      <!-- ========== OVERVIEW ========== -->
-      <div class="ad-tab active" id="tab-overview">
+      <!-- ============ DASHBOARD ============ -->
+      <div class="ad-tab active" id="tab-dashboard">
+
+        <div class="ad-greet">
+          <div class="ad-greet-hi" id="greeting">Good evening 👋</div>
+          <div class="ad-greet-sub">Here's what's happening with NEXIFING today.</div>
+        </div>
 
         <div class="ad-stats">
           <div class="ad-stat">
             <div class="ad-stat-top">
               <div class="ad-stat-icon ad-icon-iris">
-                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
               </div>
               <span class="ad-stat-trend">All time</span>
             </div>
-            <div class="ad-stat-num" id="oStatUsers">0</div>
-            <div class="ad-stat-label">Total clients</div>
+            <div class="ad-stat-num" id="dWebsites">0</div>
+            <div class="ad-stat-label">Total websites</div>
           </div>
 
           <div class="ad-stat">
             <div class="ad-stat-top">
               <div class="ad-stat-icon ad-icon-mint">
-                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
               </div>
-              <span class="ad-stat-trend" id="oRepeatTrend">—</span>
+              <span class="ad-stat-trend" id="dActiveTrend">—</span>
             </div>
-            <div class="ad-stat-num" id="oStatRepeat">0</div>
-            <div class="ad-stat-label">Repeat clients</div>
-          </div>
-
-          <div class="ad-stat">
-            <div class="ad-stat-top">
-              <div class="ad-stat-icon ad-icon-ember">
-                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-              </div>
-              <span class="ad-stat-trend" id="oDiscountTrend">—</span>
-            </div>
-            <div class="ad-stat-num" id="oStatDiscount">0</div>
-            <div class="ad-stat-label">Discounted clients</div>
+            <div class="ad-stat-num" id="dActive">0</div>
+            <div class="ad-stat-label">Active websites</div>
           </div>
 
           <div class="ad-stat">
             <div class="ad-stat-top">
               <div class="ad-stat-icon ad-icon-amber">
-                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               </div>
-              <span class="ad-stat-trend" id="oOrdersTrend">—</span>
+              <span class="ad-stat-trend">Pending</span>
             </div>
-            <div class="ad-stat-num" id="oStatOrders">0</div>
-            <div class="ad-stat-label">Total orders</div>
+            <div class="ad-stat-num" id="dRequests">0</div>
+            <div class="ad-stat-label">Open requests</div>
+          </div>
+
+          <div class="ad-stat">
+            <div class="ad-stat-top">
+              <div class="ad-stat-icon ad-icon-ember">
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </div>
+              <span class="ad-stat-trend">All time</span>
+            </div>
+            <div class="ad-stat-num" id="dViews">0</div>
+            <div class="ad-stat-label">Total views</div>
           </div>
         </div>
 
         <div class="ad-panel">
           <div class="ad-panel-head">
             <div>
-              <div class="ad-panel-title">Recent activity</div>
-              <div class="ad-panel-sub">Latest sign-ups and orders</div>
+              <div class="ad-panel-title">Website traffic</div>
+              <div class="ad-panel-sub">Last 7 days</div>
             </div>
           </div>
-          <div id="activityList">
-            <div class="ad-table-empty">No activity yet.</div>
+          <div class="ad-chart">
+            <svg viewBox="0 0 700 220" preserveAspectRatio="none" id="trafficChart">
+              <defs>
+                <linearGradient id="chartGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#3b82f6"/>
+                  <stop offset="100%" stop-color="#38bdf8"/>
+                </linearGradient>
+                <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="rgba(56,189,248,.35)"/>
+                  <stop offset="100%" stop-color="rgba(56,189,248,0)"/>
+                </linearGradient>
+              </defs>
+              <g id="chartGrid"></g>
+              <path class="ad-chart-area" id="chartArea" d=""/>
+              <path class="ad-chart-line" id="chartLine" d=""/>
+              <g id="chartDots"></g>
+              <g id="chartLabels"></g>
+            </svg>
+            <div class="ad-chart-legend">
+              <span><i style="background:#38bdf8"></i>Page views</span>
+              <span><i style="background:#47d18c"></i>Unique visitors</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+          <div class="ad-panel">
+            <div class="ad-panel-head">
+              <div>
+                <div class="ad-panel-title">Recent websites</div>
+                <div class="ad-panel-sub">Latest additions</div>
+              </div>
+            </div>
+            <div id="recentWebsites">
+              <div class="ad-table-empty">No websites yet.</div>
+            </div>
+          </div>
+
+          <div class="ad-panel">
+            <div class="ad-panel-head">
+              <div>
+                <div class="ad-panel-title">Recent activity</div>
+                <div class="ad-panel-sub">Studio events</div>
+              </div>
+            </div>
+            <div id="recentActivity">
+              <div class="ad-table-empty">No activity yet.</div>
+            </div>
           </div>
         </div>
 
       </div>
 
-      <!-- ========== PROJECTS ========== -->
-      <div class="ad-tab" id="tab-projects">
+      <!-- ============ WEBSITES ============ -->
+      <div class="ad-tab" id="tab-websites">
         <div class="ad-panel">
           <div class="ad-panel-head">
             <div>
-              <div class="ad-panel-title">Project requests</div>
-              <div class="ad-panel-sub" id="projectsSub">0 requests</div>
+              <div class="ad-panel-title">All websites</div>
+              <div class="ad-panel-sub" id="websitesSub">0 websites</div>
             </div>
             <div class="ad-panel-actions">
               <div class="ad-search">
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                <input type="search" id="projectsSearch" placeholder="Search…">
+                <input type="search" id="websitesSearch" placeholder="Search websites…">
               </div>
+              <button class="ad-btn ad-btn-primary ad-btn-sm" id="addWebsiteBtn">+ Add website</button>
             </div>
           </div>
           <table class="ad-table">
             <thead>
               <tr>
-                <th>Client</th>
-                <th>Service</th>
-                <th>Budget</th>
+                <th>Website</th>
+                <th>Owner</th>
                 <th>Status</th>
+                <th>Views</th>
+                <th>Added</th>
                 <th style="text-align:right">Actions</th>
               </tr>
             </thead>
-            <tbody id="projectsList">
-              <tr><td colspan="5" class="ad-table-empty">Loading…</td></tr>
+            <tbody id="websitesList">
+              <tr><td colspan="6" class="ad-table-empty">Loading…</td></tr>
             </tbody>
           </table>
         </div>
       </div>
 
-      <!-- ========== CLIENTS ========== -->
+      <!-- ============ CLIENTS ============ -->
       <div class="ad-tab" id="tab-clients">
         <div class="ad-panel">
           <div class="ad-panel-head">
@@ -864,7 +1072,7 @@ ul{list-style:none}
             <div class="ad-panel-actions">
               <div class="ad-search">
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                <input type="search" id="clientsSearch" placeholder="Search email or UID…">
+                <input type="search" id="clientsSearch" placeholder="Search clients…">
               </div>
             </div>
           </div>
@@ -874,23 +1082,189 @@ ul{list-style:none}
                 <th>Client</th>
                 <th>Orders</th>
                 <th>Discount</th>
+                <th>Joined</th>
                 <th style="text-align:right">Actions</th>
               </tr>
             </thead>
             <tbody id="clientsList">
-              <tr><td colspan="4" class="ad-table-empty">Loading…</td></tr>
+              <tr><td colspan="5" class="ad-table-empty">Loading…</td></tr>
             </tbody>
           </table>
         </div>
       </div>
 
-      <!-- ========== SERVICES ========== -->
+      <!-- ============ REQUESTS ============ -->
+      <div class="ad-tab" id="tab-requests">
+        <div class="ad-panel">
+          <div class="ad-panel-head">
+            <div>
+              <div class="ad-panel-title">Project requests</div>
+              <div class="ad-panel-sub" id="requestsSub">0 requests</div>
+            </div>
+            <div class="ad-panel-actions">
+              <button class="ad-btn ad-btn-primary ad-btn-sm" id="addRequestBtn">+ New request</button>
+            </div>
+          </div>
+          <table class="ad-table">
+            <thead>
+              <tr>
+                <th>Client</th>
+                <th>Service</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Deadline</th>
+                <th style="text-align:right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="requestsList">
+              <tr><td colspan="6" class="ad-table-empty">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ ANALYTICS ============ -->
+      <div class="ad-tab" id="tab-analytics">
+        <div class="ad-stats">
+          <div class="ad-stat">
+            <div class="ad-stat-top">
+              <div class="ad-stat-icon ad-icon-ember">
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </div>
+              <span class="ad-stat-trend">7d</span>
+            </div>
+            <div class="ad-stat-num" id="aViews">0</div>
+            <div class="ad-stat-label">Page views</div>
+          </div>
+          <div class="ad-stat">
+            <div class="ad-stat-top">
+              <div class="ad-stat-icon ad-icon-mint">
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              </div>
+              <span class="ad-stat-trend">7d</span>
+            </div>
+            <div class="ad-stat-num" id="aVisitors">0</div>
+            <div class="ad-stat-label">Unique visitors</div>
+          </div>
+          <div class="ad-stat">
+            <div class="ad-stat-top">
+              <div class="ad-stat-icon ad-icon-iris">
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6 .9-4.5 4.4 1 6.2L12 16.6l-5.5 3 1-6.2L3 8.9 9 8z"/></svg>
+              </div>
+              <span class="ad-stat-trend">7d</span>
+            </div>
+            <div class="ad-stat-num" id="aBadgeClicks">0</div>
+            <div class="ad-stat-label">Badge clicks</div>
+          </div>
+          <div class="ad-stat">
+            <div class="ad-stat-top">
+              <div class="ad-stat-icon ad-icon-amber">
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <span class="ad-stat-trend">CTR</span>
+            </div>
+            <div class="ad-stat-num" id="aCtr">0%</div>
+            <div class="ad-stat-label">Click-through rate</div>
+          </div>
+        </div>
+
+        <div class="ad-panel">
+          <div class="ad-panel-head">
+            <div>
+              <div class="ad-panel-title">Top websites</div>
+              <div class="ad-panel-sub">By page views (7 days)</div>
+            </div>
+          </div>
+          <table class="ad-table">
+            <thead>
+              <tr>
+                <th>Website</th>
+                <th>Views</th>
+                <th>Visitors</th>
+                <th>Badge clicks</th>
+                <th>CTR</th>
+              </tr>
+            </thead>
+            <tbody id="analyticsList">
+              <tr><td colspan="5" class="ad-table-empty">No data yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ BADGE MANAGER ============ -->
+      <div class="ad-tab" id="tab-badge">
+        <div class="ad-badge-grid">
+          <div class="ad-panel">
+            <div class="ad-panel-head">
+              <div>
+                <div class="ad-panel-title">Badge preview</div>
+                <div class="ad-panel-sub">What visitors see on partner websites</div>
+              </div>
+            </div>
+            <div class="ad-badge-preview">
+              <a href="https://7az3ma7m3dm-oss.github.io/nexifing/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;padding:8px 18px;border:1px solid var(--border-2);border-radius:var(--pill);text-decoration:none;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--text-4);transition:all .25s">
+                <span>Powered by</span>
+                <img src="nexifing-logo.png" alt="NEXIFING" style="height:28px" onerror="this.style.display='none'">
+              </a>
+              <div style="font-family:var(--mono);font-size:10.5px;color:var(--text-5);letter-spacing:.14em;text-transform:uppercase;text-align:center">Click to view site</div>
+            </div>
+          </div>
+
+          <div class="ad-panel">
+            <div class="ad-panel-head">
+              <div>
+                <div class="ad-panel-title">Badge settings</div>
+                <div class="ad-panel-sub">Controls what appears on partner sites</div>
+              </div>
+            </div>
+            <div style="padding:22px">
+              <div class="ad-field">
+                <label>Badge style</label>
+                <select id="badgeStyle">
+                  <option value="full">Full logo + "Powered by" text</option>
+                  <option value="icon">Icon only</option>
+                  <option value="text">Text only</option>
+                </select>
+              </div>
+              <div class="ad-field">
+                <label>Logo file</label>
+                <input type="text" id="badgeLogoPath" value="nexifing-logo.png">
+              </div>
+              <div class="ad-field">
+                <label>Destination URL</label>
+                <input type="text" id="badgeUrl" value="https://7az3ma7m3dm-oss.github.io/nexifing/">
+              </div>
+              <button class="ad-btn ad-btn-primary" id="saveBadgeBtn" style="width:100%;margin-top:8px">Save badge settings</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ad-panel">
+          <div class="ad-panel-head">
+            <div>
+              <div class="ad-panel-title">Embed code</div>
+              <div class="ad-panel-sub">Paste this into any website footer</div>
+            </div>
+          </div>
+          <div style="padding:22px">
+            <div class="ad-badge-code" id="badgeCode">&lt;a href="https://7az3ma7m3dm-oss.github.io/nexifing/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-family:system-ui;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8f99b8;padding:8px 14px;border:1px solid #333a55;border-radius:999px;text-decoration:none;"&gt;
+  &lt;span&gt;Powered by&lt;/span&gt;
+  &lt;img src="https://7az3ma7m3dm-oss.github.io/nexifing/nexifing-logo.png" alt="NEXIFING" style="height:18px;"&gt;
+&lt;/a&gt;
+              <button class="ad-badge-code-copy" id="copyBadgeBtn">Copy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ SERVICES ============ -->
       <div class="ad-tab" id="tab-services">
         <div class="ad-panel">
           <div class="ad-panel-head">
             <div>
               <div class="ad-panel-title">Service offerings</div>
-              <div class="ad-panel-sub">What shows on the services page</div>
+              <div class="ad-panel-sub">What appears on the services page</div>
             </div>
             <div class="ad-panel-actions">
               <button class="ad-btn ad-btn-primary ad-btn-sm" id="addServiceBtn">+ Add service</button>
@@ -903,158 +1277,116 @@ ul{list-style:none}
                 <th>Starting price</th>
                 <th>Delivery</th>
                 <th>Status</th>
-              </tr>
-            </thead>
-            <tbody id="servicesList">
-              <tr><td colspan="4" class="ad-table-empty">Loading…</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- ========== DISCOUNTS ========== -->
-      <div class="ad-tab" id="tab-discounts">
-        <div class="ad-panel">
-          <div class="ad-panel-head">
-            <div>
-              <div class="ad-panel-title">Automatic discount tiers</div>
-              <div class="ad-panel-sub">Applied automatically based on order count</div>
-            </div>
-          </div>
-          <table class="ad-table">
-            <thead>
-              <tr>
-                <th>Tier</th>
-                <th>Orders required</th>
-                <th>Discount</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Returning</strong></td>
-                <td>1+ completed orders</td>
-                <td><span class="ad-badge ad-badge-info">30% off</span></td>
-                <td><span class="ad-badge ad-badge-mint">Active</span></td>
-              </tr>
-              <tr>
-                <td><strong>Loyal</strong></td>
-                <td>3+ completed orders</td>
-                <td><span class="ad-badge ad-badge-info">50% off</span></td>
-                <td><span class="ad-badge ad-badge-mint">Active</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="ad-panel">
-          <div class="ad-panel-head">
-            <div>
-              <div class="ad-panel-title">Promo codes</div>
-              <div class="ad-panel-sub">One-time or reusable codes</div>
-            </div>
-            <div class="ad-panel-actions">
-              <button class="ad-btn ad-btn-primary ad-btn-sm" id="addPromoBtn">+ New promo</button>
-            </div>
-          </div>
-          <table class="ad-table">
-            <thead>
-              <tr>
-                <th>Code</th>
-                <th>Discount</th>
-                <th>Uses</th>
-                <th>Expires</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody id="promosList">
-              <tr><td colspan="5" class="ad-table-empty">No promo codes yet.</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- ========== TEAM ========== -->
-      <div class="ad-tab" id="tab-team">
-        <div class="ad-panel">
-          <div class="ad-panel-head">
-            <div>
-              <div class="ad-panel-title">Team members</div>
-              <div class="ad-panel-sub">Who has access to this admin panel</div>
-            </div>
-            <div class="ad-panel-actions">
-              <button class="ad-btn ad-btn-primary ad-btn-sm" id="addTeamBtn">+ Add member</button>
-            </div>
-          </div>
-          <table class="ad-table">
-            <thead>
-              <tr>
-                <th>Member</th>
-                <th>Role</th>
-                <th>Added</th>
                 <th style="text-align:right">Actions</th>
               </tr>
             </thead>
-            <tbody id="teamList">
-              <tr><td colspan="4" class="ad-table-empty">Loading…</td></tr>
+            <tbody id="servicesList">
+              <tr><td colspan="5" class="ad-table-empty">Loading…</td></tr>
             </tbody>
           </table>
         </div>
       </div>
 
-      <!-- ========== SUPPORT ========== -->
-      <div class="ad-tab" id="tab-support">
-        <div class="ad-soon">
-          <div class="ad-soon-icon">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <!-- ============ ACTIVITY ============ -->
+      <div class="ad-tab" id="tab-activity">
+        <div class="ad-panel">
+          <div class="ad-panel-head">
+            <div>
+              <div class="ad-panel-title">Activity log</div>
+              <div class="ad-panel-sub">Every admin and client event</div>
+            </div>
           </div>
-          <h3>Support tickets</h3>
-          <p>Client messages from the contact form will land here. Coming soon.</p>
+          <div id="activityFullList">
+            <div class="ad-table-empty">No activity yet.</div>
+          </div>
         </div>
       </div>
 
-      <!-- ========== CONTENT ========== -->
-      <div class="ad-tab" id="tab-content">
-        <div class="ad-soon">
-          <div class="ad-soon-icon">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg>
-          </div>
-          <h3>Content manager</h3>
-          <p>Edit homepage text, banners, FAQ and pricing notes without touching code. Coming soon.</p>
-        </div>
-      </div>
-
-      <!-- ========== SETTINGS ========== -->
+      <!-- ============ SETTINGS ============ -->
       <div class="ad-tab" id="tab-settings">
-        <div class="ad-soon">
-          <div class="ad-soon-icon">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <div class="ad-panel">
+          <div class="ad-panel-head">
+            <div>
+              <div class="ad-panel-title">Studio settings</div>
+              <div class="ad-panel-sub">Branding and contact info</div>
+            </div>
           </div>
-          <h3>Studio settings</h3>
-          <p>Social links, contact info, notification preferences and maintenance mode. Coming soon.</p>
+          <div style="padding:22px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div class="ad-field">
+              <label>Studio name</label>
+              <input type="text" id="setName" value="NEXIFING">
+            </div>
+            <div class="ad-field">
+              <label>Contact email</label>
+              <input type="email" id="setEmail" placeholder="hello@nexifing.com">
+            </div>
+            <div class="ad-field">
+              <label>Discord invite</label>
+              <input type="text" id="setDiscord" value="https://discord.gg/g53hhDu2tJ">
+            </div>
+            <div class="ad-field">
+              <label>WhatsApp</label>
+              <input type="text" id="setWhatsapp" value="https://wa.me/201202000210">
+            </div>
+            <div class="ad-field">
+              <label>Instagram</label>
+              <input type="text" id="setInstagram" value="https://www.instagram.com/nexifing/">
+            </div>
+            <div class="ad-field">
+              <label>Public site URL</label>
+              <input type="text" id="setPublicUrl" value="https://7az3ma7m3dm-oss.github.io/nexifing/">
+            </div>
+          </div>
+          <div style="padding:0 22px 22px">
+            <button class="ad-btn ad-btn-primary" id="saveSettingsBtn">Save settings</button>
+          </div>
         </div>
       </div>
 
-      <!-- ========== DANGER ========== -->
+      <!-- ============ DANGER ============ -->
       <div class="ad-tab" id="tab-danger">
         <div class="ad-danger">
           <div class="ad-danger-info">
             <h4>Reset all client order counts</h4>
-            <p>Sets every client's <code style="font-family:var(--mono);color:var(--ember)">orderCount</code> back to 0. They lose all discounts.</p>
+            <p>Sets every client's <code>orderCount</code> back to 0. Discounts are lost.</p>
           </div>
           <button class="ad-btn ad-btn-danger" id="resetOrdersBtn">Reset</button>
         </div>
         <div class="ad-danger">
           <div class="ad-danger-info">
-            <h4>Clear promo codes</h4>
-            <p>Deletes every promo code. Existing discounts on user accounts are not affected.</p>
+            <h4>Clear all activity log</h4>
+            <p>Deletes every entry in the activity collection. Cannot be undone.</p>
           </div>
-          <button class="ad-btn ad-btn-danger" id="clearPromosBtn">Clear</button>
+          <button class="ad-btn ad-btn-danger" id="clearActivityBtn">Clear</button>
+        </div>
+        <div class="ad-danger">
+          <div class="ad-danger-info">
+            <h4>Delete all websites</h4>
+            <p>Removes every website from the admin. Client accounts stay.</p>
+          </div>
+          <button class="ad-btn ad-btn-danger" id="deleteWebsitesBtn">Delete all</button>
         </div>
       </div>
 
     </div>
   </main>
+</div>
+
+<!-- MODAL -->
+<div class="ad-modal-back" id="modalBack">
+  <div class="ad-modal">
+    <div class="ad-modal-head">
+      <div class="ad-modal-title" id="modalTitle">Modal</div>
+      <button class="ad-modal-close" id="modalClose">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="ad-modal-body" id="modalBody"></div>
+    <div class="ad-modal-foot">
+      <button class="ad-btn ad-btn-ghost" id="modalCancel">Cancel</button>
+      <button class="ad-btn ad-btn-primary" id="modalSave">Save</button>
+    </div>
+  </div>
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
@@ -1064,7 +1396,7 @@ ul{list-style:none}
 
 <script>
 /* ============================================================
-   ADMIN SCRIPT
+   NEXIFING ADMIN — JS
    ============================================================ */
 var ADMIN_UIDS = [
   'w0qgOaWLIRhJtp2Hk0CbcSB1nSz2'
@@ -1075,27 +1407,43 @@ document.addEventListener('DOMContentLoaded', function () {
   var auth = firebase.auth();
   var db   = firebase.firestore();
 
-  var allClients = [];
-  var allProjects = [];
-  var allTeam = [];
+  // ---- STATE
+  var state = {
+    websites: [],
+    clients: [],
+    requests: [],
+    services: [],
+    activities: [],
+    settings: {}
+  };
 
-  /* ---------- TAB NAV ---------- */
+  var currentUser = null;
+
+  // ---- GREETING
+  (function greet(){
+    var h = new Date().getHours();
+    var text = h < 12 ? 'Good morning 👋' : h < 18 ? 'Good afternoon 👋' : 'Good evening 👋';
+    var el = document.getElementById('greeting');
+    if (el) el.textContent = text;
+  })();
+
+  // ---- TAB NAV
   var tabs = document.querySelectorAll('.ad-nav-btn');
   var panels = document.querySelectorAll('.ad-tab');
   var pageTitle = document.getElementById('pageTitle');
-  var pageSub   = document.getElementById('pageSub');
+  var pageSub = document.getElementById('pageSub');
 
   var TAB_META = {
-    overview:  { title:'Overview',  sub:'Live studio overview' },
-    projects:  { title:'Projects',  sub:'Client project requests' },
-    clients:   { title:'Clients',   sub:'Registered accounts' },
-    services:  { title:'Services',  sub:'Service offerings' },
-    discounts: { title:'Discounts', sub:'Tiers and promo codes' },
-    team:      { title:'Team',      sub:'Admin panel members' },
-    support:   { title:'Support',   sub:'Client messages' },
-    content:   { title:'Content',   sub:'Website content manager' },
-    settings:  { title:'Settings',  sub:'Studio configuration' },
-    danger:    { title:'Danger zone', sub:'Destructive actions' }
+    dashboard: { title:'Dashboard', sub:'Studio overview' },
+    websites: { title:'Websites', sub:'Managed client websites' },
+    clients: { title:'Clients', sub:'Registered accounts' },
+    requests: { title:'Requests', sub:'Project pipeline' },
+    analytics: { title:'Analytics', sub:'Traffic and engagement' },
+    badge: { title:'Badge Manager', sub:'Powered by NEXIFING widget' },
+    services: { title:'Services', sub:'Service offerings and pricing' },
+    activity: { title:'Activity', sub:'Full event log' },
+    settings: { title:'Settings', sub:'Studio configuration' },
+    danger: { title:'Danger Zone', sub:'Destructive actions' }
   };
 
   tabs.forEach(function (btn) {
@@ -1106,16 +1454,16 @@ document.addEventListener('DOMContentLoaded', function () {
       btn.classList.add('active');
       var target = document.getElementById('tab-' + tab);
       if (target) target.classList.add('active');
-      var meta = TAB_META[tab] || { title:'Admin', sub:'' };
-      pageTitle.textContent = meta.title;
-      pageSub.textContent = meta.sub;
+      var m = TAB_META[tab] || { title:'Admin', sub:'' };
+      pageTitle.textContent = m.title;
+      pageSub.textContent = m.sub;
       if (window.innerWidth < 900) {
         document.getElementById('sidebar').classList.remove('open');
       }
     });
   });
 
-  /* ---------- SIDEBAR TOGGLE ---------- */
+  // ---- SIDEBAR TOGGLE
   var sidebarToggle = document.getElementById('sidebarToggle');
   if (sidebarToggle) {
     sidebarToggle.addEventListener('click', function () {
@@ -1123,37 +1471,178 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* ---------- AUTH GATE ---------- */
+  // ---- AUTH
   auth.onAuthStateChanged(function (user) {
     document.getElementById('loadingState').style.display = 'none';
 
-    if (!user) {
-      window.location.href = 'login.html';
-      return;
-    }
-
+    if (!user) { window.location.href = 'login.html'; return; }
     if (ADMIN_UIDS.indexOf(user.uid) === -1) {
       document.getElementById('deniedState').style.display = 'flex';
       return;
     }
-
+    currentUser = user;
     document.getElementById('adminRoot').style.display = 'grid';
-
     var email = user.email || 'admin';
     document.getElementById('userEmail').textContent = email;
     document.getElementById('userAvatar').textContent = email.charAt(0).toUpperCase();
 
-    loadClients();
-    loadProjects();
-    loadTeam();
+    loadAll();
   });
+
+  // ---- LOAD ALL COLLECTIONS
+  function loadAll() {
+    loadWebsites();
+    loadClients();
+    loadRequests();
+    loadServices();
+    loadActivities();
+    loadSettings();
+  }
+
+  /* ============================================================
+     WEBSITES
+     ============================================================ */
+  function loadWebsites() {
+    db.collection('websites').onSnapshot(function (snap) {
+      state.websites = snap.docs.map(function (d) {
+        var data = d.data() || {};
+        return {
+          id: d.id,
+          name: data.name || 'Untitled',
+          url: data.url || '',
+          owner: data.owner || '—',
+          status: data.status || 'active',
+          views: data.views || 0,
+          uniqueVisitors: data.uniqueVisitors || 0,
+          badgeClicks: data.badgeClicks || 0,
+          createdAt: data.createdAt
+        };
+      });
+      state.websites.sort(function (a, b) {
+        var aT = a.createdAt && a.createdAt.toDate ? a.createdAt.toDate().getTime() : 0;
+        var bT = b.createdAt && b.createdAt.toDate ? b.createdAt.toDate().getTime() : 0;
+        return bT - aT;
+      });
+      renderWebsites(state.websites);
+      renderDashboard();
+      renderAnalytics();
+    }, function () { state.websites = []; renderWebsites([]); });
+  }
+
+  function renderWebsites(list) {
+    var el = document.getElementById('websitesList');
+    var badge = document.getElementById('websitesBadge');
+    var sub = document.getElementById('websitesSub');
+
+    badge.textContent = list.length;
+    sub.textContent = list.length + (list.length === 1 ? ' website' : ' websites');
+
+    if (!list.length) {
+      el.innerHTML = '<tr><td colspan="6" class="ad-table-empty">No websites yet. Click "+ Add website".</td></tr>';
+      return;
+    }
+    el.innerHTML = '';
+    list.forEach(function (w) {
+      var initial = (w.name || '?').charAt(0).toUpperCase();
+      var statusBadge = w.status === 'active'
+        ? '<span class="ad-badge ad-badge-mint"><span class="ad-badge-dot"></span>Active</span>'
+        : '<span class="ad-badge ad-badge-danger"><span class="ad-badge-dot"></span>Offline</span>';
+      var dateStr = w.createdAt && w.createdAt.toDate ? w.createdAt.toDate().toLocaleDateString() : '—';
+
+      var tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td><div class="ad-user-cell">' +
+          '<div class="ad-av ad-av-square">' + initial + '</div>' +
+          '<div class="ad-cell-info">' +
+            '<div class="ad-cell-title">' + esc(w.name) + '</div>' +
+            '<div class="ad-cell-sub">' + esc(w.url) + '</div>' +
+          '</div>' +
+        '</div></td>' +
+        '<td>' + esc(w.owner) + '</td>' +
+        '<td>' + statusBadge + '</td>' +
+        '<td><span class="ad-count">' + w.views + '</span></td>' +
+        '<td style="color:var(--text-4);font-size:12px">' + dateStr + '</td>' +
+        '<td style="text-align:right"><div class="ad-cell-actions">' +
+          '<button class="ad-act-btn" data-edit-w="' + w.id + '" title="Edit">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>' +
+          '</button>' +
+          '<button class="ad-act-btn ad-act-danger" data-del-w="' + w.id + '" title="Delete">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg>' +
+          '</button>' +
+        '</div></td>';
+      el.appendChild(tr);
+    });
+
+    el.querySelectorAll('[data-edit-w]').forEach(function (b) {
+      b.addEventListener('click', function () { editWebsite(b.getAttribute('data-edit-w')); });
+    });
+    el.querySelectorAll('[data-del-w]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (!confirm('Delete this website?')) return;
+        db.collection('websites').doc(b.getAttribute('data-del-w')).delete().then(logActivity('Website deleted'));
+      });
+    });
+  }
+
+  // ---- WEBSITES SEARCH
+  var websitesSearch = document.getElementById('websitesSearch');
+  if (websitesSearch) {
+    websitesSearch.addEventListener('input', function () {
+      var q = websitesSearch.value.trim().toLowerCase();
+      if (!q) return renderWebsites(state.websites);
+      renderWebsites(state.websites.filter(function (w) {
+        return (w.name || '').toLowerCase().indexOf(q) !== -1 ||
+               (w.url || '').toLowerCase().indexOf(q) !== -1 ||
+               (w.owner || '').toLowerCase().indexOf(q) !== -1;
+      }));
+    });
+  }
+
+  // ---- ADD WEBSITE
+  document.getElementById('addWebsiteBtn').addEventListener('click', function () {
+    showModal('Add website', [
+      { label:'Website name', id:'w-name', placeholder:'GameNest' },
+      { label:'URL', id:'w-url', placeholder:'https://gamenest.shop' },
+      { label:'Owner email', id:'w-owner', placeholder:'client@example.com' },
+      { label:'Status', id:'w-status', type:'select', options:['active','offline'] }
+    ], function (data) {
+      db.collection('websites').add({
+        name: data['w-name'],
+        url: data['w-url'],
+        owner: data['w-owner'],
+        status: data['w-status'] || 'active',
+        views: 0,
+        uniqueVisitors: 0,
+        badgeClicks: 0,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      }).then(function () { logActivity('New website added: ' + data['w-name']); });
+    });
+  });
+
+  function editWebsite(id) {
+    var w = state.websites.find(function (x) { return x.id === id; });
+    if (!w) return;
+    showModal('Edit website', [
+      { label:'Website name', id:'w-name', value: w.name },
+      { label:'URL', id:'w-url', value: w.url },
+      { label:'Owner email', id:'w-owner', value: w.owner },
+      { label:'Status', id:'w-status', type:'select', options:['active','offline'], value: w.status }
+    ], function (data) {
+      db.collection('websites').doc(id).update({
+        name: data['w-name'],
+        url: data['w-url'],
+        owner: data['w-owner'],
+        status: data['w-status']
+      }).then(function () { logActivity('Website updated: ' + data['w-name']); });
+    });
+  }
 
   /* ============================================================
      CLIENTS
      ============================================================ */
   function loadClients() {
     db.collection('users').onSnapshot(function (snap) {
-      allClients = snap.docs.map(function (d) {
+      state.clients = snap.docs.map(function (d) {
         var data = d.data() || {};
         return {
           uid: d.id,
@@ -1162,66 +1651,62 @@ document.addEventListener('DOMContentLoaded', function () {
           createdAt: data.createdAt
         };
       });
-      allClients.sort(function (a, b) { return (b.orderCount || 0) - (a.orderCount || 0); });
-      renderClients(allClients);
-      renderOverview();
-    }, function (err) {
-      document.getElementById('clientsList').innerHTML =
-        '<tr><td colspan="4" class="ad-table-empty" style="color:var(--danger)">Error: ' + err.message + '</td></tr>';
-    });
+      state.clients.sort(function (a, b) { return (b.orderCount || 0) - (a.orderCount || 0); });
+      renderClients(state.clients);
+      renderDashboard();
+    }, function () { state.clients = []; renderClients([]); });
   }
 
-  function renderClients(users) {
-    var list = document.getElementById('clientsList');
+  function renderClients(list) {
+    var el = document.getElementById('clientsList');
     var badge = document.getElementById('clientsBadge');
     var sub = document.getElementById('clientsSub');
-    var count = users.length;
-    badge.textContent = count;
-    sub.textContent = count + (count === 1 ? ' account' : ' accounts');
 
-    if (!users.length) {
-      list.innerHTML = '<tr><td colspan="4" class="ad-table-empty">No clients yet.</td></tr>';
+    badge.textContent = list.length;
+    sub.textContent = list.length + (list.length === 1 ? ' account' : ' accounts');
+
+    if (!list.length) {
+      el.innerHTML = '<tr><td colspan="5" class="ad-table-empty">No clients yet.</td></tr>';
       return;
     }
-
-    list.innerHTML = '';
-    users.forEach(function (u) {
+    el.innerHTML = '';
+    list.forEach(function (u) {
       var tier = getTier(u.orderCount);
-      var tr = document.createElement('tr');
       var initial = (u.email || '?').charAt(0).toUpperCase();
+      var dateStr = u.createdAt && u.createdAt.toDate ? u.createdAt.toDate().toLocaleDateString() : '—';
 
+      var tr = document.createElement('tr');
       tr.innerHTML =
         '<td><div class="ad-user-cell">' +
           '<div class="ad-av">' + initial + '</div>' +
-          '<div class="ad-user-cell-info">' +
-            '<div class="ad-user-cell-email">' + esc(u.email) + '</div>' +
-            '<div class="ad-user-cell-id">' + u.uid + '</div>' +
+          '<div class="ad-cell-info">' +
+            '<div class="ad-cell-title">' + esc(u.email) + '</div>' +
+            '<div class="ad-cell-sub">' + u.uid + '</div>' +
           '</div>' +
         '</div></td>' +
         '<td><span class="ad-count">' + u.orderCount + '</span></td>' +
         '<td>' + (tier.pct > 0
           ? '<span class="ad-badge ad-badge-info">' + Math.round(tier.pct * 100) + '% off</span>'
           : '<span class="ad-badge ad-badge-muted">—</span>') + '</td>' +
+        '<td style="color:var(--text-4);font-size:12px">' + dateStr + '</td>' +
         '<td style="text-align:right"><div class="ad-cell-actions">' +
           '<button class="ad-act-btn ad-act-add" data-add="' + u.uid + '" title="Add order">+</button>' +
-          '<button class="ad-act-btn" data-remove="' + u.uid + '" title="Remove order">−</button>' +
+          '<button class="ad-act-btn" data-remove="' + u.uid + '" title="Remove">−</button>' +
           '<button class="ad-act-btn ad-act-danger" data-reset="' + u.uid + '" title="Reset">⟲</button>' +
         '</div></td>';
-
-      list.appendChild(tr);
+      el.appendChild(tr);
     });
 
-    list.querySelectorAll('[data-add]').forEach(function (b) {
+    el.querySelectorAll('[data-add]').forEach(function (b) {
       b.addEventListener('click', function () { changeOrders(b.getAttribute('data-add'), 1); });
     });
-    list.querySelectorAll('[data-remove]').forEach(function (b) {
+    el.querySelectorAll('[data-remove]').forEach(function (b) {
       b.addEventListener('click', function () { changeOrders(b.getAttribute('data-remove'), -1); });
     });
-    list.querySelectorAll('[data-reset]').forEach(function (b) {
+    el.querySelectorAll('[data-reset]').forEach(function (b) {
       b.addEventListener('click', function () {
         if (!confirm('Reset this client\'s order count to 0?')) return;
-        db.collection('users').doc(b.getAttribute('data-reset')).update({ orderCount: 0 })
-          .catch(function (err) { alert('Failed: ' + err.message); });
+        db.collection('users').doc(b.getAttribute('data-reset')).update({ orderCount: 0 });
       });
     });
   }
@@ -1234,112 +1719,125 @@ document.addEventListener('DOMContentLoaded', function () {
         var cur = doc.data().orderCount || 0;
         tx.update(ref, { orderCount: Math.max(0, cur + delta) });
       });
+    }).then(function () {
+      logActivity((delta > 0 ? 'Order added for ' : 'Order removed for ') + uid.slice(0,8));
     }).catch(function (err) { alert('Failed: ' + err.message); });
   }
 
-  /* ---------- CLIENTS SEARCH ---------- */
   var clientsSearch = document.getElementById('clientsSearch');
   if (clientsSearch) {
     clientsSearch.addEventListener('input', function () {
       var q = clientsSearch.value.trim().toLowerCase();
-      if (!q) return renderClients(allClients);
-      var filtered = allClients.filter(function (u) {
+      if (!q) return renderClients(state.clients);
+      renderClients(state.clients.filter(function (u) {
         return (u.email || '').toLowerCase().indexOf(q) !== -1 ||
                u.uid.toLowerCase().indexOf(q) !== -1;
-      });
-      renderClients(filtered);
+      }));
     });
   }
 
   /* ============================================================
-     PROJECTS
+     REQUESTS
      ============================================================ */
-  function loadProjects() {
-    db.collection('projects').onSnapshot(function (snap) {
-      allProjects = snap.docs.map(function (d) {
+  function loadRequests() {
+    db.collection('requests').onSnapshot(function (snap) {
+      state.requests = snap.docs.map(function (d) {
         var data = d.data() || {};
         return {
           id: d.id,
-          email: data.email || '—',
+          client: data.client || '—',
           service: data.service || '—',
-          budget: data.budget || '—',
-          status: data.status || 'new',
+          price: data.price || '—',
+          status: data.status || 'pending',
+          deadline: data.deadline || '—',
           createdAt: data.createdAt
         };
       });
-      renderProjects(allProjects);
-    }, function () {
-      // Collection doesn't exist yet — that's fine
-      allProjects = [];
-      renderProjects([]);
-    });
+      renderRequests(state.requests);
+      renderDashboard();
+    }, function () { state.requests = []; renderRequests([]); });
   }
 
-  function renderProjects(list) {
-    var el = document.getElementById('projectsList');
-    var badge = document.getElementById('projectsBadge');
-    var sub = document.getElementById('projectsSub');
+  function renderRequests(list) {
+    var el = document.getElementById('requestsList');
+    var badge = document.getElementById('requestsBadge');
+    var sub = document.getElementById('requestsSub');
 
-    var pending = list.filter(function (p) { return p.status === 'new'; }).length;
+    var pending = list.filter(function (r) { return r.status === 'pending'; }).length;
     badge.textContent = pending;
     sub.textContent = list.length + (list.length === 1 ? ' request' : ' requests');
 
     if (!list.length) {
-      el.innerHTML = '<tr><td colspan="5" class="ad-table-empty">No project requests yet. They appear here when clients submit the contact form.</td></tr>';
+      el.innerHTML = '<tr><td colspan="6" class="ad-table-empty">No requests yet.</td></tr>';
       return;
     }
-
     el.innerHTML = '';
-    list.forEach(function (p) {
-      var statusBadge = p.status === 'new'
-        ? '<span class="ad-badge ad-badge-amber">New</span>'
-        : p.status === 'in-progress'
-        ? '<span class="ad-badge ad-badge-info">In progress</span>'
-        : '<span class="ad-badge ad-badge-mint">Done</span>';
-
+    list.forEach(function (r) {
+      var statusMap = {
+        pending: '<span class="ad-badge ad-badge-amber">Pending</span>',
+        progress: '<span class="ad-badge ad-badge-info">In progress</span>',
+        review: '<span class="ad-badge ad-badge-info">Review</span>',
+        done: '<span class="ad-badge ad-badge-mint">Done</span>'
+      };
       var tr = document.createElement('tr');
       tr.innerHTML =
-        '<td style="font-weight:600">' + esc(p.email) + '</td>' +
-        '<td>' + esc(p.service) + '</td>' +
-        '<td><span class="ad-count" style="font-size:13px">' + esc(p.budget) + '</span></td>' +
-        '<td>' + statusBadge + '</td>' +
+        '<td style="font-weight:600">' + esc(r.client) + '</td>' +
+        '<td>' + esc(r.service) + '</td>' +
+        '<td><span class="ad-count" style="font-size:13px">' + esc(r.price) + '</span></td>' +
+        '<td>' + (statusMap[r.status] || statusMap.pending) + '</td>' +
+        '<td style="color:var(--text-4);font-size:12px">' + esc(r.deadline) + '</td>' +
         '<td style="text-align:right"><div class="ad-cell-actions">' +
-          '<button class="ad-act-btn" data-advance="' + p.id + '" title="Advance status">→</button>' +
+          '<button class="ad-act-btn" data-adv-r="' + r.id + '" title="Advance">→</button>' +
+          '<button class="ad-act-btn ad-act-danger" data-del-r="' + r.id + '" title="Delete">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg>' +
+          '</button>' +
         '</div></td>';
       el.appendChild(tr);
     });
 
-    el.querySelectorAll('[data-advance]').forEach(function (b) {
+    el.querySelectorAll('[data-adv-r]').forEach(function (b) {
       b.addEventListener('click', function () {
-        var id = b.getAttribute('data-advance');
-        var proj = allProjects.find(function (p) { return p.id === id; });
-        if (!proj) return;
-        var next = proj.status === 'new' ? 'in-progress' : proj.status === 'in-progress' ? 'done' : 'new';
-        db.collection('projects').doc(id).update({ status: next });
+        var id = b.getAttribute('data-adv-r');
+        var r = state.requests.find(function (x) { return x.id === id; });
+        if (!r) return;
+        var order = ['pending','progress','review','done'];
+        var next = order[(order.indexOf(r.status) + 1) % order.length];
+        db.collection('requests').doc(id).update({ status: next });
+      });
+    });
+    el.querySelectorAll('[data-del-r]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (!confirm('Delete this request?')) return;
+        db.collection('requests').doc(b.getAttribute('data-del-r')).delete();
       });
     });
   }
 
-  /* ---------- PROJECTS SEARCH ---------- */
-  var projectsSearch = document.getElementById('projectsSearch');
-  if (projectsSearch) {
-    projectsSearch.addEventListener('input', function () {
-      var q = projectsSearch.value.trim().toLowerCase();
-      if (!q) return renderProjects(allProjects);
-      var filtered = allProjects.filter(function (p) {
-        return (p.email || '').toLowerCase().indexOf(q) !== -1 ||
-               (p.service || '').toLowerCase().indexOf(q) !== -1;
-      });
-      renderProjects(filtered);
+  document.getElementById('addRequestBtn').addEventListener('click', function () {
+    showModal('New request', [
+      { label:'Client email', id:'r-client' },
+      { label:'Service', id:'r-service', placeholder:'Website design' },
+      { label:'Price', id:'r-price', placeholder:'8,000 EGP' },
+      { label:'Status', id:'r-status', type:'select', options:['pending','progress','review','done'] },
+      { label:'Deadline', id:'r-deadline', placeholder:'Feb 15' }
+    ], function (data) {
+      db.collection('requests').add({
+        client: data['r-client'],
+        service: data['r-service'],
+        price: data['r-price'],
+        status: data['r-status'] || 'pending',
+        deadline: data['r-deadline'] || '—',
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      }).then(function () { logActivity('New request: ' + data['r-service']); });
     });
-  }
+  });
 
   /* ============================================================
      SERVICES
      ============================================================ */
   function loadServices() {
     db.collection('services').onSnapshot(function (snap) {
-      var list = snap.docs.map(function (d) {
+      state.services = snap.docs.map(function (d) {
         var data = d.data() || {};
         return {
           id: d.id,
@@ -1349,16 +1847,14 @@ document.addEventListener('DOMContentLoaded', function () {
           enabled: data.enabled !== false
         };
       });
-      renderServices(list);
-    }, function () {
-      renderServices([]);
-    });
+      renderServices(state.services);
+    }, function () { state.services = []; renderServices([]); });
   }
 
   function renderServices(list) {
     var el = document.getElementById('servicesList');
     if (!list.length) {
-      el.innerHTML = '<tr><td colspan="4" class="ad-table-empty">No services yet. Click "+ Add service".</td></tr>';
+      el.innerHTML = '<tr><td colspan="5" class="ad-table-empty">No services yet. Click "+ Add service".</td></tr>';
       return;
     }
     el.innerHTML = '';
@@ -1370,196 +1866,468 @@ document.addEventListener('DOMContentLoaded', function () {
         '<td>' + esc(s.delivery) + '</td>' +
         '<td>' + (s.enabled
           ? '<span class="ad-badge ad-badge-mint">Active</span>'
-          : '<span class="ad-badge ad-badge-muted">Disabled</span>') + '</td>';
-      el.appendChild(tr);
-    });
-  }
-
-  var addServiceBtn = document.getElementById('addServiceBtn');
-  if (addServiceBtn) {
-    addServiceBtn.addEventListener('click', function () {
-      var name = prompt('Service name?');
-      if (!name) return;
-      var price = prompt('Starting price (e.g. 5,000 EGP)?') || '—';
-      var delivery = prompt('Delivery time (e.g. 1-2 weeks)?') || '—';
-      db.collection('services').add({
-        name: name, price: price, delivery: delivery, enabled: true,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp()
-      });
-    });
-  }
-
-  /* ============================================================
-     TEAM
-     ============================================================ */
-  function loadTeam() {
-    db.collection('team').onSnapshot(function (snap) {
-      allTeam = snap.docs.map(function (d) {
-        var data = d.data() || {};
-        return {
-          id: d.id,
-          email: data.email || '—',
-          role: data.role || 'staff',
-          createdAt: data.createdAt
-        };
-      });
-      renderTeam(allTeam);
-    }, function () {
-      allTeam = [];
-      renderTeam([]);
-    });
-  }
-
-  function renderTeam(list) {
-    var el = document.getElementById('teamList');
-    if (!list.length) {
-      el.innerHTML = '<tr><td colspan="4" class="ad-table-empty">No team members yet. You (the owner) are the only one with access.</td></tr>';
-      return;
-    }
-    el.innerHTML = '';
-    list.forEach(function (m) {
-      var initial = (m.email || '?').charAt(0).toUpperCase();
-      var roleBadge = m.role === 'owner'
-        ? '<span class="ad-badge ad-badge-amber">Owner</span>'
-        : m.role === 'admin'
-        ? '<span class="ad-badge ad-badge-info">Admin</span>'
-        : '<span class="ad-badge ad-badge-muted">Staff</span>';
-      var tr = document.createElement('tr');
-      tr.innerHTML =
-        '<td><div class="ad-user-cell">' +
-          '<div class="ad-av">' + initial + '</div>' +
-          '<div class="ad-user-cell-info">' +
-            '<div class="ad-user-cell-email">' + esc(m.email) + '</div>' +
-          '</div>' +
-        '</div></td>' +
-        '<td>' + roleBadge + '</td>' +
-        '<td style="font-size:12px;color:var(--text-4)">' +
-          (m.createdAt && m.createdAt.toDate ? m.createdAt.toDate().toLocaleDateString() : '—') +
-        '</td>' +
+          : '<span class="ad-badge ad-badge-muted">Disabled</span>') + '</td>' +
         '<td style="text-align:right"><div class="ad-cell-actions">' +
-          '<button class="ad-act-btn ad-act-danger" data-remove-team="' + m.id + '" title="Remove">×</button>' +
+          '<button class="ad-act-btn" data-toggle-s="' + s.id + '" title="Toggle">◐</button>' +
+          '<button class="ad-act-btn ad-act-danger" data-del-s="' + s.id + '" title="Delete">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg>' +
+          '</button>' +
         '</div></td>';
       el.appendChild(tr);
     });
-
-    el.querySelectorAll('[data-remove-team]').forEach(function (b) {
+    el.querySelectorAll('[data-toggle-s]').forEach(function (b) {
       b.addEventListener('click', function () {
-        if (!confirm('Remove this team member?')) return;
-        db.collection('team').doc(b.getAttribute('data-remove-team')).delete();
+        var id = b.getAttribute('data-toggle-s');
+        var s = state.services.find(function (x) { return x.id === id; });
+        if (!s) return;
+        db.collection('services').doc(id).update({ enabled: !s.enabled });
+      });
+    });
+    el.querySelectorAll('[data-del-s]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (!confirm('Delete this service?')) return;
+        db.collection('services').doc(b.getAttribute('data-del-s')).delete();
       });
     });
   }
 
-  var addTeamBtn = document.getElementById('addTeamBtn');
-  if (addTeamBtn) {
-    addTeamBtn.addEventListener('click', function () {
-      var email = prompt('Team member email?');
-      if (!email) return;
-      var role = prompt('Role? (admin / staff)', 'staff') || 'staff';
-      db.collection('team').add({
-        email: email, role: role,
+  document.getElementById('addServiceBtn').addEventListener('click', function () {
+    showModal('Add service', [
+      { label:'Service name', id:'s-name', placeholder:'Website design' },
+      { label:'Starting price', id:'s-price', placeholder:'5,000 EGP' },
+      { label:'Delivery', id:'s-delivery', placeholder:'1–2 weeks' }
+    ], function (data) {
+      db.collection('services').add({
+        name: data['s-name'],
+        price: data['s-price'],
+        delivery: data['s-delivery'],
+        enabled: true,
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      }).then(function () { logActivity('New service: ' + data['s-name']); });
+    });
+  });
+
+  /* ============================================================
+     ACTIVITY
+     ============================================================ */
+  function loadActivities() {
+    db.collection('activities').orderBy('createdAt', 'desc').limit(50).onSnapshot(function (snap) {
+      state.activities = snap.docs.map(function (d) {
+        var data = d.data() || {};
+        return {
+          id: d.id,
+          text: data.text || 'Event',
+          type: data.type || 'info',
+          createdAt: data.createdAt
+        };
       });
+      renderActivities(state.activities);
+      renderDashboard();
+    }, function () {
+      // orderBy may fail if index missing — fall back to plain get
+      db.collection('activities').limit(50).get().then(function (snap) {
+        state.activities = snap.docs.map(function (d) {
+          var data = d.data() || {};
+          return { id: d.id, text: data.text || 'Event', type: data.type || 'info', createdAt: data.createdAt };
+        });
+        renderActivities(state.activities);
+      });
+    });
+  }
+
+  function renderActivities(list) {
+    var full = document.getElementById('activityFullList');
+    if (!list.length) {
+      full.innerHTML = '<div class="ad-table-empty">No activity yet.</div>';
+      return;
+    }
+    full.innerHTML = '';
+    list.forEach(function (a) {
+      var time = a.createdAt && a.createdAt.toDate
+        ? a.createdAt.toDate().toLocaleString()
+        : 'Recently';
+      var dotColor = a.type === 'warn' ? 'var(--amber)'
+        : a.type === 'danger' ? 'var(--danger)'
+        : a.type === 'mint' ? 'var(--mint)'
+        : 'var(--ember)';
+      var item = document.createElement('div');
+      item.className = 'ad-activity-item';
+      item.innerHTML =
+        '<div class="ad-activity-dot" style="background:' + dotColor + ';color:' + dotColor + '"></div>' +
+        '<div class="ad-activity-body">' +
+          '<div class="ad-activity-title">' + esc(a.text) + '</div>' +
+          '<div class="ad-activity-time">' + time + '</div>' +
+        '</div>';
+      full.appendChild(item);
+    });
+  }
+
+  function logActivity(text, type) {
+    db.collection('activities').add({
+      text: text,
+      type: type || 'info',
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    }).catch(function () {});
+  }
+
+  /* ============================================================
+     SETTINGS
+     ============================================================ */
+  function loadSettings() {
+    db.collection('settings').doc('studio').onSnapshot(function (snap) {
+      if (!snap.exists) return;
+      var s = snap.data() || {};
+      state.settings = s;
+      var map = {
+        setName: s.name,
+        setEmail: s.email,
+        setDiscord: s.discord,
+        setWhatsapp: s.whatsapp,
+        setInstagram: s.instagram,
+        setPublicUrl: s.publicUrl,
+        badgeStyle: s.badgeStyle,
+        badgeLogoPath: s.badgeLogoPath,
+        badgeUrl: s.badgeUrl
+      };
+      Object.keys(map).forEach(function (k) {
+        if (map[k] !== undefined && document.getElementById(k)) {
+          document.getElementById(k).value = map[k];
+        }
+      });
+    });
+  }
+
+  document.getElementById('saveSettingsBtn').addEventListener('click', function () {
+    var data = {
+      name: document.getElementById('setName').value,
+      email: document.getElementById('setEmail').value,
+      discord: document.getElementById('setDiscord').value,
+      whatsapp: document.getElementById('setWhatsapp').value,
+      instagram: document.getElementById('setInstagram').value,
+      publicUrl: document.getElementById('setPublicUrl').value
+    };
+    db.collection('settings').doc('studio').set(data, { merge: true }).then(function () {
+      logActivity('Studio settings updated', 'mint');
+      alert('Saved.');
+    });
+  });
+
+  /* ============================================================
+     BADGE MANAGER
+     ============================================================ */
+  document.getElementById('saveBadgeBtn').addEventListener('click', function () {
+    var data = {
+      badgeStyle: document.getElementById('badgeStyle').value,
+      badgeLogoPath: document.getElementById('badgeLogoPath').value,
+      badgeUrl: document.getElementById('badgeUrl').value
+    };
+    db.collection('settings').doc('studio').set(data, { merge: true }).then(function () {
+      logActivity('Badge settings updated', 'mint');
+      alert('Badge settings saved.');
+    });
+  });
+
+  document.getElementById('copyBadgeBtn').addEventListener('click', function () {
+    var code = document.getElementById('badgeCode').innerText.replace(/^Copy\s*/, '');
+    navigator.clipboard.writeText(code).then(function () {
+      var b = document.getElementById('copyBadgeBtn');
+      b.textContent = 'Copied ✓';
+      setTimeout(function () { b.textContent = 'Copy'; }, 1400);
+    });
+  });
+
+  /* ============================================================
+     DASHBOARD RENDER
+     ============================================================ */
+  function renderDashboard() {
+    var websites = state.websites || [];
+    var clients = state.clients || [];
+    var requests = state.requests || [];
+
+    var active = websites.filter(function (w) { return w.status === 'active'; }).length;
+    var pending = requests.filter(function (r) { return r.status === 'pending'; }).length;
+    var views = websites.reduce(function (sum, w) { return sum + (w.views || 0); }, 0);
+
+    document.getElementById('dWebsites').textContent = websites.length;
+    document.getElementById('dActive').textContent = active;
+    document.getElementById('dRequests').textContent = pending;
+    document.getElementById('dViews').textContent = views.toLocaleString();
+
+    document.getElementById('dActiveTrend').textContent =
+      websites.length > 0 ? Math.round((active / websites.length) * 100) + '%' : '—';
+
+    // Recent websites
+    var recentW = websites.slice(0, 5);
+    var rwEl = document.getElementById('recentWebsites');
+    if (!recentW.length) {
+      rwEl.innerHTML = '<div class="ad-table-empty">No websites yet.</div>';
+    } else {
+      rwEl.innerHTML = '';
+      recentW.forEach(function (w) {
+        var initial = (w.name || '?').charAt(0).toUpperCase();
+        var item = document.createElement('div');
+        item.className = 'ad-activity-item';
+        item.innerHTML =
+          '<div class="ad-av ad-av-square">' + initial + '</div>' +
+          '<div class="ad-activity-body">' +
+            '<div class="ad-activity-title"><strong>' + esc(w.name) + '</strong></div>' +
+            '<div class="ad-activity-time">' + esc(w.url) + '</div>' +
+          '</div>';
+        rwEl.appendChild(item);
+      });
+    }
+
+    // Recent activity
+    var recentA = (state.activities || []).slice(0, 5);
+    var raEl = document.getElementById('recentActivity');
+    if (!recentA.length) {
+      raEl.innerHTML = '<div class="ad-table-empty">No activity yet.</div>';
+    } else {
+      raEl.innerHTML = '';
+      recentA.forEach(function (a) {
+        var time = a.createdAt && a.createdAt.toDate ? a.createdAt.toDate().toLocaleDateString() : 'Recently';
+        var item = document.createElement('div');
+        item.className = 'ad-activity-item';
+        item.innerHTML =
+          '<div class="ad-activity-dot" style="background:var(--ember);color:var(--ember)"></div>' +
+          '<div class="ad-activity-body">' +
+            '<div class="ad-activity-title">' + esc(a.text) + '</div>' +
+            '<div class="ad-activity-time">' + time + '</div>' +
+          '</div>';
+        raEl.appendChild(item);
+      });
+    }
+
+    drawChart();
+  }
+
+  /* ============================================================
+     CHART (SVG)
+     ============================================================ */
+  function drawChart() {
+    var el = document.getElementById('trafficChart');
+    if (!el) return;
+
+    // Simple demo data (would come from Firestore in production)
+    var data = [42, 68, 55, 92, 78, 110, 96];
+    var labels = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+
+    var W = 700, H = 220;
+    var padX = 40, padTop = 20, padBottom = 30;
+    var chartW = W - padX * 2;
+    var chartH = H - padTop - padBottom;
+    var max = Math.max.apply(null, data) * 1.15;
+    var stepX = chartW / (data.length - 1);
+
+    var pts = data.map(function (v, i) {
+      return {
+        x: padX + i * stepX,
+        y: padTop + chartH - (v / max) * chartH
+      };
+    });
+
+    // Line path
+    var d = 'M ' + pts[0].x + ' ' + pts[0].y;
+    for (var i = 1; i < pts.length; i++) {
+      var prev = pts[i-1], cur = pts[i];
+      var cp1x = prev.x + (cur.x - prev.x) * 0.5;
+      var cp2x = prev.x + (cur.x - prev.x) * 0.5;
+      d += ' C ' + cp1x + ' ' + prev.y + ', ' + cp2x + ' ' + cur.y + ', ' + cur.x + ' ' + cur.y;
+    }
+
+    // Area path
+    var areaD = d + ' L ' + pts[pts.length-1].x + ' ' + (padTop + chartH)
+              + ' L ' + pts[0].x + ' ' + (padTop + chartH) + ' Z';
+
+    document.getElementById('chartLine').setAttribute('d', d);
+    document.getElementById('chartArea').setAttribute('d', areaD);
+
+    // Dots
+    var dotsG = document.getElementById('chartDots');
+    dotsG.innerHTML = '';
+    pts.forEach(function (p) {
+      var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c.setAttribute('class', 'ad-chart-dot');
+      c.setAttribute('cx', p.x);
+      c.setAttribute('cy', p.y);
+      c.setAttribute('r', 4);
+      dotsG.appendChild(c);
+    });
+
+    // Grid lines
+    var gridG = document.getElementById('chartGrid');
+    gridG.innerHTML = '';
+    for (var g = 0; g <= 3; g++) {
+      var y = padTop + (chartH / 3) * g;
+      var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('class', 'ad-chart-grid');
+      line.setAttribute('x1', padX);
+      line.setAttribute('y1', y);
+      line.setAttribute('x2', W - padX);
+      line.setAttribute('y2', y);
+      gridG.appendChild(line);
+    }
+
+    // Labels
+    var labG = document.getElementById('chartLabels');
+    labG.innerHTML = '';
+    labels.forEach(function (lab, i) {
+      var t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      t.setAttribute('class', 'ad-chart-label');
+      t.setAttribute('x', padX + i * stepX);
+      t.setAttribute('y', H - 8);
+      t.setAttribute('text-anchor', 'middle');
+      t.textContent = lab;
+      labG.appendChild(t);
     });
   }
 
   /* ============================================================
-     OVERVIEW
+     ANALYTICS
      ============================================================ */
-  function renderOverview() {
-    var total = allClients.length;
-    var repeat = allClients.filter(function (u) { return u.orderCount >= 1; }).length;
-    var discounted = repeat;
-    var totalOrders = allClients.reduce(function (s, u) { return s + u.orderCount; }, 0);
+  function renderAnalytics() {
+    var list = state.websites || [];
+    var totalViews = list.reduce(function (s, w) { return s + (w.views || 0); }, 0);
+    var totalVisitors = list.reduce(function (s, w) { return s + (w.uniqueVisitors || 0); }, 0);
+    var totalBadgeClicks = list.reduce(function (s, w) { return s + (w.badgeClicks || 0); }, 0);
+    var ctr = totalViews > 0 ? ((totalBadgeClicks / totalViews) * 100).toFixed(1) : '0.0';
 
-    document.getElementById('oStatUsers').textContent = total;
-    document.getElementById('oStatRepeat').textContent = repeat;
-    document.getElementById('oStatDiscount').textContent = discounted;
-    document.getElementById('oStatOrders').textContent = totalOrders;
+    document.getElementById('aViews').textContent = totalViews.toLocaleString();
+    document.getElementById('aVisitors').textContent = totalVisitors.toLocaleString();
+    document.getElementById('aBadgeClicks').textContent = totalBadgeClicks.toLocaleString();
+    document.getElementById('aCtr').textContent = ctr + '%';
 
-    document.getElementById('oRepeatTrend').textContent =
-      total > 0 ? Math.round((repeat / total) * 100) + '%' : '—';
-    document.getElementById('oDiscountTrend').textContent =
-      total > 0 ? Math.round((discounted / total) * 100) + '%' : '—';
-    document.getElementById('oOrdersTrend').textContent =
-      total > 0 ? (totalOrders / total).toFixed(1) + ' avg' : '—';
-
-    // Recent activity — last 6 sign-ups
-    var recent = allClients.slice().sort(function (a, b) {
-      var aT = a.createdAt && a.createdAt.toDate ? a.createdAt.toDate().getTime() : 0;
-      var bT = b.createdAt && b.createdAt.toDate ? b.createdAt.toDate().getTime() : 0;
-      return bT - aT;
-    }).slice(0, 6);
-
-    var el = document.getElementById('activityList');
-    if (!recent.length) {
-      el.innerHTML = '<div class="ad-table-empty">No activity yet.</div>';
+    var el = document.getElementById('analyticsList');
+    var sorted = list.slice().sort(function (a, b) { return (b.views || 0) - (a.views || 0); });
+    if (!sorted.length) {
+      el.innerHTML = '<tr><td colspan="5" class="ad-table-empty">No data yet.</td></tr>';
       return;
     }
     el.innerHTML = '';
-    recent.forEach(function (u) {
-      var item = document.createElement('div');
-      item.className = 'ad-activity-item';
-      var dateStr = u.createdAt && u.createdAt.toDate
-        ? u.createdAt.toDate().toLocaleDateString()
-        : 'Recently';
-      item.innerHTML =
-        '<div class="ad-activity-dot"></div>' +
-        '<div class="ad-activity-body">' +
-          '<div class="ad-activity-title">New client signed up — <strong>' + esc(u.email) + '</strong></div>' +
-          '<div class="ad-activity-time">' + dateStr + '</div>' +
-        '</div>';
-      el.appendChild(item);
+    sorted.slice(0, 10).forEach(function (w) {
+      var tr = document.createElement('tr');
+      var rowCtr = w.views > 0 ? ((w.badgeClicks || 0) / w.views * 100).toFixed(1) : '0.0';
+      tr.innerHTML =
+        '<td style="font-weight:600">' + esc(w.name) + '</td>' +
+        '<td><span class="ad-count">' + (w.views || 0) + '</span></td>' +
+        '<td>' + (w.uniqueVisitors || 0) + '</td>' +
+        '<td>' + (w.badgeClicks || 0) + '</td>' +
+        '<td>' + rowCtr + '%</td>';
+      el.appendChild(tr);
     });
   }
+
+  /* ============================================================
+     MODAL
+     ============================================================ */
+  var modalBack = document.getElementById('modalBack');
+  var modalTitle = document.getElementById('modalTitle');
+  var modalBody = document.getElementById('modalBody');
+  var modalSave = document.getElementById('modalSave');
+  var modalCancel = document.getElementById('modalCancel');
+  var modalClose = document.getElementById('modalClose');
+  var modalCallback = null;
+
+  function showModal(title, fields, onSave) {
+    modalTitle.textContent = title;
+    modalBody.innerHTML = '';
+    fields.forEach(function (f) {
+      var div = document.createElement('div');
+      div.className = 'ad-field';
+      var label = document.createElement('label');
+      label.textContent = f.label;
+      div.appendChild(label);
+
+      var input;
+      if (f.type === 'select') {
+        input = document.createElement('select');
+        f.options.forEach(function (opt) {
+          var o = document.createElement('option');
+          o.value = opt;
+          o.textContent = opt.charAt(0).toUpperCase() + opt.slice(1);
+          if (f.value === opt) o.selected = true;
+          input.appendChild(o);
+        });
+      } else {
+        input = document.createElement('input');
+        input.type = 'text';
+        input.placeholder = f.placeholder || '';
+        if (f.value) input.value = f.value;
+      }
+      input.id = f.id;
+      div.appendChild(input);
+      modalBody.appendChild(div);
+    });
+
+    modalCallback = onSave;
+    modalBack.classList.add('open');
+  }
+
+  function closeModal() {
+    modalBack.classList.remove('open');
+    modalCallback = null;
+  }
+
+  modalSave.addEventListener('click', function () {
+    if (!modalCallback) return closeModal();
+    var data = {};
+    modalBody.querySelectorAll('input, select').forEach(function (el) {
+      data[el.id] = el.value.trim();
+    });
+    modalCallback(data);
+    closeModal();
+  });
+
+  modalCancel.addEventListener('click', closeModal);
+  modalClose.addEventListener('click', closeModal);
+  modalBack.addEventListener('click', function (e) {
+    if (e.target === modalBack) closeModal();
+  });
 
   /* ============================================================
      DANGER ZONE
      ============================================================ */
-  var resetOrdersBtn = document.getElementById('resetOrdersBtn');
-  if (resetOrdersBtn) {
-    resetOrdersBtn.addEventListener('click', function () {
-      if (!confirm('Reset every client\'s order count to 0? This cannot be undone.')) return;
-      if (!confirm('Are you absolutely sure?')) return;
-      var batch = db.batch();
-      allClients.forEach(function (u) {
-        batch.update(db.collection('users').doc(u.uid), { orderCount: 0 });
-      });
-      batch.commit().then(function () {
-        alert('All order counts reset.');
-      }).catch(function (err) {
-        alert('Failed: ' + err.message);
-      });
+  document.getElementById('resetOrdersBtn').addEventListener('click', function () {
+    if (!confirm('Reset every client\'s order count to 0?')) return;
+    if (!confirm('Absolutely sure?')) return;
+    var batch = db.batch();
+    state.clients.forEach(function (u) {
+      batch.update(db.collection('users').doc(u.uid), { orderCount: 0 });
     });
-  }
+    batch.commit().then(function () {
+      logActivity('All order counts reset', 'danger');
+      alert('Done.');
+    });
+  });
 
-  var clearPromosBtn = document.getElementById('clearPromosBtn');
-  if (clearPromosBtn) {
-    clearPromosBtn.addEventListener('click', function () {
-      if (!confirm('Delete all promo codes?')) return;
-      db.collection('promos').get().then(function (snap) {
-        var batch = db.batch();
-        snap.docs.forEach(function (d) { batch.delete(d.ref); });
-        return batch.commit();
-      }).then(function () {
-        alert('Promo codes cleared.');
-      }).catch(function (err) {
-        alert('Failed: ' + err.message);
-      });
+  document.getElementById('clearActivityBtn').addEventListener('click', function () {
+    if (!confirm('Delete entire activity log?')) return;
+    db.collection('activities').get().then(function (snap) {
+      var batch = db.batch();
+      snap.docs.forEach(function (d) { batch.delete(d.ref); });
+      return batch.commit();
+    }).then(function () { alert('Activity cleared.'); });
+  });
+
+  document.getElementById('deleteWebsitesBtn').addEventListener('click', function () {
+    if (!confirm('Delete ALL websites?')) return;
+    if (!confirm('This cannot be undone. Continue?')) return;
+    db.collection('websites').get().then(function (snap) {
+      var batch = db.batch();
+      snap.docs.forEach(function (d) { batch.delete(d.ref); });
+      return batch.commit();
+    }).then(function () {
+      logActivity('All websites deleted', 'danger');
+      alert('Done.');
     });
-  }
+  });
 
   /* ============================================================
      LOGOUT
      ============================================================ */
-  var lo = document.getElementById('logoutBtn');
-  if (lo) {
-    lo.addEventListener('click', function () {
-      firebase.auth().signOut().then(function () {
-        window.location.href = 'index.html';
-      });
-    });
-  }
+  document.getElementById('logoutBtn').addEventListener('click', function () {
+    auth.signOut().then(function () { window.location.href = 'index.html'; });
+  });
 
   /* ============================================================
      HELPERS
@@ -1577,9 +2345,6 @@ document.addEventListener('DOMContentLoaded', function () {
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;');
   }
-
-  // Kick off services loader (it's not in the auth gate above)
-  loadServices();
 
 });
 </script>
