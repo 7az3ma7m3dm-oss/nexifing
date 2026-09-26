@@ -1,9 +1,8 @@
 /* ==========================================================================
    NEXIFING — firebase-config.js
-   Initializes Firebase. Keep this file private-ish.
    ========================================================================== */
 window.NEXIFING_FIREBASE_CONFIG = {
-  apiKey: "AIzaSyA-7yMgFwP0Tuy8hFXLaqmmXQ3NDbX8HZk",
+  apiKey: "AIzaSyA-7yMeF5wP0Tuy8hFxLaqmmXQ3NDX0HZk",
   authDomain: "nexifing-c3562.firebaseapp.com",
   projectId: "nexifing-c3562",
   storageBucket: "nexifing-c3562.firebasestorage.app",
