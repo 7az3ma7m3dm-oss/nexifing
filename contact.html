@@ -195,5 +195,55 @@
 </footer>
 
 <script src="script.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var form = document.querySelector('.contact-form');
+  if (!form) return;
+
+  var note = document.querySelector('.form-note');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var name    = form.querySelector('[name="name"]');
+    var email   = form.querySelector('[name="email"]');
+    var message = form.querySelector('[name="message"]');
+    var service = form.querySelector('[name="service"]');
+
+    var n = name    ? name.value.trim()    : '';
+    var em = email  ? email.value.trim()   : '';
+    var m = message ? message.value.trim() : '';
+    var s = service ? service.value        : '';
+
+    if (!n || !em || !m) {
+      if (note) {
+        note.textContent = 'Please fill in name, email and message.';
+        note.style.color = 'var(--danger)';
+      }
+      return;
+    }
+
+    // Build the WhatsApp message
+    var text = '';
+    text += 'New project inquiry from NEXIFING' + '\n\n';
+    text += 'Name: '    + n + '\n';
+    text += 'Email: '   + em + '\n';
+    if (s) text += 'Service: ' + s + '\n';
+    text += '\nDetails:\n' + m;
+
+    var encoded = encodeURIComponent(text);
+    var phone   = '201202000210';
+    var url     = 'https://wa.me/' + phone + '?text=' + encoded;
+
+    if (note) {
+      note.textContent = 'Opening WhatsApp…';
+      note.style.color = 'var(--success)';
+    }
+
+    // Open WhatsApp in a new tab
+    window.open(url, '_blank');
+  });
+});
+</script>
 </body>
 </html>
