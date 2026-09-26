@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080a14">
+<title>Admin — NEXIFING</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+<header class="header" id="header">
+  <div class="header-inner wrap">
+    <a href="index.html" class="logo">
+      <img src="nexifing-logo.png" alt="" onerror="this.style.display='none'">
+      <span>NEXIFING</span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">My account</a>
+      <a href="admin.html" style="color:var(--ember)">Admin</a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+        <svg class="theme-icon-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="theme-icon-moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="section" style="padding:60px 0 120px">
+  <div class="wrap">
+
+    <div id="loadingState" style="text-align:center;padding:120px 0">
+      <div class="spinner spinner-lg" style="margin:0 auto 20px"></div>
+      <p style="color:var(--text-3)">Verifying admin access…</p>
+    </div>
+
+    <div id="deniedState" style="display:none;text-align:center;padding:100px 0">
+      <span class="section-label" style="color:var(--danger)">ACCESS DENIED</span>
+      <h1 class="section-title" style="margin-top:16px">You're not an admin.</h1>
+      <p style="color:var(--text-3);max-width:480px;margin:0 auto 32px">
+        This page is restricted. If you think this is a mistake, contact the studio owner.
+      </p>
+      <a href="index.html" class="btn btn-ghost">Back to home</a>
+    </div>
+
+    <div id="adminContent" style="display:none">
+
+      <div class="admin-head">
+        <div>
+          <span class="section-label">ADMIN PANEL</span>
+          <h1 class="admin-title">User management</h1>
+        </div>
+        <button class="btn btn-ghost btn-sm" id="logoutBtn">Sign out</button>
+      </div>
+
+      <div class="admin-stats">
+        <div class="admin-stat">
+          <div class="admin-stat-n" id="statTotalUsers">0</div>
+          <div class="admin-stat-l">Total users</div>
+        </div>
+        <div class="admin-stat">
+          <div class="admin-stat-n" id="statRepeatUsers">0</div>
+          <div class="admin-stat-l">Repeat customers</div>
+        </div>
+        <div class="admin-stat">
+          <div class="admin-stat-n" id="statDiscountedUsers">0</div>
+          <div class="admin-stat-l">With discount</div>
+        </div>
+        <div class="admin-stat">
+          <div class="admin-stat-n" id="statTotalOrders">0</div>
+          <div class="admin-stat-l">Total orders</div>
+        </div>
+      </div>
+
+      <div class="admin-toolbar">
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Search by email or UID…"
+          class="admin-search">
+        <button class="btn btn-ghost btn-sm" id="refreshBtn">Refresh</button>
+      </div>
+
+      <div class="admin-list-head">
+        <span>User</span>
+        <span>Orders</span>
+        <span>Discount</span>
+        <span>Actions</span>
+      </div>
+
+      <div id="userList" class="admin-list">
+        <div class="admin-list-empty">Loading users…</div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-bottom" style="border-top:none;padding-top:0;justify-content:center;text-align:center">
+      <span>© <span data-year>2025</span> NEXIFING — All rights reserved</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="script.js"></script>
+
+<script>
+var ADMIN_UIDS = [
+  'w0qgOaWLIRhJtp2Hk0CbcSB1nSz2'
+];
+
+document.addEventListener('DOMContentLoaded', function () {
+
+  var auth = firebase.auth();
+  var db   = firebase.firestore();
+
+  var userListEl = document.getElementById('userList');
+  var searchInput = document.getElementById('searchInput');
+  var allUsers = [];
+  var unsubscribe = null;
+
+  auth.onAuthStateChanged(function (user) {
+    document.getElementById('loadingState').style.display = 'none';
+
+    if (!user) {
+      window.location.href = 'login.html';
+      return;
+    }
+
+    var isAdmin = ADMIN_UIDS.indexOf(user.uid) !== -1;
+
+    if (!isAdmin) {
+      document.getElementById('deniedState').style.display = 'block';
+      return;
+    }
+
+    document.getElementById('adminContent').style.display = 'block';
+    startListening();
+  });
+
+  function startListening() {
+    if (unsubscribe) unsubscribe();
+    unsubscribe = db.collection('users').onSnapshot(function (snap) {
+      allUsers = snap.docs.map(function (d) {
+        var data = d.data() || {};
+        return {
+          uid: d.id,
+          email: data.email || '—',
+          orderCount: data.orderCount || 0,
+          createdAt: data.createdAt
+        };
+      });
+      allUsers.sort(function (a, b) { return (b.orderCount || 0) - (a.orderCount || 0); });
+      renderStats();
+      renderList(allUsers);
+    }, function (err) {
+      userListEl.innerHTML =
+        '<div class="admin-list-empty" style="color:var(--danger)">Error: ' + err.message + '</div>';
+    });
+  }
+
+  function renderStats() {
+    var totalUsers = allUsers.length;
+    var repeat = allUsers.filter(function (u) { return u.orderCount >= 1; }).length;
+    var discounted = allUsers.filter(function (u) { return u.orderCount >= 1; }).length;
+    var totalOrders = allUsers.reduce(function (sum, u) { return sum + u.orderCount; }, 0);
+
+    document.getElementById('statTotalUsers').textContent = totalUsers;
+    document.getElementById('statRepeatUsers').textContent = repeat;
+    document.getElementById('statDiscountedUsers').textContent = discounted;
+    document.getElementById('statTotalOrders').textContent = totalOrders;
+  }
+
+  function renderList(users) {
+    if (!users.length) {
+      userListEl.innerHTML = '<div class="admin-list-empty">No users match.</div>';
+      return;
+    }
+
+    userListEl.innerHTML = '';
+
+    users.forEach(function (u) {
+      var discount = getDiscountForCount(u.orderCount);
+      var row = document.createElement('div');
+      row.className = 'admin-row';
+
+      var initial = (u.email || '?').charAt(0).toUpperCase();
+
+      row.innerHTML =
+        '<div class="admin-user">' +
+          '<div class="admin-avatar">' + initial + '</div>' +
+          '<div class="admin-user-info">' +
+            '<div class="admin-user-email">' + escapeHtml(u.email) + '</div>' +
+            '<div class="admin-user-uid">' + u.uid + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="admin-orders">' +
+          '<span class="admin-orders-n">' + u.orderCount + '</span>' +
+        '</div>' +
+        '<div class="admin-discount">' +
+          (discount.pct > 0
+            ? '<span class="badge badge-info">' + Math.round(discount.pct * 100) + '% off</span>'
+            : '<span class="admin-none">—</span>') +
+        '</div>' +
+        '<div class="admin-actions">' +
+          '<button class="admin-btn admin-btn-add" data-add="' + u.uid + '" title="Add order">+</button>' +
+          '<button class="admin-btn" data-remove="' + u.uid + '" title="Remove order">−</button>' +
+          '<button class="admin-btn admin-btn-reset" data-reset="' + u.uid + '" title="Reset to 0">⟲</button>' +
+        '</div>';
+
+      userListEl.appendChild(row);
+    });
+
+    userListEl.querySelectorAll('[data-add]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        changeOrders(btn.getAttribute('data-add'), 1);
+      });
+    });
+    userListEl.querySelectorAll('[data-remove]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        changeOrders(btn.getAttribute('data-remove'), -1);
+      });
+    });
+    userListEl.querySelectorAll('[data-reset]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (!confirm('Reset this user\'s order count to 0?')) return;
+        db.collection('users').doc(btn.getAttribute('data-reset')).update({
+          orderCount: 0
+        }).catch(function (err) {
+          alert('Failed: ' + err.message);
+        });
+      });
+    });
+  }
+
+  function changeOrders(uid, delta) {
+    var ref = db.collection('users').doc(uid);
+    db.runTransaction(function (tx) {
+      return tx.get(ref).then(function (doc) {
+        if (!doc.exists) return;
+        var current = doc.data().orderCount || 0;
+        var next = Math.max(0, current + delta);
+        tx.update(ref, { orderCount: next });
+      });
+    }).catch(function (err) {
+      alert('Failed: ' + err.message);
+    });
+  }
+
+  function getDiscountForCount(n) {
+    if (n >= 3) return { pct: 0.5 };
+    if (n >= 1) return { pct: 0.3 };
+    return { pct: 0 };
+  }
+
+  function escapeHtml(s) {
+    return String(s || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', function () {
+      var q = searchInput.value.trim().toLowerCase();
+      if (!q) return renderList(allUsers);
+      var filtered = allUsers.filter(function (u) {
+        return (u.email || '').toLowerCase().indexOf(q) !== -1 ||
+               u.uid.toLowerCase().indexOf(q) !== -1;
+      });
+      renderList(filtered);
+    });
+  }
+
+  var refreshBtn = document.getElementById('refreshBtn');
+  if (refreshBtn) {
+    refreshBtn.addEventListener('click', function () {
+      refreshBtn.textContent = 'Refreshing…';
+      setTimeout(function () { refreshBtn.textContent = 'Refresh'; }, 800);
+    });
+  }
+
+  var lo = document.getElementById('logoutBtn');
+  if (lo) {
+    lo.addEventListener('click', function () {
+      firebase.auth().signOut().then(function () {
+        window.location.href = 'index.html';
+      });
+    });
+  }
+
+});
+</script>
+
+</body>
+</html>
