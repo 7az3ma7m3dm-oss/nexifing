@@ -10,160 +10,1046 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+
+<style>
+/* ============================================================
+   NEXIFING ADMIN — self-contained styles
+   ============================================================ */
+:root{
+  --bg:#07080d;
+  --bg-2:#0b0d16;
+  --panel:#0f1220;
+  --panel-2:#141830;
+  --panel-3:#1a1f3a;
+  --border:#1c2138;
+  --border-2:#262d4a;
+  --border-3:#323a5f;
+  --text:#ffffff;
+  --text-2:#dbe0f0;
+  --text-3:#9aa3c0;
+  --text-4:#6b7396;
+  --text-5:#3d4462;
+  --iris:#3b82f6;
+  --iris-bright:#559aff;
+  --ember:#38bdf8;
+  --ember-bright:#22d3ee;
+  --mint:#47d18c;
+  --amber:#fbbf24;
+  --rose:#ff5c8a;
+  --danger:#ff4d4d;
+  --aurora:linear-gradient(135deg,#2563eb,#38bdf8);
+  --font:'Inter',system-ui,-apple-system,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --r-sm:6px;
+  --r:10px;
+  --r-lg:14px;
+  --r-xl:20px;
+  --pill:999px;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font);
+  font-size:15px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;font-size:inherit;background:none;border:none;color:inherit;cursor:pointer}
+input,textarea,select{font-family:inherit;font-size:inherit;background:none;border:none;color:inherit;outline:none}
+ul{list-style:none}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.ad{
+  display:grid;
+  grid-template-columns:248px 1fr;
+  min-height:100vh;
+}
+
+/* SIDEBAR */
+.ad-side{
+  background:var(--bg-2);
+  border-right:1px solid var(--border);
+  display:flex;
+  flex-direction:column;
+  position:sticky;
+  top:0;
+  height:100vh;
+  overflow-y:auto;
+}
+.ad-brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:20px 18px;
+  border-bottom:1px solid var(--border);
+  font-weight:800;
+  font-size:15px;
+  letter-spacing:-.02em;
+  flex-shrink:0;
+}
+.ad-brand img{
+  height:24px;
+  width:auto;
+  filter:drop-shadow(0 0 10px rgba(56,189,248,.35));
+}
+.ad-brand span{
+  background:var(--aurora);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+}
+
+.ad-nav{
+  flex:1;
+  padding:14px 10px;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  overflow-y:auto;
+}
+.ad-nav-group{
+  font-family:var(--mono);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--text-5);
+  padding:14px 12px 8px;
+}
+.ad-nav-btn{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:9px 12px;
+  border-radius:var(--r-sm);
+  font-size:13.5px;
+  font-weight:500;
+  color:var(--text-3);
+  width:100%;
+  text-align:left;
+  transition:all .18s var(--ease);
+  cursor:pointer;
+}
+.ad-nav-btn svg{
+  flex-shrink:0;
+  opacity:.7;
+  width:16px;
+  height:16px;
+}
+.ad-nav-btn:hover{
+  background:var(--panel);
+  color:var(--text);
+}
+.ad-nav-btn.active{
+  background:var(--panel-2);
+  color:var(--text);
+  box-shadow:inset 3px 0 0 var(--ember);
+}
+.ad-nav-btn.active svg{
+  color:var(--ember);
+  opacity:1;
+}
+.ad-nav-badge{
+  margin-left:auto;
+  font-family:var(--mono);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.08em;
+  padding:2px 7px;
+  border-radius:var(--pill);
+  background:rgba(56,189,248,.12);
+  color:var(--ember);
+}
+.ad-nav-badge.danger{background:rgba(255,77,77,.12);color:var(--danger)}
+
+/* SIDEBAR USER */
+.ad-user{
+  border-top:1px solid var(--border);
+  padding:14px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-shrink:0;
+}
+.ad-user-av{
+  width:36px;height:36px;
+  border-radius:50%;
+  background:var(--aurora);
+  color:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:13px;
+  flex-shrink:0;
+}
+.ad-user-info{min-width:0;flex:1}
+.ad-user-name{
+  font-size:12.5px;font-weight:600;
+  color:var(--text-2);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.ad-user-role{
+  font-family:var(--mono);
+  font-size:9.5px;letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--text-5);
+  margin-top:2px;
+}
+.ad-user-out{
+  width:32px;height:32px;
+  border-radius:var(--r-sm);
+  border:1px solid var(--border-2);
+  color:var(--text-4);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  transition:all .2s var(--ease);
+  flex-shrink:0;
+}
+.ad-user-out:hover{
+  border-color:var(--danger);
+  color:var(--danger);
+  background:rgba(255,77,77,.06);
+}
+
+/* MAIN */
+.ad-main{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  background:var(--bg);
+}
+.ad-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:18px 32px;
+  border-bottom:1px solid var(--border);
+  background:rgba(7,8,13,.7);
+  backdrop-filter:blur(12px);
+  position:sticky;
+  top:0;
+  z-index:20;
+  flex-wrap:wrap;
+}
+.ad-top-title{
+  font-family:var(--mono);
+  font-size:1.2rem;
+  font-weight:600;
+  letter-spacing:-.02em;
+  line-height:1.15;
+}
+.ad-top-sub{
+  font-size:12.5px;
+  color:var(--text-4);
+  margin-top:2px;
+}
+.ad-top-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.ad-live{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:5px 12px;
+  border-radius:var(--pill);
+  background:rgba(71,209,140,.1);
+  border:1px solid rgba(71,209,140,.3);
+  font-family:var(--mono);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--mint);
+}
+.ad-live-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--mint);
+  box-shadow:0 0 10px var(--mint);
+  animation:adPulse 2s infinite;
+}
+@keyframes adPulse{
+  0%,100%{opacity:1}
+  50%{opacity:.4}
+}
+
+.ad-mobile-toggle{
+  display:none;
+  width:36px;height:36px;
+  border-radius:var(--r-sm);
+  border:1px solid var(--border-2);
+  color:var(--text-3);
+  align-items:center;justify-content:center;
+  cursor:pointer;
+}
+
+.ad-body{
+  padding:28px 32px 80px;
+  flex:1;
+}
+
+/* TABS */
+.ad-tab{display:none}
+.ad-tab.active{display:block;animation:adFade .25s var(--ease)}
+@keyframes adFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* STATS */
+.ad-stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-bottom:24px;
+}
+.ad-stat{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:18px 20px;
+  transition:border-color .2s var(--ease);
+}
+.ad-stat:hover{border-color:var(--border-3)}
+.ad-stat-top{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:14px;
+}
+.ad-stat-icon{
+  width:34px;height:34px;
+  border-radius:var(--r-sm);
+  display:flex;align-items:center;justify-content:center;
+}
+.ad-icon-iris{background:rgba(59,130,246,.14);color:var(--iris-bright)}
+.ad-icon-mint{background:rgba(71,209,140,.14);color:var(--mint)}
+.ad-icon-ember{background:rgba(56,189,248,.14);color:var(--ember)}
+.ad-icon-amber{background:rgba(251,191,36,.14);color:var(--amber)}
+.ad-icon-rose{background:rgba(255,92,138,.14);color:var(--rose)}
+.ad-stat-trend{
+  font-family:var(--mono);
+  font-size:10px;font-weight:600;
+  letter-spacing:.08em;
+  color:var(--text-4);
+  text-transform:uppercase;
+}
+.ad-stat-num{
+  font-family:var(--mono);
+  font-size:1.85rem;
+  font-weight:600;
+  letter-spacing:-.03em;
+  line-height:1;
+  margin-bottom:6px;
+}
+.ad-stat-label{
+  font-size:12.5px;
+  color:var(--text-4);
+}
+
+/* PANEL */
+.ad-panel{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  overflow:hidden;
+  margin-bottom:20px;
+}
+.ad-panel-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:18px 22px;
+  border-bottom:1px solid var(--border);
+  flex-wrap:wrap;
+}
+.ad-panel-title{
+  font-size:14.5px;
+  font-weight:700;
+  letter-spacing:-.005em;
+}
+.ad-panel-sub{
+  font-size:12.5px;
+  color:var(--text-4);
+  margin-top:2px;
+}
+.ad-panel-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+
+.ad-search{
+  display:flex;align-items:center;gap:8px;
+  padding:9px 14px;
+  background:var(--bg-2);
+  border:1px solid var(--border-2);
+  border-radius:var(--r-sm);
+  min-width:220px;
+  transition:border-color .2s var(--ease);
+}
+.ad-search:focus-within{border-color:var(--iris)}
+.ad-search svg{color:var(--text-4);flex-shrink:0}
+.ad-search input{
+  flex:1;
+  font-size:13px;
+  color:var(--text);
+}
+.ad-search input::placeholder{color:var(--text-5)}
+
+/* BUTTONS */
+.ad-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  padding:9px 16px;
+  border-radius:var(--r-sm);
+  font-size:13px;
+  font-weight:600;
+  border:1px solid transparent;
+  cursor:pointer;
+  transition:all .2s var(--ease);
+  white-space:nowrap;
+}
+.ad-btn-primary{
+  background:var(--iris-bright);
+  color:#fff;
+}
+.ad-btn-primary:hover{background:#6aa8ff}
+.ad-btn-ghost{
+  background:transparent;
+  border-color:var(--border-2);
+  color:var(--text-2);
+}
+.ad-btn-ghost:hover{border-color:var(--border-3);background:var(--panel-2)}
+.ad-btn-danger{
+  background:rgba(255,77,77,.1);
+  border-color:rgba(255,77,77,.3);
+  color:var(--danger);
+}
+.ad-btn-danger:hover{background:rgba(255,77,77,.16)}
+.ad-btn-sm{padding:6px 12px;font-size:12px}
+
+/* TABLE */
+.ad-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:13.5px;
+}
+.ad-table thead{background:var(--bg-2)}
+.ad-table th{
+  padding:11px 22px;
+  text-align:left;
+  font-family:var(--mono);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--text-4);
+  white-space:nowrap;
+}
+.ad-table td{
+  padding:13px 22px;
+  border-top:1px solid var(--border);
+  vertical-align:middle;
+}
+.ad-table tbody tr:hover{background:var(--panel-2)}
+.ad-table-empty{
+  padding:48px 22px !important;
+  text-align:center;
+  color:var(--text-4);
+}
+
+.ad-user-cell{display:flex;align-items:center;gap:11px;min-width:0}
+.ad-av{
+  width:34px;height:34px;
+  border-radius:50%;
+  background:var(--aurora);
+  color:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:12.5px;
+  flex-shrink:0;
+}
+.ad-user-cell-info{min-width:0}
+.ad-user-cell-email{
+  font-weight:600;color:var(--text);font-size:13px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  max-width:220px;
+}
+.ad-user-cell-id{
+  font-family:var(--mono);
+  font-size:10px;color:var(--text-5);
+  margin-top:2px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  max-width:220px;
+}
+
+.ad-count{
+  font-family:var(--mono);
+  font-size:15px;font-weight:700;
+}
+
+.ad-badge{
+  display:inline-flex;
+  align-items:center;
+  padding:3px 9px;
+  border-radius:var(--pill);
+  font-family:var(--mono);
+  font-size:10px;font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  border:1px solid;
+}
+.ad-badge-info{color:var(--ember);background:rgba(56,189,248,.1);border-color:rgba(56,189,248,.35)}
+.ad-badge-mint{color:var(--mint);background:rgba(71,209,140,.1);border-color:rgba(71,209,140,.35)}
+.ad-badge-amber{color:var(--amber);background:rgba(251,191,36,.1);border-color:rgba(251,191,36,.35)}
+.ad-badge-danger{color:var(--danger);background:rgba(255,77,77,.1);border-color:rgba(255,77,77,.35)}
+.ad-badge-muted{color:var(--text-4);background:var(--bg-2);border-color:var(--border-2)}
+
+.ad-cell-actions{display:inline-flex;gap:5px;justify-content:flex-end}
+.ad-act-btn{
+  width:30px;height:30px;
+  border-radius:var(--r-sm);
+  border:1px solid var(--border-2);
+  background:var(--bg-2);
+  color:var(--text-3);
+  display:inline-flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  transition:all .18s var(--ease);
+}
+.ad-act-btn:hover{border-color:var(--ember);color:var(--ember);background:rgba(56,189,248,.08)}
+.ad-act-add:hover{border-color:var(--mint);color:var(--mint);background:rgba(71,209,140,.08)}
+.ad-act-danger:hover{border-color:var(--danger);color:var(--danger);background:rgba(255,77,77,.08)}
+
+/* ACTIVITY */
+.ad-activity-item{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  padding:14px 22px;
+  border-bottom:1px solid var(--border);
+}
+.ad-activity-item:last-child{border-bottom:none}
+.ad-activity-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--ember);
+  margin-top:6px;
+  flex-shrink:0;
+  box-shadow:0 0 8px var(--ember);
+}
+.ad-activity-body{flex:1;min-width:0}
+.ad-activity-title{font-size:13.5px;color:var(--text-2);font-weight:500}
+.ad-activity-time{
+  font-family:var(--mono);
+  font-size:10.5px;
+  color:var(--text-5);
+  letter-spacing:.04em;
+  margin-top:3px;
+}
+
+/* COMING SOON */
+.ad-soon{
+  text-align:center;
+  padding:80px 24px;
+  border:1px dashed var(--border-3);
+  border-radius:var(--r-lg);
+}
+.ad-soon-icon{
+  width:60px;height:60px;
+  border-radius:50%;
+  background:var(--panel-2);
+  border:1px solid var(--border-2);
+  color:var(--text-4);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 20px;
+}
+.ad-soon h3{
+  font-family:var(--mono);
+  font-size:1.05rem;
+  font-weight:600;
+  margin-bottom:8px;
+}
+.ad-soon p{
+  color:var(--text-4);
+  font-size:13.5px;
+  max-width:420px;
+  margin:0 auto;
+  line-height:1.7;
+}
+
+/* DANGER */
+.ad-danger{
+  background:rgba(255,77,77,.03);
+  border:1px solid rgba(255,77,77,.25);
+  border-radius:var(--r);
+  padding:22px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-bottom:12px;
+}
+.ad-danger-info{flex:1;min-width:200px}
+.ad-danger-info h4{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px}
+.ad-danger-info p{font-size:12.5px;color:var(--text-4);line-height:1.6}
+
+/* CENTERED STATE */
+.ad-center{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+  text-align:center;
+  padding:40px 24px;
+}
+.ad-spinner{
+  width:34px;height:34px;
+  border:3px solid var(--border-2);
+  border-top-color:var(--ember);
+  border-radius:50%;
+  animation:adSpin .8s linear infinite;
+  margin-bottom:20px;
+}
+@keyframes adSpin{to{transform:rotate(360deg)}}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .ad{grid-template-columns:1fr}
+  .ad-side{
+    position:fixed;top:0;left:0;
+    width:248px;
+    transform:translateX(-100%);
+    transition:transform .3s var(--ease);
+    z-index:50;
+  }
+  .ad-side.open{transform:translateX(0)}
+  .ad-mobile-toggle{display:flex}
+  .ad-stats{grid-template-columns:repeat(2,1fr)}
+  .ad-body{padding:20px}
+  .ad-top{padding:14px 20px}
+}
+@media(max-width:600px){
+  .ad-stats{grid-template-columns:1fr}
+  .ad-table th,.ad-table td{padding:11px 14px}
+  .ad-user-cell-email,.ad-user-cell-id{max-width:130px}
+}
+</style>
 </head>
 <body>
 
-<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
-<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<!-- LOADING -->
+<div id="loadingState" class="ad-center">
+  <div class="ad-spinner"></div>
+  <p style="color:var(--text-3)">Verifying admin access…</p>
+</div>
 
-<!-- ============================================================
-     ADMIN LAYOUT
-     ============================================================ -->
-<div class="admin-layout" id="adminRoot" style="display:none">
+<!-- DENIED -->
+<div id="deniedState" class="ad-center" style="display:none">
+  <span style="font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--danger)">Access denied</span>
+  <h1 style="font-family:var(--mono);font-size:1.6rem;font-weight:600;letter-spacing:-.03em;margin:16px 0 12px">You're not an admin.</h1>
+  <p style="color:var(--text-3);max-width:420px;margin:0 auto 24px;font-size:14px">This page is restricted. If you think this is a mistake, contact the studio owner.</p>
+  <a href="index.html" class="ad-btn ad-btn-ghost">Back to home</a>
+</div>
+
+<!-- ADMIN SHELL -->
+<div class="ad" id="adminRoot" style="display:none">
 
   <!-- SIDEBAR -->
-  <aside class="admin-sidebar">
-    <a href="index.html" class="admin-brand">
+  <aside class="ad-side" id="sidebar">
+    <a href="index.html" class="ad-brand">
       <img src="nexifing-logo.png" alt="" onerror="this.style.display='none'">
       <span>NEXIFING</span>
     </a>
 
-    <nav class="admin-nav">
-      <a href="admin.html" class="admin-nav-link active">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
-        <span>Dashboard</span>
-      </a>
-      <a href="admin.html#users" class="admin-nav-link">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        <span>Users</span>
-      </a>
-      <a href="pricing.html" class="admin-nav-link">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        <span>Pricing</span>
-      </a>
-      <a href="index.html" class="admin-nav-link">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        <span>Public site</span>
-      </a>
+    <nav class="ad-nav">
+
+      <div class="ad-nav-group">Main</div>
+
+      <button class="ad-nav-btn active" data-tab="overview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+        <span>Overview</span>
+      </button>
+
+      <button class="ad-nav-btn" data-tab="projects">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <span>Projects</span>
+        <span class="ad-nav-badge" id="projectsBadge">0</span>
+      </button>
+
+      <button class="ad-nav-btn" data-tab="clients">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>Clients</span>
+        <span class="ad-nav-badge" id="clientsBadge">0</span>
+      </button>
+
+      <button class="ad-nav-btn" data-tab="services">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        <span>Services</span>
+      </button>
+
+      <button class="ad-nav-btn" data-tab="discounts">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+        <span>Discounts</span>
+      </button>
+
+      <div class="ad-nav-group">Management</div>
+
+      <button class="ad-nav-btn" data-tab="team">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>Team</span>
+      </button>
+
+      <button class="ad-nav-btn" data-tab="support">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span>Support</span>
+      </button>
+
+      <button class="ad-nav-btn" data-tab="content">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg>
+        <span>Content</span>
+      </button>
+
+      <div class="ad-nav-group">System</div>
+
+      <button class="ad-nav-btn" data-tab="settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span>Settings</span>
+      </button>
+
+      <button class="ad-nav-btn" data-tab="danger">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+        <span>Danger zone</span>
+      </button>
+
     </nav>
 
-    <div class="admin-sidebar-bottom">
-      <div class="admin-side-user">
-        <div class="admin-avatar" id="sidebarAvatar">A</div>
-        <div class="admin-side-info">
-          <div class="admin-side-email" id="sidebarEmail">admin</div>
-          <div class="admin-side-role">Administrator</div>
-        </div>
+    <div class="ad-user">
+      <div class="ad-user-av" id="userAvatar">A</div>
+      <div class="ad-user-info">
+        <div class="ad-user-name" id="userEmail">admin</div>
+        <div class="ad-user-role">Owner</div>
       </div>
-      <button class="admin-signout" id="logoutBtn" title="Sign out">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      <button class="ad-user-out" id="logoutBtn" title="Sign out">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
       </button>
     </div>
   </aside>
 
   <!-- MAIN -->
-  <main class="admin-main">
+  <main class="ad-main">
 
-    <!-- TOP BAR -->
-    <header class="admin-topbar">
-      <div class="admin-topbar-left">
-        <button class="admin-mobile-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+    <header class="ad-top">
+      <div style="display:flex;align-items:center;gap:14px;min-width:0">
+        <button class="ad-mobile-toggle" id="sidebarToggle" aria-label="Toggle menu">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
-        <div>
-          <h1 class="admin-page-title">Dashboard</h1>
-          <p class="admin-page-sub">Live overview of NEXIFING users and orders</p>
+        <div style="min-width:0">
+          <h1 class="ad-top-title" id="pageTitle">Overview</h1>
+          <p class="ad-top-sub" id="pageSub">Live studio overview</p>
         </div>
       </div>
-
-      <div class="admin-topbar-right">
-        <div class="admin-status-pill">
-          <span class="admin-status-dot"></span>
-          <span>Live</span>
-        </div>
+      <div class="ad-top-actions">
+        <div class="ad-live"><span class="ad-live-dot"></span>Live</div>
       </div>
     </header>
 
-    <!-- CONTENT -->
-    <div class="admin-body">
+    <div class="ad-body">
 
-      <!-- STATS -->
-      <div class="admin-stats">
-        <div class="admin-stat-card">
-          <div class="admin-stat-head">
-            <div class="admin-stat-icon admin-icon-iris">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+      <!-- ========== OVERVIEW ========== -->
+      <div class="ad-tab active" id="tab-overview">
+
+        <div class="ad-stats">
+          <div class="ad-stat">
+            <div class="ad-stat-top">
+              <div class="ad-stat-icon ad-icon-iris">
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              </div>
+              <span class="ad-stat-trend">All time</span>
             </div>
-            <span class="admin-stat-trend" id="statUsersTrend">—</span>
+            <div class="ad-stat-num" id="oStatUsers">0</div>
+            <div class="ad-stat-label">Total clients</div>
           </div>
-          <div class="admin-stat-value" id="statTotalUsers">0</div>
-          <div class="admin-stat-label">Total users</div>
+
+          <div class="ad-stat">
+            <div class="ad-stat-top">
+              <div class="ad-stat-icon ad-icon-mint">
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              </div>
+              <span class="ad-stat-trend" id="oRepeatTrend">—</span>
+            </div>
+            <div class="ad-stat-num" id="oStatRepeat">0</div>
+            <div class="ad-stat-label">Repeat clients</div>
+          </div>
+
+          <div class="ad-stat">
+            <div class="ad-stat-top">
+              <div class="ad-stat-icon ad-icon-ember">
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+              </div>
+              <span class="ad-stat-trend" id="oDiscountTrend">—</span>
+            </div>
+            <div class="ad-stat-num" id="oStatDiscount">0</div>
+            <div class="ad-stat-label">Discounted clients</div>
+          </div>
+
+          <div class="ad-stat">
+            <div class="ad-stat-top">
+              <div class="ad-stat-icon ad-icon-amber">
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              </div>
+              <span class="ad-stat-trend" id="oOrdersTrend">—</span>
+            </div>
+            <div class="ad-stat-num" id="oStatOrders">0</div>
+            <div class="ad-stat-label">Total orders</div>
+          </div>
         </div>
 
-        <div class="admin-stat-card">
-          <div class="admin-stat-head">
-            <div class="admin-stat-icon admin-icon-mint">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <div class="ad-panel">
+          <div class="ad-panel-head">
+            <div>
+              <div class="ad-panel-title">Recent activity</div>
+              <div class="ad-panel-sub">Latest sign-ups and orders</div>
             </div>
-            <span class="admin-stat-trend" id="statRepeatTrend">—</span>
           </div>
-          <div class="admin-stat-value" id="statRepeatUsers">0</div>
-          <div class="admin-stat-label">Repeat customers</div>
+          <div id="activityList">
+            <div class="ad-table-empty">No activity yet.</div>
+          </div>
         </div>
 
-        <div class="admin-stat-card">
-          <div class="admin-stat-head">
-            <div class="admin-stat-icon admin-icon-ember">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-            </div>
-            <span class="admin-stat-trend" id="statDiscountTrend">—</span>
-          </div>
-          <div class="admin-stat-value" id="statDiscountedUsers">0</div>
-          <div class="admin-stat-label">With discount</div>
-        </div>
+      </div>
 
-        <div class="admin-stat-card">
-          <div class="admin-stat-head">
-            <div class="admin-stat-icon admin-icon-amber">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      <!-- ========== PROJECTS ========== -->
+      <div class="ad-tab" id="tab-projects">
+        <div class="ad-panel">
+          <div class="ad-panel-head">
+            <div>
+              <div class="ad-panel-title">Project requests</div>
+              <div class="ad-panel-sub" id="projectsSub">0 requests</div>
             </div>
-            <span class="admin-stat-trend" id="statOrdersTrend">—</span>
+            <div class="ad-panel-actions">
+              <div class="ad-search">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="search" id="projectsSearch" placeholder="Search…">
+              </div>
+            </div>
           </div>
-          <div class="admin-stat-value" id="statTotalOrders">0</div>
-          <div class="admin-stat-label">Total orders</div>
+          <table class="ad-table">
+            <thead>
+              <tr>
+                <th>Client</th>
+                <th>Service</th>
+                <th>Budget</th>
+                <th>Status</th>
+                <th style="text-align:right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="projectsList">
+              <tr><td colspan="5" class="ad-table-empty">Loading…</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
-      <!-- USERS TABLE -->
-      <div class="admin-panel">
-        <div class="admin-panel-head">
-          <div>
-            <h2 class="admin-panel-title">Users</h2>
-            <p class="admin-panel-sub" id="userCountSub">0 accounts</p>
-          </div>
-          <div class="admin-panel-actions">
-            <div class="admin-search-wrap">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              <input type="search" id="searchInput" placeholder="Search email or UID…" class="admin-search">
+      <!-- ========== CLIENTS ========== -->
+      <div class="ad-tab" id="tab-clients">
+        <div class="ad-panel">
+          <div class="ad-panel-head">
+            <div>
+              <div class="ad-panel-title">Clients</div>
+              <div class="ad-panel-sub" id="clientsSub">0 accounts</div>
+            </div>
+            <div class="ad-panel-actions">
+              <div class="ad-search">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="search" id="clientsSearch" placeholder="Search email or UID…">
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="admin-table-wrap">
-          <table class="admin-table">
+          <table class="ad-table">
             <thead>
               <tr>
-                <th>User</th>
+                <th>Client</th>
                 <th>Orders</th>
                 <th>Discount</th>
                 <th style="text-align:right">Actions</th>
               </tr>
             </thead>
-            <tbody id="userList">
-              <tr><td colspan="4" class="admin-table-empty">Loading…</td></tr>
+            <tbody id="clientsList">
+              <tr><td colspan="4" class="ad-table-empty">Loading…</td></tr>
             </tbody>
           </table>
+        </div>
+      </div>
+
+      <!-- ========== SERVICES ========== -->
+      <div class="ad-tab" id="tab-services">
+        <div class="ad-panel">
+          <div class="ad-panel-head">
+            <div>
+              <div class="ad-panel-title">Service offerings</div>
+              <div class="ad-panel-sub">What shows on the services page</div>
+            </div>
+            <div class="ad-panel-actions">
+              <button class="ad-btn ad-btn-primary ad-btn-sm" id="addServiceBtn">+ Add service</button>
+            </div>
+          </div>
+          <table class="ad-table">
+            <thead>
+              <tr>
+                <th>Service</th>
+                <th>Starting price</th>
+                <th>Delivery</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="servicesList">
+              <tr><td colspan="4" class="ad-table-empty">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ========== DISCOUNTS ========== -->
+      <div class="ad-tab" id="tab-discounts">
+        <div class="ad-panel">
+          <div class="ad-panel-head">
+            <div>
+              <div class="ad-panel-title">Automatic discount tiers</div>
+              <div class="ad-panel-sub">Applied automatically based on order count</div>
+            </div>
+          </div>
+          <table class="ad-table">
+            <thead>
+              <tr>
+                <th>Tier</th>
+                <th>Orders required</th>
+                <th>Discount</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Returning</strong></td>
+                <td>1+ completed orders</td>
+                <td><span class="ad-badge ad-badge-info">30% off</span></td>
+                <td><span class="ad-badge ad-badge-mint">Active</span></td>
+              </tr>
+              <tr>
+                <td><strong>Loyal</strong></td>
+                <td>3+ completed orders</td>
+                <td><span class="ad-badge ad-badge-info">50% off</span></td>
+                <td><span class="ad-badge ad-badge-mint">Active</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ad-panel">
+          <div class="ad-panel-head">
+            <div>
+              <div class="ad-panel-title">Promo codes</div>
+              <div class="ad-panel-sub">One-time or reusable codes</div>
+            </div>
+            <div class="ad-panel-actions">
+              <button class="ad-btn ad-btn-primary ad-btn-sm" id="addPromoBtn">+ New promo</button>
+            </div>
+          </div>
+          <table class="ad-table">
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>Discount</th>
+                <th>Uses</th>
+                <th>Expires</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="promosList">
+              <tr><td colspan="5" class="ad-table-empty">No promo codes yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ========== TEAM ========== -->
+      <div class="ad-tab" id="tab-team">
+        <div class="ad-panel">
+          <div class="ad-panel-head">
+            <div>
+              <div class="ad-panel-title">Team members</div>
+              <div class="ad-panel-sub">Who has access to this admin panel</div>
+            </div>
+            <div class="ad-panel-actions">
+              <button class="ad-btn ad-btn-primary ad-btn-sm" id="addTeamBtn">+ Add member</button>
+            </div>
+          </div>
+          <table class="ad-table">
+            <thead>
+              <tr>
+                <th>Member</th>
+                <th>Role</th>
+                <th>Added</th>
+                <th style="text-align:right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="teamList">
+              <tr><td colspan="4" class="ad-table-empty">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ========== SUPPORT ========== -->
+      <div class="ad-tab" id="tab-support">
+        <div class="ad-soon">
+          <div class="ad-soon-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>Support tickets</h3>
+          <p>Client messages from the contact form will land here. Coming soon.</p>
+        </div>
+      </div>
+
+      <!-- ========== CONTENT ========== -->
+      <div class="ad-tab" id="tab-content">
+        <div class="ad-soon">
+          <div class="ad-soon-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg>
+          </div>
+          <h3>Content manager</h3>
+          <p>Edit homepage text, banners, FAQ and pricing notes without touching code. Coming soon.</p>
+        </div>
+      </div>
+
+      <!-- ========== SETTINGS ========== -->
+      <div class="ad-tab" id="tab-settings">
+        <div class="ad-soon">
+          <div class="ad-soon-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </div>
+          <h3>Studio settings</h3>
+          <p>Social links, contact info, notification preferences and maintenance mode. Coming soon.</p>
+        </div>
+      </div>
+
+      <!-- ========== DANGER ========== -->
+      <div class="ad-tab" id="tab-danger">
+        <div class="ad-danger">
+          <div class="ad-danger-info">
+            <h4>Reset all client order counts</h4>
+            <p>Sets every client's <code style="font-family:var(--mono);color:var(--ember)">orderCount</code> back to 0. They lose all discounts.</p>
+          </div>
+          <button class="ad-btn ad-btn-danger" id="resetOrdersBtn">Reset</button>
+        </div>
+        <div class="ad-danger">
+          <div class="ad-danger-info">
+            <h4>Clear promo codes</h4>
+            <p>Deletes every promo code. Existing discounts on user accounts are not affected.</p>
+          </div>
+          <button class="ad-btn ad-btn-danger" id="clearPromosBtn">Clear</button>
         </div>
       </div>
 
@@ -171,27 +1057,15 @@
   </main>
 </div>
 
-<!-- LOADING -->
-<div id="loadingState" class="admin-center-state">
-  <div class="spinner spinner-lg"></div>
-  <p>Verifying admin access…</p>
-</div>
-
-<!-- DENIED -->
-<div id="deniedState" class="admin-center-state" style="display:none">
-  <span class="section-label" style="color:var(--danger)">ACCESS DENIED</span>
-  <h1 style="font-family:var(--font-display);font-size:1.8rem;margin:16px 0 12px">You're not an admin.</h1>
-  <p style="color:var(--text-3);max-width:420px;margin:0 auto 24px">This page is restricted.</p>
-  <a href="index.html" class="btn btn-ghost">Back to home</a>
-</div>
-
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 <script src="firebase-config.js"></script>
-<script src="script.js"></script>
 
 <script>
+/* ============================================================
+   ADMIN SCRIPT
+   ============================================================ */
 var ADMIN_UIDS = [
   'w0qgOaWLIRhJtp2Hk0CbcSB1nSz2'
 ];
@@ -201,23 +1075,55 @@ document.addEventListener('DOMContentLoaded', function () {
   var auth = firebase.auth();
   var db   = firebase.firestore();
 
-  var userListEl = document.getElementById('userList');
-  var searchInput = document.getElementById('searchInput');
-  var allUsers = [];
-  var unsubscribe = null;
+  var allClients = [];
+  var allProjects = [];
+  var allTeam = [];
 
-  // ---- THEME TOGGLE (uses same button as public site if present)
-  // (optional; not rendered in admin layout)
+  /* ---------- TAB NAV ---------- */
+  var tabs = document.querySelectorAll('.ad-nav-btn');
+  var panels = document.querySelectorAll('.ad-tab');
+  var pageTitle = document.getElementById('pageTitle');
+  var pageSub   = document.getElementById('pageSub');
 
-  // ---- SIDEBAR TOGGLE (mobile)
+  var TAB_META = {
+    overview:  { title:'Overview',  sub:'Live studio overview' },
+    projects:  { title:'Projects',  sub:'Client project requests' },
+    clients:   { title:'Clients',   sub:'Registered accounts' },
+    services:  { title:'Services',  sub:'Service offerings' },
+    discounts: { title:'Discounts', sub:'Tiers and promo codes' },
+    team:      { title:'Team',      sub:'Admin panel members' },
+    support:   { title:'Support',   sub:'Client messages' },
+    content:   { title:'Content',   sub:'Website content manager' },
+    settings:  { title:'Settings',  sub:'Studio configuration' },
+    danger:    { title:'Danger zone', sub:'Destructive actions' }
+  };
+
+  tabs.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var tab = btn.getAttribute('data-tab');
+      tabs.forEach(function (b) { b.classList.remove('active'); });
+      panels.forEach(function (p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      var target = document.getElementById('tab-' + tab);
+      if (target) target.classList.add('active');
+      var meta = TAB_META[tab] || { title:'Admin', sub:'' };
+      pageTitle.textContent = meta.title;
+      pageSub.textContent = meta.sub;
+      if (window.innerWidth < 900) {
+        document.getElementById('sidebar').classList.remove('open');
+      }
+    });
+  });
+
+  /* ---------- SIDEBAR TOGGLE ---------- */
   var sidebarToggle = document.getElementById('sidebarToggle');
   if (sidebarToggle) {
     sidebarToggle.addEventListener('click', function () {
-      document.querySelector('.admin-sidebar').classList.toggle('open');
+      document.getElementById('sidebar').classList.toggle('open');
     });
   }
 
-  // ---- AUTH
+  /* ---------- AUTH GATE ---------- */
   auth.onAuthStateChanged(function (user) {
     document.getElementById('loadingState').style.display = 'none';
 
@@ -226,26 +1132,28 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    var isAdmin = ADMIN_UIDS.indexOf(user.uid) !== -1;
-    if (!isAdmin) {
+    if (ADMIN_UIDS.indexOf(user.uid) === -1) {
       document.getElementById('deniedState').style.display = 'flex';
       return;
     }
 
-    // Show layout + fill sidebar
     document.getElementById('adminRoot').style.display = 'grid';
-    var initial = (user.email || 'A').charAt(0).toUpperCase();
-    document.getElementById('sidebarAvatar').textContent = initial;
-    document.getElementById('sidebarEmail').textContent = user.email || 'admin';
 
-    startListening();
+    var email = user.email || 'admin';
+    document.getElementById('userEmail').textContent = email;
+    document.getElementById('userAvatar').textContent = email.charAt(0).toUpperCase();
+
+    loadClients();
+    loadProjects();
+    loadTeam();
   });
 
-  // ---- LIVE USER LIST
-  function startListening() {
-    if (unsubscribe) unsubscribe();
-    unsubscribe = db.collection('users').onSnapshot(function (snap) {
-      allUsers = snap.docs.map(function (d) {
+  /* ============================================================
+     CLIENTS
+     ============================================================ */
+  function loadClients() {
+    db.collection('users').onSnapshot(function (snap) {
+      allClients = snap.docs.map(function (d) {
         var data = d.data() || {};
         return {
           uid: d.id,
@@ -254,156 +1162,396 @@ document.addEventListener('DOMContentLoaded', function () {
           createdAt: data.createdAt
         };
       });
-      allUsers.sort(function (a, b) { return (b.orderCount || 0) - (a.orderCount || 0); });
-      renderStats();
-      renderList(allUsers);
+      allClients.sort(function (a, b) { return (b.orderCount || 0) - (a.orderCount || 0); });
+      renderClients(allClients);
+      renderOverview();
     }, function (err) {
-      userListEl.innerHTML =
-        '<tr><td colspan="4" class="admin-table-empty" style="color:var(--danger)">Error: ' + err.message + '</td></tr>';
+      document.getElementById('clientsList').innerHTML =
+        '<tr><td colspan="4" class="ad-table-empty" style="color:var(--danger)">Error: ' + err.message + '</td></tr>';
     });
   }
 
-  // ---- STATS
-  function renderStats() {
-    var total = allUsers.length;
-    var repeat = allUsers.filter(function (u) { return u.orderCount >= 1; }).length;
-    var discounted = repeat;
-    var totalOrders = allUsers.reduce(function (s, u) { return s + u.orderCount; }, 0);
+  function renderClients(users) {
+    var list = document.getElementById('clientsList');
+    var badge = document.getElementById('clientsBadge');
+    var sub = document.getElementById('clientsSub');
+    var count = users.length;
+    badge.textContent = count;
+    sub.textContent = count + (count === 1 ? ' account' : ' accounts');
 
-    document.getElementById('statTotalUsers').textContent = total;
-    document.getElementById('statRepeatUsers').textContent = repeat;
-    document.getElementById('statDiscountedUsers').textContent = discounted;
-    document.getElementById('statTotalOrders').textContent = totalOrders;
-
-    document.getElementById('userCountSub').textContent =
-      total + (total === 1 ? ' account' : ' accounts');
-
-    // Trends (simple: percent of total)
-    document.getElementById('statRepeatTrend').textContent =
-      total > 0 ? Math.round((repeat / total) * 100) + '%' : '0%';
-    document.getElementById('statDiscountTrend').textContent =
-      total > 0 ? Math.round((discounted / total) * 100) + '%' : '0%';
-    document.getElementById('statUsersTrend').textContent = 'all';
-    document.getElementById('statOrdersTrend').textContent =
-      total > 0 ? (totalOrders / total).toFixed(1) + ' avg' : '—';
-  }
-
-  // ---- TABLE
-  function renderList(users) {
     if (!users.length) {
-      userListEl.innerHTML = '<tr><td colspan="4" class="admin-table-empty">No users match.</td></tr>';
+      list.innerHTML = '<tr><td colspan="4" class="ad-table-empty">No clients yet.</td></tr>';
       return;
     }
 
-    userListEl.innerHTML = '';
-
+    list.innerHTML = '';
     users.forEach(function (u) {
-      var discount = getDiscountForCount(u.orderCount);
+      var tier = getTier(u.orderCount);
       var tr = document.createElement('tr');
-
       var initial = (u.email || '?').charAt(0).toUpperCase();
 
       tr.innerHTML =
-        '<td>' +
-          '<div class="admin-cell-user">' +
-            '<div class="admin-avatar">' + initial + '</div>' +
-            '<div class="admin-cell-info">' +
-              '<div class="admin-cell-email">' + escapeHtml(u.email) + '</div>' +
-              '<div class="admin-cell-uid">' + u.uid + '</div>' +
-            '</div>' +
+        '<td><div class="ad-user-cell">' +
+          '<div class="ad-av">' + initial + '</div>' +
+          '<div class="ad-user-cell-info">' +
+            '<div class="ad-user-cell-email">' + esc(u.email) + '</div>' +
+            '<div class="ad-user-cell-id">' + u.uid + '</div>' +
           '</div>' +
-        '</td>' +
-        '<td>' +
-          '<span class="admin-count">' + u.orderCount + '</span>' +
-        '</td>' +
-        '<td>' +
-          (discount.pct > 0
-            ? '<span class="admin-badge admin-badge-active">' + Math.round(discount.pct * 100) + '% off</span>'
-            : '<span class="admin-badge admin-badge-muted">—</span>') +
-        '</td>' +
-        '<td style="text-align:right">' +
-          '<div class="admin-cell-actions">' +
-            '<button class="admin-action-btn admin-action-add" data-add="' + u.uid + '" title="Add order">' +
-              '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>' +
-            '</button>' +
-            '<button class="admin-action-btn" data-remove="' + u.uid + '" title="Remove order">' +
-              '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>' +
-            '</button>' +
-            '<button class="admin-action-btn admin-action-reset" data-reset="' + u.uid + '" title="Reset">' +
-              '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>' +
-            '</button>' +
-          '</div>' +
-        '</td>';
+        '</div></td>' +
+        '<td><span class="ad-count">' + u.orderCount + '</span></td>' +
+        '<td>' + (tier.pct > 0
+          ? '<span class="ad-badge ad-badge-info">' + Math.round(tier.pct * 100) + '% off</span>'
+          : '<span class="ad-badge ad-badge-muted">—</span>') + '</td>' +
+        '<td style="text-align:right"><div class="ad-cell-actions">' +
+          '<button class="ad-act-btn ad-act-add" data-add="' + u.uid + '" title="Add order">+</button>' +
+          '<button class="ad-act-btn" data-remove="' + u.uid + '" title="Remove order">−</button>' +
+          '<button class="ad-act-btn ad-act-danger" data-reset="' + u.uid + '" title="Reset">⟲</button>' +
+        '</div></td>';
 
-      userListEl.appendChild(tr);
+      list.appendChild(tr);
     });
 
-    // Wire up action buttons
-    userListEl.querySelectorAll('[data-add]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        changeOrders(btn.getAttribute('data-add'), 1);
-      });
+    list.querySelectorAll('[data-add]').forEach(function (b) {
+      b.addEventListener('click', function () { changeOrders(b.getAttribute('data-add'), 1); });
     });
-    userListEl.querySelectorAll('[data-remove]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        changeOrders(btn.getAttribute('data-remove'), -1);
-      });
+    list.querySelectorAll('[data-remove]').forEach(function (b) {
+      b.addEventListener('click', function () { changeOrders(b.getAttribute('data-remove'), -1); });
     });
-    userListEl.querySelectorAll('[data-reset]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        if (!confirm('Reset this user\'s order count to 0?')) return;
-        db.collection('users').doc(btn.getAttribute('data-reset')).update({
-          orderCount: 0
-        }).catch(function (err) {
-          alert('Failed: ' + err.message);
-        });
+    list.querySelectorAll('[data-reset]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (!confirm('Reset this client\'s order count to 0?')) return;
+        db.collection('users').doc(b.getAttribute('data-reset')).update({ orderCount: 0 })
+          .catch(function (err) { alert('Failed: ' + err.message); });
       });
     });
   }
 
-  // ---- CHANGE ORDER COUNT
   function changeOrders(uid, delta) {
     var ref = db.collection('users').doc(uid);
     db.runTransaction(function (tx) {
       return tx.get(ref).then(function (doc) {
         if (!doc.exists) return;
-        var current = doc.data().orderCount || 0;
-        var next = Math.max(0, current + delta);
-        tx.update(ref, { orderCount: next });
+        var cur = doc.data().orderCount || 0;
+        tx.update(ref, { orderCount: Math.max(0, cur + delta) });
       });
-    }).catch(function (err) {
-      alert('Failed: ' + err.message);
-    });
+    }).catch(function (err) { alert('Failed: ' + err.message); });
   }
 
-  function getDiscountForCount(n) {
-    if (n >= 3) return { pct: 0.5 };
-    if (n >= 1) return { pct: 0.3 };
-    return { pct: 0 };
-  }
-
-  function escapeHtml(s) {
-    return String(s || '')
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
-  }
-
-  // ---- SEARCH
-  if (searchInput) {
-    searchInput.addEventListener('input', function () {
-      var q = searchInput.value.trim().toLowerCase();
-      if (!q) return renderList(allUsers);
-      var filtered = allUsers.filter(function (u) {
+  /* ---------- CLIENTS SEARCH ---------- */
+  var clientsSearch = document.getElementById('clientsSearch');
+  if (clientsSearch) {
+    clientsSearch.addEventListener('input', function () {
+      var q = clientsSearch.value.trim().toLowerCase();
+      if (!q) return renderClients(allClients);
+      var filtered = allClients.filter(function (u) {
         return (u.email || '').toLowerCase().indexOf(q) !== -1 ||
                u.uid.toLowerCase().indexOf(q) !== -1;
       });
-      renderList(filtered);
+      renderClients(filtered);
     });
   }
 
-  // ---- LOGOUT
+  /* ============================================================
+     PROJECTS
+     ============================================================ */
+  function loadProjects() {
+    db.collection('projects').onSnapshot(function (snap) {
+      allProjects = snap.docs.map(function (d) {
+        var data = d.data() || {};
+        return {
+          id: d.id,
+          email: data.email || '—',
+          service: data.service || '—',
+          budget: data.budget || '—',
+          status: data.status || 'new',
+          createdAt: data.createdAt
+        };
+      });
+      renderProjects(allProjects);
+    }, function () {
+      // Collection doesn't exist yet — that's fine
+      allProjects = [];
+      renderProjects([]);
+    });
+  }
+
+  function renderProjects(list) {
+    var el = document.getElementById('projectsList');
+    var badge = document.getElementById('projectsBadge');
+    var sub = document.getElementById('projectsSub');
+
+    var pending = list.filter(function (p) { return p.status === 'new'; }).length;
+    badge.textContent = pending;
+    sub.textContent = list.length + (list.length === 1 ? ' request' : ' requests');
+
+    if (!list.length) {
+      el.innerHTML = '<tr><td colspan="5" class="ad-table-empty">No project requests yet. They appear here when clients submit the contact form.</td></tr>';
+      return;
+    }
+
+    el.innerHTML = '';
+    list.forEach(function (p) {
+      var statusBadge = p.status === 'new'
+        ? '<span class="ad-badge ad-badge-amber">New</span>'
+        : p.status === 'in-progress'
+        ? '<span class="ad-badge ad-badge-info">In progress</span>'
+        : '<span class="ad-badge ad-badge-mint">Done</span>';
+
+      var tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td style="font-weight:600">' + esc(p.email) + '</td>' +
+        '<td>' + esc(p.service) + '</td>' +
+        '<td><span class="ad-count" style="font-size:13px">' + esc(p.budget) + '</span></td>' +
+        '<td>' + statusBadge + '</td>' +
+        '<td style="text-align:right"><div class="ad-cell-actions">' +
+          '<button class="ad-act-btn" data-advance="' + p.id + '" title="Advance status">→</button>' +
+        '</div></td>';
+      el.appendChild(tr);
+    });
+
+    el.querySelectorAll('[data-advance]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var id = b.getAttribute('data-advance');
+        var proj = allProjects.find(function (p) { return p.id === id; });
+        if (!proj) return;
+        var next = proj.status === 'new' ? 'in-progress' : proj.status === 'in-progress' ? 'done' : 'new';
+        db.collection('projects').doc(id).update({ status: next });
+      });
+    });
+  }
+
+  /* ---------- PROJECTS SEARCH ---------- */
+  var projectsSearch = document.getElementById('projectsSearch');
+  if (projectsSearch) {
+    projectsSearch.addEventListener('input', function () {
+      var q = projectsSearch.value.trim().toLowerCase();
+      if (!q) return renderProjects(allProjects);
+      var filtered = allProjects.filter(function (p) {
+        return (p.email || '').toLowerCase().indexOf(q) !== -1 ||
+               (p.service || '').toLowerCase().indexOf(q) !== -1;
+      });
+      renderProjects(filtered);
+    });
+  }
+
+  /* ============================================================
+     SERVICES
+     ============================================================ */
+  function loadServices() {
+    db.collection('services').onSnapshot(function (snap) {
+      var list = snap.docs.map(function (d) {
+        var data = d.data() || {};
+        return {
+          id: d.id,
+          name: data.name || 'Untitled',
+          price: data.price || '—',
+          delivery: data.delivery || '—',
+          enabled: data.enabled !== false
+        };
+      });
+      renderServices(list);
+    }, function () {
+      renderServices([]);
+    });
+  }
+
+  function renderServices(list) {
+    var el = document.getElementById('servicesList');
+    if (!list.length) {
+      el.innerHTML = '<tr><td colspan="4" class="ad-table-empty">No services yet. Click "+ Add service".</td></tr>';
+      return;
+    }
+    el.innerHTML = '';
+    list.forEach(function (s) {
+      var tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td style="font-weight:600">' + esc(s.name) + '</td>' +
+        '<td><span class="ad-count" style="font-size:13px">' + esc(s.price) + '</span></td>' +
+        '<td>' + esc(s.delivery) + '</td>' +
+        '<td>' + (s.enabled
+          ? '<span class="ad-badge ad-badge-mint">Active</span>'
+          : '<span class="ad-badge ad-badge-muted">Disabled</span>') + '</td>';
+      el.appendChild(tr);
+    });
+  }
+
+  var addServiceBtn = document.getElementById('addServiceBtn');
+  if (addServiceBtn) {
+    addServiceBtn.addEventListener('click', function () {
+      var name = prompt('Service name?');
+      if (!name) return;
+      var price = prompt('Starting price (e.g. 5,000 EGP)?') || '—';
+      var delivery = prompt('Delivery time (e.g. 1-2 weeks)?') || '—';
+      db.collection('services').add({
+        name: name, price: price, delivery: delivery, enabled: true,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+    });
+  }
+
+  /* ============================================================
+     TEAM
+     ============================================================ */
+  function loadTeam() {
+    db.collection('team').onSnapshot(function (snap) {
+      allTeam = snap.docs.map(function (d) {
+        var data = d.data() || {};
+        return {
+          id: d.id,
+          email: data.email || '—',
+          role: data.role || 'staff',
+          createdAt: data.createdAt
+        };
+      });
+      renderTeam(allTeam);
+    }, function () {
+      allTeam = [];
+      renderTeam([]);
+    });
+  }
+
+  function renderTeam(list) {
+    var el = document.getElementById('teamList');
+    if (!list.length) {
+      el.innerHTML = '<tr><td colspan="4" class="ad-table-empty">No team members yet. You (the owner) are the only one with access.</td></tr>';
+      return;
+    }
+    el.innerHTML = '';
+    list.forEach(function (m) {
+      var initial = (m.email || '?').charAt(0).toUpperCase();
+      var roleBadge = m.role === 'owner'
+        ? '<span class="ad-badge ad-badge-amber">Owner</span>'
+        : m.role === 'admin'
+        ? '<span class="ad-badge ad-badge-info">Admin</span>'
+        : '<span class="ad-badge ad-badge-muted">Staff</span>';
+      var tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td><div class="ad-user-cell">' +
+          '<div class="ad-av">' + initial + '</div>' +
+          '<div class="ad-user-cell-info">' +
+            '<div class="ad-user-cell-email">' + esc(m.email) + '</div>' +
+          '</div>' +
+        '</div></td>' +
+        '<td>' + roleBadge + '</td>' +
+        '<td style="font-size:12px;color:var(--text-4)">' +
+          (m.createdAt && m.createdAt.toDate ? m.createdAt.toDate().toLocaleDateString() : '—') +
+        '</td>' +
+        '<td style="text-align:right"><div class="ad-cell-actions">' +
+          '<button class="ad-act-btn ad-act-danger" data-remove-team="' + m.id + '" title="Remove">×</button>' +
+        '</div></td>';
+      el.appendChild(tr);
+    });
+
+    el.querySelectorAll('[data-remove-team]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (!confirm('Remove this team member?')) return;
+        db.collection('team').doc(b.getAttribute('data-remove-team')).delete();
+      });
+    });
+  }
+
+  var addTeamBtn = document.getElementById('addTeamBtn');
+  if (addTeamBtn) {
+    addTeamBtn.addEventListener('click', function () {
+      var email = prompt('Team member email?');
+      if (!email) return;
+      var role = prompt('Role? (admin / staff)', 'staff') || 'staff';
+      db.collection('team').add({
+        email: email, role: role,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+    });
+  }
+
+  /* ============================================================
+     OVERVIEW
+     ============================================================ */
+  function renderOverview() {
+    var total = allClients.length;
+    var repeat = allClients.filter(function (u) { return u.orderCount >= 1; }).length;
+    var discounted = repeat;
+    var totalOrders = allClients.reduce(function (s, u) { return s + u.orderCount; }, 0);
+
+    document.getElementById('oStatUsers').textContent = total;
+    document.getElementById('oStatRepeat').textContent = repeat;
+    document.getElementById('oStatDiscount').textContent = discounted;
+    document.getElementById('oStatOrders').textContent = totalOrders;
+
+    document.getElementById('oRepeatTrend').textContent =
+      total > 0 ? Math.round((repeat / total) * 100) + '%' : '—';
+    document.getElementById('oDiscountTrend').textContent =
+      total > 0 ? Math.round((discounted / total) * 100) + '%' : '—';
+    document.getElementById('oOrdersTrend').textContent =
+      total > 0 ? (totalOrders / total).toFixed(1) + ' avg' : '—';
+
+    // Recent activity — last 6 sign-ups
+    var recent = allClients.slice().sort(function (a, b) {
+      var aT = a.createdAt && a.createdAt.toDate ? a.createdAt.toDate().getTime() : 0;
+      var bT = b.createdAt && b.createdAt.toDate ? b.createdAt.toDate().getTime() : 0;
+      return bT - aT;
+    }).slice(0, 6);
+
+    var el = document.getElementById('activityList');
+    if (!recent.length) {
+      el.innerHTML = '<div class="ad-table-empty">No activity yet.</div>';
+      return;
+    }
+    el.innerHTML = '';
+    recent.forEach(function (u) {
+      var item = document.createElement('div');
+      item.className = 'ad-activity-item';
+      var dateStr = u.createdAt && u.createdAt.toDate
+        ? u.createdAt.toDate().toLocaleDateString()
+        : 'Recently';
+      item.innerHTML =
+        '<div class="ad-activity-dot"></div>' +
+        '<div class="ad-activity-body">' +
+          '<div class="ad-activity-title">New client signed up — <strong>' + esc(u.email) + '</strong></div>' +
+          '<div class="ad-activity-time">' + dateStr + '</div>' +
+        '</div>';
+      el.appendChild(item);
+    });
+  }
+
+  /* ============================================================
+     DANGER ZONE
+     ============================================================ */
+  var resetOrdersBtn = document.getElementById('resetOrdersBtn');
+  if (resetOrdersBtn) {
+    resetOrdersBtn.addEventListener('click', function () {
+      if (!confirm('Reset every client\'s order count to 0? This cannot be undone.')) return;
+      if (!confirm('Are you absolutely sure?')) return;
+      var batch = db.batch();
+      allClients.forEach(function (u) {
+        batch.update(db.collection('users').doc(u.uid), { orderCount: 0 });
+      });
+      batch.commit().then(function () {
+        alert('All order counts reset.');
+      }).catch(function (err) {
+        alert('Failed: ' + err.message);
+      });
+    });
+  }
+
+  var clearPromosBtn = document.getElementById('clearPromosBtn');
+  if (clearPromosBtn) {
+    clearPromosBtn.addEventListener('click', function () {
+      if (!confirm('Delete all promo codes?')) return;
+      db.collection('promos').get().then(function (snap) {
+        var batch = db.batch();
+        snap.docs.forEach(function (d) { batch.delete(d.ref); });
+        return batch.commit();
+      }).then(function () {
+        alert('Promo codes cleared.');
+      }).catch(function (err) {
+        alert('Failed: ' + err.message);
+      });
+    });
+  }
+
+  /* ============================================================
+     LOGOUT
+     ============================================================ */
   var lo = document.getElementById('logoutBtn');
   if (lo) {
     lo.addEventListener('click', function () {
@@ -412,6 +1560,26 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   }
+
+  /* ============================================================
+     HELPERS
+     ============================================================ */
+  function getTier(n) {
+    if (n >= 3) return { pct: 0.5 };
+    if (n >= 1) return { pct: 0.3 };
+    return { pct: 0 };
+  }
+
+  function esc(s) {
+    return String(s || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  // Kick off services loader (it's not in the auth gate above)
+  loadServices();
 
 });
 </script>
