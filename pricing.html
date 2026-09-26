@@ -68,15 +68,19 @@
 <section class="section" style="padding-top:40px">
   <div class="wrap">
 
+    <div id="discountBanner" style="display:none;text-align:center;margin-bottom:32px;padding:14px 24px;background:linear-gradient(90deg,rgba(37,99,235,.12),rgba(56,189,248,.12));border:1px solid rgba(56,189,248,.4);border-radius:var(--radius-pill);font-family:var(--font-display);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ember)">
+      <span id="discountBannerText"></span>
+    </div>
+
     <div class="services-grid">
 
-      <article class="service pricing-card" data-reveal>
+      <article class="service pricing-card" data-reveal data-price="3000">
         <div class="pricing-tag">STARTER</div>
         <div class="pricing-price">
-          <span class="pricing-amount">3,000</span>
+          <span class="pricing-amount" data-amount>3,000</span>
           <span class="pricing-currency">EGP</span>
         </div>
-        <div class="pricing-usd">~ $60 USD</div>
+        <div class="pricing-usd" data-usd>~ $60 USD</div>
         <p class="pricing-desc">A single landing page or marketing site. Perfect for small businesses and personal brands validating an idea.</p>
         <ul class="service-list">
           <li>Up to 5 sections</li>
@@ -89,14 +93,14 @@
         <a href="contact.html" class="btn btn-ghost" style="margin-top:24px;width:100%">Get started</a>
       </article>
 
-      <article class="service pricing-card" data-reveal style="border-color:rgba(56,189,248,.4);background:linear-gradient(180deg,rgba(37,99,235,.05) 0%,var(--surface) 40%);box-shadow:0 20px 60px rgba(37,99,235,.15);position:relative">
+      <article class="service pricing-card" data-reveal data-price="8000" style="border-color:rgba(56,189,248,.4);background:linear-gradient(180deg,rgba(37,99,235,.05) 0%,var(--surface) 40%);box-shadow:0 20px 60px rgba(37,99,235,.15);position:relative">
         <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);padding:5px 14px;border-radius:var(--radius-pill);background:var(--iris-bright);color:#fff;font-family:var(--font-display);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 4px 20px rgba(37,99,235,.5);white-space:nowrap">MOST POPULAR</div>
         <div class="pricing-tag">BUSINESS</div>
         <div class="pricing-price">
-          <span class="pricing-amount">8,000</span>
+          <span class="pricing-amount" data-amount>8,000</span>
           <span class="pricing-currency">EGP</span>
         </div>
-        <div class="pricing-usd">~ $160 USD</div>
+        <div class="pricing-usd" data-usd>~ $160 USD</div>
         <p class="pricing-desc">Multi-page website with an admin panel, forms and content management. The right choice for most growing businesses.</p>
         <ul class="service-list">
           <li>Up to 10 pages</li>
@@ -109,13 +113,13 @@
         <a href="contact.html" class="btn btn-primary" style="margin-top:24px;width:100%">Get started</a>
       </article>
 
-      <article class="service pricing-card" data-reveal>
+      <article class="service pricing-card" data-reveal data-price="15000">
         <div class="pricing-tag">FULL-STACK</div>
         <div class="pricing-price">
-          <span class="pricing-amount">15,000</span>
+          <span class="pricing-amount" data-amount>15,000</span>
           <span class="pricing-currency">EGP</span>
         </div>
-        <div class="pricing-usd">~ $300 USD</div>
+        <div class="pricing-usd" data-usd>~ $300 USD</div>
         <p class="pricing-desc">Custom web application with backend, database, authentication and admin tools. For products, not pages.</p>
         <ul class="service-list">
           <li>Custom application</li>
@@ -238,6 +242,49 @@
   </div>
 </footer>
 
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="auth.js"></script>
 <script src="script.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  Nexifing.auth.onAuth(function (user) {
+    var count = user ? (user.profile.orderCount || 0) : 0;
+    var discount = Nexifing.auth.getDiscount(count);
+
+    document.querySelectorAll('.pricing-card[data-price]').forEach(function (card) {
+      var base = parseInt(card.getAttribute('data-price'), 10);
+      var amountEl = card.querySelector('[data-amount]');
+      var usdEl = card.querySelector('[data-usd]');
+      if (!amountEl) return;
+
+      if (discount.pct === 0) return;
+
+      var result = Nexifing.auth.applyDiscount(base, count);
+      var original = base.toLocaleString('en-US');
+      var discounted = result.discounted.toLocaleString('en-US');
+      var usdOriginal = Math.round(base / 50);
+      var usdDiscounted = Math.round(result.discounted / 50);
+
+      amountEl.innerHTML = '<span style="text-decoration:line-through;opacity:.4;font-size:.6em;font-weight:400;margin-right:8px">' + original + '</span>' + discounted;
+
+      if (usdEl) {
+        usdEl.innerHTML = '<span style="text-decoration:line-through;opacity:.4;margin-right:6px">~ $' + usdOriginal + '</span> ~ $' + usdDiscounted + ' USD';
+      }
+    });
+
+    if (discount.pct > 0) {
+      var banner = document.getElementById('discountBanner');
+      var bannerText = document.getElementById('discountBannerText');
+      if (banner && bannerText) {
+        banner.style.display = 'block';
+        bannerText.textContent = '✦ ' + discount.label + ' applied';
+      }
+    }
+  });
+});
+</script>
 </body>
 </html>
