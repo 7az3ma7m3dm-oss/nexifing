@@ -995,3 +995,116 @@ body.scroll-locked{overflow:hidden}
 .service-list li.tech-item::before{
   display:none;
 }
+
+/* ==========================================================================
+   AUTH PAGES
+   ========================================================================== */
+.auth-section{
+  padding:120px 0;
+  min-height:70vh;
+  display:flex;
+  align-items:center;
+}
+.auth-wrap{
+  display:flex;
+  justify-content:center;
+}
+.auth-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-xl);
+  padding:48px 40px;
+  max-width:440px;
+  width:100%;
+  position:relative;
+  overflow:hidden;
+}
+.auth-card::before{
+  content:"";
+  position:absolute;
+  top:0;left:20%;right:20%;
+  height:1px;
+  background:var(--aurora-h);
+  opacity:.6;
+}
+.auth-head{
+  text-align:center;
+  margin-bottom:32px;
+}
+.auth-title{
+  font-family:var(--font-display);
+  font-size:clamp(1.6rem,3vw,2rem);
+  font-weight:600;
+  letter-spacing:-.03em;
+  margin-bottom:12px;
+  line-height:1.1;
+}
+.auth-sub{
+  color:var(--text-3);
+  font-size:14.5px;
+  line-height:1.7;
+  max-width:340px;
+  margin:0 auto;
+}
+.auth-form{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+.auth-field{
+  display:flex;
+  flex-direction:column;
+}
+.auth-field label{
+  font-family:var(--font-display);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--text-4);
+  margin-bottom:8px;
+}
+.auth-field input{
+  padding:13px 18px;
+  background:var(--canvas-2);
+  border:1px solid var(--border-2);
+  border-radius:var(--radius);
+  color:var(--text);
+  font-size:14.5px;
+  font-family:var(--font-body);
+  transition:border-color .2s var(--ease),background .2s var(--ease);
+}
+.auth-field input:focus{
+  border-color:var(--iris);
+  background:var(--surface-2);
+  outline:none;
+}
+.auth-field input::placeholder{color:var(--text-5)}
+.auth-note{
+  min-height:18px;
+  font-family:var(--font-display);
+  font-size:12px;
+  letter-spacing:.02em;
+  color:var(--danger);
+  text-align:center;
+}
+.auth-footer{
+  margin-top:28px;
+  padding-top:24px;
+  border-top:1px solid var(--border);
+  text-align:center;
+  font-size:14px;
+  color:var(--text-4);
+}
+.auth-footer a{
+  color:var(--ember);
+  font-weight:600;
+  margin-left:6px;
+  transition:color .2s var(--ease);
+}
+.auth-footer a:hover{color:var(--ember-bright)}
+
+@media(max-width:640px){
+  .auth-card{padding:32px 24px}
+  .auth-section{padding:80px 0}
+}
